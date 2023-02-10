@@ -9,5 +9,6 @@
 	helper = !/usr/bin/gh auth git-credential
 [core]
 	autocrlf = input
+	excludesfile = /Users/clement/.gitignore
 [credential]
 	helper = store
