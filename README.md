@@ -21,7 +21,7 @@ git clone https://github.com/drawbu/dotfiles ~/dotfiles
 *Except for Brewfile*
 ```bash
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/.zshrc ~/.gitconfig
+ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ...
 ```
 
