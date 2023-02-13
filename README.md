@@ -3,6 +3,7 @@
 
 ![Screenshot 1](./assets/screenshot-1.png)
 ![Screenshot 2](./assets/screenshot-2.png)
+![Screenshot 3](./assets/screenshot-2.png)
 
 The wallpaper is the macOS Catalina official dynamic wallpaper (the light scheme change during the day).
 
