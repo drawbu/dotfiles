@@ -33,13 +33,12 @@
   "explorer.confirmDragAndDrop": false,
   "terminal.external.windowsExec": "C:\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
   "editor.fontLigatures": true,
-  "editor.fontFamily": "JetBrainsMono Nerd Font",
-  "editor.codeLensFontFamily": "JetBrains Mono",
+  "editor.fontFamily": "JetBrainsMono Nerd Font, SF Pro",
   "vsicons.dontShowNewVersionMessage": true,
   "svelte.enable-ts-plugin": true,
   "window.openFoldersInNewWindow": "off",
   "files.insertFinalNewline": true,
-  "debug.console.fontFamily": "JetBrains Mono",
+  "debug.console.fontFamily": "JetBrainsMono Nerd Font, SF Pro",
   "npm.keybindingsChangedWarningShown": true,
   "editor.rulers": [80],
   "svg.preview.mode": "svg",
@@ -90,5 +89,6 @@
     "plaintext": false,
     "markdown": false
   },
-  "workbench.editor.showTabs": false
+  "workbench.editor.showTabs": false,
+  "editor.codeLensFontFamily": "JetBrainsMono Nerd Font, SF Pro"
 }
