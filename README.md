@@ -49,7 +49,10 @@ To open the terminal on top, press `CTRL`+`SPACE`
 
 ## sketchybar
 I use a set of plugins from the [FelixKratz's dotfiles](https://github.com/FelixKratz/dotfiles)
-It's installed with all brews formulaes
+```bash
+brew services start sketchybar
+```
+Hide the default macOS menu bar in System Settings -> Desktop & Dock -> Automatically hide and show the menu bar -> Always
 - Uses `sf-symbols`: `brew install --cask sf-symbols`
 - Uses `jq`: `brew install jq`
 - Uses `github-cli`: `brew install gh` (`gh auth login` for notifications)
