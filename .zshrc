@@ -78,3 +78,11 @@ function cs() {
     end_time=$(date +%s%3N)
     echo "Ran in $(expr $end_time - $start_time)ms"
 }
+
+function brew() {
+    command brew "$@" 
+
+    if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
+        sketchybar --trigger brew_update
+    fi
+}
