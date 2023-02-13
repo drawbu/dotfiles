@@ -1,0 +1,9 @@
+# Layout
+yabai -m config layout bsp
+yabai -m config top_padding    60
+yabai -m config window_gap     10
+
+# Move (with fn)and resize 
+yabai -m config mouse_modifier fn
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
