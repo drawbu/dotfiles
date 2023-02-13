@@ -1,0 +1,94 @@
+{
+  "files.autoSave": "afterDelay",
+  "editor.suggestSelection": "first",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.factorypath": true,
+    "**/.idea": true,
+    "**/.project": true,
+    "**/.pytest_cache": true,
+    "**/.settings": true
+  },
+  "debug.terminal.clearBeforeReusing": true,
+  "explorer.confirmDelete": false,
+  "editor.linkedEditing": true,
+  "prettier.tabWidth": 2,
+  "editor.formatOnSave": true,
+  "prettier.singleQuote": true,
+  "telemetry.telemetryLevel": "off",
+  "terminal.integrated.shell.windows": "pwsh.exe",
+  "redhat.telemetry.enabled": false,
+  "git.autofetch": true,
+  "editor.tabSize": 2,
+  "files.associations": {
+    "*.latte": "ini",
+    "htoprc": "ini"
+  },
+  "editor.inlineSuggest.enabled": true,
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "settingsSync.ignoredSettings": ["terminal.integrated.defaultProfile.linux"],
+  "workbench.iconTheme": "vscode-icons",
+  "security.workspace.trust.untrustedFiles": "open",
+  "explorer.confirmDragAndDrop": false,
+  "terminal.external.windowsExec": "C:\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.codeLensFontFamily": "JetBrains Mono",
+  "vsicons.dontShowNewVersionMessage": true,
+  "svelte.enable-ts-plugin": true,
+  "window.openFoldersInNewWindow": "off",
+  "files.insertFinalNewline": true,
+  "debug.console.fontFamily": "JetBrains Mono",
+  "npm.keybindingsChangedWarningShown": true,
+  "editor.rulers": [80],
+  "svg.preview.mode": "svg",
+  "remote.SSH.remotePlatform": {
+    "84.21.171.129": "linux"
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "[c]": {
+    "editor.tabSize": 4
+  },
+  "[sh]": {
+    "editor.tabSize": 4
+  },
+  "vscord.status.button.enabled": true,
+  "vscord.status.idle.enabled": true,
+  "workbench.colorTheme": "One Dark Pro",
+  "terminal.integrated.env.osx": {
+    "PATH": ""
+  },
+  "terminal.integrated.inheritEnv": false,
+  "gitmoji.outputType": "code",
+  "gitmoji.showEmojiCode": true,
+  "editor.minimap.enabled": false,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "editor.stickyScroll.enabled": true,
+  "breadcrumbs.enabled": false,
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "AREPL.customCSS": "/Users/clement/Developer/vscode/my-arepl.css",
+  "window.restoreWindows": "none",
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/opt/homebrew/bin/nvim",
+  "vim.useSystemClipboard": true,
+  "update.mode": "none",
+  "window.zoomLevel": 1,
+  "prettier.enable": false,
+  "editor.suggest.showFolders": false,
+  "explorer.expandSingleFolderWorkspaces": false,
+  "github.copilot.enable": {
+    "*": false,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": false
+  },
+  "workbench.editor.showTabs": false
+}
