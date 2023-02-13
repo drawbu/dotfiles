@@ -3,7 +3,6 @@
 
 ![Screenshot 1](./assets/screenshot-1.png)
 ![Screenshot 2](./assets/screenshot-2.png)
-![Screenshot 3](./assets/screenshot-3.png)
 
 The wallpaper is the macOS Catalina official dynamic wallpaper (the light scheme change during the day).
 
@@ -46,3 +45,15 @@ pip install wakatime && cd ~/.oh-my-zsh/custom/plugins && git clone https://gith
 
 ## iTerm2
 Go on the GUI preferences, search from a custom folder or URL, check the box, and select the `~/iterm2-profiles` folder.
+To open the terminal on top, press `CTRL`+`SPACE`
+
+## sketchybar
+I use a set of plugins from the [FelixKratz's dotfiles](https://github.com/FelixKratz/dotfiles)
+It's installed with all brews formulaes
+- Uses `sf-symbols`: `brew install --cask sf-symbols`
+- Uses `jq`: `brew install jq`
+- Uses `github-cli`: `brew install gh` (`gh auth login` for notifications)
+- Uses `sketchybar-app-font`:
+```bash
+curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.4/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
+```
