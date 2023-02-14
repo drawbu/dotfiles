@@ -20,10 +20,23 @@ source $ZSH/oh-my-zsh.sh
 alias dev="cd ~/Developer"
 alias cours="cd \"/Users/clement/Library/Mobile Documents/com~apple~CloudDocs/Cours\""
 
-# brew command-not-found
-HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
-if [ -f "$HB_CNF_HANDLER" ]; then
-source "$HB_CNF_HANDLER";
+
+# Homebrew stuff
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # brew command-not-found
+    HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
+    if [ -f "$HB_CNF_HANDLER" ]; then
+        source "$HB_CNF_HANDLER";
+    fi
+
+    # brew icon sketchybar
+    function brew() {
+        command brew "$@" 
+
+        if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
+            sketchybar --trigger brew_update
+        fi
+    }
 fi
 
 # pnpm
@@ -77,12 +90,4 @@ function cs() {
     fi
     end_time=$(date +%s%3N)
     echo "Ran in $(expr $end_time - $start_time)ms"
-}
-
-function brew() {
-    command brew "$@" 
-
-    if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
-        sketchybar --trigger brew_update
-    fi
 }
