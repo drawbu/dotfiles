@@ -50,9 +50,6 @@ export PATH="$PNPM_HOME:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-
 # Wakatime
 export ZSH_WAKATIME_PROJECT_DETECTION=true
 
