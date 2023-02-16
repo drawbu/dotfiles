@@ -34,3 +34,6 @@ export ZSH_WAKATIME_PROJECT_DETECTION=true
 
 # Load my scripts
 export PATH="$PATH:$HOME/scripts"
+
+# Minecraft fix on arch
+export LC_ALL=C; unset LANGUAGE
