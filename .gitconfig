@@ -12,3 +12,5 @@
 	excludesfile = ~/.gitignore
 [credential]
 	helper = store
+[push]
+	autoSetupRemote = true
