@@ -12,3 +12,7 @@ yabai -m config  layout         bsp      \
          signal --add event=window_focused   action="sketchybar --trigger window_focus"      \
                 --add event=window_created   action="sketchybar --trigger windows_on_spaces" \
                 --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
+
+# Exclude problematic apps from being managed:
+yabai -m rule --add title="JetBrains Toolbox"  manage=off
+yabai -m rule --add app="PhpStorm|PyCharm|WebStorm|CLion" title='.*Welcome*.|Checkout*.|.*Configurations|Choose*.|Import*.|.*Charges|Tip*.|Rename*.|Settings*.' manage=off 
