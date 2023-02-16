@@ -1,13 +1,14 @@
-ZSH_THEME_GIT_PROMPT_PREFIX=" - $fg_bold[blue][$fg[red]"
-ZSH_THEME_GIT_PROMPT_SUFFIX="$reset_color "
-ZSH_THEME_GIT_PROMPT_DIRTY=" $fg[green]+$fg[blue]]"
-ZSH_THEME_GIT_PROMPT_CLEAN="$fg[blue]]"
+ZSH_THEME_GIT_PROMPT_PREFIX=" - %F{blue}[%F{red}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%F{reset} "
+ZSH_THEME_GIT_PROMPT_DIRTY=" %F{green}+%F{blue}]"
+ZSH_THEME_GIT_PROMPT_CLEAN="%F{blue}]"
 
-local pwd="$fg[blue][$reset_color%~$fg[blue]]$reset_color"
-local user="$fg[blue][$fg[cyan]%n$reset_color@$fg[yellow]%m$fg[blue]]$reset_color"
+local pwd="%F{blue}[%F{reset}%~%F{blue}]%F{reset}"
+local user="%F{blue}[%F{cyan}%n%F{reset}@%F{yellow}%m%F{blue}]%F{reset}"
 
-PROMPT='$fg[blue]┌─$reset_color$user - $pwd$(git_prompt_info)
-$fg[blue]└─[$fg[magenta]\$$fg[blue]]$reset_color '
-RPROMPT="[%*] "
-PS2="$fg[magenta]>$reset_color "
-PS3="$fg[magenta]>$reset_color "
+# %{\e[0;34m%}%B└─%B[%{\e[1;35m%}$%{\e[0;34m%}%B]%{\e[0m%}%b 
+PROMPT=$'%F{blue}┌─%F{reset}$user - $pwd$(git_prompt_info)
+%F{blue}└─[%F{magenta}$%F{blue}]%F{reset} '
+RPROMPT="[%*]"
+PS2="%F{magenta}>%F{reset} "
+PS3="%F{magenta}>%F{reset} "
