@@ -1,16 +1,14 @@
-yabai -m config             \
-    # Layout
-    layout         bsp      \
-    window_gap     10       \
-    external_bar   all:59:0 \
-    
-    # Move (with fn)and resize 
-    mouse_modifier fn       \
-    mouse_action1  move     \
-    mouse_action2  resize
+# Layout
+yabai -m config  layout         bsp      \
+                 window_gap     10       \
+                 external_bar   all:59:0 \
+                 
+                 # Move (with fn)and resize 
+                 mouse_modifier fn       \
+                 mouse_action1  move     \
+                 mouse_action2  resize   \
 
-# sketchybar open application icons in spaces
-yabai -m signal                                                                  \
-    --add event=window_focused   action="sketchybar --trigger window_focus"      \
-    --add event=window_created   action="sketchybar --trigger windows_on_spaces" \
-    --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
+        # sketchybar
+         signal --add event=window_focused   action="sketchybar --trigger window_focus"      \
+                --add event=window_created   action="sketchybar --trigger windows_on_spaces" \
+                --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
