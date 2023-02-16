@@ -10,3 +10,4 @@ PROMPT='$fg[blue]┌─$reset_color$user - $pwd $(git_prompt_info)
 $fg[blue]└─[$fg[magenta]\$$fg[blue]]$reset_color '
 RPROMPT="[%*] "
 PS2=" \e[0;34m%}%B>%{\e[0m%}%b "
+PS3="$fg[magenta]>$reset_color "
