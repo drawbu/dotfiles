@@ -39,7 +39,6 @@ export PATH="$PATH:$HOME/scripts"
 export LC_ALL=C; unset LANGUAGE
 
 # colorls
-if command -v colorls &> /dev/null
-then
+if [ -x "$(command -v colorls)" ]; then
     alias ls="colorls"
 fi
