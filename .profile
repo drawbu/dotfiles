@@ -37,3 +37,9 @@ export PATH="$PATH:$HOME/scripts"
 
 # Minecraft fix on arch
 export LC_ALL=C; unset LANGUAGE
+
+# colorls
+if command -v colorls &> /dev/null
+then
+    alias ls="colorls"
+fi
