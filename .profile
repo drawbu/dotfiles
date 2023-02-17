@@ -40,8 +40,9 @@ if [ -x "$(command -v colorls)" ]; then
     alias ls="colorls"
 fi
 
-# highlight
-if [ -x "$(command -v highlight)" ]; then
-    alias cat="highlight -O ansi"
+# bat
+if [ -x "$(command -v bat)" ]; then
+    alias cat="bat"
+    alias old-cat="/bin/cat"
 fi
 
