@@ -33,12 +33,15 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export ZSH_WAKATIME_PROJECT_DETECTION=true
 
 # Load my scripts
-export PATH="$PATH:$HOME/scripts"
-
-# Minecraft fix on arch
-export LC_ALL=C; unset LANGUAGE
+export PATH="$PATH:$HOME/scripts:$HOME/.local/bin"
 
 # colorls
 if [ -x "$(command -v colorls)" ]; then
     alias ls="colorls"
 fi
+
+# highlight
+if [ -x "$(command -v highlight)" ]; then
+    alias cat="highlight -O ansi"
+fi
+
