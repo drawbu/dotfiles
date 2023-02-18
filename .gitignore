@@ -5,7 +5,7 @@
 
 ## Editors
 .vscode/
-.vscode/
+.idea/
 
 ## Python
 __pycache__/
