@@ -1,0 +1,5 @@
+(defwidget powermenu []
+  (box :orientation "h" :space-evenly false :class "powermenu" :halign "center" :valign "center" :spacing 20
+    (button :style "color: #d8dee9;" :class "shutdown" :onrightclick "systemctl poweroff" "󰐥")
+    (button :style "color: #e5e9f0;" :class "reboot" :onrightclick "systemctl reboot" "󰜉")
+    (button :style "color: #e5e9f0;" :class "sleep" :onrightclick "systemctl suspend" "󰤄")))

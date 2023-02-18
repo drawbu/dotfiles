@@ -1,6 +1,7 @@
 (include "./widgets/fetch.yuck")
 (include "./widgets/time.yuck")
 (include "./widgets/spotify.yuck")
+(include "./widgets/powermenu.yuck")
 
 
 (defwindow time_window
@@ -35,3 +36,14 @@
            :windowtype "desktop"
            :wm-ignore false
   (spotify))
+
+(defwindow powermenu_window
+           :monitor 0
+           :geometry (geometry :x "100px"
+                               :y "620px"
+                               :width "250px"
+                               :height "50px"
+                               :anchor "top left")
+           :windowtype "desktop"
+           :wm-ignore false
+(powermenu))
