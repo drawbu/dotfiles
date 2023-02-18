@@ -1,11 +1,14 @@
+$base-color: #80A0C0;
+$text-color: #c6d0f5;
+
 * {
-  color: #c6d0f5;
+  color: $base-color;
   font-family: "JetBrainsMono Nerd Font";
 }
 
 window {
   background-color: #232634;
-  border: 2px solid #80A0C0;
+  border: 2px solid $base-color;
 }
 
 button {
@@ -13,10 +16,22 @@ button {
   padding: 10px;
   border: none;
   background-color: transparent;
+
+  label {
+    color: $base-color;
+  }
+
+  &:hover label {
+    color: $text-color;
+  }
+}
+
+label {
+  color: $text-color;
 }
 
 .spotify-player {
-  color: #c6d0f5;
+  color: $base-color;
 
   label.title {
     font-weight: bold;
