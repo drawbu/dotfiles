@@ -1,5 +1,4 @@
 (defpoll time :interval "1s" `date +%H:%M:%S`)
 
 (defwidget time []
-  (box :class "time" :orientation "v" :space-evenly false :halign "center" :valign "center"
-    (label :style "color: #c6d0f5;" :text "${time}" :halign "center" :valign "center" :wrap "false" :limit-width 25)))
+  (label :text "${time}" :wrap "false" :limit-width 25))
