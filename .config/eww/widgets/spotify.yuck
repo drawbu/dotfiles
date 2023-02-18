@@ -1,8 +1,8 @@
-(deflisten music-title `playerctl --player=spotify --follow metadata --format {{title}}`)
-(deflisten music-artist `playerctl --player=spotify --follow metadata --format {{artist}}`)
-(deflisten status `playerctl --player=spotify --follow status`)
-(defpoll art :interval "10s"  "~/.config/eww/scripts/getart")
-(defpoll cover :interval "1s"  "~/.config/eww/scripts/echoart")
+(deflisten music-title  `playerctl --player=spotify --follow metadata title`)
+(deflisten music-artist `playerctl --player=spotify --follow metadata artist`)
+(deflisten status       `playerctl --player=spotify --follow status`)
+(defpoll art   :interval "10s" `~/.config/eww/scripts/spotify/dlcover`)
+(defpoll cover :interval "1s"  `~/.config/eww/scripts/spotify/getcover`)
 
 (defwidget spotify []
   (box :class "spotify-player" :orientation "v" :space-evenly false :halign "center" :valign "center"
@@ -11,6 +11,6 @@
     (box :class "art" :style "background-image: url('${cover}');" {art})
 
     (box :class "buttons" :orientation "h" :halign "center" :space-evenly "false"
-      (button :onclick `playerctl --player=spotify previous` "󰒮")
-      (button :onclick `playerctl --player=spotify play-pause` {status == "Paused" ? "󰐌" : "󰏥"})
-      (button :onclick `playerctl --player=spotify next` "󰒭"))))
+      (button :onclick `~/.config/eww/scripts/spotify/previous` "󰒮")
+      (button :onclick `~/.config/eww/scripts/spotify/pause` {status == "Paused" ? "󰐌" : "󰏥"})
+      (button :onclick `~/.config/eww/scripts/spotify/next` "󰒭"))))
