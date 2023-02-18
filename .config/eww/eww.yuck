@@ -1,16 +1,6 @@
 (include "./widgets/fetch.yuck")
 (include "./widgets/time.yuck")
-
-(defwindow fetch_window
-           :monitor 0
-           :geometry (geometry :x "100px"
-                               :y "200px"
-                               :width "250px"
-                               :height "250px"
-                               :anchor "top left")
-           :windowtype "desktop"
-           :wm-ignore false
-  (myfetch))
+(include "./widgets/spotify.yuck")
 
 
 (defwindow time_window
@@ -23,3 +13,25 @@
            :windowtype "desktop"
            :wm-ignore false
   (time))
+
+(defwindow fetch_window
+           :monitor 0
+           :geometry (geometry :x "100px"
+                               :y "200px"
+                               :width "250px"
+                               :height "250px"
+                               :anchor "top left")
+           :windowtype "desktop"
+           :wm-ignore false
+  (myfetch))
+
+(defwindow spotify_window
+           :monitor 0
+           :geometry (geometry :x "100px"
+                               :y "460px"
+                               :width "250px"
+                               :height "150px"
+                               :anchor "top left")
+           :windowtype "desktop"
+           :wm-ignore false
+  (spotify))
