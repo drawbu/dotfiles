@@ -1,5 +1,5 @@
-(include "./fetch_widget.yuck")
-(include "./time.yuck")
+(include "./widgets/fetch.yuck")
+(include "./widgets/time.yuck")
 
 (defwindow fetch_window
            :monitor 0
