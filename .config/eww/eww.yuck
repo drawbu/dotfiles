@@ -1,0 +1,45 @@
+(defpoll wakatime :interval "5m" `wakatime --today | sed -e 's/up //;s/ hrs/h/;s/ hr/h/;s/ mins/m/;s/ min/m/'`)
+(defpoll user :interval "12h" `echo "$USER@$HOSTNAME"`)
+(defpoll distro :interval "12h" `awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'`)
+(defpoll de :interval "12h" `echo $XDG_CURRENT_DESKTOP`)
+(defpoll wm :interval "12h" `wmctrl -m | grep "Name:" | awk '{print $2}'`)
+(defpoll shell :interval "5m" `echo $SHELL | awk -F'/' '{print $NF}'`)
+(defpoll uptime :interval "30s" `uptime -p | sed -e 's/up //;s/ hours,/h/;s/ hour,/h/;s/ minutes/m/;s/ minute/m/'`)
+(defpoll packages :interval "5m" `yay -Q | wc -l`)
+
+(defwidget myfetch []
+  (box :class "uinfo" :orientation "v" :space-evenly false :halign "center" :valign "center"
+    (label :style "color: #8caaee;" :text "${user}" :halign "center" :valign "center" :wrap "false" :limit-width 25)
+    (label :style "color: #efefef;" :text "─────────" :halign "center" :valign "center" :wrap "false" :limit-width 25)
+    
+    ;; Tags for values
+    (box :orientation "h" :space-evenly "false" :spacing 10
+        (box :orientation "v" :class "fetch" :spacing 2
+          (label :style "color: #e78284;" :halign "end" :text "distro")
+          (label :style "color: #e5c890;" :halign "end" :text "wm")
+          (label :style "color: #a6d189;" :halign "end" :text "de")
+          (label :style "color: #8caaee;" :halign "end" :text "shell")
+          (label :style "color: #ca9ee6;" :halign "end" :text "uptime")
+          (label :style "color: #81c8be;" :halign "end" :text "packages")
+          (label :style "color: #c6d0f5;" :halign "end" :text "wakatime"))
+    
+    ;; Fetch Values
+    (box :orientation "v"   :class "fetch"
+      (label :style "color: #e78284;" :halign "start" :text ": ${distro}")
+      (label :style "color: #e5c890;" :halign "start" :text ": ${wm}")
+      (label :style "color: #a6d189;" :halign "start" :text ": ${de}")
+      (label :style "color: #8caaee;" :halign "start" :text ": ${shell}")
+      (label :style "color: #ca9ee6;" :halign "start" :text ": ${uptime}")
+      (label :style "color: #81c8be;" :halign "start" :text ": ${packages}")
+      (label :style "color: #c6d0f5;" :halign "start" :text ": ${wakatime}")))))
+
+(defwindow fetch_window
+           :monitor 0
+           :geometry (geometry :x "100px"
+                               :y "140px"
+                               :width "250px"
+                               :height "250px"
+                               :anchor "top left")
+           :windowtype "desktop"
+           :wm-ignore false
+  (myfetch))
