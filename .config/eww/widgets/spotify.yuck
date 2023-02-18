@@ -1,5 +1,6 @@
 (deflisten music-title `playerctl --player=spotify --follow metadata --format {{title}}`)
 (deflisten music-artist `playerctl --player=spotify --follow metadata --format {{artist}}`)
+(deflisten status `playerctl --player=spotify --follow status`)
 (defpoll art :interval "10s"  "~/.config/eww/scripts/getart")
 (defpoll cover :interval "1s"  "~/.config/eww/scripts/echoart")
 
@@ -11,5 +12,5 @@
 
     (box :class "buttons" :orientation "h" :halign "center" :space-evenly "false"
       (button :onclick `playerctl --player=spotify previous` "󰒮")
-      (button :onclick `playerctl --player=spotify play-pause` "󰐎")
+      (button :onclick `playerctl --player=spotify play-pause` {status == "Paused" ? "󰐌" : "󰏥"})
       (button :onclick `playerctl --player=spotify next` "󰒭"))))
