@@ -1,4 +1,5 @@
 (include "./fetch_widget.yuck")
+(include "./time.yuck")
 
 (defwindow fetch_window
            :monitor 0
@@ -10,3 +11,15 @@
            :windowtype "desktop"
            :wm-ignore false
   (myfetch))
+
+
+(defwindow time_window
+           :monitor 0
+           :geometry (geometry :x "100px"
+                               :y "140px"
+                               :width "250px"
+                               :height "50px"
+                               :anchor "top left")
+           :windowtype "desktop"
+           :wm-ignore false
+  (time))
