@@ -31,7 +31,7 @@
            :geometry (geometry :x "100px"
                                :y "460px"
                                :width "250px"
-                               :height "250px"
+                               :height "280px"
                                :anchor "top left")
            :windowtype "desktop"
            :wm-ignore false
@@ -40,7 +40,7 @@
 (defwindow powermenu_window
            :monitor 0
            :geometry (geometry :x "100px"
-                               :y "720px"
+                               :y "750px"
                                :width "250px"
                                :height "50px"
                                :anchor "top left")

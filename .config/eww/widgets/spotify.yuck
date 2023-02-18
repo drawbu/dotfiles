@@ -5,11 +5,11 @@
 
 (defwidget spotify []
   (box :class "spotify-player" :orientation "v" :space-evenly false :halign "center" :valign "center"
-    (label :style "color: #c6d0f5;" :text "${music-title}" :halign "center" :valign "center" :wrap "false" :limit-width 25)
-    (label :style "color: #c6d0f5;" :text "${music-artist}" :halign "center" :valign "center" :wrap "false" :limit-width 25)
-    (box :class "musicart" :style "background-image: url('${cover}');" {art})
+    (label :class "title" :text "${music-title}" :wrap "false" :limit-width 25)
+    (label :text "${music-artist}" :wrap "false" :limit-width 25)
+    (box :class "art" :style "background-image: url('${cover}');" {art})
 
-    (box :class "player-buttons" :orientation "h" :space-evenly false :halign "center" :valign "center"
-      (button :style "color: #88c0d0;" :halign "end" :onclick `playerctl --player=spotify previous` "󰒮")
-      (button :style "color: #88c0d0;" :halign "end" :onclick `playerctl --player=spotify play-pause` "󰐎")
-      (button :style "color: #88c0d0;" :halign "end" :onclick `playerctl --player=spotify next` "󰒭"))))
+    (box :class "buttons" :orientation "h" :halign "center" :space-evenly "false"
+      (button :onclick `playerctl --player=spotify previous` "󰒮")
+      (button :onclick `playerctl --player=spotify play-pause` "󰐎")
+      (button :onclick `playerctl --player=spotify next` "󰒭"))))

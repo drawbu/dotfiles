@@ -8,27 +8,33 @@ window {
   border: 2px solid #80A0C0;
 }
 
-.powermenu {
-  font-size: 20px;
-  
-  button {
-    border: none;
-    background-color: transparent;
-    padding-right: 13px;
-    padding-left: 13px;
-    border-radius: 50%;
+button {
+  all: unset;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+}
 
-    &:hover {
-      background-color: #80A0C0;
-      color: #232634;
-    }
+.spotify-player {
+  color: #c6d0f5;
+
+  label.title {
+    font-weight: bold;
+  }
+  
+  box.art {
+    background-size: 150px;
+    min-height: 150px;
+    min-width: 150px;
+    margin: 10px;
+    border-radius: 10px;
+  }
+  
+  .buttons button {
+    font-size: 20px;
   }
 }
 
-box.musicart {
-  background-size: 150px;
-  min-height: 150px;
-  min-width: 150px;
-  margin: 10px;
-  border-radius: 10px;
+.powermenu {
+  font-size: 20px;
 }
