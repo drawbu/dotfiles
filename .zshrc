@@ -8,10 +8,10 @@ HIST_STAMPS="mm/dd/yyyy"
 plugins=(
   git
   brew
+  wakatime
   zsh-autosuggestions
   zsh-syntax-highlighting
   zsh-autocomplete
-  zsh-wakatime
 )
 
 # powerline10k
