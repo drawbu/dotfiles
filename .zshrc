@@ -10,7 +10,7 @@ plugins=(
   brew
   zsh-autosuggestions
   zsh-syntax-highlighting
-  zsh-completions
+  zsh-autocomplete
   zsh-wakatime
 )
 
