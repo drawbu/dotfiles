@@ -14,14 +14,16 @@ xcode-select --install
 
 ## Clone the repo
 ```bash
-git clone https://github.com/drawbu/dotfiles ~/dotfiles
+git clone https://github.com/drawbu/dotfiles $DOTFILE_PATH
+cd $DOTFILE_PATH
+git submodule update --init --recursive
 ```
 
 ## Create symlinks
 *Except for Brewfile*
 ```bash
-ln -s ~/.dotfiles/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+ln -s $DOTFILE_PATH/.zshrc ~/.zshrc
+ln -s $DOTFILE_PATH/.gitconfig ~/.gitconfig
 ...
 ```
 
@@ -35,7 +37,7 @@ brew bundle --file ~/.dotfiles/Brewfilek
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 rm -rf ~/.oh-my-zsh/custom/
-ln -s ~/Developer/dotfiles/.oh-my-zsh/custom/ ~/.oh-my-zsh/custom/
+ln -s $DOTFILE_PATH/.oh-my-zsh/custom/ ~/.oh-my-zsh/custom/
 ```
 
 ## iTerm2
