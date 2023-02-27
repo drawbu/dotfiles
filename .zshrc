@@ -4,6 +4,7 @@ ZSH_THEME="drawbu"
 
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="mm/dd/yyyy"
+ZSH_CUSTOM=$HOME/.config/omz
 
 plugins=(
   git

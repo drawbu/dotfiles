@@ -1,7 +1,6 @@
 # Layout
-yabai -m config  layout         bsp      \
+yabai -m config  layout         float      \
                  window_gap     10       \
-                 external_bar   all:59:0 \
                  
                  # Move (with fn)and resize 
                  mouse_modifier fn       \
@@ -12,6 +11,9 @@ yabai -m config  layout         bsp      \
          signal --add event=window_focused   action="sketchybar --trigger window_focus"      \
                 --add event=window_created   action="sketchybar --trigger windows_on_spaces" \
                 --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
+
+yabai -m space 1 --layout bsp
+yabai -m space 2 --layout bsp
 
 # Exclude problematic apps from being managed:
 yabai -m rule --add title="JetBrains Toolbox"  manage=off
