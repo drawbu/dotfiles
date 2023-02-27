@@ -14,9 +14,7 @@ xcode-select --install
 
 ## Clone the repo
 ```bash
-git clone https://github.com/drawbu/dotfiles $DOTFILE_PATH
-cd $DOTFILE_PATH
-git submodule update --init --recursive
+git clone --recursive https://github.com/drawbu/dotfiles $DOTFILE_PATH
 ```
 
 ## Create symlinks
