@@ -1,0 +1,2 @@
+# Change a tiled window to float
+fn - f : yabai -m window --toggle float --resize abs:800:500
