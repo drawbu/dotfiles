@@ -46,3 +46,5 @@ if [ -x "$(command -v bat)" ]; then
     alias old-cat="/bin/cat"
 fi
 
+# GitHub GPG Key
+export GPG_TTY=$(tty)
