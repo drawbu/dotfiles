@@ -1,8 +1,10 @@
 [user]
 	name = drawbu
 	email = clement2104.boillot@gmail.com
+	signingkey = B51188A69CA4D558
 [core]
-	autocrlf = input
 	excludesfile = ~/.gitignore
 [push]
 	autoSetupRemote = true
+[commit]
+	gpgsign = true
