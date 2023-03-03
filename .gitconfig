@@ -1,8 +1,10 @@
 [user]
-	name = drawbu
+	name = Clément
 	email = clement2104.boillot@gmail.com
-	signingkey = ~/.ssh/id_ed25519.pub
+	signingkey = E6CECBFC9737A2CE
 [core]
 	excludesfile = ~/.gitignore
 [push]
 	autoSetupRemote = true
+[commit]
+	gpgsign = true
