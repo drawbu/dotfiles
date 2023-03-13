@@ -10,3 +10,5 @@
 	gpgsign = true
 [gpg]
 	program = gpg
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
