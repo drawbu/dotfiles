@@ -16,6 +16,11 @@ xcode-select --install
 ```bash
 git clone --recursive https://github.com/drawbu/dotfiles $DOTFILE_PATH
 ```
+If the recursive repo cloning failed, run:
+```bash
+git submodule update --recursive
+```
+(with `--init` flag if it fails again)
 
 ## Create symlinks
 _Don't forget to remove the orignal file before setting a symlink at the same 
