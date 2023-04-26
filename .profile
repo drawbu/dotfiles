@@ -1,7 +1,3 @@
-# My aliases
-alias dev="cd $HOME/Developer"
-alias cours="cd \"$HOME/Library/Mobile Documents/com~apple~CloudDocs/Cours\""
-
 # Homebrew stuff
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # brew command-not-found
@@ -16,6 +12,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     fi
 fi
 
+# Wakatime
+export ZSH_WAKATIME_PROJECT_DETECTION=true
+
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
@@ -25,11 +24,14 @@ export PATH="$PNPM_HOME:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# Wakatime
-export ZSH_WAKATIME_PROJECT_DETECTION=true
-
 # Load my scripts
-export PATH="$PATH:$HOME/scripts:$HOME/.local/bin:$HOME/.cargo/bin"
+export PATH="$HOME/scripts:$PATH"
+
+# Fix PATH
+export PATH="$HOME/.local/bin:$PATH"
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # colorls
 if [ -x "$(command -v colorls)" ]; then
