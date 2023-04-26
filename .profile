@@ -44,5 +44,13 @@ if [ -x "$(command -v bat)" ]; then
     alias old-cat="/bin/cat"
 fi
 
+# NeoVim
+if [ -x "$(command -v nvim)" ]; then
+    alias vim="nvim"
+    alias vi="nvim"
+    export EDITOR="nvim"
+    export VISUAL="nvim"
+fi
+
 # GitHub GPG Key
 export GPG_TTY=$(tty)
