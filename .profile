@@ -33,8 +33,10 @@ export PATH="$HOME/.local/bin:$PATH"
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# colorls
-if [ -x "$(command -v colorls)" ]; then
+# Replace ls with exa or colorls
+if [ -x "$(command -v exa)" ]; then
+    alias ls="exa --icons --group-directories-first --git --color=always"
+elif [ -x "$(command -v colorls)" ]; then
     alias ls="colorls"
 fi
 
