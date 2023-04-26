@@ -9,15 +9,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     if [ -f "$HB_CNF_HANDLER" ]; then
         source "$HB_CNF_HANDLER";
     fi
-
-    # brew icon sketchybar
-    function brew() {
-        command brew "$@" 
-
-        if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
-            sketchybar --trigger brew_update
-        fi
-    }
 fi
 
 # pnpm
