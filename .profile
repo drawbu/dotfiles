@@ -24,7 +24,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export ZSH_WAKATIME_PROJECT_DETECTION=true
 
 # Load my scripts
-export PATH="$PATH:$HOME/scripts:$HOME/.local/bin"
+export PATH="$PATH:$HOME/scripts:$HOME/.local/bin:$HOME/.cargo/bin"
 
 # colorls
 if [ -x "$(command -v colorls)" ]; then
