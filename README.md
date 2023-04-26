@@ -18,12 +18,14 @@ git clone --recursive https://github.com/drawbu/dotfiles $DOTFILE_PATH
 ```
 
 ## Create symlinks
-*Except for Brewfile*
+_Don't forget to remove the orignal file before setting a symlink at the same 
+path!_
 ```bash
-ln -s $DOTFILE_PATH/.zshrc ~/.zshrc
-ln -s $DOTFILE_PATH/.gitconfig ~/.gitconfig
+ln -si $DOTFILE_PATH/.zshrc ~/.zshrc
+ln -si $DOTFILE_PATH/.config/ ~/.config/
 ...
 ```
+_Except for Brewfile, see [homebrew step](#homebrew)_
 
 ## Homebrew
 ```bash
