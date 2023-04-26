@@ -1,0 +1,9 @@
+refactor:
+  rule_types:
+  - refactoring
+  - suggestion
+  - comment
+
+  skip:
+  - for-index-underscore
+  - use-itertools-product
