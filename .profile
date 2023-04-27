@@ -36,8 +36,10 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Replace ls with exa or colorls
 if [ -x "$(command -v exa)" ]; then
     alias ls="exa --icons --group-directories-first --git --color=always"
+    alias tree="exa --icons --group-directories-first --git --color=always --tree"
 elif [ -x "$(command -v colorls)" ]; then
     alias ls="colorls"
+    alias tree="exa --icons --group-directories-first --git --color=always --tree"
 fi
 
 # bat
