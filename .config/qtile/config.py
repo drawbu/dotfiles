@@ -1,7 +1,7 @@
 from libqtile import bar, layout, widget
 from libqtile.config import Match, Screen
 
-from cogs import startup, groups, keys, META
+from cogs import startup, groups, keys, mouse
 
 
 terminal = "kitty"
