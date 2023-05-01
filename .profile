@@ -33,6 +33,11 @@ export PATH="$HOME/.local/bin:$PATH"
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# if os is arch linux
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
+fi
+
 # Replace ls with exa or colorls
 if [ -x "$(command -v exa)" ]; then
     alias ls="exa --icons --group-directories-first --git --color=always"
