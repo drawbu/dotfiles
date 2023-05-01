@@ -1,47 +1,10 @@
-import subprocess
-import os
+from libqtile import bar, layout, widget
+from libqtile.config import Match, Screen
 
-from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
-from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
-from libqtile.log_utils import logger
+from cogs import startup, groups, keys, META
 
-mod = "mod4"  # Super key (Windows key)
+
 terminal = "kitty"
-
-keys = [
-    # A list of available commands that can be bound to keys can be found
-    # at https://docs.qtile.org/en/latest/manual/config/lazy.html
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "s", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-]
-
-groups = [Group(i) for i in "azerty"]
-
-for group in groups:
-    keys.extend(
-        [
-            # mod1 + shift + letter of group = switch to group
-            Key(
-                [mod, "shift"],
-                group.name,
-                lazy.group[group.name].toscreen(),
-                desc="Switch to group {}".format(group.name),
-            ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
-        ]
-    )
 
 layouts = [
     layout.Tile(margin=3, shift_windows=True, name="Tile"),
@@ -77,14 +40,6 @@ screens = [
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
     ),
-]
-
-
-# Drag floating layouts.
-mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    # Drag([mod], "Button1", move_window_position(lazy.window), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
 ]
 
 dgroups_key_binder = None
@@ -126,7 +81,21 @@ wl_input_rules = None
 wmname = "LG3D"
 
 
-@hook.subscribe.startup_once
-def autostart():
-    home = os.path.expanduser("~/autostart.sh")
-    subprocess.call([home])
+__all__ = (
+    # Hooks
+    "startup",
+    # Keybindings
+    "keys",
+    # Mouse
+    "mouse",
+    # Workspaces groups
+    "groups",
+    # Layouts
+    "layouts",
+    "floating_layout",
+    # Screens
+    "screens",
+    # Widgets
+    "widget_defaults",
+    "extension_defaults",
+)
