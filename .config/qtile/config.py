@@ -1,7 +1,7 @@
 from libqtile import layout
 from libqtile.config import Match
 
-from cogs import startup, groups, keys, mouse, screens
+from cogs import autostart, groups, keys, mouse, screens
 
 
 terminal = "kitty"
@@ -60,7 +60,7 @@ wmname = "LG3D"
 
 __all__ = (
     # Hooks
-    "startup",
+    "autostart",
     # Keybindings
     "keys",
     # Mouse

@@ -8,7 +8,7 @@ SCRIPT_PATH = "~/autostart.sh"
 
 
 @hook.subscribe.startup_once
-def startup():
+def autostart():
     if not os.path.exists(SCRIPT_PATH):
         return
     home = os.path.expanduser(SCRIPT_PATH)
