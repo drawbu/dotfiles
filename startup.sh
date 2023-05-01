@@ -4,3 +4,8 @@ if [ -x "$(command -v wired)" ]; then
 fi
 
 setxkbmap fr
+
+# Start JetBrains ToolBox
+if [ -x "$(command -v jetbrains-toolbox)" ]; then
+  jetbrains-toolbox --minimize &
+fi
