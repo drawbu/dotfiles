@@ -6,9 +6,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         source "$HB_CNF_HANDLER";
     fi
 
-    # Set gcc to gcc-12, instead of the default clang
-    if [ -x "$(command -v gcc-12)" ]; then
-        alias gcc="gcc-12"
+    # Set gcc to gcc-13, instead of the default clang
+    if [ -x "$(command -v gcc-13)" ]; then
+        alias gcc="gcc-13"
     fi
 fi
 
