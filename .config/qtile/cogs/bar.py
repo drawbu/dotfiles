@@ -12,7 +12,7 @@ class Bar(bar.Bar):
         widgets: List[widget.base._Widget] = [
             widget.CurrentLayout(),
             widget.GroupBox(),
-            widget.Prompt(),
+            widget.Prompt(bell_style="visual"),
             widget.TaskList(),
             widget.Chord(
                 chords_colors={
