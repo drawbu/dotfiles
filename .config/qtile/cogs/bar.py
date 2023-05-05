@@ -13,7 +13,7 @@ class Bar(bar.Bar):
             widget.CurrentLayout(),
             widget.GroupBox(),
             widget.Prompt(),
-            widget.WindowName(),
+            widget.TaskList(),
             widget.Chord(
                 chords_colors={
                     "launch": ("#ff0000", "#ffffff"),
