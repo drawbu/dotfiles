@@ -24,6 +24,8 @@ class CustomBar(bar.Bar):
 
             Wakatime(qtile=qtile),
             Separator(qtile=qtile, padding=separators_width),
+            widget.CheckUpdates(distro="Arch_yay", no_update_string="", display_format="{updates} 󰏗"),
+            Separator(qtile=qtile, padding=separators_width),
         ]
 
         if is_primary:
