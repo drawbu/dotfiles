@@ -5,7 +5,7 @@ from libqtile.widget import base
 
 class Wakatime(base.InLoopPollText):
     def __init__(self, **config):
-        super().__init__("", update_interval=10, **config)
+        super().__init__("", update_interval=600, **config)
         self.name = "Wakatime widget"
 
     def poll(self) -> str:
