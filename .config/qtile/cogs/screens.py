@@ -3,11 +3,13 @@ from typing import List
 from libqtile import bar, widget, qtile
 from libqtile.config import Screen
 
-from widgets import Wakatime
+from widgets import Wakatime, Separator
 
 
 class CustomBar(bar.Bar):
     def __init__(self, is_primary: bool):
+        separators_width: int = 10
+
         widgets: List[widget.base._Widget] = [
             widget.CurrentLayout(),
             widget.GroupBox(),
@@ -19,13 +21,17 @@ class CustomBar(bar.Bar):
                 },
                 name_transform=lambda name: name.upper(),
             ),
-            Wakatime(qtile=qtile),
         ]
 
         if is_primary:
-            widgets.append(widget.Systray())
+            widgets.extend([
+                widget.Systray(),
+                Separator(qtile=qtile, padding=separators_width)
+            ])
 
         widgets.extend([
+            Wakatime(qtile=qtile),
+            Separator(qtile=qtile, padding=separators_width),
             widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
             widget.QuickExit(),
         ])
