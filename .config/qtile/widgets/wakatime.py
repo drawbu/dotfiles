@@ -1,11 +1,12 @@
 import subprocess
 
+from libqtile import qtile
 from libqtile.widget import base
 
 
 class Wakatime(base.InLoopPollText):
     def __init__(self, **config):
-        super().__init__("", update_interval=600, **config)
+        super().__init__("", update_interval=600, qtile=qtile, **config)
         self.name = "Wakatime widget"
 
     def poll(self) -> str:

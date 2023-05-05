@@ -21,16 +21,16 @@ class Bar(bar.Bar):
                 name_transform=lambda name: name.upper(),
             ),
 
-            Wakatime(qtile=qtile),
-            Separator(qtile=qtile, padding=separators_width),
+            Wakatime(),
+            Separator(padding=separators_width),
             widget.CheckUpdates(distro="Arch_yay", no_update_string="", display_format="{updates} 󰏗"),
-            Separator(qtile=qtile, padding=separators_width),
+            Separator(padding=separators_width),
         ]
 
         if is_primary:
             widgets.extend([
                 widget.Systray(),
-                Separator(qtile=qtile, padding=separators_width)
+                Separator(padding=separators_width)
             ])
 
         widgets.extend([
