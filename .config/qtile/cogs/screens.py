@@ -8,7 +8,7 @@ from widgets import Wakatime, Separator
 
 class CustomBar(bar.Bar):
     def __init__(self, is_primary: bool):
-        separators_width: int = 10
+        separators_width: int = 15
 
         widgets: List[widget.base._Widget] = [
             widget.CurrentLayout(),
@@ -21,6 +21,9 @@ class CustomBar(bar.Bar):
                 },
                 name_transform=lambda name: name.upper(),
             ),
+
+            Wakatime(qtile=qtile),
+            Separator(qtile=qtile, padding=separators_width),
         ]
 
         if is_primary:
@@ -30,8 +33,6 @@ class CustomBar(bar.Bar):
             ])
 
         widgets.extend([
-            Wakatime(qtile=qtile),
-            Separator(qtile=qtile, padding=separators_width),
             widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
             widget.QuickExit(),
         ])
