@@ -1,7 +1,9 @@
 from typing import List
 
-from libqtile import bar, widget
+from libqtile import bar, widget, qtile
 from libqtile.config import Screen
+
+from widgets import Wakatime
 
 
 class CustomBar(bar.Bar):
@@ -17,6 +19,7 @@ class CustomBar(bar.Bar):
                 },
                 name_transform=lambda name: name.upper(),
             ),
+            Wakatime(qtile=qtile),
         ]
 
         if is_primary:
