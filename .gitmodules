@@ -1,7 +1,3 @@
-[submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
-	url = https://github.com/ohmyzsh/ohmyzsh.git
-
 [submodule ".config/omz/plugins/wakatime"]
 	path = .config/omz/plugins/wakatime
 	url = https://github.com/sobolevn/wakatime-zsh-plugin.git
@@ -17,3 +13,7 @@
 [submodule ".config/omz/plugins/zsh-syntax-highlighting"]
 	path = .config/omz/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+
+[submodule ".ohmyzsh"]
+	path = .ohmyzsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git

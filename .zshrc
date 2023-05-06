@@ -1,4 +1,4 @@
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.ohmyzsh"
 
 ZSH_THEME="drawbu"
 
