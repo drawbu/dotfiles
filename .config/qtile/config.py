@@ -1,20 +1,16 @@
 from libqtile import layout
 from libqtile.config import Match
 
-from cogs import autostart, groups, keys, mouse, screens
-
+from cogs import autostart, groups, keys, mouse, screens, widget_defaults
+from plugins.catppuccin import Flavour
 
 terminal = "kitty"
+flavour = Flavour.mocha()
 
 layouts = [
     layout.Tile(margin=3, shift_windows=True, name="Tile"),
 ]
 
-widget_defaults = dict(
-    font="JetBrainsMono Nerd Font",
-    fontsize=12,
-    padding=3,
-)
 extension_defaults = widget_defaults.copy()
 
 
