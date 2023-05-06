@@ -18,7 +18,6 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 
-
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = True

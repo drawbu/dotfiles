@@ -1,6 +1,6 @@
 from typing import List
 
-from libqtile import bar, widget, qtile
+from libqtile import bar, widget
 
 from widgets import Wakatime, Separator
 
@@ -20,21 +20,21 @@ class Bar(bar.Bar):
                 },
                 name_transform=lambda name: name.upper(),
             ),
-
             Wakatime(),
             Separator(padding=separators_width),
-            widget.CheckUpdates(distro="Arch_yay", no_update_string="", display_format="{updates} 󰏗"),
+            widget.CheckUpdates(
+                distro="Arch_yay", no_update_string="", display_format="{updates} 󰏗"
+            ),
             Separator(padding=separators_width),
         ]
 
         if is_primary:
-            widgets.extend([
-                widget.Systray(),
-                Separator(padding=separators_width)
-            ])
+            widgets.extend([widget.Systray(), Separator(padding=separators_width)])
 
-        widgets.extend([
-            widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-            widget.QuickExit(),
-        ])
+        widgets.extend(
+            [
+                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.QuickExit(),
+            ]
+        )
         super().__init__(widgets=widgets, size=24)
