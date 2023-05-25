@@ -8,7 +8,7 @@ terminal = "kitty"
 flavour = Flavour.mocha()
 
 layouts = [
-    layout.Tile(margin=3, shift_windows=True, name="Tile"),
+    layout.Tile(margin=3, shift_windows=True, name="Tile", add_on_top=False),
 ]
 
 extension_defaults = widget_defaults.copy()
