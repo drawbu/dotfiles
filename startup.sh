@@ -9,3 +9,8 @@ setxkbmap fr
 if [ -x "$(command -v jetbrains-toolbox)" ]; then
   jetbrains-toolbox --minimize &
 fi
+
+# Start JetBrains ToolBox
+if [ -x "$(command -v picom)" ]; then
+  picom &
+fi
