@@ -25,7 +25,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Load my scripts
-export PATH="$HOME/scripts:$PATH"
+export PATH="$HOME/assets/scripts:$PATH"
 
 # Fix PATH
 export PATH="$HOME/.local/bin:$PATH"
