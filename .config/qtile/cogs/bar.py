@@ -56,7 +56,7 @@ class Bar(bar.Bar):
 
         widgets.extend(
             [
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.Clock(format="%a %I:%M %p"),
                 widget.QuickExit(),
             ]
         )
