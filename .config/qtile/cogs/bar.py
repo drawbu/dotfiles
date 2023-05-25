@@ -49,6 +49,7 @@ class Bar(bar.Bar):
                 colour_have_updates=TEXT_COLOR,
             ),
             Separator(padding=separators_width),
+            widget.PulseVolume(),
         ]
 
         if is_primary:
