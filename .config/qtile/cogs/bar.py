@@ -58,7 +58,7 @@ class Bar(bar.Bar):
         widgets.extend(
             [
                 widget.Clock(format="%a %I:%M %p"),
-                widget.QuickExit(),
+                Separator(padding=separators_width),
             ]
         )
         super().__init__(widgets=widgets, size=24, background=BACKGROUND_COLOR)
