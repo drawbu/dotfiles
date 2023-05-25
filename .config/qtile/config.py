@@ -9,6 +9,7 @@ flavour = Flavour.mocha()
 
 layouts = [
     layout.Tile(margin=3, shift_windows=True, name="Tile", add_on_top=False),
+    layout.Floating(name="Float"),
 ]
 
 extension_defaults = widget_defaults.copy()
