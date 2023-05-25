@@ -3,7 +3,7 @@ import os
 
 from libqtile import hook, qtile
 
-SCRIPT_PATH = "~/startup.sh"
+SCRIPT_PATH = "~/assets/startup.sh"
 
 
 @hook.subscribe.startup_once
