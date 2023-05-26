@@ -51,7 +51,6 @@ Simple and clean, with [qtile](#qtile) and [picom](#picom).
 
 ![Screenshot 1](assets/docs/screenshots/screenshot-macos-01.png)
 ![Screenshot 2](assets/docs/screenshots/screenshot-macos-02.png)
-![Screenshot 3](assets/docs/screenshots/screenshot-macos-03.png)
 
 The wallpaper is the macOS Catalina official dynamic wallpaper (the light scheme 
 change during the day).
