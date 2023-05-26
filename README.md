@@ -33,6 +33,11 @@
 
 ## :art: <samp> SCREENSHOTS </samp>
 
+### <samp> ARCH </samp>
+Simple and clean, with [qtile](#qtile) and [picom](#picom).
+![Screenshot 1](assets/docs/screenshots/screenshot-arch-01.png)
+![Screenshot 2](assets/docs/screenshots/screenshot-arch-02.png)
+
 ### <samp> macOS </samp>
 ![Screenshot 1](assets/docs/screenshots/screenshot-macos-01.png)
 ![Screenshot 2](assets/docs/screenshots/screenshot-macos-02.png)
