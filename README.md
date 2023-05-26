@@ -17,9 +17,9 @@
 
 ## Table of content
 
-1. [Screenshots](#art-samp-screenshots-samp)
+1. [Screenshots](#art--screenshots-)
     1. [macOS](#samp-macos-samp)
-2. [Installation](#wrench-samp-installation-samp)
+2. [Installation](#wrench--installation-)
     1. [Install Apple's Command Line Tools](#install-apples-command-line-tools-this-are-prerequisites-for-git-and-homebrew)
     2. [Clone the repo](#clone-the-repo)
     3. [Create symlinks](#create-symlinks)
