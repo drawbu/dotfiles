@@ -3,7 +3,12 @@ if [ -x "$(command -v wired)" ]; then
   wired &
 fi
 
-setxkbmap fr
+# Set keyboard layout
+if [ grep -q Asahi /etc/hostname]; then
+  setxkbmap fr -variant mac
+else
+  setxkbmap fr
+fi
 
 # Start JetBrains ToolBox
 if [ -x "$(command -v jetbrains-toolbox)" ]; then
