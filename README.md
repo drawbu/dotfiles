@@ -29,6 +29,8 @@
     4. [Homebrew](#homebrew)
     5. [Zsh & Oh My Zsh & Powerlevel10k](#zsh--oh-my-zsh--powerlevel10k)
     6. [iTerm2](#iterm2)
+    7. [Qtile](#qtile)
+    8. [Picom](#picom)
 
 
 ## :art: <samp> SCREENSHOTS </samp>
@@ -107,3 +109,18 @@ Go on the GUI preferences, search from a custom folder or URL, check the box,
 and select the `~/.config/iterm2` folder.
 
 To open the terminal on top, press `CTRL`+`SPACE`.
+
+### Qtile
+The Window Manager I use on Linux. It's a tiling window manager written and 
+configured in Python. All the config files are in the `.config/qtile` folder.
+```bash
+pacman -S qtile
+```
+
+### Picom
+The compositor I use on Linux. It's a lightweight compositor for X11. 
+Qtile works fine without it, but it's better with it, as it adds little 
+animations and the possibility to play with window opacity.
+```bash
+pacman -S picom
+```
