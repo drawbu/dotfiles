@@ -21,7 +21,8 @@
 ## :building_construction: <samp> TABLE OF CONTENT </samp>
 
 1. [Screenshots](#art--screenshots-)
-    1. [macOS](#samp-macos-samp)
+   1. [Arch](#-arch-)
+   2. [macOS](#-macos-)
 2. [Installation](#wrench--installation-)
     1. [Install Apple's Command Line Tools](#apples-command-line-tools)
     2. [Clone the repo](#clone-the-repo)
@@ -36,11 +37,18 @@
 ## :art: <samp> SCREENSHOTS </samp>
 
 ### <samp> ARCH </samp>
+<div style="display: flex">
+   <img alt="Asahi Linux logo" src="assets/docs/asahi_linux.png" width="16"> 
+   <img alt="Arch Linux logo" src="assets/docs/arch.png" width="16">
+</div>
+
 Simple and clean, with [qtile](#qtile) and [picom](#picom).
 ![Screenshot 1](assets/docs/screenshots/screenshot-arch-01.png)
 ![Screenshot 2](assets/docs/screenshots/screenshot-arch-02.png)
 
-### <samp> macOS </samp>
+### <samp> macOS </samp> </h3>
+<img alt="macOS Finder logo" src="assets/docs/finder_logo.png" width="16">
+
 ![Screenshot 1](assets/docs/screenshots/screenshot-macos-01.png)
 ![Screenshot 2](assets/docs/screenshots/screenshot-macos-02.png)
 ![Screenshot 3](assets/docs/screenshots/screenshot-macos-03.png)
