@@ -18,7 +18,7 @@
 </div>
 
 
-## Table of content
+## :building_construction: <samp> TABLE OF CONTENT </samp>
 
 1. [Screenshots](#art--screenshots-)
     1. [macOS](#samp-macos-samp)
