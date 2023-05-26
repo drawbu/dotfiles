@@ -35,14 +35,15 @@ _Except for Brewfile, see [homebrew step](#homebrew)_
 ## Homebrew
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew bundle --file ~/.dotfiles/Brewfilek
+brew bundle --file $DOTFILE_PATH/Brewfile
 ```
 
-## Oh-my-zsh
+## Zsh & Oh My Zsh & Powerlevel10k
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-rm -rf ~/.oh-my-zsh/custom/
-ln -s $DOTFILE_PATH/.oh-my-zsh/custom/ ~/.oh-my-zsh/custom/
+ln -s $DOTFILE_PATH/.ohmyzsh ~/.ohmyzsh
+ln -s $DOTFILE_PATH/.p10k.zsh ~/.p10k.zsh
+ln -s $DOTFILE_PATH/.zshrc ~/.zshrc
+ln -s $DOTFILE_PATH/.profile ~/.profile
 ```
 
 ## iTerm2
