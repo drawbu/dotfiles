@@ -1,9 +1,22 @@
-# drawbu's `.dotfiles/`
-(this is for macOS)
+<div align="center">
 
-![Screenshot 1](assets/screenshots/screenshot-1.png)
-![Screenshot 2](assets/screenshots/screenshot-2.png)
-![Screenshot 3](assets/screenshots/screenshot-3.png)
+# My dotfiles for macOS and Arch
+
+<div style="width: 200px; display: flex; justify-content: space-between">
+    <img alt="macOS Finder logo" src="assets/docs/finder_logo.png" width="48">
+    <img alt="Asahi Linux logo" src="assets/docs/asahi_linux.png" width="48">
+    <img alt="Arch Linux logo" src="assets/docs/arch.png" width="48">
+</div>
+
+<samp>Those dotfiles is the config I use mainly on macOS, but also on Linux (Vanilla Arch & Asahi).</samp>
+
+#
+
+</div>
+
+![Screenshot 1](assets/docs/screenshots/screenshot-1.png)
+![Screenshot 2](assets/docs/screenshots/screenshot-2.png)
+![Screenshot 3](assets/docs/screenshots/screenshot-3.png)
 
 The wallpaper is the macOS Catalina official dynamic wallpaper (the light scheme change during the day).
 
