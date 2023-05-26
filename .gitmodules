@@ -17,3 +17,7 @@
 [submodule ".ohmyzsh"]
 	path = .ohmyzsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
+
+[submodule ".config/omz/plugins/nix-zsh-completions"]
+	path = .config/omz/plugins/nix-zsh-completions
+	url = https://github.com/nix-community/nix-zsh-completions
