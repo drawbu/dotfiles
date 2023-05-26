@@ -34,9 +34,9 @@
 ## :art: <samp> SCREENSHOTS </samp>
 
 ### <samp> macOS </samp>
-![Screenshot 1](assets/docs/screenshots/screenshot-1.png)
-![Screenshot 2](assets/docs/screenshots/screenshot-2.png)
-![Screenshot 3](assets/docs/screenshots/screenshot-3.png)
+![Screenshot 1](assets/docs/screenshots/screenshot-macos-01.png)
+![Screenshot 2](assets/docs/screenshots/screenshot-macos-02.png)
+![Screenshot 3](assets/docs/screenshots/screenshot-macos-03.png)
 
 The wallpaper is the macOS Catalina official dynamic wallpaper (the light scheme 
 change during the day).
