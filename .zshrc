@@ -13,6 +13,7 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   zsh-autocomplete
+  nix-zsh-completions
 )
 
 # powerline10k
