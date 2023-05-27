@@ -9,6 +9,7 @@ ZSH_CUSTOM=$HOME/.config/omz
 plugins=(
   git
   brew
+  direnv
   wakatime
   zsh-autosuggestions
   zsh-syntax-highlighting

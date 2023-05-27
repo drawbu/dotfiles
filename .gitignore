@@ -14,6 +14,8 @@ venv/
 
 ## Environment files
 .env
+.direnv/
+.envrc
 
 ## Executables files
 *.out
