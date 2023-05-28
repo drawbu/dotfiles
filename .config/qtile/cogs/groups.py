@@ -1,10 +1,12 @@
+from typing import Final
+
 from libqtile.config import Group, Key, ScratchPad, DropDown
 from libqtile.lazy import lazy
 
-from .keys import keys, META, terminal
+from .keys import keys, META, TERMINAL
 
 groups = [Group(i) for i in "azerty"]
-
+DROPDOWN_TERM: Final[str] = "term"
 
 for group in groups:
     keys.append(
@@ -19,7 +21,7 @@ for group in groups:
 groups.append(
     ScratchPad(
         "scratchpad",
-        [DropDown("term", terminal, x=0.05, y=0.05, opacity=1.0, height=0.9, width=0.9)]
+        [DropDown(DROPDOWN_TERM, TERMINAL, x=0.05, y=0.05, opacity=1.0, height=0.9, width=0.9)]
     )
 )
 keys.append(
