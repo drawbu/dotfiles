@@ -17,17 +17,11 @@ keys = [
     Key([META], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([META], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([META, "control"], "Right",
-        lazy.layout.grow_right(),
-        lazy.layout.grow(),
         lazy.layout.increase_ratio(),
-        lazy.layout.delete(),
         desc="Increase active window size."
     ),
     Key([META, "control"], "Left",
-        lazy.layout.grow_left(),
-        lazy.layout.shrink(),
         lazy.layout.decrease_ratio(),
-        lazy.layout.add(),
         desc="Decrease active window size."
     ),
 ]
