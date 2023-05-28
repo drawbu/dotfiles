@@ -1,5 +1,4 @@
 export ZSH="$HOME/.ohmyzsh"
-export LC_ALL=en_US.UTF-8
 
 ZSH_THEME="drawbu"
 

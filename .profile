@@ -1,5 +1,7 @@
 # Homebrew stuff
 if [[ "$OSTYPE" == "darwin"* ]]; then
+    export LC_ALL=en_US.UTF-8
+
     # brew command-not-found
     HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
     if [ -f "$HB_CNF_HANDLER" ]; then
