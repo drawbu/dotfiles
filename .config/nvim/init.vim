@@ -1,2 +1,2 @@
-set number
-set relativenumber
+lua require('plugins')
+lua require('settings')
