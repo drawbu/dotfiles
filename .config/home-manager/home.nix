@@ -3,35 +3,38 @@
 {
   programs.home-manager.enable = true;
 
-  home.username = "clement";
-  home.homeDirectory = "/home/clement";
+  home = {
+    username = "clement";
+    homeDirectory = "/home/clement";
 
-  home.stateVersion = "22.11";
-  home.packages = with pkgs; [
-    direnv
-    picom
-    qtile
-    firefox
-    zsh
+    stateVersion = "22.11";
 
-    # unfree
-    discord
-    jetbrains-toolbox
+    packages = with pkgs; [
+      direnv
+      picom
+      qtile
+      firefox
+      zsh
 
-    # fonts
-    jetbrains-mono
-    nerdfonts
-  ];
-  nixpkgs.config.allowUnfreePredicate = (pkg: true);
+      # unfree
+      discord
+      jetbrains-toolbox
 
-  # Symlink the dotfiles
-  home.file = {
-    ".zshrc".source = ../../.zshrc;
-    ".gitconfig".source = ../../.gitconfig;
-    "assets".source = ../../assets;
+      # fonts
+      jetbrains-mono
+      nerdfonts
+    ];
 
-    # dont work. don't know why
-    # ".ohmyzsh".source = ../../.ohmyzsh;
-    # ".config".source = ../../.config;
+    # Symlink the dotfiles
+    file = {
+      ".zshrc".source = ../../.zshrc;
+      ".gitconfig".source = ../../.gitconfig;
+      "assets".source = ../../assets;
+
+      # dont work. don't know why
+      # ".ohmyzsh".source = ../../.ohmyzsh;
+      # ".config".source = ../../.config;
+    };
   };
+  nixpkgs.config.allowUnfreePredicate = (pkg: true);
 }
