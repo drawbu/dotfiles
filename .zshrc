@@ -26,10 +26,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
   source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 fi
-[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
+[[ ! -f $HOME/assets/.p10k.zsh ]] || source $HOME/assets/.p10k.zsh
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.profile
+source $HOME/assets/.profile
 
 if [ -x "$(command -v brew)" ]; then
   if type brew &>/dev/null; then
