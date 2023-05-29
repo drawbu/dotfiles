@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
       direnv
       zsh
+      neovim
 
       # unfree
       discord
