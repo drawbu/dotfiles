@@ -14,12 +14,12 @@
     let
     in {
       homeConfigurations = {
-        "clement-linux" = home-manager.lib.homeManagerConfiguration {
+        "linux" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
 
           modules = [ ./.config/home-manager/home-linux.nix ];
         };
-        "clement-darwin" = home-manager.lib.homeManagerConfiguration {
+        "macos" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."aarch64-darwin";
 
           modules = [ ./.config/home-manager/home-darwin.nix ];
