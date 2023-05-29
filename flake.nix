@@ -18,7 +18,7 @@
       homeConfigurations."clement" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        modules = [ ./home.nix ];
+        modules = [ ./.config/home-manager/home.nix ];
       };
     };
 }
