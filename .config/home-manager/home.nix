@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  programs.home-manager.enable = true;
 
   home.username = "clement";
   home.homeDirectory = "/home/clement";
@@ -23,21 +24,14 @@
   ];
   nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
+  # Symlink the dotfiles
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+    ".zshrc".source = ../../.zshrc;
+    ".gitconfig".source = ../../.gitconfig;
+    "assets".source = ../../assets;
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    # dont work. don't know why
+    # ".ohmyzsh".source = ../../.ohmyzsh;
+    # ".config".source = ../../.config;
   };
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 }
