@@ -10,3 +10,6 @@ pulse/
 
 # Games
 StardewValley/
+
+# Nix
+10-home-manager.conf

@@ -131,3 +131,9 @@ animations and the possibility to play with window opacity.
 ```bash
 pacman -S picom
 ```
+
+### Nix Home Manager
+Installation: [Home Manager Manual](https://nix-community.github.io/home-manager/index.html#sec-install-standalone)
+```bash
+home-manager switch
+```
