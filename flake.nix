@@ -12,13 +12,18 @@
 
   outputs = { nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
     in {
-      homeConfigurations."clement" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+      homeConfigurations = {
+        "clement-linux" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
 
-        modules = [ ./.config/home-manager/home.nix ];
+          modules = [ ./.config/home-manager/home-linux.nix ];
+        };
+        "clement-darwin" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."aarch64-darwin";
+
+          modules = [ ./.config/home-manager/home-darwin.nix ];
+        };
       };
     };
 }
