@@ -134,6 +134,13 @@ pacman -S picom
 
 ### Nix Home Manager
 Installation: [Home Manager Manual](https://nix-community.github.io/home-manager/index.html#sec-install-standalone)
+
+For Linux:
 ```bash
-home-manager switch --flake '.#clement'
+home-manager switch --flake '.#clement-linux'
+```
+
+For macOS:
+```bash
+home-manager switch --flake '.#clement-darwin'
 ```
