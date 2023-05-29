@@ -23,6 +23,9 @@
       # fonts
       jetbrains-mono
       nerdfonts
+
+      # local packages
+      (pkgs.callPackage packages/vera.nix { })
     ];
 
     # Symlink the dotfiles
