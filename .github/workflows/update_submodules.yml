@@ -1,0 +1,25 @@
+name: Update Submodules
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  update_submodules:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up git
+        run: |
+          git config --local user.email "69208565+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git pull
+      - name: Update README
+        run: |
+          git submodule update --remote --init
+          git submodule foreach git pull
+          git add .
+          git commit -m ":twisted_rightwards_arrows: Update submodules"
+          git push
