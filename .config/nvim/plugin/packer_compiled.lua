@@ -74,10 +74,31 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["onedarkpro.nvim"] = {
+  ["hlargs.nvim"] = {
     loaded = true,
-    path = "/Users/clement/.local/share/nvim/site/pack/packer/start/onedarkpro.nvim",
-    url = "https://github.com/olimorris/onedarkpro.nvim"
+    path = "/Users/clement/.local/share/nvim/site/pack/packer/start/hlargs.nvim",
+    url = "https://github.com/m-demare/hlargs.nvim"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/Users/clement/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/Users/clement/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/clement/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
+  },
+  ["onedark.nvim"] = {
+    loaded = true,
+    path = "/Users/clement/.local/share/nvim/site/pack/packer/start/onedark.nvim",
+    url = "https://github.com/navarasu/onedark.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -93,6 +114,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/clement/.local/share/nvim/site/pack/packer/start/vgit.nvim",
     url = "https://github.com/tanvirtin/vgit.nvim"
+  },
+  ["vim-illuminate"] = {
+    loaded = true,
+    path = "/Users/clement/.local/share/nvim/site/pack/packer/start/vim-illuminate",
+    url = "https://github.com/RRethy/vim-illuminate"
   }
 }
 
