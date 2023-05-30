@@ -16,6 +16,6 @@
       nerdfonts
 
       # local packages
-      (pkgs.callPackage packages/vera.nix { })
+      (pkgs.callPackage ./vera.nix { })
   ];
 }

@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
 
   imports = [
-    ./packages.nix
+    ./packages
     ./dotfiles.nix
   ];
 
