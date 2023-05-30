@@ -5,6 +5,8 @@
       direnv
       zsh
       neovim
+      bat
+      exa
 
       # unfree
       discord
