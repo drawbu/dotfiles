@@ -2,20 +2,28 @@
   # The packages compatible with macOS and Linux
 
   home.packages = with pkgs; [
-      direnv
-      zsh
-      neovim
-      bat
-      exa
+    # cli & tui
+    direnv
+    neovim
+    bat
+    exa
+    wakatime
+    htop
+    neofetch
+    tmux
+    speedtest-cli
 
-      # unfree
-      discord
+    # softwares
+    discord
+    obsidian
+    spotify
+    vscode
 
-      # fonts
-      jetbrains-mono
-      nerdfonts
+    # fonts
+    jetbrains-mono
+    nerdfonts
 
-      # local packages
-      (pkgs.callPackage ./vera.nix { })
+    # local packages
+    (pkgs.callPackage ./vera.nix { })
   ];
 }

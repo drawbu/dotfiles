@@ -17,6 +17,7 @@
       picom
       qtile
       firefox
+      kitty
 
       # unfree
       jetbrains-toolbox
