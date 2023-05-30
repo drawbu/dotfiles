@@ -6,6 +6,7 @@
     <img alt="macOS Finder logo" src="assets/docs/finder_logo.png" width="48">
     <img alt="Asahi Linux logo" src="assets/docs/asahi_linux.png" width="48">
     <img alt="Arch Linux logo" src="assets/docs/arch.png" width="48">
+    <img alt="Nix snowflake" src="assets/docs/nix-snowflake.svg" width="48">
 </div>
 
 <samp>
@@ -24,22 +25,25 @@
    1. [Arch](#-arch-)
    2. [macOS](#-macos-)
 2. [Installation](#wrench--installation-)
-    1. [Install Apple's Command Line Tools](#apples-command-line-tools)
-    2. [Clone the repo](#clone-the-repo)
-    3. [Create symlinks](#create-symlinks)
-    4. [Homebrew](#homebrew)
-    5. [Zsh & Oh My Zsh & Powerlevel10k](#zsh--oh-my-zsh--powerlevel10k)
-    6. [iTerm2](#iterm2)
-    7. [Qtile](#qtile)
-    8. [Picom](#picom)
+    1.  [Nix](#snowflake-nix)
+    2.  [Nix Home Manager](#nix-home-manager)
+    3.  [Install Apple's Command Line Tools](#apples-command-line-tools)
+    4.  [Clone the repo](#clone-the-repo)
+    5.  [Create symlinks](#create-symlinks)
+    6.  [Homebrew](#beer-homebrew)
+    7.  [Zsh & Oh My Zsh & Powerlevel10k](#zsh--oh-my-zsh--powerlevel10k)
+    8.  [iTerm2](#iterm2)
+    9.  [Qtile](#qtile)
+    10. [Picom](#picom)
 
 
 ## :art: <samp> SCREENSHOTS </samp>
 
 ### <samp> ARCH </samp>
 <div style="display: flex">
-   <img alt="Asahi Linux logo" src="assets/docs/asahi_linux.png" width="16"> 
-   <img alt="Arch Linux logo" src="assets/docs/arch.png" width="16">
+    <img alt="Asahi Linux logo" src="assets/docs/asahi_linux.png" width="16"> 
+    <img alt="Arch Linux logo" src="assets/docs/arch.png" width="16">
+    <img alt="Nix snowflake" src="assets/docs/nix-snowflake.svg" width="16">
 </div>
 
 Simple and clean, with [qtile](#qtile) and [picom](#picom).
@@ -47,7 +51,10 @@ Simple and clean, with [qtile](#qtile) and [picom](#picom).
 ![Screenshot 2](assets/docs/screenshots/screenshot-arch-02.png)
 
 ### <samp> macOS </samp> </h3>
-<img alt="macOS Finder logo" src="assets/docs/finder_logo.png" width="16">
+<div style="display: flex">
+    <img alt="macOS Finder logo" src="assets/docs/finder_logo.png" width="16">
+    <img alt="Nix snowflake" src="assets/docs/nix-snowflake.svg" width="16">
+</div>
 
 ![Screenshot 1](assets/docs/screenshots/screenshot-macos-01.png)
 ![Screenshot 2](assets/docs/screenshots/screenshot-macos-02.png)
@@ -78,6 +85,42 @@ git submodule update --recursive
 ```
 (with `--init` flag if it fails again)
 
+### :snowflake: Nix
+All my setups are managed by Nix, so you need to install it first.
+Installation: [link](https://nixos.org/download)
+
+It is incredibly easy to install, and it's a great package manager, compatible
+both for Linux and macOS. It allows you to install packages (both the "normal" 
+way, or just temporally to test the package in a shell session), but also to 
+rollback completely your system to a previous state, in case of a bad update for 
+example.
+
+I use it also with the flakes feature, which allows me to have only the needed 
+packages install when working on a project. For example, when I enter a C 
+project in my terminal, `cmake`, `gcc12` and `criterion` get installed, and 
+when I leave the project, they get uninstalled, all that in a few seconds.
+
+If you prefer a traditional package manager, you can still use the 
+[brew](#homebrew) package manager on macOS, or `yay` on Arch.
+
+### Nix Home Manager
+Installation: [link](https://nix-community.github.io/home-manager/index.html#sec-install-standalone)
+
+Allow to manage the user's config files and all my installed packages with Nix. 
+It's a great tool, and it allows me to have the same config on all my machines,
+and to roll back to a previous state if I mess up my config.
+
+For Linux:
+```bash
+home-manager switch --flake '.#clement-linux'
+```
+
+For macOS:
+```bash
+home-manager switch --flake '.#clement-darwin'
+```
+
+
 ### Create symlinks
 > **Warning**
 > Don't forget to remove the orignal file before setting a symlink at the same 
@@ -92,7 +135,7 @@ Exemple:
 ln -si $DOTFILE_PATH/.config ~/.config
 ```
 
-### Homebrew
+### :beer: Homebrew
 Don't symlink the `Brewfile` file, it's only used for the installation of
 the packages.
 
@@ -118,6 +161,8 @@ and select the `~/.config/iterm2` folder.
 To open the terminal on top, press `CTRL`+`SPACE`.
 
 ### Qtile
+(Already installed by default on my Nix HM config)
+
 The Window Manager I use on Linux. It's a tiling window manager written and 
 configured in Python. All the config files are in the `.config/qtile` folder.
 ```bash
@@ -125,22 +170,11 @@ pacman -S qtile
 ```
 
 ### Picom
+(Already installed by default on my Nix HM config)
+
 The compositor I use on Linux. It's a lightweight compositor for X11. 
 Qtile works fine without it, but it's better with it, as it adds little 
 animations and the possibility to play with window opacity.
 ```bash
 pacman -S picom
-```
-
-### Nix Home Manager
-Installation: [Home Manager Manual](https://nix-community.github.io/home-manager/index.html#sec-install-standalone)
-
-For Linux:
-```bash
-home-manager switch --flake '.#clement-linux'
-```
-
-For macOS:
-```bash
-home-manager switch --flake '.#clement-darwin'
 ```
