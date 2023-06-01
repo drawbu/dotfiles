@@ -11,7 +11,7 @@
     username = "clement";
     homeDirectory = "/home/clement";
 
-    stateVersion = "22.11";
+    stateVersion = "23.05";
 
     packages = with pkgs; [
       picom
