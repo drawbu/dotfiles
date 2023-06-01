@@ -25,5 +25,21 @@
           modules = [ ./.config/home-manager/home-darwin.nix ];
         };
       };
+      nixosConfigurations = {
+        "nixos" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+
+          modules = [
+            # System
+            ./.config/nixos
+
+            # Home
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.users.clement = import ./.config/home-manager/home-linux.nix;
+            }
+          ];
+        };
+      };
     };
 }
