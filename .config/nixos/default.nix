@@ -117,19 +117,6 @@
     extraGroups = [ "docker" "networkmanager" "libvirtd" "wheel" ];
   };
 
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    dina-font
-    fira-code
-    fira-code-symbols
-    liberation_ttf
-    mplus-outline-fonts.githubRelease
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    proggyfonts
-  ];
-
   virtualisation = {
     docker.enable = true;
     libvirtd.enable = true;
