@@ -28,7 +28,7 @@
 	url = https://github.com/nix-community/nix-zsh-completions
 	branch = master
 
-[submodule ".config/omz/plugins/nix-zsh-completions"]
-	path = .config/omz/themes/powerline10k
+[submodule ".config/omz/themes/powerlevel10k"]
+	path = .config/omz/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
 	branch = master
