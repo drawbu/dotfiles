@@ -18,17 +18,9 @@ plugins=(
 )
 
 # powerline10k
-if [ -x "$(command -v p10k)" ]; then
-  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-  fi
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
-  elif [[ "$OSTYPE" == "linux-gnu" ]]; then
-    source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-  fi
-  [[ ! -f $HOME/assets/.p10k.zsh ]] || source $HOME/assets/.p10k.zsh
-fi
+source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+source $ZSH_CUSTOM/themes/powerlevel10k/powerlevel10k.zsh-theme
+source $HOME/assets/.p10k.zsh
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/assets/.profile
