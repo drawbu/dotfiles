@@ -18,6 +18,7 @@
       qtile
       firefox
       kitty
+      flameshot
 
       # unfree
       jetbrains-toolbox
