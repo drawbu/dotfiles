@@ -12,6 +12,8 @@
     neofetch
     tmux
     speedtest-cli
+    wget
+    git
 
     # softwares
     discord
