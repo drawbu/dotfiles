@@ -72,6 +72,7 @@
       enableSSHSupport = true;
     };
 
+    # File manager
     thunar = {
       enable = true;
       plugins = with pkgs.xfce; [
@@ -84,15 +85,17 @@
   };
 
   services = {
+    # For the file manager
     gvfs.enable = true;
     tumbler.enable = true;
-    openssh.enable = true;
 
+    # Compositor
     picom = {
       enable = true;
       fade = true;
     };
 
+    # Sounds
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -100,6 +103,7 @@
       pulse.enable = true;
     };
 
+    # Graphical
     xserver = {
       enable = true;
       displayManager.startx.enable = true;
@@ -132,9 +136,7 @@
       htop
       tree
       vim
-      vifm
       wget
-      virt-manager
     ];
   };
 
