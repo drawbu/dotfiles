@@ -8,7 +8,7 @@
     bat
     exa
     wakatime
-    htop
+    btop
     neofetch
     tmux
     speedtest-cli
