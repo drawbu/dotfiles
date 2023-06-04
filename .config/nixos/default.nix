@@ -106,7 +106,12 @@
     # Graphical
     xserver = {
       enable = true;
-      displayManager.startx.enable = true;
+      displayManager = {
+        startx.enable = true;
+        setupCommands = ''
+          ${pkgs.xlibs.xrandr}/bin/xrandr --output HDMI-0 --primary --output DVI-D-0 --right-of HDMI-0
+        '';
+      };
       layout = "fr";
       # nvidia, fuck you
       videoDrivers = [ "nvidia" ];
