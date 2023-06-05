@@ -32,3 +32,8 @@
 	path = .config/omz/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
 	branch = master
+
+[submodule "assets/wallpapers/minimalistic-wallpaper-collection"]
+	path = assets/wallpapers/minimalistic-wallpaper-collection
+	url = https://github.com/DenverCoder1/minimalistic-wallpaper-collection
+	branch = main

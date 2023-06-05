@@ -85,6 +85,11 @@ git submodule update --recursive
 ```
 (with `--init` flag if it fails again)
 
+> **Note**
+> Be careful when cloning the submodules, the repo where the wallpapers are 
+> ([here](https://github.com/DenverCoder1/minimalistic-wallpaper-collection))
+> is over 800 Mo
+
 ### :snowflake: Nix
 All my setups are managed by Nix, so you need to install it first.
 Installation: [link](https://nixos.org/download)
