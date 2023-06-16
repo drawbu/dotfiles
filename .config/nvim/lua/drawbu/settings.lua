@@ -13,7 +13,7 @@ require'nvim-treesitter.configs'.setup {
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.cmd('colorscheme onedark')
+vim.cmd('colorscheme catppuccin')
 
 vim.wo.colorcolumn = '80'
 vim.opt.cursorline = true
