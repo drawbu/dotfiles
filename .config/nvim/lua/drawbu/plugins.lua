@@ -5,6 +5,7 @@ return require('packer').startup(function(use)
     -- Visual Git
     use {
         'tanvirtin/vgit.nvim',
+        tag = 'v0.2.1',
         requires = {
             'nvim-lua/plenary.nvim'
         }
