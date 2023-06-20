@@ -59,5 +59,7 @@ return require('packer').startup(function(use)
             {'rcarriga/nvim-notify'},
         }
     }
+
+    use {'mbbill/undotree'}
 end)
 
