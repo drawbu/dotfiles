@@ -11,9 +11,6 @@ return require('packer').startup(function(use)
         }
     }
 
-    -- One Dark Pro colorscheme
-    use 'navarasu/onedark.nvim'
-
     -- Syntax Highlighing
     use {
         'nvim-treesitter/nvim-treesitter',
