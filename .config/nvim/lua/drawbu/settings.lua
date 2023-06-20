@@ -1,4 +1,3 @@
-require('vgit').setup()
 require('lualine').setup()
 
 vim.opt.number = true
