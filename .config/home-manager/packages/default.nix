@@ -27,5 +27,6 @@
 
     # local packages
     (pkgs.callPackage ./vera.nix { })
+    (pkgs.callPackage ./obs-studio.nix { })
   ];
 }
