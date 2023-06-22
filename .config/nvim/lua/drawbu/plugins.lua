@@ -60,7 +60,7 @@ return require('packer').startup(function(use)
         }
     }
 
-    use {'mbbill/undotree'}
+    use 'mbbill/undotree'
 
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -82,5 +82,9 @@ return require('packer').startup(function(use)
             {'L3MON4D3/LuaSnip'},     -- Required
         }
     }
+
+    use 'folke/zen-mode.nvim'
+
+    use 'folke/which-key.nvim'
 end)
 
