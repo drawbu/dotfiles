@@ -94,6 +94,12 @@ git submodule update --recursive
 All my setups are managed by Nix, so you need to install it first.
 Installation: [link](https://nixos.org/download)
 
+Once the installation is complete, add the stable channel:
+```sh
+nix-channel --add https://nixos.org/channels/nixos-23.05 nixpkgs
+nix-channel --update
+```
+
 It is incredibly easy to install, and it's a great package manager, compatible
 both for Linux and macOS. It allows you to install packages (both the "normal" 
 way, or just temporally to test the package in a shell session), but also to 
@@ -101,9 +107,7 @@ rollback completely your system to a previous state, in case of a bad update for
 example.
 
 I use it also with the flakes feature, which allows me to have only the needed 
-packages install when working on a project. For example, when I enter a C 
-project in my terminal, `cmake`, `gcc12` and `criterion` get installed, and 
-when I leave the project, they get uninstalled, all that in a few seconds.
+packages install when working on a project. 
 
 If you prefer a traditional package manager, you can still use the 
 [brew](#homebrew) package manager on macOS, or `yay` on Arch.
