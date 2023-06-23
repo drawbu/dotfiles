@@ -91,5 +91,16 @@ return require('packer').startup(function(use)
         'akinsho/toggleterm.nvim',
         tag = '*'
     }
+
+    use {
+        'folke/neoconf.nvim',
+        config = function()
+            require('neoconf').setup()
+        end,
+    }
+
+    use 'LnL7/vim-nix'
+
+    use 'lukas-reineke/indent-blankline.nvim'
 end)
 
