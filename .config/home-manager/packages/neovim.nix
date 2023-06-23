@@ -10,8 +10,10 @@
     ];
 
     extraPackages = with pkgs; [
+      git
       tree-sitter
       nodejs
+      unzip
 
       # Language Servers
       # Bash
