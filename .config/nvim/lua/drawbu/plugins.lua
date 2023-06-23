@@ -63,6 +63,13 @@ return require('packer').startup(function(use)
     use 'mbbill/undotree'
 
     use {
+        'folke/neoconf.nvim',
+        config = function()
+            require('neoconf').setup()
+        end,
+    }
+
+    use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
         requires = {
@@ -92,15 +99,10 @@ return require('packer').startup(function(use)
         tag = '*'
     }
 
-    use {
-        'folke/neoconf.nvim',
-        config = function()
-            require('neoconf').setup()
-        end,
-    }
-
     use 'LnL7/vim-nix'
 
     use 'lukas-reineke/indent-blankline.nvim'
+
+    use 'nvim-tree/nvim-web-devicons'
 end)
 
