@@ -2,12 +2,6 @@
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export LC_ALL=en_US.UTF-8
 
-    # brew command-not-found
-    HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
-    if [ -f "$HB_CNF_HANDLER" ]; then
-        source "$HB_CNF_HANDLER";
-    fi
-
     # Set gcc to gcc-13, instead of the default clang
     if [ -x "$(command -v gcc-13)" ]; then
         alias gcc="gcc-13"
