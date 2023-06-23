@@ -31,5 +31,13 @@
   imports = [
     ./neovim.nix
   ];
+  
+  programs.zsh = {
+    enable = true;
+    dotDir = ".config/zsh";
+    initExtra = ''
+      source ~/.zshrc
+    '';
+  };
 }
 
