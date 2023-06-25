@@ -14,6 +14,8 @@
       tree-sitter
       nodejs
       unzip
+      cargo
+      rustc
 
       # Language Servers
       # Bash
