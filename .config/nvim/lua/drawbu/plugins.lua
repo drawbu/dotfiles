@@ -104,5 +104,14 @@ return require('packer').startup(function(use)
     use 'lukas-reineke/indent-blankline.nvim'
 
     use 'nvim-tree/nvim-web-devicons'
+
+    use {
+        'nvim-tree/nvim-tree.lua',
+        config = function()
+            require('nvim-tree').setup()
+            
+            vim.keymap.set('n', '<leader>pt', vim.cmd.NvimTreeToggle)
+        end,
+    }
 end)
 
