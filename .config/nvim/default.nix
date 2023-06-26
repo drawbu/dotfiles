@@ -4,6 +4,7 @@
     extraConfig = ''
       lua require('drawbu')
     '';
+    
     plugins = with pkgs.vimPlugins; [
       # Syntax highlighting
       nvim-treesitter.withAllGrammars
@@ -14,8 +15,6 @@
       tree-sitter
       nodejs
       unzip
-      cargo
-      rustc
 
       # Language Servers
       # Bash
