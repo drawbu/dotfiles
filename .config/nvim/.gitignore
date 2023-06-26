@@ -1,3 +1,5 @@
 *
-!after
+!init.vim
 !lua
+!after
+!default.nix
