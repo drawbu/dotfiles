@@ -1,1 +1,5 @@
-./plugin/
+*
+!init.vim
+!lua
+!after
+!default.nix

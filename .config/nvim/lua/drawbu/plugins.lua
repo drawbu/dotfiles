@@ -51,16 +51,14 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-    -- Nice cmdLine
-    use {
-        'folke/noice.nvim',
-        requires = {
-            {'MunifTanjim/nui.nvim'},
-            {'rcarriga/nvim-notify'},
-        }
-    }
-
     use 'mbbill/undotree'
+
+    use {
+        'folke/neoconf.nvim',
+        config = function()
+            require('neoconf').setup()
+        end,
+    }
 
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -90,6 +88,21 @@ return require('packer').startup(function(use)
     use {
         'akinsho/toggleterm.nvim',
         tag = '*'
+    }
+
+    use 'LnL7/vim-nix'
+
+    use 'lukas-reineke/indent-blankline.nvim'
+
+    use 'nvim-tree/nvim-web-devicons'
+
+    use {
+        'nvim-tree/nvim-tree.lua',
+        config = function()
+            require('nvim-tree').setup()
+            
+            vim.keymap.set('n', '<leader>pt', vim.cmd.NvimTreeToggle)
+        end,
     }
 end)
 

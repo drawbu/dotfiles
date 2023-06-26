@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     # cli & tui
     direnv
-    neovim
     bat
     exa
     wakatime
@@ -28,6 +27,10 @@
     # local packages
     (pkgs.callPackage ./vera.nix { })
   ];
+
+  imports = [
+    ./../../nvim
+  ];
   
   programs.zsh = {
     enable = true;
@@ -37,3 +40,4 @@
     '';
   };
 }
+
