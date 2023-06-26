@@ -29,7 +29,7 @@
   ];
 
   imports = [
-    ./neovim.nix
+    ./../../nvim
   ];
   
   programs.zsh = {
