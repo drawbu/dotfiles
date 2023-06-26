@@ -1,5 +1,4 @@
 *
-!init.vim
-!lua
-!after
+!lua/*
+!.gitignore
 !default.nix
