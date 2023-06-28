@@ -83,6 +83,14 @@ return require('packer').startup(function(use)
         end,
     }
 
+    -- Icons for LSP
+    use {
+        'onsails/lspkind.nvim',
+        config = function()
+            require('drawbu.plugins.cmp')
+        end,
+    }
+
     -- Distraction free mode
     use {
         'folke/zen-mode.nvim',
@@ -132,6 +140,23 @@ return require('packer').startup(function(use)
             }
             vim.keymap.set('n', '<leader>pt', vim.cmd.NvimTreeToggle)
         end,
+    }
+
+    use {
+        'zbirenbaum/copilot.lua',
+        cmd = 'Copilot',
+        event = 'InsertEnter',
+        config = function()
+            require('drawbu.plugins.copilot')
+        end,
+    }
+
+    use {
+        'zbirenbaum/copilot-cmp',
+        after = { 'copilot.lua' },
+        config = function ()
+            require('copilot_cmp').setup()
+        end
     }
 end)
 

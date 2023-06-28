@@ -15,6 +15,7 @@
       git
       tree-sitter
       unzip
+      nodejs
 
       # Language Servers
       # Lua
