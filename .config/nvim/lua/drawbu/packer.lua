@@ -158,5 +158,13 @@ return require('packer').startup(function(use)
             require('copilot_cmp').setup()
         end
     }
+
+    use {
+        'goolord/alpha-nvim',
+        requires = { 'nvim-tree/nvim-web-devicons' },
+        config = function ()
+            require('drawbu.plugins.alpha')
+        end
+    }
 end)
 
