@@ -16,6 +16,7 @@ wk.register({
     ['<leader>u'] = 'Undo tree',
     ['<leader>d'] = 'Delete to void',
     ['<leader> '] = 'Open a terminal',
+    ['<leader>:'] = 'Comment the line',
 })
 
 wk.register({

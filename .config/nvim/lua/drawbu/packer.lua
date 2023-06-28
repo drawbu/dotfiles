@@ -166,5 +166,15 @@ return require('packer').startup(function(use)
             require('drawbu.plugins.alpha')
         end
     }
+
+    use {
+        'terrortylor/nvim-comment',
+        config = function ()
+            require('nvim_comment').setup({
+                create_mappings = true,
+                line_mapping = "<leader>:",
+            })
+        end,
+    }
 end)
 
