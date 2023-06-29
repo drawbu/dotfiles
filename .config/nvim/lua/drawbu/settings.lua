@@ -1,5 +1,3 @@
-require('lualine').setup()
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 

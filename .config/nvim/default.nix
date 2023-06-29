@@ -6,7 +6,7 @@
     '';
     
     plugins = with pkgs.vimPlugins; [
-      packer-nvim
+      lazy-nvim
       # Syntax highlighting
       nvim-treesitter.withAllGrammars
     ];

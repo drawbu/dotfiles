@@ -1,4 +1,4 @@
 require('drawbu.settings')
 require('drawbu.remap')
-require('drawbu.packer')
+require("lazy").setup("drawbu.lazy")
 
