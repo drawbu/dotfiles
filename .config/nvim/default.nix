@@ -25,6 +25,9 @@
       # C
       llvmPackages_latest.clang
       clang-tools
+      # Python
+      pyright
+
       # Telescope tools
       ripgrep
     ];
