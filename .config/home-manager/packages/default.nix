@@ -19,6 +19,9 @@
     obsidian
     spotify
     vscode
+    jetbrains.clion
+    jetbrains.pycharm-professional
+    jetbrains.webstorm
 
     # fonts
     jetbrains-mono
