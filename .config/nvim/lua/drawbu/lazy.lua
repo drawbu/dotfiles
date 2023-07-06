@@ -132,15 +132,11 @@ return {
     -- File icons
     'nvim-tree/nvim-web-devicons',
 
-    -- File tree
     {
-        'nvim-tree/nvim-tree.lua',
+        'ThePrimeagen/harpoon',
+        dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
-            require('nvim-tree').setup{
-                disable_netrw = false,
-                reload_on_bufenter = true,
-            }
-            vim.keymap.set('n', '<leader>pt', vim.cmd.NvimTreeToggle)
+            require('drawbu.plugins.harpoon')
         end,
     },
 

@@ -17,6 +17,9 @@ wk.register({
     ['<leader>d'] = 'Delete to void',
     ['<leader> '] = 'Open a terminal',
     ['<leader>:'] = 'Comment the line',
+    ['<leader>a'] = 'Add to Harpoon',
+    ['<leader>l'] = 'Previous Harpoon file',
+    ['<leader>h'] = 'Next Harpoon file',
 })
 
 wk.register({
