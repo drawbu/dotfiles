@@ -43,12 +43,6 @@ elif [ -x "$(command -v colorls)" ]; then
     alias tree="exa --icons --group-directories-first --git --color=always --tree"
 fi
 
-# bat
-if [ -x "$(command -v bat)" ]; then
-    alias cat="bat"
-    alias old-cat="/bin/cat"
-fi
-
 # NeoVim
 if [ -x "$(command -v nvim)" ]; then
     alias vim="nvim"
