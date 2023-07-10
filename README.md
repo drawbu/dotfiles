@@ -35,6 +35,7 @@
     8.  [iTerm2](#iterm2)
     9.  [Qtile](#qtile)
     10. [Picom](#picom)
+    11. [Tmux](#tmux)
 
 
 ## :art: <samp> SCREENSHOTS </samp>
@@ -158,9 +159,8 @@ brew bundle --file $DOTFILE_PATH/Brewfile
 ### Zsh & Oh My Zsh & Powerlevel10k
 ```bash
 ln -s $DOTFILE_PATH/.ohmyzsh ~/.ohmyzsh
-ln -s $DOTFILE_PATH/.p10k.zsh ~/.p10k.zsh
 ln -s $DOTFILE_PATH/.zshrc ~/.zshrc
-ln -s $DOTFILE_PATH/.profile ~/.profile
+ln -s $DOTFILE_PATH/assets ~/assets
 ```
 
 ### iTerm2
@@ -187,3 +187,14 @@ animations and the possibility to play with window opacity.
 ```bash
 pacman -S picom
 ```
+
+### Tmux
+Tmux comes preinstalled with the nix Home-Manager and NixOS conf. You can also
+install it manually.
+You'll need to install [TMP](https://github.com/tmux-plugins/tpm).
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+Then, open a tmux session and press <kbd>CTRL</kbd> + <kbd>b</kbd>, then 
+<kbd>I</kbd> to install the plugins and reload the config.
+
