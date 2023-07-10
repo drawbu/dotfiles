@@ -12,7 +12,7 @@ class Wakatime(base.InLoopPollText):
     def poll(self) -> str:
         try:
             proc = subprocess.Popen(
-                ["wakatime", "--today"],
+                ["wakatime-cli", "--today"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
             )
