@@ -2,6 +2,7 @@
 
   imports = [
     ./packages
+    ./packages/games.nix
   ];
 
   programs.home-manager.enable = true;
@@ -18,6 +19,7 @@
       firefox
       kitty
       flameshot
+      xfce.thunar
 
       # unfree
       jetbrains-toolbox
