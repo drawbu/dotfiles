@@ -121,6 +121,15 @@
     };
   };
 
+  services.openssh.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
+
   users.users.clement = {
     isNormalUser = true;
     shell = pkgs.zsh;
@@ -139,7 +148,7 @@
       modemmanager
       networkmanagerapplet
       git
-      htop
+      btop
       tree
       vim
       wget
@@ -149,12 +158,5 @@
   system = {
     copySystemConfiguration = false;
     stateVersion = "23.05";
-  };
-
-  systemd.targets = {
-    sleep.enable = false;
-    suspend.enable = false;
-    hibernate.enable = false;
-    hybrid-sleep.enable = false;
   };
 }
