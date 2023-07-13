@@ -42,13 +42,6 @@ class Bar(bar.Bar):
             ),
             Wakatime(),
             Separator(padding=separators_width),
-            widget.CheckUpdates(
-                distro="Arch_yay",
-                no_update_string="",
-                display_format="{updates} 󰏗",
-                colour_have_updates=TEXT_COLOR,
-            ),
-            Separator(padding=separators_width),
             widget.PulseVolume(),
         ]
 
