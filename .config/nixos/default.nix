@@ -3,7 +3,6 @@
   imports =
     [
       ./issue
-      ./hardware-configuration.nix
       ./polkit.nix
     ];
 
@@ -130,7 +129,7 @@
   };
 
 
-  users.users.clement = {
+  users.users.gabriel = {
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "docker" "networkmanager" "libvirtd" "wheel" ];

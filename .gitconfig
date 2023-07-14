@@ -1,6 +1,6 @@
 [user]
 	name = Clément
-	email = clement2104.boillot@gmail.com
+	email = gabriel2104.boillot@gmail.com
 	signingkey = E6CECBFC9737A2CE
 [core]
 	excludesfile = ~/assets/.globalgitignore
