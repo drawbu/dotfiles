@@ -122,12 +122,12 @@ and to roll back to a previous state if I mess up my config.
 
 For Linux:
 ```bash
-home-manager switch --flake '.#clement-linux'
+home-manager switch --flake '.#gabriel-linux'
 ```
 
 For macOS:
 ```bash
-home-manager switch --flake '.#clement-darwin'
+home-manager switch --flake '.#gabriel-darwin'
 ```
 
 

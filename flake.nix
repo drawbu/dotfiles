@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration of clement";
+  description = "Home Manager configuration of gabriel";
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
@@ -19,24 +19,36 @@
 
           modules = [ ./.config/home-manager/home-linux.nix ];
         };
-        "macos" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."aarch64-darwin";
-
-          modules = [ ./.config/home-manager/home-darwin.nix ];
-        };
       };
       nixosConfigurations = {
-        "nixos" = nixpkgs.lib.nixosSystem {
+        "NixAtchu-Fix" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
 
           modules = [
             # System
             ./.config/nixos
+            ./hardware-configuration-fix.nix
 
             # Home
             home-manager.nixosModules.home-manager
             {
-              home-manager.users.clement = import ./.config/home-manager/home-linux.nix;
+              home-manager.users.gabriel = import ./.config/home-manager/home-linux.nix;
+            }
+          ];
+        };
+
+        "NixAtchu-Portable" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+
+          modules = [
+            # System
+            ./.config/nixos
+            ./hardware-configuration-portable.nix
+
+            # Home
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.users.gabriel = import ./.config/home-manager/home-linux.nix;
             }
           ];
         };
