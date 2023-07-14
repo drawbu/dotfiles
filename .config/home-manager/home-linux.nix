@@ -47,6 +47,7 @@
       jetbrains-mono
       nerdfonts
     ];
+  };
 
     imports = [
       ./../nvim
@@ -59,6 +60,5 @@
         source ~/.zshrc
       '';
     };
-  };
   nixpkgs.config.allowUnfreePredicate = (pkg: true);
 }
