@@ -48,10 +48,6 @@
       nerdfonts
     ];
   };
-
-    imports = [
-      ./../nvim
-    ];
     
     programs.zsh = {
       enable = true;
