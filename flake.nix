@@ -27,7 +27,7 @@
           modules = [
             # System
             ./.config/nixos
-            ./hardware-configuration-fix.nix
+            ./.config/nixos/hardware-configuration-fix.nix
 
             # Home
             home-manager.nixosModules.home-manager
@@ -43,7 +43,7 @@
           modules = [
             # System
             ./.config/nixos
-            ./hardware-configuration-portable.nix
+            ./.config/nixos/hardware-configuration-portable.nix
 
             # Home
             home-manager.nixosModules.home-manager
