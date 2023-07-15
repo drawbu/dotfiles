@@ -1,5 +1,4 @@
 { config, pkgs, ... }: {
-
   imports = [
     ./packages
     ./packages/games.nix
@@ -16,6 +15,8 @@
     packages = with pkgs; [
       picom
       qtile
+      eww
+      dunst
       firefox
       kitty
       flameshot
