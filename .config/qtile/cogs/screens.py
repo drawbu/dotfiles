@@ -9,13 +9,13 @@ from .bar import Bar
 
 
 def choose_wallpaper() -> str:
-    folder = os.path.expanduser("~/assets/wallpapers")
-    collection = f"{folder}/minimalistic-wallpaper-collection/images"
+    collection = f"{WALLPAPERS_FOLDER }/minimalistic-wallpaper-collection/images"
     if os.path.isdir(collection):
         return f"{collection}/{random.choice(os.listdir(collection))}"
-    return f"{folder}/wallpaper.jpg"
+    return f"{WALLPAPERS_FOLDER}/wallpaper.jpg"
 
-WALLPAPER: Final[str] = choose_wallpaper()
+WALLPAPERS_FOLDER = os.path.expanduser("~/assets/wallpapers")
+WALLPAPER: Final[str] = f"{WALLPAPERS_FOLDER}/anime-girl.jpeg"
 
 screens = [
     Screen(
