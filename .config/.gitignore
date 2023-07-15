@@ -1,17 +1,34 @@
 # Applications
-jgit/
-dconf/
 discord/
-Code/
 JetBrains/
-cef_user_data/
-github-copilot/
 pulse/
 Thunar/
 xfce4/
+gtk-3.0/
+cava/
+pavucontrol.ini
+
+# Code
+Code/
+github-copilot/
+lazygit/
+
+# Autostart
+autostart/
+mimeapps.list
 
 # Games
 StardewValley/
+unity3d/
+doomretro/
 
 # Nix
 10-home-manager.conf
+zsh/
+
+# I have no idea what this is
+cef_user_data/
+jgit/
+dconf/
+QtProject.conf
+
