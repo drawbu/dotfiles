@@ -10,6 +10,9 @@ require('lspconfig').clangd.setup({})
 require('lspconfig').pyright.setup({})
 
 lsp.on_attach(function(client, bufnr)
+    local opts = {buffer = bufnr, remap = false}
+
+    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     lsp.default_keymaps({buffer = bufnr})
 end)
 
