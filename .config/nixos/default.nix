@@ -119,9 +119,11 @@
       libinput.enable = true;
       windowManager.qtile.enable = true;
     };
+
+    # SSH
+    openssh.enable = true;
   };
 
-  services.openssh.enable = true;
 
   programs.steam = {
     enable = true;
