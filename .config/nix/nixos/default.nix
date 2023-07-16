@@ -1,11 +1,10 @@
 { config, pkgs, ... }:
 {
-  imports =
-    [
-      ./issue
-      ./hardware-configuration.nix
-      ./polkit.nix
-    ];
+  imports = [
+    ./issue
+    ./hardware-configuration.nix
+    ./polkit.nix
+  ];
 
   hardware.opengl.enable = true;
 

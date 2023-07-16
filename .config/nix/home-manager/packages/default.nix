@@ -32,7 +32,7 @@
   ];
 
   imports = [
-    ./../../nvim
+    ./../../../nvim
   ];
   
   programs.zsh = {
