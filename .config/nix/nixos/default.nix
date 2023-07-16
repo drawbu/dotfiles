@@ -1,12 +1,9 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./issue
-    ./hardware-configuration.nix
     ./polkit.nix
   ];
-
-  hardware.opengl.enable = true;
 
   boot.loader = {
     efi.canTouchEfiVariables = true;
@@ -48,11 +45,6 @@
     ];
   };
 
-  networking = {
-    hostName = "nixos";
-    networkmanager.enable = true;
-  };
-
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -90,10 +82,7 @@
     tumbler.enable = true;
 
     # Compositor
-    picom = {
-      enable = true;
-      fade = true;
-    };
+    picom.enable = true;
 
     # Sounds
     pipewire = {
@@ -108,15 +97,8 @@
       enable = true;
       displayManager = {
         startx.enable = true;
-        setupCommands = ''
-          ${pkgs.xlibs.xrandr}/bin/xrandr --output HDMI-0 --primary --output DVI-D-0 --right-of HDMI-0
-        '';
       };
       layout = "fr";
-      # nvidia, fuck you
-      videoDrivers = [ "nvidia" ];
-      libinput.enable = true;
-      windowManager.qtile.enable = true;
     };
 
     # SSH
@@ -128,13 +110,6 @@
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
-
-
-  users.users.clement = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    extraGroups = [ "docker" "networkmanager" "libvirtd" "wheel" ];
   };
 
   virtualisation = {

@@ -26,12 +26,12 @@
         };
       };
       nixosConfigurations = {
-        "nixos" = nixpkgs.lib.nixosSystem {
+        "pain-de-mie" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
 
           modules = [
             # System
-            ./.config/nix/nixos
+            ./.config/nix/pain-de-mie.nix
 
             # Home
             home-manager.nixosModules.home-manager
