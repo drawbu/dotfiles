@@ -17,12 +17,12 @@
         "linux" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
 
-          modules = [ ./.config/nix/home-manager/home-linux.nix ];
+          modules = [ ./.config/nix/home-manager/clement.nix ];
         };
         "macos" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."aarch64-darwin";
 
-          modules = [ ./.config/nix/home-manager/home-darwin.nix ];
+          modules = [ ./.config/nix/home-manager/clement-darwin.nix ];
         };
       };
       nixosConfigurations = {
@@ -36,7 +36,7 @@
             # Home
             home-manager.nixosModules.home-manager
             {
-              home-manager.users.clement = import ./.config/nix/home-manager/home-linux.nix;
+              home-manager.users.clement = import ./.config/nix/home-manager/clement.nix;
             }
           ];
         };
