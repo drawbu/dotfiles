@@ -8,6 +8,12 @@ require('lspconfig').lua_ls.setup({})
 require('lspconfig').clangd.setup({})
 -- Python
 require('lspconfig').pyright.setup({})
+-- TypeScript
+require('lspconfig').tsserver.setup({})
+-- CSS
+require('lspconfig').cssls.setup({})
+-- Svelte
+require('lspconfig').svelte.setup({})
 
 lsp.on_attach(function(client, bufnr)
     local opts = {buffer = bufnr, remap = false}
