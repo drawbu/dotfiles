@@ -20,3 +20,5 @@ vim.opt.scrolloff = 8
 
 vim.opt.clipboard = "unnamedplus"
 
+vim.cmd('filetype plugin on')
+
