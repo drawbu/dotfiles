@@ -27,6 +27,12 @@
       clang-tools
       # Python
       pyright
+      # Typescript
+      nodePackages.typescript-language-server
+      # CSS
+      nodePackages.vscode-langservers-extracted
+      # Svelte
+      nodePackages.svelte-language-server
 
       # Telescope tools
       ripgrep
