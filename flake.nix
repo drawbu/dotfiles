@@ -19,11 +19,6 @@
 
           modules = [ ./.config/nix/home-manager/clement.nix ];
         };
-        "macos" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."aarch64-darwin";
-
-          modules = [ ./.config/nix/home-manager/clement-darwin.nix ];
-        };
       };
       nixosConfigurations = {
         "pain-de-mie" = nixpkgs.lib.nixosSystem {
