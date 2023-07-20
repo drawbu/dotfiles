@@ -7,6 +7,7 @@
     ./nixos
   ];
 
+  home-manager.users.clement = import ./home/clement.nix;
   users.users.clement = {
     isNormalUser = true;
     shell = pkgs.zsh;
