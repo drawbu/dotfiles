@@ -43,6 +43,10 @@ elif [ -x "$(command -v colorls)" ]; then
     alias tree="exa --icons --group-directories-first --git --color=always --tree"
 fi
 
+if [ -x "$(command -v bat)" ]; then
+    export BAT_THEME="TwoDark"
+fi
+
 # NeoVim
 if [ -x "$(command -v nvim)" ]; then
     alias vim="nvim"
