@@ -53,7 +53,10 @@
   };
 
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  hardware = {
+    pulseaudio.enable = false;
+    bluetooth.enable = true;
+  };
 
   programs = {
     command-not-found.enable = false;
