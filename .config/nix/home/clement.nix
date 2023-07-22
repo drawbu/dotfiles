@@ -1,5 +1,5 @@
 # 'clement' user home-manager config for NixOS & generic linux
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [
     ./../../nvim
   ];
@@ -57,15 +57,15 @@
       nerdfonts
 
       # local packages
-      (pkgs.callPackage ./vera.nix { })
+      (pkgs.callPackage ./packages/vera.nix { })
     ];
+  };
 
-    programs.zsh = {
-      enable = true;
-      dotDir = ".config/zsh";
-      initExtra = ''
-        source ~/.zshrc
+  programs.zsh = {
+    enable = true;
+    dotDir = ".config/zsh";
+    initExtra = ''
+      source ~/.zshrc
       '';
-    };
   };
 }
