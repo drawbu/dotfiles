@@ -22,8 +22,11 @@
 ## :building_construction: <samp> TABLE OF CONTENT </samp>
 
 1. [Screenshots](#art--screenshots-)
-   1. [Arch](#-arch-)
-   2. [macOS](#-macos-)
+    1.  [Arch](#-arch-)
+    2.  [macOS](#-macos-)
+2. [OS]
+    1.  [NixOS]
+    2.  [Linux]
 2. [Installation](#wrench--installation-)
     1.  [Nix](#snowflake-nix)
     2.  [Nix Home Manager](#nix-home-manager)
@@ -51,30 +54,34 @@ Simple and clean, with [qtile](#qtile) and [picom](#picom).
 ![Screenshot 1](assets/docs/screenshots/screenshot-arch-01.png)
 ![Screenshot 2](assets/docs/screenshots/screenshot-arch-02.png)
 
-### <samp> macOS </samp> </h3>
-<div style="display: flex">
-    <img alt="macOS Finder logo" src="assets/docs/finder_logo.png" width="16">
-    <img alt="Nix snowflake" src="assets/docs/nix-snowflake.svg" width="16">
-</div>
+## OS
+Depending on your OS, you way need different steps
 
-![Screenshot 1](assets/docs/screenshots/screenshot-macos-01.png)
-![Screenshot 2](assets/docs/screenshots/screenshot-macos-02.png)
+### :snowflake: NixOS
+```sh
+cd /etc/nixos
+git clone https://github.com/drawbu/nix-config config
+sudo nixos-rebuild switch /etc/nixos/config#the-machine
+```
+Replace `the-machine` with one of the following:
+ - `pain-de-mie`: For my home pc
+ - `pancake`: For my laptop
 
-The wallpaper is the macOS Catalina official dynamic wallpaper (the light scheme 
-change during the day).
+And **tada** the pc is up and running, users are created, and everything is
+installed.
 
+### Average Linux
+Setup home manager for Linux Non-NixOS
+```sh
+git clone https://github.com/drawbu/nix-config
+cd nix-config
+home-manager switch --flake .#linux
+```
 
 ## :wrench: <samp> INSTALLATION </samp>
 > **Note**
 > For the next steps, im going to refer as the folder you want to put the 
-> dotfiles in as `$DOTFILES_PATH`*
-
-### Apple's Command Line Tools
-If you're on macOS, you need to install Apple's Command Line Tools, which are 
-prerequisites for Git and Homebrew. On any other OS, you don't need it.
-```bash
-xcode-select --install
-```
+> dotfiles in as `$DOTFILES_PATH`
 
 ### Clone the repo
 ```bash
@@ -90,46 +97,6 @@ git submodule update --recursive
 > Be careful when cloning the submodules, the repo where the wallpapers are 
 > ([here](https://github.com/DenverCoder1/minimalistic-wallpaper-collection))
 > is over 800 Mo
-
-### :snowflake: Nix
-All my setups are managed by Nix, so you need to install it first.
-Installation: [link](https://nixos.org/download)
-
-Once the installation is complete, add the stable channel:
-```sh
-nix-channel --add https://nixos.org/channels/nixos-23.05 nixpkgs
-nix-channel --update
-```
-
-It is incredibly easy to install, and it's a great package manager, compatible
-both for Linux and macOS. It allows you to install packages (both the "normal" 
-way, or just temporally to test the package in a shell session), but also to 
-rollback completely your system to a previous state, in case of a bad update for 
-example.
-
-I use it also with the flakes feature, which allows me to have only the needed 
-packages install when working on a project. 
-
-If you prefer a traditional package manager, you can still use the 
-[brew](#homebrew) package manager on macOS, or `yay` on Arch.
-
-### Nix Home Manager
-Installation: [link](https://nix-community.github.io/home-manager/index.html#sec-install-standalone)
-
-Allow to manage the user's config files and all my installed packages with Nix. 
-It's a great tool, and it allows me to have the same config on all my machines,
-and to roll back to a previous state if I mess up my config.
-
-For Linux:
-```bash
-home-manager switch --flake '.#clement-linux'
-```
-
-For macOS:
-```bash
-home-manager switch --flake '.#clement-darwin'
-```
-
 
 ### Create symlinks
 > **Warning**
