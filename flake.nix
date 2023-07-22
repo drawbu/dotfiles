@@ -28,6 +28,14 @@
             home-manager.nixosModules.home-manager
           ];
         };
+        "pancake" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+
+          modules = [
+            ./pancake.nix
+            home-manager.nixosModules.home-manager
+          ];
+        };
       };
     };
 }
