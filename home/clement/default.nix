@@ -15,16 +15,13 @@
     stateVersion = "23.05";
 
     packages = with pkgs; [
-      # ricing
+      # ↓ ricing
       picom
       qtile
       eww
       dunst
 
-      # unfree
-      jetbrains-toolbox
-
-      # cli & tui
+      # ↓ cli & tui
       direnv
       bat
       exa
@@ -36,7 +33,8 @@
       wget
       git
 
-      # softwares
+      # ↓ softwares
+      jetbrains-toolbox
       discord
       obsidian
       spotify
@@ -48,15 +46,18 @@
       kitty
       flameshot
       xfce.thunar
+      feh
+      thunderbird
+      vlc
 
-      # games
+      # ↓ games
       prismlauncher
 
-      # fonts
+      # ↓ fonts
       jetbrains-mono
       nerdfonts
 
-      # local packages
+      # ↓ local packages
       (pkgs.callPackage ../packages/vera.nix { })
     ];
   };
