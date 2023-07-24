@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Function to analyse all file with banana by Sigmanifient the GOAT
-norm_dir="$HOME/scripts/banana-coding-style-checker/"
+norm_dir="$HOME/assets/scripts/banana-coding-style-checker/"
 start_time=$(date +%s)
 if [ -z "$1" ]; then
     project_dir=$(pwd)
