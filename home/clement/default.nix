@@ -1,5 +1,5 @@
 # 'clement' user home-manager config for NixOS & generic linux
-{ pkgs, ... }: {
+{ pkgs, unstable, ... }: {
   imports = [
     ../packages/nvim.nix
   ];
@@ -32,6 +32,7 @@
       speedtest-cli
       wget
       git
+      unstable.banana-vera
 
       # ↓ softwares
       jetbrains-toolbox
@@ -55,9 +56,6 @@
       # ↓ fonts
       jetbrains-mono
       nerdfonts
-
-      # ↓ local packages
-      (pkgs.callPackage ../packages/vera.nix { })
     ];
   };
 
