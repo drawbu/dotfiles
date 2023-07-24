@@ -123,6 +123,7 @@
   environment = {
     shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
+      libsForQt5.ark
       libsForQt5.plasma-nm
       modemmanager
       networkmanagerapplet

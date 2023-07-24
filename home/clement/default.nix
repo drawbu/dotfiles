@@ -45,7 +45,6 @@
       firefox
       kitty
       flameshot
-      xfce.thunar
       feh
       thunderbird
       vlc
