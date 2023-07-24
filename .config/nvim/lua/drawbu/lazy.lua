@@ -174,5 +174,8 @@ return {
             })
         end,
     },
+
+    -- ↓ Editorconfig support
+    'gpanders/editorconfig.nvim'
 }
 
