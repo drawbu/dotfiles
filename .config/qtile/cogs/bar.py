@@ -28,6 +28,8 @@ class Bar(bar.Bar):
                 block_highlight_text_color=TEXT_COLOR,
                 active=TEXT_COLOR,
                 inactive=INACTIVE_COLOR,
+                disable_drag=True,
+                use_mouse_wheel=False,
             ),
             widget.Prompt(bell_style="visual"),
             widget.TaskList(
