@@ -47,7 +47,7 @@
       kitty
       flameshot
       feh
-      thunderbird
+      thunderbird-bin
       vlc
 
       # ↓ games
