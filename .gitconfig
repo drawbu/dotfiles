@@ -6,8 +6,6 @@
 	excludesfile = ~/assets/.globalgitignore
 [push]
 	autoSetupRemote = true
-[commit]
-	gpgsign = true
 [gpg]
 	program = gpg
 [url "ssh://git@github.com/"]
