@@ -16,6 +16,8 @@ venv/
 .env
 .direnv/
 .envrc
+.cache
+compile_commands.json
 
 ## Executables files
 *.out
