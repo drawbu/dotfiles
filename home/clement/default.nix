@@ -1,7 +1,7 @@
 # 'clement' user home-manager config for NixOS & generic linux
 { pkgs, unstable, ... }: {
   imports = [
-    ../packages/nvim.nix
+    ./nvim.nix
     ./gtk.nix
   ];
 
