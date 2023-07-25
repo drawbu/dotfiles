@@ -15,7 +15,7 @@ def choose_wallpaper() -> str:
     return f"{WALLPAPERS_FOLDER}/wallpaper.jpg"
 
 WALLPAPERS_FOLDER = os.path.expanduser("~/assets/wallpapers")
-WALLPAPER: Final[str] = f"{WALLPAPERS_FOLDER}/anime-girl.jpeg"
+WALLPAPER: Final[str] = f"{WALLPAPERS_FOLDER}/japan-market.jpg"
 
 screens = [
     Screen(
