@@ -2,6 +2,7 @@
 { pkgs, unstable, ... }: {
   imports = [
     ../packages/nvim.nix
+    ./gtk.nix
   ];
 
   programs.home-manager.enable = true;
