@@ -5,10 +5,13 @@ pulse/
 Thunar/
 xfce4/
 gtk-3.0/
+gtk-4.0/
 cava/
 pavucontrol.ini
 obsidian/
 arkrc
+spotify/
+vlc/
 
 # Code
 Code/
@@ -33,4 +36,5 @@ cef_user_data/
 jgit/
 dconf/
 QtProject.conf
+Trolltech.conf
 
