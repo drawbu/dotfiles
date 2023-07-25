@@ -34,6 +34,7 @@
       wget
       git
       unstable.banana-vera
+      lazygit
 
       # ↓ softwares
       jetbrains-toolbox

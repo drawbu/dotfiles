@@ -16,6 +16,7 @@
       tree-sitter
       unzip
       nodejs
+      lazygit
 
       # Language Servers
       # Lua
