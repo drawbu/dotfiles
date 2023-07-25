@@ -3,6 +3,7 @@
   imports = [
     ./nvim.nix
     ./gtk.nix
+    ./xdg.nix
   ];
 
   programs.home-manager.enable = true;
