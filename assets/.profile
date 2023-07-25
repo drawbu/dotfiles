@@ -57,3 +57,8 @@ fi
 
 # GitHub GPG Key
 export GPG_TTY=$(tty)
+
+# Lazygit
+if [ -x "$(command -v nvim)" ]; then
+    alias lz="lazygit"
+fi
