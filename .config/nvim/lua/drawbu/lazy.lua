@@ -195,5 +195,15 @@ return {
         event = "InsertEnter",
         opts = {}
     },
+
+    -- ↓ See all the errors
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("trouble").setup {}
+            vim.keymap.set("n", "<leader>x", function() require("trouble").open() end)
+        end,
+    },
 }
 

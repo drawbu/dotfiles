@@ -20,6 +20,7 @@ wk.register({
     ['<leader>a'] = 'Add to Harpoon',
     ['<leader>l'] = 'Previous Harpoon file',
     ['<leader>h'] = 'Next Harpoon file',
+    ['<leader>x'] = 'Open all errors',
 })
 
 wk.register({
