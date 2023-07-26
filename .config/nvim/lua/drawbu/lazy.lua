@@ -1,3 +1,5 @@
+local vim = vim
+
 return {
     -- Catppuccin theme
     {
@@ -101,6 +103,21 @@ return {
         },
         config = function()
             require('drawbu.plugins.lsp')
+        end,
+    },
+
+    {
+        'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+        after = { 'lsp-zero.nvim' },
+        config = function()
+            require('lsp_lines').setup()
+            vim.diagnostic.config({ virtual_text = false })
+            vim.keymap.set(
+                "",
+                "<Leader>t",
+                require("lsp_lines").toggle,
+                { desc = "Toggle lsp_lines" }
+            )
         end,
     },
 
