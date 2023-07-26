@@ -52,6 +52,7 @@
       feh
       thunderbird-bin
       vlc
+      aseprite
 
       # ↓ games
       prismlauncher
