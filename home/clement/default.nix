@@ -4,6 +4,7 @@
     ./nvim.nix
     ./gtk.nix
     ./xdg.nix
+    ./firefox.nix
   ];
 
   programs.home-manager.enable = true;
@@ -46,7 +47,6 @@
       jetbrains.clion
       jetbrains.pycharm-professional
       jetbrains.webstorm
-      firefox
       kitty
       flameshot
       feh
