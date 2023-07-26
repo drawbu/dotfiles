@@ -187,6 +187,13 @@ return {
     },
 
     -- ↓ Editorconfig support
-    'gpanders/editorconfig.nvim'
+    'gpanders/editorconfig.nvim',
+
+    -- ↓ Auto close parens
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {}
+    },
 }
 
