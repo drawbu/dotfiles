@@ -13,6 +13,7 @@ arkrc
 spotify/
 vlc/
 aseprite/
+chromium/
 
 # Code
 Code/
@@ -21,7 +22,6 @@ lazygit/
 
 # Autostart
 autostart/
-mimeapps.list
 
 # Games
 StardewValley/
