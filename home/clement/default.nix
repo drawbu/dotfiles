@@ -54,6 +54,7 @@
       thunderbird-bin
       vlc
       aseprite
+      rofi
 
       # ↓ games
       prismlauncher
