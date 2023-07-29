@@ -26,10 +26,9 @@
     upower.enable = true;
 
     xserver = {
-      videoDrivers = [ "intel" ];
+      videoDrivers = [ "modesetting" ];
       libinput.enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
+      windowManager.qtile.enable = true;
     };
   };
 
@@ -37,7 +36,7 @@
     kernelModules = [ "kvm-intel" "i915" ];
     kernelParams = [
       "i915.force_probe=46aa"
-      "i915.enable_psr=0"
+      "i915.enable_psr=1"
     ];
     kernelPackages = pkgs.linuxPackages_latest;
   };
@@ -55,6 +54,7 @@
         vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
         vaapiVdpau
         libvdpau-va-gl
+        intel-ocl
       ];
     };
   };
