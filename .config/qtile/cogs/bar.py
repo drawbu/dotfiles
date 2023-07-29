@@ -44,6 +44,8 @@ class Bar(bar.Bar):
             ),
             Wakatime(),
             Separator(padding=separators_width),
+            widget.Battery(format='{char} {percent:2.0%} {hour:d}:{min:02d}'),
+            Separator(padding=separators_width),
             Wifi(),
             Separator(padding=separators_width),
             widget.PulseVolume(),
