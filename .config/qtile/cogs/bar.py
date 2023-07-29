@@ -3,7 +3,7 @@ from typing import List
 from libqtile import bar, widget
 
 from plugins.catppuccin import Flavour
-from widgets import Wakatime, Separator
+from widgets import Wakatime, Separator, Wifi
 from .widget_defaults import (
     TEXT_COLOR,
     PRIMARY_COLOR,
@@ -43,6 +43,8 @@ class Bar(bar.Bar):
                 name_transform=lambda name: name.upper(),
             ),
             Wakatime(),
+            Separator(padding=separators_width),
+            Wifi(),
             Separator(padding=separators_width),
             widget.PulseVolume(),
         ]
