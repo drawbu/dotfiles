@@ -165,3 +165,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 Then, open a tmux session and press <kbd>CTRL</kbd> + <kbd>b</kbd>, then 
 <kbd>I</kbd> to install the plugins and reload the config.
 
+### Rofi
+Rofi comes preinstalled with the nix Home-Manager and NixOS conf. You can also
+install it manually.
+
+You'll need to install [adi1090x/rofi](https://github.com/adi1090x/rofi).
+Then, install it following the README.

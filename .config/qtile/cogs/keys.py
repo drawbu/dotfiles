@@ -15,6 +15,7 @@ keys = [
     Key([META, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([META], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([], "Print", lazy.spawn("flameshot gui"), desc="Take a screenshot"),
+    Key([META, "control"], "space", lazy.spawn("rofi -show drun"), desc="Open rofi"),
 
     Key([META], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([META], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
