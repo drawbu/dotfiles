@@ -3,7 +3,6 @@
   imports = [
     ./nvim.nix
     ./gtk.nix
-    ./xdg.nix
     ./firefox.nix
   ];
 
