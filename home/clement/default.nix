@@ -23,6 +23,7 @@
       qtile
       eww
       dunst
+      xcb-util-cursor
 
       # ↓ cli & tui
       direnv
