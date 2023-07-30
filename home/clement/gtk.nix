@@ -12,11 +12,6 @@
   gtk = {
     enable = true;
 
-    cursorTheme = {
-      name = "Catppuccin-Mocha-Dark";
-      package = pkgs.catppuccin-cursors.mochaDark;
-    };
-
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
