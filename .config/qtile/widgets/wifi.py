@@ -22,11 +22,16 @@ class Wifi(base.InLoopPollText):
         if stderr is not None:
             return "󰖪 "
         lines = stdout.decode("utf-8").split("\n")
-        for line in lines:
-            tokens = line.split()
-            if len(tokens) < 4:
+        if len(lines) < 2:
+            return "󰖪 "
+        type_index = lines[0].find("TYPE")
+        device_index = lines[0].find("DEVICE")
+        if type_index == -1 and device_index == -1 and type_index > device_index:
+            return "󰖪 "
+        for line in lines[1:]:
+            if len(line) < device_index:
                 continue
-            connection_type = tokens[2]
+            connection_type = line[type_index:device_index].strip()
             if connection_type == "ethernet":
                 return "󰈀 "
             if connection_type == "wifi":
