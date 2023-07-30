@@ -17,6 +17,7 @@ keys = [
     Key([], "Print", lazy.spawn("flameshot gui"), desc="Take a screenshot"),
     Key([META, "control"], "space", lazy.spawn("rofi -show drun"), desc="Open rofi"),
 
+    # Layout
     Key([META], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([META], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([META, "control"], "Right",
@@ -27,4 +28,12 @@ keys = [
         lazy.layout.decrease_ratio(),
         desc="Decrease active window size."
     ),
+
+    # Brightness
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
+    # Volume
+    Key([], "XF86AudioMute", lazy.spawn("pamixer --toggle-mute")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("pamixer --decrease 5")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("pamixer --increase 5")),
 ]
