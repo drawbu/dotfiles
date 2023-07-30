@@ -4,6 +4,7 @@
     ./nvim.nix
     ./gtk.nix
     ./firefox.nix
+    ./cursor.nix
   ];
 
   programs.home-manager.enable = true;
