@@ -38,10 +38,8 @@
       git
       unstable.banana-vera
       lazygit
-      cava
 
       # ↓ softwares
-      jetbrains-toolbox
       discord
       discocss
       obsidian
