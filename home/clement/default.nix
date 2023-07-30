@@ -4,6 +4,7 @@
     ./nvim.nix
     ./gtk.nix
     ./firefox.nix
+    ./cursor.nix
   ];
 
   programs.home-manager.enable = true;
@@ -22,6 +23,7 @@
       qtile
       eww
       dunst
+      xcb-util-cursor
 
       # ↓ cli & tui
       direnv
