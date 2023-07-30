@@ -23,7 +23,6 @@
       qtile
       eww
       dunst
-      xcb-util-cursor
 
       # ↓ cli & tui
       direnv
@@ -62,6 +61,12 @@
       # ↓ fonts
       jetbrains-mono
       nerdfonts
+
+      # ↓ misc
+      brightnessctl
+      xcb-util-cursor
+      pamixer
+      libnotify
     ];
   };
 
