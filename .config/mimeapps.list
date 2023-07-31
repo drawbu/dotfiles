@@ -17,6 +17,7 @@ image/x-portable-pixmap=feh.desktop;
 image/x-tga=feh.desktop;
 image/x-xbitmap=feh.desktop;
 image/heic=feh.desktop;
+text/plain=nvim.desktop;
 
 [Default Applications]
 application/x-extension-ics=thunderbird.desktop
