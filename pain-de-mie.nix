@@ -4,7 +4,8 @@
 {
   imports = [
     ./nixos/hardware/hardware-pain-de-mie.nix
-    ./nixos/computer
+    ./nixos
+    ./nixos/graphical
   ];
 
   home-manager.users.clement = import ./home/clement;
