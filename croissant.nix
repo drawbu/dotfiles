@@ -3,9 +3,10 @@
 { ... }: {
   imports = [
     ./nixos/hardware/hardware-croissant.nix
+    ./nixos
   ];
 
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
   zramSwap.enable = true;
 
   networking = {
