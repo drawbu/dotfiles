@@ -222,5 +222,8 @@ return {
             vim.keymap.set("n", "<leader>x", function() require("trouble").open() end)
         end,
     },
+
+    -- ↓ Easy navigation between neovim & tmux
+    'christoomey/vim-tmux-navigator',
 }
 
