@@ -5,6 +5,7 @@
   imports = [
     ./nixos/hardware/hardware-pancake.nix
     ./nixos
+    ./nixos/graphical
   ];
 
   users.users.clement = {

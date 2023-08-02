@@ -54,6 +54,7 @@
       vlc
       aseprite
       rofi
+      heroic
 
       # ↓ games
       prismlauncher
