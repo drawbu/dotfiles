@@ -3,8 +3,8 @@
 { pkgs, ... }:
 {
   imports = [
-    ./nixos
     ./nixos/hardware/hardware-pain-de-mie.nix
+    ./nixos/computer
   ];
 
   home-manager.users.clement = import ./home/clement;

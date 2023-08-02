@@ -4,7 +4,7 @@
 {
   imports = [
     ./nixos/hardware/hardware-pancake.nix
-    ./nixos
+    ./nixos/computer
   ];
 
   users.users.clement = {
