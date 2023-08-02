@@ -40,6 +40,12 @@
             home-manager.nixosModules.home-manager { home-manager = hm; }
           ];
         };
+        "croissant" = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./croissant.nix
+          ];
+        };
       };
     };
 }
