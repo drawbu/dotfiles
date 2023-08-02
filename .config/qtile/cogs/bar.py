@@ -60,4 +60,4 @@ class Bar(bar.Bar):
                 Separator(padding=separators_width),
             ]
         )
-        super().__init__(widgets=widgets, size=24, background=BACKGROUND_COLOR)
+        super().__init__(widgets=widgets, size=24, background=BACKGROUND_COLOR + "F3")
