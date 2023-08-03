@@ -5,8 +5,10 @@ from libqtile.lazy import lazy
 
 from .keys import keys, META, TERMINAL
 
+
 groups = [Group(i) for i in "azerty"]
 DROPDOWN_TERM: Final[str] = "term"
+
 
 for group in groups:
     keys.append(
@@ -17,6 +19,35 @@ for group in groups:
             desc="Switch to group {}".format(group.name),
         ),
     )
+
+
+@lazy.function
+def focus_previous_group(qtile):
+    current = qtile.current_screen.group
+    previous_group = current.get_previous_group()
+    qtile.current_screen.set_group(previous_group)
+
+
+@lazy.function
+def focus_next_group(qtile):
+    current = qtile.current_screen.group
+    next_group = current.get_next_group()
+    qtile.current_screen.set_group(next_group)
+
+
+keys.extend([
+    Key(
+        [META, "shift"],
+        "h",
+        focus_previous_group,
+    ),
+    Key(
+        [META, "shift"],
+        "l",
+        focus_next_group,
+    ),
+])
+
 
 groups.append(
     ScratchPad(
