@@ -157,9 +157,16 @@ return {
         end,
     },
 
-    -- File icons
-    'nvim-tree/nvim-web-devicons',
+    -- ↓ File explorer
+    {
+        'nvim-tree/nvim-tree.lua',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function()
+            require("nvim-tree").setup()
+        end,
+    },
 
+    -- ↓ Move around the files
     {
         'ThePrimeagen/harpoon',
         dependencies = { 'nvim-lua/plenary.nvim' },
