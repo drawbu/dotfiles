@@ -42,13 +42,12 @@ if not configs.ecsls then
       name = 'ecsls',
       filetypes = { 'c', 'cpp', 'make' },
       init_options = {
-        path = '/home/clement/Developer/ecsls/',
+        path = '/home/clement/Developer/ecsls/banana-coding-style-checker',
       },
     },
   }
 end
-lsp.ecsls.setup({
-})
+lsp.ecsls.setup({})
 
 lsp_zero.on_attach(function(client, bufnr)
     local opts = {buffer = bufnr, remap = false}
