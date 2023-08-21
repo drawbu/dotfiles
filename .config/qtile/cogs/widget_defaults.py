@@ -7,6 +7,7 @@ BACKGROUND_COLOR = flavour.base.hex
 TEXT_COLOR = flavour.text.hex
 PRIMARY_COLOR = flavour.peach.hex
 INACTIVE_COLOR = flavour.surface1.hex
+FADED_COLOR = flavour.surface0.hex
 
 
 widget_defaults = dict(

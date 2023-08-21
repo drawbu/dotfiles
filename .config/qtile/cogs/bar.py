@@ -8,7 +8,8 @@ from .widget_defaults import (
     TEXT_COLOR,
     PRIMARY_COLOR,
     INACTIVE_COLOR,
-    BACKGROUND_COLOR
+    BACKGROUND_COLOR,
+    FADED_COLOR,
 )
 
 flavour = Flavour.mocha()
@@ -21,15 +22,19 @@ class Bar(bar.Bar):
         widgets: List[widget.base._Widget] = [
             widget.CurrentLayout(),
             widget.GroupBox(
-                other_screen_border=INACTIVE_COLOR,
-                other_current_screen_border=PRIMARY_COLOR,
-                this_screen_border=INACTIVE_COLOR,
-                this_current_screen_border=PRIMARY_COLOR,
-                block_highlight_text_color=TEXT_COLOR,
-                active=TEXT_COLOR,
-                inactive=INACTIVE_COLOR,
-                disable_drag=True,
-                use_mouse_wheel=False,
+                borderwidth = 0,
+                highlight_method = "block",
+                padding = 8,
+                disable_drag = True,
+                use_mouse_wheel = False,
+                active = TEXT_COLOR,
+                inactive = INACTIVE_COLOR,
+                # Primary screen
+                this_current_screen_border = INACTIVE_COLOR,
+                other_screen_border = FADED_COLOR,
+                # Other screens
+                other_current_screen_border = FADED_COLOR,
+                this_screen_border = INACTIVE_COLOR,
             ),
             widget.Prompt(bell_style="visual"),
             widget.TaskList(
