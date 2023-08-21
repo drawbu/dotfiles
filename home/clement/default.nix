@@ -76,6 +76,6 @@
     dotDir = ".nix-zsh";
     initExtra = ''
       source ~/.zshrc
-      '';
+    '';
   };
 }

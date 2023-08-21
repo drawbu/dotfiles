@@ -18,7 +18,10 @@
       hm = {
         extraSpecialArgs = { inherit unstable; };
       };
-    in {
+    in
+    {
+      formatter.${system} = pkgs.nixpkgs-fmt;
+
       homeConfigurations = {
         "linux" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -30,21 +33,24 @@
           inherit system;
           modules = [
             ./pain-de-mie.nix
-            home-manager.nixosModules.home-manager { home-manager = hm; }
+            home-manager.nixosModules.home-manager
+            { home-manager = hm; }
           ];
         };
         "pancake" = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             ./pancake.nix
-            home-manager.nixosModules.home-manager { home-manager = hm; }
+            home-manager.nixosModules.home-manager
+            { home-manager = hm; }
           ];
         };
         "croissant" = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             ./croissant.nix
-            home-manager.nixosModules.home-manager { home-manager = hm; }
+            home-manager.nixosModules.home-manager
+            { home-manager = hm; }
           ];
         };
       };

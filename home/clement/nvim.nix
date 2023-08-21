@@ -4,7 +4,7 @@
     extraConfig = ''
       lua require('drawbu')
     '';
-    
+
     plugins = with pkgs.vimPlugins; [
       lazy-nvim
       # Syntax highlighting
