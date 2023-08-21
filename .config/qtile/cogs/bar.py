@@ -38,8 +38,10 @@ class Bar(bar.Bar):
             ),
             widget.Prompt(bell_style="visual"),
             widget.TaskList(
-                border=PRIMARY_COLOR,
-                unfocused_border=INACTIVE_COLOR,
+                highlight_method="block",
+                border=INACTIVE_COLOR,
+                rounded=False,
+                max_title_width=200,
             ),
             widget.Chord(
                 chords_colors={
@@ -49,7 +51,13 @@ class Bar(bar.Bar):
             ),
             Wakatime(),
             Separator(padding=separators_width),
-            widget.Battery(format="{char} {percent:2.0%} {hour:d}:{min:02d}"),
+            widget.Battery(
+                charge_char="󰂄",
+                full_char="󱊣",
+                discharge_char="󱧥",
+                empty_char="",
+                format="{char} {percent:2.0%} {hour:d}:{min:02d}"
+            ),
             Separator(padding=separators_width),
             Wifi(),
             Separator(padding=separators_width),
@@ -57,7 +65,10 @@ class Bar(bar.Bar):
         ]
 
         if is_primary:
-            widgets.extend([widget.Systray(), Separator(padding=separators_width)])
+            widgets.extend([
+                widget.Systray(),
+                Separator(padding=separators_width)
+            ])
 
         widgets.extend(
             [
