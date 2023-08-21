@@ -14,7 +14,7 @@ class Wifi(base.InLoopPollText):
     def poll(self) -> str:
         try:
             proc = subprocess.Popen(
-                ['nmcli', 'connection', 'show', '--active'],
+                ["nmcli", "connection", "show", "--active"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
             )

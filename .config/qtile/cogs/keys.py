@@ -16,19 +16,21 @@ keys = [
     Key([META], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([], "Print", lazy.spawn("flameshot gui"), desc="Take a screenshot"),
     Key([META, "control"], "space", lazy.spawn("rofi -show drun"), desc="Open rofi"),
-
     # Layout
     Key([META], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([META], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
-    Key([META, "control"], "Right",
+    Key(
+        [META, "control"],
+        "Right",
         lazy.layout.increase_ratio(),
-        desc="Increase active window size."
+        desc="Increase active window size.",
     ),
-    Key([META, "control"], "Left",
+    Key(
+        [META, "control"],
+        "Left",
         lazy.layout.decrease_ratio(),
-        desc="Decrease active window size."
+        desc="Decrease active window size.",
     ),
-
     # Brightness
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),

@@ -7,8 +7,17 @@ from .widget_defaults import (
 
 
 layouts = [
-    layout.Tile(margin=3, shift_windows=True, name="Tile", add_on_top=False, border_focus=PRIMARY_COLOR, normal_border=INACTIVE_COLOR),
-    layout.Floating(name="Float", border_focus=PRIMARY_COLOR, normal_border=INACTIVE_COLOR),
+    layout.Tile(
+        margin=3,
+        shift_windows=True,
+        name="Tile",
+        add_on_top=False,
+        border_focus=PRIMARY_COLOR,
+        normal_border=INACTIVE_COLOR,
+    ),
+    layout.Floating(
+        name="Float", border_focus=PRIMARY_COLOR, normal_border=INACTIVE_COLOR
+    ),
 ]
 
 floating_layout = layout.Floating(

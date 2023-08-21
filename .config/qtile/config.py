@@ -1,4 +1,13 @@
-from cogs import autostart, groups, keys, mouse, screens, widget_defaults, layouts, floating_layout
+from cogs import (
+    autostart,
+    groups,
+    keys,
+    mouse,
+    screens,
+    widget_defaults,
+    layouts,
+    floating_layout,
+)
 from plugins.catppuccin import Flavour
 
 terminal = "kitty"

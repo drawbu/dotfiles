@@ -14,6 +14,7 @@ def choose_wallpaper() -> str:
         return f"{collection}/{random.choice(os.listdir(collection))}"
     return f"{WALLPAPERS_FOLDER}/wallpaper.jpg"
 
+
 WALLPAPERS_FOLDER = os.path.expanduser("~/assets/wallpapers")
 WALLPAPER: Final[str] = f"{WALLPAPERS_FOLDER}/japan-market.jpg"
 
