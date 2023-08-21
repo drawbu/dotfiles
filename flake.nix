@@ -1,23 +1,29 @@
 {
   description = "Home Manager configuration of clement";
 
+
+
+
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.05";
     nixpkgs_unstable.url = "nixpkgs/nixos-unstable";
+
+
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, home-manager, nixpkgs_unstable, ... }:
+  outputs = { nixpkgs, home-manager, 
+  nixpkgs_unstable, ... 
+  }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
       unstable = import nixpkgs_unstable { inherit system; };
       hm = {
-        extraSpecialArgs = { inherit unstable; };
-      };
+        extraSpecialArgs = { inherit unstable; }; };
     in
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
