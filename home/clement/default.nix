@@ -68,6 +68,7 @@
       xcb-util-cursor
       pamixer
       libnotify
+      upower
     ];
   };
 
