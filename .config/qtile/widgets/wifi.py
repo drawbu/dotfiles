@@ -1,6 +1,7 @@
 import subprocess
 
 from libqtile import qtile
+from libqtile.lazy import lazy
 from libqtile.widget import base
 
 class NetworkError(Exception):
@@ -52,6 +53,9 @@ class Wifi(base.InLoopPollText):
         self.name = "Wifi widget"
         self.__connected = False
         self.__state = NetworkState()
+        self.add_callbacks({
+            "Button1": self.open_network_manager(),
+        })
 
     @property
     def connected(self) -> bool:
@@ -62,6 +66,9 @@ class Wifi(base.InLoopPollText):
         if self.__connected and not value:
             qtile.cmd_spawn("notify-send 'Disconnected from network'")
         self.__connected = value
+
+    def open_network_manager(self) -> None:
+        return lazy.spawn("kitty -e nmtui")
 
     def poll(self) -> str:
         try:
