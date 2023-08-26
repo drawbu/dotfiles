@@ -17,13 +17,14 @@ count=$(find "$project_dir"     \
   -not -path "bonus/*"          \
   -not -path "tests/*"          \
   -not -path "/*build/*"        \
+  -not -path "*/.direnv/*"        \
   | vera++                      \
   --profile epitech             \
   --root "$norm_dir/vera"       \
   --error                       \
   2>&1                          \
   | sed "s|$project_dir/||"     \
-  | tee /dev/tty | wc -l
+  | tee /dev/stderr | wc -l
 )
 
 echo "Found $count issues"
