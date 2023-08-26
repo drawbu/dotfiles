@@ -69,6 +69,7 @@
       pamixer
       libnotify
       upower
+      playerctl
     ];
   };
 
