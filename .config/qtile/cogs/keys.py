@@ -14,7 +14,6 @@ keys = [
     Key([META, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([META, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([META], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([], "Print", lazy.spawn("flameshot gui"), desc="Take a screenshot"),
     Key([META, "control"], "space", lazy.spawn("rofi -show drun"), desc="Open rofi"),
 
     # ↓ Layout
@@ -42,8 +41,15 @@ keys = [
     Key([], "XF86AudioLowerVolume", lazy.spawn("pamixer --decrease 5")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pamixer --increase 5")),
 
+    # ↓ Lock Screen
+    Key([META], "l", lazy.spawn("betterlockscreen -l dim -q"), desc="Locks Screen"),
+
     # ↓ Media
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
+
+    # ↓ Screenshot
+    Key([], "Print", lazy.spawn("flameshot gui"), desc="Take a screenshot"),
+    Key([META], "Print", lazy.spawn("flameshot screen --clipboard"), desc="Take a fullscreen screenshot"),
 ]
