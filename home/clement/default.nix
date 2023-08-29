@@ -70,6 +70,7 @@
       libnotify
       upower
       playerctl
+      betterlockscreen
     ];
   };
 
