@@ -3,6 +3,7 @@ import subprocess
 
 from libqtile import bar, widget, qtile
 from libqtile.widget import base
+import urllib.request
 
 from widgets import Wakatime, Separator, Wifi
 from .widget_defaults import (
@@ -28,6 +29,36 @@ class TextWidget(base._TextBox):
     def __init__(self, name="", text="", **config):
         super().__init__(text, qtile=qtile, **config)
         self.name = name
+
+
+class SpotifyNowPlaying(base.InLoopPollText):
+    def __init__(self, **config):
+        super().__init__("", update_interval=10, qtile=qtile, **config)
+        self.name = "Spotify now playing"
+        self.__last_cover = None
+        self.__cover_path = "/tmp/spotify-now-playing.png"
+
+    def __run_cmd(self, cmd: List[str]) -> str:
+        return subprocess.Popen(
+            cmd, 
+            stdout=subprocess.PIPE,
+        ).communicate()[0].decode("utf-8").strip()
+
+    def __get_cover(self):
+        cover_url = self.__run_cmd(["playerctl", "--player=spotify", "metadata", "mpris:artUrl"])
+        if cover_url == "" or cover_url == self.__last_cover:
+            return
+        self.__last_cover = cover_url
+        urllib.request.urlretrieve(cover_url, self.__cover_path)
+
+    def poll(self) -> str:
+        try:
+            artist = self.__run_cmd(["playerctl", "--player=spotify", "metadata", "artist"])
+            title = self.__run_cmd(["playerctl", "--player=spotify", "metadata", "title"])
+        except FileNotFoundError:
+            return ""
+        self.__get_cover()
+        return f"{artist} - {title}"
 
 
 class Bar(bar.Bar):
@@ -66,14 +97,14 @@ class Bar(bar.Bar):
                 txt_minimized="󰖰 ",
             ),
             self.sep(),
-
-            # Right part
-            widget.Chord(
-                chords_colors={
-                    "launch": ("#ff0000", "#ffffff"),
-                },
-                name_transform=lambda name: name.upper(),
-            ),
+        ]
+        # Right part
+        if self.is_primary:
+            widgets += [
+                SpotifyNowPlaying(),
+                self.sep(),
+            ]
+        widgets += [
             Wakatime(),
             self.sep(),
         ] + self.__get_battery_widgets() + [
