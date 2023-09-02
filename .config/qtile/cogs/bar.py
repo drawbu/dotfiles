@@ -1,7 +1,8 @@
-from typing import List
+from typing import Iterable, List
 import subprocess
 
-from libqtile import bar, widget
+from libqtile import bar, widget, qtile
+from libqtile.widget import base
 
 from widgets import Wakatime, Separator, Wifi
 from .widget_defaults import (
@@ -16,39 +17,23 @@ WidgetType = widget.base._Widget
 
 
 def has_battery() -> bool:
-        try:
-            proc = subprocess.run(["upower", "-e"])
-        except FileNotFoundError:
-            return False
-        return proc.returncode == 0
+    try:
+        proc = subprocess.run(["upower", "-e"])
+    except FileNotFoundError:
+        return False
+    return proc.returncode == 0
+
+
+class TextWidget(base._TextBox):
+    def __init__(self, name="", text="", **config):
+        super().__init__(text, qtile=qtile, **config)
+        self.name = name
 
 
 class Bar(bar.Bar):
     def __init__(self, is_primary: bool):
+        self.is_primary = is_primary
         self.__sep_width: int = 15
-
-        box_items : List[WidgetType] = [
-            self.sep(),
-            widget.QuickExit(default_text='[X]', countdown_format='[{}]'),
-            self.sep(),
-        ]
-
-        if is_primary:
-            box_items = [
-                self.sep(),
-                widget.Systray(),
-            ] + box_items
-
-        battery_widgets: List[WidgetType] = []
-
-        if has_battery():
-            battery_widgets = [
-                widget.Battery(show_short_text=False, foreground="#FFFFFF", format="{char}", full_char=" ", charge_char=" ", discharge_char = ' ', update_interval=5),
-                widget.Battery(show_short_text=False, format="{percent:2.0%}", notify_below = 30, notification_timeout = 0, update_interval=5),
-                widget.Battery(show_short_text=False, format="{char}", full_char="", charge_char="󰁞", discharge_char = '󰁆', update_interval=5),
-                self.sep(),
-            ]
-
 
         widgets: List[WidgetType] = [
             # Left part
@@ -91,26 +76,49 @@ class Bar(bar.Bar):
             ),
             Wakatime(),
             self.sep(),
-        ] + battery_widgets + [
+        ] + self.__get_battery_widgets() + [
             Wifi(),
-            self.sep(),
-            widget.PulseVolume(),
             self.sep(),
             widget.Clock(format="%A, %b %-d"),
             self.sep(),
             widget.Clock(markup=True, format="<span foreground='#FFFFFF'>󰥔 </span>%I:%M %p"),
             self.sep(),
-            widget.WidgetBox(
-                widgets=box_items,
-                foreground=PRIMARY_COLOR,
-                text_closed=" ",
-                text_open="  ",
-                close_button_location="right",
-            ),
-            self.sep(),
         ]
+        if self.is_primary:
+            widgets += [
+                widget.WidgetBox(
+                    widgets=self.__get_box_items(),
+                    foreground=PRIMARY_COLOR,
+                    text_closed=" ",
+                    text_open="  ",
+                    close_button_location="right",
+                    ),
+                self.sep(),
+            ]
 
         super().__init__(widgets=widgets, size=24, background=BACKGROUND_COLOR + "F3")
 
-    def sep(self):
+    def sep(self) -> WidgetType:
         return Separator(padding=self.__sep_width)
+
+    def __add_seps(self, widgets: Iterable[WidgetType]) -> List[WidgetType]:
+        result = []
+        for w in widgets:
+            result.extend([w, self.sep()])
+        return result
+    
+    def __get_box_items(self) -> List[WidgetType]:
+        return self.__add_seps(reversed([
+            widget.QuickExit(default_text='[X]', countdown_format='[{}]'),
+            widget.Systray(),
+            widget.PulseVolume(fmt='󰕾 {}'),
+            TextWidget("Pipe", "|", foreground=PRIMARY_COLOR),
+        ]))
+    
+    def __get_battery_widgets(self) -> List[WidgetType]:
+        return [
+            widget.Battery(show_short_text=False, foreground="#FFFFFF", format="{char}", full_char=" ", charge_char=" ", discharge_char = ' ', update_interval=5),
+            widget.Battery(show_short_text=False, format="{percent:2.0%}", notify_below = 30, notification_timeout = 0, update_interval=5),
+            widget.Battery(show_short_text=False, format="{char}", full_char="", charge_char="󰁞", discharge_char = '󰁆', update_interval=5),
+            self.sep(),
+        ] if has_battery() else []
