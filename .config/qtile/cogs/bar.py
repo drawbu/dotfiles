@@ -3,7 +3,9 @@ import subprocess
 
 from libqtile import bar, widget
 
-from widgets import Wakatime, Separator, Wifi, SpotifyNowPlaying, TextWidget
+from widgets import (
+    Wakatime, Separator, Wifi, SpotifyNowPlaying, SpotifyCover, TextWidget,
+)
 from .widget_defaults import (
     TEXT_COLOR,
     PRIMARY_COLOR,
@@ -124,7 +126,7 @@ class Bar(bar.Bar):
         ] if proc.returncode == 0 else []
 
     def __get_spotify_widgets(self) -> List[WidgetType]:
-        cover = widget.Image()
+        cover = SpotifyCover()
         return [
             cover,
             SpotifyNowPlaying(cover),
