@@ -98,6 +98,7 @@ class Bar(bar.Bar):
             widget.QuickExit(default_text='[X]', countdown_format='[{}]'),
             widget.Systray(),
             widget.PulseVolume(fmt='󰕾 {}'),
+        ] + self.__get_brightness_widgets() + [
             TextWidget("Pipe", "|", foreground=PRIMARY_COLOR),
         ]))
     
@@ -111,4 +112,16 @@ class Bar(bar.Bar):
             widget.Battery(show_short_text=False, format="{percent:2.0%}", notify_below = 30, notification_timeout = 0, update_interval=5),
             widget.Battery(show_short_text=False, format="{char}", full_char="", charge_char="󰁞", discharge_char = '󰁆', update_interval=5),
             self.sep(),
-        ] if has_battery() else []
+        ] if proc.returncode == 0 else []
+
+    def __get_brightness_widgets(self) -> List[WidgetType]:
+        try:
+            proc = subprocess.Popen(["brightnessctl", "-m"], stdout=subprocess.PIPE)
+        except FileNotFoundError:
+            return []
+        status = proc.communicate()[0].decode("utf-8").strip().split(",")
+        if len(status) < 2 or status[1] != "backlight":
+            return []
+        return [
+            widget.Backlight(backlight_name=status[0], fmt=" {}"),
+        ] if proc.returncode == 0 else []
