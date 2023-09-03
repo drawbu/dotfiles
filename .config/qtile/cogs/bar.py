@@ -55,10 +55,7 @@ class Bar(bar.Bar):
         ]
         # Right part
         if self.is_primary:
-            widgets += [
-                SpotifyNowPlaying(),
-                self.sep(),
-            ]
+            widgets += self.__get_spotify_widgets()
         widgets += [
             Wakatime(),
             self.sep(),
@@ -125,3 +122,11 @@ class Bar(bar.Bar):
         return [
             widget.Backlight(backlight_name=status[0], fmt=" {}"),
         ] if proc.returncode == 0 else []
+
+    def __get_spotify_widgets(self) -> List[WidgetType]:
+        cover = widget.Image()
+        return [
+            cover,
+            SpotifyNowPlaying(cover),
+            self.sep(),
+        ]

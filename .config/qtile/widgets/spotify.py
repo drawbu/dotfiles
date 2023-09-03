@@ -3,15 +3,17 @@ import subprocess
 import urllib.request
 
 from libqtile import qtile
+from libqtile import widget
 from libqtile.widget import base
 
 
 class SpotifyNowPlaying(base.InLoopPollText):
-    def __init__(self, **config):
+    def __init__(self, cover: widget.Image, **config):
         super().__init__("", update_interval=10, qtile=qtile, **config)
         self.name = "Spotify now playing"
         self.__last_cover = None
         self.__cover_path = "/tmp/spotify-now-playing.png"
+        self.__cover = cover
 
     def __run_cmd(self, cmd: List[str]) -> str:
         try:
@@ -26,6 +28,7 @@ class SpotifyNowPlaying(base.InLoopPollText):
             return
         self.__last_cover = cover_url
         urllib.request.urlretrieve(cover_url, self.__cover_path)
+        self.__cover.cmd_update(self.__cover_path)
 
     def poll(self) -> str:
         artist = self.__run_cmd(["playerctl", "--player=spotify", "metadata", "artist"])
