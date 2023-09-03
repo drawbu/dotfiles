@@ -16,14 +16,6 @@ from .widget_defaults import (
 WidgetType = widget.base._Widget
 
 
-def has_battery() -> bool:
-    try:
-        proc = subprocess.run(["upower", "-e"])
-    except FileNotFoundError:
-        return False
-    return proc.returncode == 0
-
-
 class Bar(bar.Bar):
     def __init__(self, is_primary: bool):
         self.is_primary = is_primary
@@ -110,6 +102,10 @@ class Bar(bar.Bar):
         ]))
     
     def __get_battery_widgets(self) -> List[WidgetType]:
+        try:
+            proc = subprocess.run(["upower", "-e"])
+        except FileNotFoundError:
+            return []
         return [
             widget.Battery(show_short_text=False, foreground="#FFFFFF", format="{char}", full_char=" ", charge_char=" ", discharge_char = ' ', update_interval=5),
             widget.Battery(show_short_text=False, format="{percent:2.0%}", notify_below = 30, notification_timeout = 0, update_interval=5),
