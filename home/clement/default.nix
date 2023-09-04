@@ -5,6 +5,7 @@
     ./gtk.nix
     ./firefox.nix
     ./cursor.nix
+    ./qtile.nix
   ];
 
   programs.home-manager.enable = true;
@@ -19,10 +20,7 @@
 
     packages = with pkgs; [
       # ↓ ricing
-      picom
-      qtile
       eww
-      dunst
 
       # ↓ cli & tui
       direnv
@@ -53,24 +51,14 @@
       thunderbird-bin
       vlc
       aseprite
-      rofi
-      heroic
 
       # ↓ games
       prismlauncher
+      heroic
 
       # ↓ fonts
       jetbrains-mono
       nerdfonts
-
-      # ↓ misc
-      brightnessctl
-      xcb-util-cursor
-      pamixer
-      libnotify
-      upower
-      playerctl
-      betterlockscreen
     ];
   };
 
