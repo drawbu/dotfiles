@@ -71,4 +71,4 @@ class SpotifyNowPlaying(base.InLoopPollText):
         if self.__cover.filename is None:
             self.__cover.filename = COVER_PATH
         self.__cover.update_cover()
-        return f"{artist} - {title}"
+        return f" {artist} - {title}"

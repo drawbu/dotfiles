@@ -1,4 +1,4 @@
-from typing import Iterable, List
+from typing import Iterable, List, Optional
 import subprocess
 
 from libqtile import bar, widget
@@ -83,8 +83,8 @@ class Bar(bar.Bar):
 
         super().__init__(widgets=widgets, size=24, background=BACKGROUND_COLOR + "F3")
 
-    def sep(self) -> WidgetType:
-        return Separator(padding=self.__sep_width)
+    def sep(self, width: Optional[int] = None) -> WidgetType:
+        return Separator(padding=self.__sep_width if width is None else width)
 
     def __add_seps(self, widgets: Iterable[WidgetType]) -> List[WidgetType]:
         result = []
@@ -128,7 +128,8 @@ class Bar(bar.Bar):
     def __get_spotify_widgets(self) -> List[WidgetType]:
         cover = SpotifyCover()
         return [
-            cover,
             SpotifyNowPlaying(cover),
+            self.sep(self.__sep_width // 2),
+            cover,
             self.sep(),
         ]
