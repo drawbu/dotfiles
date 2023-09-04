@@ -49,8 +49,6 @@ class SpotifyCover(widget.Image):
             self.bar.draw()
 
     def remove_cover(self) -> None:
-        if self.filename is not None and os.path.exists(self.filename):
-            os.remove(self.filename)
         self.filename = None
         self.__last_cover = None
         self.update_cover()
@@ -63,6 +61,10 @@ class SpotifyNowPlaying(base.InLoopPollText):
         self.__cover = cover
 
     def poll(self) -> str:
+        is_playing = get_stdout(["playerctl", "--player=spotify", "status"])
+        if is_playing != "Playing":
+            self.__cover.remove_cover()
+            return ""
         artist = get_stdout(["playerctl", "--player=spotify", "metadata", "artist"])
         title = get_stdout(["playerctl", "--player=spotify", "metadata", "title"])
         if artist == "" or title == "":
