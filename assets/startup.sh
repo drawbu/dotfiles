@@ -22,3 +22,6 @@ if [ -x "$(command -v picom)" ]; then
   picom &
 fi
 
+if [ -x "$(command -v bluetoothctl)" ]; then
+  bluetoothctl power on &
+fi

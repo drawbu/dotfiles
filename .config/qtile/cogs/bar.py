@@ -5,6 +5,7 @@ from libqtile import bar, widget
 
 from widgets import (
     Wakatime, Separator, Wifi, SpotifyNowPlaying, SpotifyCover, TextWidget,
+    Bluetooth,
 )
 from .widget_defaults import (
     TEXT_COLOR,
@@ -98,6 +99,7 @@ class Bar(bar.Bar):
             widget.Systray(),
             widget.PulseVolume(fmt='󰕾 {}'),
         ] + self.__get_brightness_widgets() + [
+            Bluetooth(),
             TextWidget("Pipe", "|", foreground=PRIMARY_COLOR),
         ]))
     
