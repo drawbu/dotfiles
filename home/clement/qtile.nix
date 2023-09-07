@@ -8,6 +8,8 @@
     dunst # Notifications
     rofi # Apps launcher
     networkmanagerapplet # Network tools
+    pavucontrol # Audio manager
+    rofi-bluetooth # Bluetooth manager
 
     # ↓ cli
     brightnessctl
