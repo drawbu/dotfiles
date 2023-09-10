@@ -15,15 +15,19 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, 
-  nixpkgs_unstable, ... 
-  }:
+  outputs =
+    { nixpkgs
+    , home-manager
+    , nixpkgs_unstable
+    , ...
+    }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
       unstable = import nixpkgs_unstable { inherit system; };
       hm = {
-        extraSpecialArgs = { inherit unstable; }; };
+        extraSpecialArgs = { inherit unstable; };
+      };
     in
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
