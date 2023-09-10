@@ -14,10 +14,9 @@
    (Vanilla Arch & Asahi).
 </samp>
 
-#
-
 </div>
 
+#
 
 ## :building_construction: <samp> TABLE OF CONTENT </samp>
 
@@ -64,8 +63,10 @@ git clone https://github.com/drawbu/nix-config config
 sudo nixos-rebuild switch /etc/nixos/config#the-machine
 ```
 Replace `the-machine` with one of the following:
- - `pain-de-mie`: For my home pc
+ - `pain-de-mie`: For my PC
  - `pancake`: For my laptop
+ - `croissant`: For my Contabo VPS (setup [here](https://github.com/drawbu/Notes/blob/main/Server%20administration/Install%20NixOS%20on%20Contabo%20server.md)
+ - `linux`: for non-NixOS Linux
 
 And **tada** the pc is up and running, users are created, and everything is
 installed.
