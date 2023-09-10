@@ -117,10 +117,14 @@ class Bar(bar.Bar):
 
     def __get_brightness_widgets(self) -> List[WidgetType]:
         try:
-            proc = subprocess.Popen(["brightnessctl", "-m"], stdout=subprocess.PIPE)
-        except FileNotFoundError:
+            proc = subprocess.run(
+                ["brightnessctl", "-m"],
+                stdout=subprocess.PIPE,
+                timeout=1
+            )
+        except (FileNotFoundError, TimeoutError):
             return []
-        status = proc.communicate()[0].decode("utf-8").strip().split(",")
+        status = proc.stdout.decode("utf-8").strip().split(",")
         if len(status) < 2 or status[1] != "backlight":
             return []
         return [

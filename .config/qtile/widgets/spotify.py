@@ -1,7 +1,6 @@
 from typing import List, Optional
 import subprocess
 import urllib.request
-import os
 
 from libqtile import qtile, widget
 from libqtile.widget import base
@@ -12,10 +11,10 @@ COVER_PATH = "/tmp/spotify-now-playing.png"
 
 def get_stdout(cmd: List[str]) -> str:
     try:
-        sub = subprocess.Popen(cmd, stdout=subprocess.PIPE)
-    except FileNotFoundError:
+        sub = subprocess.run(cmd, stdout=subprocess.PIPE, timeout=1)
+    except (FileNotFoundError, TimeoutError):
         return ""
-    return sub.communicate()[0].decode("utf-8").strip()
+    return sub.stdout.decode("utf-8").strip()
 
 
 class SpotifyCover(widget.Image):
@@ -54,7 +53,7 @@ class SpotifyCover(widget.Image):
         self.update_cover()
 
 
-class SpotifyNowPlaying(base.InLoopPollText):
+class SpotifyNowPlaying(base.ThreadPoolText):
     def __init__(self, cover: SpotifyCover, **config):
         super().__init__("", update_interval=5, qtile=qtile, **config)
         self.name = "Spotify now playing"

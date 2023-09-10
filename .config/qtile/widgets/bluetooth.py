@@ -5,9 +5,9 @@ from libqtile.lazy import lazy
 from libqtile.widget import base
 
 
-class Bluetooth(base.InLoopPollText):
+class Bluetooth(base.ThreadPoolText):
     def __init__(self, **config):
-        super().__init__("", name="Bluetooth", update_interval=10, qtile=qtile, **config)
+        super().__init__("󰂲 ", name="Bluetooth", update_interval=10, qtile=qtile, **config)
         self.add_callbacks({
             "Button1": self.open_bluetooth_manager(),
         })
@@ -17,17 +17,15 @@ class Bluetooth(base.InLoopPollText):
 
     def poll(self) -> str:
         try:
-            proc = subprocess.Popen(
+            proc = subprocess.run(
                 ["bluetoothctl", "devices", "Connected"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
+                timeout=1,
             )
-        except FileNotFoundError:
+        except (FileNotFoundError, TimeoutError):
             return "󰂲 "
-        stdout, stderr = proc.communicate()
-        if stderr is not None or proc.returncode != 0:
+        if proc.stderr is not None or proc.returncode != 0:
             return "󰂲 "
-        count = stdout.decode("utf-8").count("\n")
-        if count == 0:
-            return "󰂯 "
-        return f"󰂯 {count}"
+        devices_count = proc.stdout.decode("utf-8").count("\n")
+        return f"󰂯 {devices_count or ''}"

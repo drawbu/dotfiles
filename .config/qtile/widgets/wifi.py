@@ -18,17 +18,14 @@ class NetworkState:
         self.wifi = False
         self.ethernet = False
         try:
-            proc = subprocess.Popen(
+            proc = subprocess.run(
                 ['nmcli', 'connection', 'show', '--active'],
                 stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
+                timeout=1,
             )
-        except FileNotFoundError:
+        except (FileNotFoundError, TimeoutError):
             return
-        stdout, stderr = proc.communicate()
-        if stderr is not None:
-            return
-        lines = stdout.decode("utf-8").split("\n")
+        lines = proc.stdout.decode("utf-8").split("\n")
         if len(lines) < 2:
             return
         type_index = lines[0].find("TYPE")
@@ -47,7 +44,7 @@ class NetworkState:
                 continue
 
 
-class Wifi(base.InLoopPollText):
+class Wifi(base.ThreadPoolText):
     def __init__(self, **config):
         super().__init__("", update_interval=10, qtile=qtile, **config)
         self.name = "Wifi widget"
