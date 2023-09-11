@@ -3,6 +3,7 @@
   home-manager.users.clement = import ../home/clement;
   users.users.clement = {
     isNormalUser = true;
+    initialPassword = "hello";
     shell = pkgs.zsh;
     extraGroups = [ "docker" "networkmanager" "libvirtd" "wheel" ];
     openssh.authorizedKeys.keys = [
