@@ -1,8 +1,0 @@
-# Nix Home Manager configures it
-init.lua
-
-# Lazy
-lazy-lock.json
-
-# Startup time
-time.txt

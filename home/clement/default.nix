@@ -7,11 +7,17 @@
     ./cursor.nix
     ./qtile.nix
     ./zsh.nix
+    ../../.config
   ];
 
   programs.home-manager.enable = true;
 
   nixpkgs.config.allowUnfreePredicate = (pkg: true);
+
+  home.file = {
+    "assets".source = ../../assets;
+    ".gitconfig".source = ../../.gitconfig;
+  };
 
   home = {
     username = "clement";
