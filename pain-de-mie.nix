@@ -1,6 +1,6 @@
-# My config for NixOS on my PC
+# My config for NixOS on my home PC
 # The name: pain-de-mie
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./nixos/hardware/hardware-pain-de-mie.nix
@@ -8,21 +8,10 @@
     ./nixos/graphical
   ];
 
-  home-manager.users.clement = import ./home/clement;
-  users.users.clement = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    extraGroups = [ "docker" "networkmanager" "libvirtd" "wheel" ];
-  };
-
-  hardware.opengl.enable = true;
-
-  networking = {
-    hostName = "pain-de-mie";
-    networkmanager.enable = true;
-  };
+  networking.hostName = "pain-de-mie";
 
   # nvidia, fuck you
+  hardware.opengl.enable = true;
   services.xserver = {
     videoDrivers = [ "nvidia" ];
     libinput.enable = true;

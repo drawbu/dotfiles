@@ -1,4 +1,4 @@
-# My config for NixOS on my PC
+# My config for NixOS on my laptop
 # The name: pancake
 { pkgs, ... }:
 {
@@ -8,21 +8,9 @@
     ./nixos/graphical
   ];
 
-  users.users.clement = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    extraGroups = [ "docker" "networkmanager" "libvirtd" "wheel" ];
-  };
-
-  home-manager.users.clement = import ./home/clement;
-
-  networking = {
-    hostName = "pancake";
-    networkmanager.enable = true;
-  };
+  networking.hostName = "pancake";
 
   services = {
-    printing.enable = true;
     thermald.enable = true;
     upower.enable = true;
 

@@ -6,6 +6,7 @@
     ./firefox.nix
     ./cursor.nix
     ./qtile.nix
+    ./zsh.nix
   ];
 
   programs.home-manager.enable = true;
@@ -60,13 +61,5 @@
       jetbrains-mono
       nerdfonts
     ];
-  };
-
-  programs.zsh = {
-    enable = true;
-    dotDir = ".nix-zsh";
-    initExtra = ''
-      source ~/.zshrc
-    '';
   };
 }

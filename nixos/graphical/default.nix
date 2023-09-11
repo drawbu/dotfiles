@@ -54,6 +54,8 @@
       pulse.enable = true;
     };
 
+    printing.enable = true;
+
     # Graphical
     xserver = {
       enable = true;
