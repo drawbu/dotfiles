@@ -17,6 +17,7 @@
   home.file = {
     "assets".source = ../../assets;
     ".gitconfig".source = ../../.gitconfig;
+    ".xinitrc".source = ../../.xinitrc;
   };
 
   home = {
