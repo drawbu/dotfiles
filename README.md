@@ -68,8 +68,8 @@ Replace `the-machine` with one of the following:
  - `croissant`: For my Contabo VPS (setup [here](https://github.com/drawbu/Notes/blob/main/Server%20administration/Install%20NixOS%20on%20Contabo%20server.md)
  - `linux`: for non-NixOS Linux
 
-And **tada** the pc is up and running, users are created, and everything is
-installed.
+And **tada** the pc is up and running, users are created, everything is
+installed, and symlinks are linked!
 
 ### Average Linux
 Setup home manager for Linux Non-NixOS
@@ -86,74 +86,17 @@ home-manager switch --flake .#linux
 
 ### Clone the repo
 ```bash
-git clone --recursive https://github.com/drawbu/dotfiles $DOTFILE_PATH
+git clone https://github.com/drawbu/dotfiles $DOTFILE_PATH
 ```
-If the recursive repo cloning failed, run:
-```bash
-git submodule update --recursive
-```
-(with `--init` flag if it fails again)
-
-> **Note**
-> Be careful when cloning the submodules, the repo where the wallpapers are 
-> ([here](https://github.com/DenverCoder1/minimalistic-wallpaper-collection))
-> is over 800 Mo
 
 ### Create symlinks
-> **Warning**
-> Don't forget to remove the orignal file before setting a symlink at the same 
-> path!_
-
-You don't have to create symlinks for every file, only the ones you need. The 
-`.config` folder is for me a go-to folder for all the config files I need to
-symlink.
-
-Exemple:
+> **Info**
+> If you are using Nix, you can skip this step as it is handled automatically
 ```bash
-ln -si $DOTFILE_PATH/.config ~/.config
-```
-
-### :beer: Homebrew
-Don't symlink the `Brewfile` file, it's only used for the installation of
-the packages.
-
-These commands will install Homebrew and all the packages listed in the
-`Brewfile` file.
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew bundle --file $DOTFILE_PATH/Brewfile
-```
-
-### Zsh & Oh My Zsh & Powerlevel10k
-```bash
-ln -s $DOTFILE_PATH/.ohmyzsh ~/.ohmyzsh
+ln -s $DOTFILE_PATH/.config ~/.config
+ln -s $DOTFILE_PATH/.gitconfig ~/.gitconfig
 ln -s $DOTFILE_PATH/.zshrc ~/.zshrc
 ln -s $DOTFILE_PATH/assets ~/assets
-```
-
-### iTerm2
-Go on the GUI preferences, search from a custom folder or URL, check the box, 
-and select the `~/.config/iterm2` folder.
-
-To open the terminal on top, press `CTRL`+`SPACE`.
-
-### Qtile
-(Already installed by default on my Nix HM config)
-
-The Window Manager I use on Linux. It's a tiling window manager written and 
-configured in Python. All the config files are in the `.config/qtile` folder.
-```bash
-pacman -S qtile
-```
-
-### Picom
-(Already installed by default on my Nix HM config)
-
-The compositor I use on Linux. It's a lightweight compositor for X11. 
-Qtile works fine without it, but it's better with it, as it adds little 
-animations and the possibility to play with window opacity.
-```bash
-pacman -S picom
 ```
 
 ### Tmux

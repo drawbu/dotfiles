@@ -18,6 +18,6 @@
     ".config/qtile".source = ./qtile;
     ".config/rofi/config.rasi".source = ./rofi/config.rasi;
     ".config/tmux/tmux.conf".source = ./tmux/tmux.conf;
-    "mimeapps.list".source = ./mimeapps.list;
+    ".config/mimeapps.list".source = ./mimeapps.list;
   };
 }
