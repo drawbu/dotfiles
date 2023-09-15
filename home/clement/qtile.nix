@@ -4,7 +4,6 @@
     # ↓ Softwares
     qtile
     picom # Compositor
-    betterlockscreen # Lock screen
     dunst # Notifications
     rofi # Apps launcher
     networkmanagerapplet # Network tools

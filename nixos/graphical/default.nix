@@ -64,6 +64,13 @@
       };
       layout = "fr";
     };
+
+    physlock = {
+      enable = true;
+      lockMessage = "This computer is locked :)";
+      muteKernelMessages = true;
+      allowAnyUser = true;
+    };
   };
 
   programs.steam = {
