@@ -38,6 +38,7 @@ return {
             local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
             ts_update()
         end,
+        tag = 'v0.9.1',
         config = function()
             require('drawbu.plugins.treesitter')
         end,
