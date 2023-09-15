@@ -7,6 +7,7 @@
     ./cursor.nix
     ./qtile.nix
     ./zsh.nix
+    ./discord.nix
     ../../.config
   ];
 
@@ -45,8 +46,6 @@
       lazygit
 
       # ↓ softwares
-      discord
-      discocss
       obsidian
       spotify
       vscode
