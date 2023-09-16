@@ -59,7 +59,7 @@ configuration {
 	window-match-fields: "title,class,role,name,desktop";
 	window-command: "wmctrl -i -R {window}";
 	window-format: "{w} - {c} - {t:0}";
-	window-thumbnail: false;
+	window-thumbnail: true;
 
 	/*---------- Combi settings ----------*/
 /*	combi-modi: "window,run";*/
@@ -82,7 +82,7 @@ configuration {
 	display-filebrowser: "Files";
 
 	/*---------- Misc setting ----------*/
-	terminal: "rofi-sensible-terminal";
+	terminal: "kitty";
 	font: "JetBrainsMono Nerd Font 12";
 	sort: false;
 	threads: 0;
@@ -181,4 +181,3 @@ configuration {
 }
 
 @theme "~/.config/rofi/launchers/type-6/style-6.rasi"
-/* @import "~/.config/rofi/colors/catppuccin.rasi" */

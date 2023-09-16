@@ -15,7 +15,6 @@
     ".config/nvim/ftplugin".source = ./nvim/ftplugin;
     ".config/picom/picom.conf".source = ./picom/picom.conf;
     ".config/qtile".source = ./qtile;
-    ".config/rofi/config.rasi".source = ./rofi/config.rasi;
     ".config/tmux/tmux.conf".source = ./tmux/tmux.conf;
     ".config/mimeapps.list".source = ./mimeapps.list;
   };

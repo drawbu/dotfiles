@@ -12,6 +12,7 @@ in
     ./qtile.nix
     ./zsh.nix
     ./discord.nix
+    ./rofi
     ../../.config
   ];
 
