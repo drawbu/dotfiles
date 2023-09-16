@@ -43,9 +43,6 @@
     gvfs.enable = true;
     tumbler.enable = true;
 
-    # Compositor
-    picom.enable = true;
-
     # Sounds
     pipewire = {
       enable = true;

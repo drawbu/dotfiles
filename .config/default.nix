@@ -13,7 +13,6 @@
     ".config/nixpkgs/config.nix".source = ./nixpkgs/config.nix;
     ".config/nvim/lua".source = ./nvim/lua;
     ".config/nvim/ftplugin".source = ./nvim/ftplugin;
-    ".config/picom/picom.conf".source = ./picom/picom.conf;
     ".config/qtile".source = ./qtile;
     ".config/tmux/tmux.conf".source = ./tmux/tmux.conf;
     ".config/mimeapps.list".source = ./mimeapps.list;

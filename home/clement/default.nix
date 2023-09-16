@@ -81,5 +81,18 @@ in
         showStartupLaunchMessage = false;
       };
     };
+
+    picom = {
+      enable = true;
+      backend = "glx";
+      vSync = true;
+      opacityRules = [
+        "95:class_g = 'kitty'"
+        "95:class_g = 'thunderbird'"
+        "95:class_g = 'Thunar'"
+        "95:class_g = 'Spotify'"
+        "95:class_g = 'obsidian'"
+      ];
+    };
   };
 }
