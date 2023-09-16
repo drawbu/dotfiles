@@ -1,5 +1,9 @@
 # 'clement' user home-manager config for NixOS & generic linux
-{ pkgs, unstable, ... }: {
+{ pkgs, unstable, ... }:
+let
+  username = "clement";
+in
+{
   imports = [
     ./nvim.nix
     ./gtk.nix
@@ -15,15 +19,9 @@
 
   nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
-  home.file = {
-    "assets".source = ../../assets;
-    ".gitconfig".source = ../../.gitconfig;
-    ".xinitrc".source = ../../.xinitrc;
-  };
-
   home = {
-    username = "clement";
-    homeDirectory = "/home/clement";
+    inherit username;
+    homeDirectory = "/home/${username}";
 
     stateVersion = "23.05";
 
@@ -53,7 +51,6 @@
       jetbrains.pycharm-professional
       jetbrains.webstorm
       kitty
-      flameshot
       feh
       thunderbird-bin
       vlc
@@ -67,5 +64,21 @@
       jetbrains-mono
       nerdfonts
     ];
+
+    file = {
+      "assets".source = ../../assets;
+      ".gitconfig".source = ../../.gitconfig;
+      ".xinitrc".source = ../../.xinitrc;
+    };
+  };
+
+  services = {
+    flameshot = {
+      enable = true;
+      settings.General = {
+        savePath = "/home/${username}/Downloads";
+        showStartupLaunchMessage = false;
+      };
+    };
   };
 }
