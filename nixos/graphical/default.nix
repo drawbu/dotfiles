@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   imports = [
-    ./issue
     ./polkit.nix
   ];
 
