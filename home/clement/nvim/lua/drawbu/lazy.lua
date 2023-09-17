@@ -44,12 +44,6 @@ return {
         end,
     },
 
-    -- Highlight other s of the word
-    'RRethy/vim-illuminate',
-
-    -- Highlight arguments' definitions and usages
-    'm-demare/hlargs.nvim',
-
     -- Wakatime integration
     'wakatime/vim-wakatime',
 
@@ -147,17 +141,6 @@ return {
         end,
     },
 
-    -- Better indent
-    {
-        'lukas-reineke/indent-blankline.nvim',
-        config = function()
-            require('indent_blankline').setup {
-                show_current_context = true,
-                show_current_context_start = true,
-            }
-        end,
-    },
-
     -- ↓ File explorer
     {
         'nvim-tree/nvim-tree.lua',
@@ -193,33 +176,8 @@ return {
         end
     },
 
-    {
-        'goolord/alpha-nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function ()
-            require('drawbu.plugins.alpha')
-        end
-    },
-
-    {
-        'terrortylor/nvim-comment',
-        config = function ()
-            require('nvim_comment').setup({
-                create_mappings = true,
-                line_mapping = '<leader>:',
-            })
-        end,
-    },
-
     -- ↓ Editorconfig support
     'gpanders/editorconfig.nvim',
-
-    -- ↓ Auto close parens
-    {
-        'windwp/nvim-autopairs',
-        event = 'InsertEnter',
-        opts = {}
-    },
 
     -- ↓ See all the errors
     {
@@ -236,5 +194,14 @@ return {
 
     -- ↓ Jinja support
     { 'Glench/Vim-Jinja2-Syntax', ft = { 'jinja' } },
+
+    -- ↓ Lots of nice stuff
+    {
+        'echasnovski/mini.nvim',
+        version = '*',
+        config = function ()
+            require('drawbu.plugins.mini')
+        end
+    },
 }
 
