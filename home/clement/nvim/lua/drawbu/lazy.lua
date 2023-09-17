@@ -67,7 +67,7 @@ return {
     {
         'mbbill/undotree',
         config = function()
-            vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+            vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
         end,
     },
 
@@ -114,10 +114,10 @@ return {
             require('lsp_lines').setup()
             vim.diagnostic.config({ virtual_text = false })
             vim.keymap.set(
-                "",
-                "<Leader>t",
-                require("lsp_lines").toggle,
-                { desc = "Toggle lsp_lines" }
+                '',
+                '<Leader>t',
+                require('lsp_lines').toggle,
+                { desc = 'Toggle lsp_lines' }
             )
         end,
     },
@@ -151,7 +151,7 @@ return {
     {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
-            require("indent_blankline").setup {
+            require('indent_blankline').setup {
                 show_current_context = true,
                 show_current_context_start = true,
             }
@@ -163,7 +163,7 @@ return {
         'nvim-tree/nvim-tree.lua',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function()
-            require("nvim-tree").setup()
+            require('nvim-tree').setup()
         end,
     },
 
@@ -206,7 +206,7 @@ return {
         config = function ()
             require('nvim_comment').setup({
                 create_mappings = true,
-                line_mapping = "<leader>:",
+                line_mapping = '<leader>:',
             })
         end,
     },
@@ -217,17 +217,17 @@ return {
     -- ↓ Auto close parens
     {
         'windwp/nvim-autopairs',
-        event = "InsertEnter",
+        event = 'InsertEnter',
         opts = {}
     },
 
     -- ↓ See all the errors
     {
-        "folke/trouble.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
+        'folke/trouble.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function()
-            require("trouble").setup {}
-            vim.keymap.set("n", "<leader>x", function() require("trouble").open() end)
+            require('trouble').setup {}
+            vim.keymap.set('n', '<leader>x', function() require('trouble').open() end)
         end,
     },
 
@@ -235,9 +235,6 @@ return {
     'christoomey/vim-tmux-navigator',
 
     -- ↓ Jinja support
-    {
-        'Glench/Vim-Jinja2-Syntax',
-        ft = { 'jinja' },
-    },
+    { 'Glench/Vim-Jinja2-Syntax', ft = { 'jinja' } },
 }
 

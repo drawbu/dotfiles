@@ -5,7 +5,7 @@ let
 in
 {
   imports = [
-    ./nvim.nix
+    ./nvim
     ./gtk.nix
     ./firefox.nix
     ./cursor.nix

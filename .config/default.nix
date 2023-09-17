@@ -11,8 +11,6 @@
     ".config/neofetch/config.conf".source = ./neofetch/config.conf;
     ".config/nix/nix.conf".source = ./nix/nix.conf;
     ".config/nixpkgs/config.nix".source = ./nixpkgs/config.nix;
-    ".config/nvim/lua".source = ./nvim/lua;
-    ".config/nvim/ftplugin".source = ./nvim/ftplugin;
     ".config/qtile".source = ./qtile;
     ".config/tmux/tmux.conf".source = ./tmux/tmux.conf;
     ".config/mimeapps.list".source = ./mimeapps.list;

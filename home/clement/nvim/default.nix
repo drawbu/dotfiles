@@ -1,4 +1,9 @@
 { pkgs, ... }: {
+  home.file = {
+    ".config/nvim/lua".source = ./lua;
+    ".config/nvim/ftplugin".source = ./ftplugin;
+  };
+
   programs.neovim = {
     enable = true;
     extraConfig = ''
@@ -18,7 +23,7 @@
       nodejs
       lazygit
 
-      # Language Servers
+      # ↓ Language Servers ↓
       # Lua
       lua-language-server
       # Nix

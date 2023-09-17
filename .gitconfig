@@ -1,6 +1,7 @@
 [user]
 	name = Clément
 	email = clement2104.boillot@gmail.com
+	signingkey = CFAE6BC61FF97205
 [core]
 	excludesfile = ~/assets/.globalgitignore
 [push]
@@ -20,3 +21,5 @@
     insteadOf = drawbu:
 [url "ssh://git@github.com/Sigmanificient/"]
     insteadOf = sigma:
+[commit]
+	gpgsign = true

@@ -12,8 +12,8 @@ lsp.lua_ls.setup({})
 -- ↓ C
 lsp.clangd.setup({
   cmd = {
-    "clangd",
-    "--offset-encoding=utf-16",
+    'clangd',
+    '--offset-encoding=utf-16',
   },
 })
 
