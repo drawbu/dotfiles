@@ -17,7 +17,12 @@ require('mini.move').setup({})
 require('mini.hipatterns').setup({})
 
 -- Highlighting of word under cursor
-require('mini.cursorword').setup({})
+require('mini.cursorword').setup({ delay = 100 })
 
 -- Intent scope
-require('mini.indentscope').setup({})
+require('mini.indentscope').setup({
+    draw = {
+        delay = 0,
+        animation = require('mini.indentscope').gen_animation.none(),
+    },
+})
