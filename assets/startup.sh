@@ -9,7 +9,6 @@ if [ grep -q Asahi /etc/hostname]; then
   setxkbmap fr -variant mac
 else
   setxkbmap fr
-  xrandr --output HDMI-0 --primary --output DVI-D-0 --right-of HDMI-0
 fi
 
 # Start JetBrains ToolBox
