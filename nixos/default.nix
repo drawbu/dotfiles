@@ -4,6 +4,10 @@
     ./users/clement.nix
   ];
 
+  system = {
+    copySystemConfiguration = false;
+    stateVersion = "23.05";
+  };
   nix = {
     gc = {
       automatic = true;
@@ -70,10 +74,5 @@
     ];
     pathsToLink = [ "/share/nix-direnv" ];
     etc.issue.text = (builtins.readFile ./issue.txt);
-  };
-
-  system = {
-    copySystemConfiguration = false;
-    stateVersion = "23.05";
   };
 }
