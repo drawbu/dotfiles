@@ -5,11 +5,7 @@ elif [ -x "$(command -v dunst)" ]; then
   dunst &
 fi
 
-if [ grep -q Asahi /etc/hostname]; then
-  setxkbmap fr -variant mac
-else
-  setxkbmap fr
-fi
+setxkbmap fr
 
 # Start JetBrains ToolBox
 if [ -x "$(command -v jetbrains-toolbox)" ]; then
@@ -23,4 +19,8 @@ fi
 
 if [ -x "$(command -v bluetoothctl)" ]; then
   bluetoothctl power on &
+fi
+
+if [ -x "$(command -v flameshot)" ]; then
+  flameshot &
 fi
