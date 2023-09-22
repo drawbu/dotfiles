@@ -14,11 +14,7 @@
     thermald.enable = true;
     upower.enable = true;
 
-    xserver = {
-      videoDrivers = [ "modesetting" ];
-      libinput.enable = true;
-      windowManager.qtile.enable = true;
-    };
+    xserver.videoDrivers = [ "modesetting" ];
   };
 
   boot = {

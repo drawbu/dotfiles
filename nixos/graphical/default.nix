@@ -2,6 +2,7 @@
 {
   imports = [
     ./polkit.nix
+    ./xserver.nix
   ];
 
   boot.loader = {
@@ -51,15 +52,6 @@
     };
 
     printing.enable = true;
-
-    # Graphical
-    xserver = {
-      enable = true;
-      displayManager = {
-        startx.enable = true;
-      };
-      layout = "fr";
-    };
 
     physlock = {
       enable = true;

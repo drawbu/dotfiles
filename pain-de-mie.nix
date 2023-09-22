@@ -12,9 +12,5 @@
 
   # nvidia, fuck you
   hardware.opengl.enable = true;
-  services.xserver = {
-    videoDrivers = [ "nvidia" ];
-    libinput.enable = true;
-    windowManager.qtile.enable = true;
-  };
+  services.xserver.videoDrivers = [ "nvidia" ];
 }
