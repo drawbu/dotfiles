@@ -3,6 +3,7 @@
   imports = [
     ./polkit.nix
     ./xserver.nix
+    ./plymouth.nix
   ];
 
   boot.loader = {
