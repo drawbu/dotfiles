@@ -1,14 +1,8 @@
 {
   description = "Home Manager configuration of clement";
-
-
-
-
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.05";
     nixpkgs_unstable.url = "nixpkgs/nixos-unstable";
-
-
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,15 +16,20 @@
     , ...
     }:
     let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
-      unstable = import nixpkgs_unstable { inherit system; };
+      cfg = {
+        system = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+        };
+      };
+      pkgs = import nixpkgs cfg;
+      unstable = import nixpkgs_unstable cfg;
       hm = {
-        extraSpecialArgs = { inherit unstable; };
+        extraSpecialArgs = { inherit unstable pkgs; };
       };
     in
     {
-      formatter.${system} = pkgs.nixpkgs-fmt;
+      formatter.${cfg.system} = pkgs.nixpkgs-fmt;
 
       homeConfigurations = {
         "linux" = home-manager.lib.homeManagerConfiguration {
@@ -40,7 +39,7 @@
       };
       nixosConfigurations = {
         "pain-de-mie" = nixpkgs.lib.nixosSystem {
-          inherit system;
+          system = cfg.system;
           modules = [
             ./pain-de-mie.nix
             home-manager.nixosModules.home-manager
@@ -48,7 +47,7 @@
           ];
         };
         "pancake" = nixpkgs.lib.nixosSystem {
-          inherit system;
+          system = cfg.system;
           modules = [
             ./pancake.nix
             home-manager.nixosModules.home-manager
@@ -56,7 +55,7 @@
           ];
         };
         "croissant" = nixpkgs.lib.nixosSystem {
-          inherit system;
+          system = cfg.system;
           modules = [
             ./croissant.nix
             home-manager.nixosModules.home-manager
