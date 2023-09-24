@@ -45,7 +45,7 @@ in
       # ↓ softwares
       obsidian
       spotify
-      vscode
+      unstable.vscode
       jetbrains.clion
       jetbrains.pycharm-professional
       jetbrains.webstorm
