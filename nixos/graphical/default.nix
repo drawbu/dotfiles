@@ -3,19 +3,8 @@
   imports = [
     ./polkit.nix
     ./xserver.nix
-    ./plymouth.nix
+    ./boot.nix
   ];
-
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    grub = {
-      enable = true;
-      efiSupport = true;
-      device = "nodev";
-      gfxmodeEfi = "1920x1080x32";
-      useOSProber = true;
-    };
-  };
 
   console = {
     font = "Lat2-Terminus16";
