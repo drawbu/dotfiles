@@ -71,6 +71,7 @@
       tree
       vim
       wget
+      virt-manager
     ];
     pathsToLink = [ "/share/nix-direnv" ];
     etc.issue.text = (builtins.readFile ./issue.txt);
