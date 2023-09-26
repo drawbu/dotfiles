@@ -1,6 +1,6 @@
-{ pkgs, fetchFromGitHub, ... }:
+{ pkgs, ... }:
 let
-  grub_catppuccin = fetchFromGitHub {
+  grub_catppuccin = pkgs.fetchFromGitHub {
     owner = "catppuccin";
     repo = "grub";
     rev = "803c5df0e83aba61668777bb96d90ab8f6847106";
