@@ -122,7 +122,7 @@ class Bar(bar.Bar):
                 stdout=subprocess.PIPE,
                 timeout=1
             )
-        except (FileNotFoundError, TimeoutError):
+        except (FileNotFoundError, subprocess.TimeoutExpired):
             return []
         status = proc.stdout.decode("utf-8").strip().split(",")
         if len(status) < 2 or status[1] != "backlight":

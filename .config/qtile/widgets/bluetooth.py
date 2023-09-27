@@ -23,7 +23,7 @@ class Bluetooth(base.ThreadPoolText):
                 stderr=subprocess.STDOUT,
                 timeout=1,
             )
-        except (FileNotFoundError, TimeoutError):
+        except (FileNotFoundError, subprocess.TimeoutExpired):
             return "󰂲 "
         if proc.stderr is not None or proc.returncode != 0:
             return "󰂲 "

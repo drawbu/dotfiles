@@ -23,7 +23,7 @@ class NetworkState:
                 stdout=subprocess.PIPE,
                 timeout=1,
             )
-        except (FileNotFoundError, TimeoutError):
+        except (FileNotFoundError, subprocess.TimeoutExpired):
             return
         lines = proc.stdout.decode("utf-8").split("\n")
         if len(lines) < 2:

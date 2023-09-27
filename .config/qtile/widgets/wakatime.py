@@ -17,7 +17,7 @@ class Wakatime(base.ThreadPoolText):
                 stderr=subprocess.STDOUT,
                 timeout=1,
             )
-        except (FileNotFoundError, TimeoutError):
+        except (FileNotFoundError, subprocess.TimeoutExpired):
             return ""
         if proc.stderr is not None:
             return ""

@@ -12,7 +12,7 @@ COVER_PATH = "/tmp/spotify-now-playing.png"
 def get_stdout(cmd: List[str]) -> str:
     try:
         sub = subprocess.run(cmd, stdout=subprocess.PIPE, timeout=1)
-    except (FileNotFoundError, TimeoutError):
+    except (FileNotFoundError, subprocess.TimeoutExpired):
         return ""
     return sub.stdout.decode("utf-8").strip()
 
