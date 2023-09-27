@@ -8,6 +8,7 @@ in
     ./nvim
     ./qtile
     ./rofi
+    ./git
     ./gtk.nix
     ./firefox.nix
     ./cursor.nix
@@ -38,7 +39,6 @@ in
       tmux
       speedtest-cli
       wget
-      git
       unstable.banana-vera
       lazygit
 
@@ -66,7 +66,6 @@ in
 
     file = {
       "assets".source = ../../assets;
-      ".gitconfig".source = ../../.gitconfig;
       ".xinitrc".source = ../../.xinitrc;
     };
   };

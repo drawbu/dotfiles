@@ -6,10 +6,18 @@
     ./nixos/hardware/hardware-pancake.nix
     ./nixos
     ./nixos/graphical
+    ./nixos/users/clement.nix
   ];
 
   networking.hostName = "pancake";
+  
+  # Git signing
+  home-manager.users.clement.programs.git.signing = {
+    key = "6e7293f5e7427602";
+    signByDefault = true;
+  };
 
+  # Fix hardware
   services = {
     thermald.enable = true;
     upower.enable = true;

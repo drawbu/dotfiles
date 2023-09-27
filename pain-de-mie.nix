@@ -6,9 +6,16 @@
     ./nixos/hardware/hardware-pain-de-mie.nix
     ./nixos
     ./nixos/graphical
+    ./nixos/users/clement.nix
   ];
 
   networking.hostName = "pain-de-mie";
+
+  # Git signing
+  home-manager.users.clement.programs.git.extraConfig = {
+    key = "CFAE6BV61FF97205";
+    signByDefault = true;
+  };
 
   # nvidia, fuck you
   hardware.opengl.enable = true;

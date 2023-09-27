@@ -4,6 +4,7 @@
   imports = [
     ./nixos/hardware/hardware-croissant.nix
     ./nixos
+    ./nixos/users/clement.nix
   ];
 
   networking.hostName = "croissant";

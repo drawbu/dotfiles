@@ -1,9 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [
-    ./users/clement.nix
-  ];
-
   system = {
     copySystemConfiguration = false;
     stateVersion = "23.05";
