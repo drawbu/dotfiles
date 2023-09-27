@@ -105,9 +105,24 @@ class Bar(bar.Bar):
     
     def __get_battery_widgets(self) -> List[WidgetType]:
         return [
-            widget.Battery(show_short_text=False, foreground="#FFFFFF", format="{char}", full_char=" ", charge_char=" ", discharge_char = ' ', update_interval=5),
-            widget.Battery(show_short_text=False, format="{percent:2.0%}", notify_below = 30, notification_timeout = 0, update_interval=5),
-            widget.Battery(show_short_text=False, format="{char}", full_char="", charge_char="󰁞", discharge_char = '󰁆', update_interval=5),
+            widget.Battery(
+                show_short_text=False,
+                format="{char} {percent:2.0%}",
+                full_char=" ",
+                charge_char=" ",
+                discharge_char=' ',
+                notify_below=20,
+                notification_timeout=30,
+                update_interval=5
+            ),
+            widget.Battery(
+                show_short_text=False,
+                format="{char}",
+                full_char="",
+                charge_char="󰁞",
+                discharge_char='󰁆',
+                update_interval=5
+            ),
             self.sep(),
         ] if get_stdout(["upower", "-e"]) != "" else []
 
