@@ -7,10 +7,13 @@ class TextWidget(base._TextBox):
         self, 
         name: str = "TextWidget", 
         text: str = "", 
+        callbacks = None,
         **config
     ):
         super().__init__(text, qtile=qtile, **config)
         self.name = name
+        if callbacks != None:
+            self.add_callbacks(callbacks)
 
 
 class LoopWidget(base.ThreadPoolText):
@@ -18,6 +21,7 @@ class LoopWidget(base.ThreadPoolText):
         self, 
         name: str = "LoopWidget", 
         text: str = "", 
+        callbacks = None,
         update_interval: int = 10, 
         **config
     ):
@@ -29,3 +33,5 @@ class LoopWidget(base.ThreadPoolText):
             **config
         )
         self.name = name
+        if callbacks != None:
+            self.add_callbacks(callbacks)

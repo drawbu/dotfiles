@@ -42,12 +42,11 @@ class NetworkState:
 
 class Wifi(LoopWidget):
     def __init__(self):
-        super().__init__(name="Wifi widget")
+        super().__init__(name="Wifi widget", callbacks={
+            "Button1": lazy.spawn("kitty -e nmtui"),
+        })
         self.__connected = False
         self.__state = NetworkState()
-        self.add_callbacks({
-            "Button1": self.open_network_manager(),
-        })
 
     @property
     def connected(self) -> bool:
@@ -58,9 +57,6 @@ class Wifi(LoopWidget):
         if self.__connected and not value:
             qtile.cmd_spawn("notify-send 'Disconnected from network'")
         self.__connected = value
-
-    def open_network_manager(self) -> None:
-        return lazy.spawn("kitty -e nmtui")
 
     def poll(self) -> str:
         try:

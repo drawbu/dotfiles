@@ -5,13 +5,10 @@ from utils import LoopWidget, get_stdout
 
 class Bluetooth(LoopWidget):
     def __init__(self):
-        super().__init__(text="󰂲 ", name="Bluetooth")
-        self.add_callbacks({
-            "Button1": self.open_bluetooth_manager(),
+        super().__init__(text="󰂲 ", name="Bluetooth", callbacks={
+            "Button1": lazy.spawn("rofi-bluetooth"),
         })
 
-    def open_bluetooth_manager(self) -> None:
-        return lazy.spawn("rofi-bluetooth")
 
     def poll(self) -> str:
         stdout = get_stdout(["bluetoothctl", "devices", "Connected"])
