@@ -1,12 +1,12 @@
 from typing import Iterable, List, Optional
-import subprocess
 
 from libqtile import bar, widget
 
 from widgets import (
-    Wakatime, Separator, Wifi, SpotifyNowPlaying, SpotifyCover, TextWidget,
+    Wakatime, Separator, Wifi, SpotifyNowPlaying, SpotifyCover,
     Bluetooth,
 )
+from utils import TextWidget, get_stdout
 from .widget_defaults import (
     TEXT_COLOR,
     PRIMARY_COLOR,
@@ -104,32 +104,21 @@ class Bar(bar.Bar):
         ]))
     
     def __get_battery_widgets(self) -> List[WidgetType]:
-        try:
-            proc = subprocess.run(["upower", "-e"])
-        except FileNotFoundError:
-            return []
         return [
             widget.Battery(show_short_text=False, foreground="#FFFFFF", format="{char}", full_char=" ", charge_char=" ", discharge_char = ' ', update_interval=5),
             widget.Battery(show_short_text=False, format="{percent:2.0%}", notify_below = 30, notification_timeout = 0, update_interval=5),
             widget.Battery(show_short_text=False, format="{char}", full_char="", charge_char="󰁞", discharge_char = '󰁆', update_interval=5),
             self.sep(),
-        ] if proc.returncode == 0 else []
+        ] if get_stdout(["upower", "-e"]) != "" else []
 
     def __get_brightness_widgets(self) -> List[WidgetType]:
-        try:
-            proc = subprocess.run(
-                ["brightnessctl", "-m"],
-                stdout=subprocess.PIPE,
-                timeout=1
-            )
-        except (FileNotFoundError, subprocess.TimeoutExpired):
+        stdout = get_stdout(["brightnessctl", "-m"])
+        if stdout == "":
             return []
-        status = proc.stdout.decode("utf-8").strip().split(",")
-        if len(status) < 2 or status[1] != "backlight":
-            return []
+        status = stdout.split(",")
         return [
-            widget.Backlight(backlight_name=status[0], fmt=" {}"),
-        ] if proc.returncode == 0 else []
+            widget.Backlight(backlight_name=status[0], fmt=" {}")
+        ] if len(status) >= 2 and status[1] == "backlight" else []
 
     def __get_spotify_widgets(self) -> List[WidgetType]:
         cover = SpotifyCover()

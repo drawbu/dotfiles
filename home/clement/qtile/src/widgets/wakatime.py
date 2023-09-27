@@ -1,24 +1,9 @@
-import subprocess
-
-from libqtile import qtile
-from libqtile.widget import base
+from utils import LoopWidget, get_stdout
 
 
-class Wakatime(base.ThreadPoolText):
-    def __init__(self, **config):
-        super().__init__("", update_interval=600, qtile=qtile, **config)
-        self.name = "Wakatime widget"
+class Wakatime(LoopWidget):
+    def __init__(self):
+        super().__init__(update_interval=600, name="Wakatime")
 
     def poll(self) -> str:
-        try:
-            proc = subprocess.run(
-                ["wakatime-cli", "--today"],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                timeout=1,
-            )
-        except (FileNotFoundError, subprocess.TimeoutExpired):
-            return ""
-        if proc.stderr is not None:
-            return ""
-        return " ".join(proc.stdout.decode("utf-8").split())
+        return " ".join(get_stdout(["wakatime-cli", "--today"]).split())

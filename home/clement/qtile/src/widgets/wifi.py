@@ -1,12 +1,13 @@
-import subprocess
-
 from libqtile import qtile
 from libqtile.lazy import lazy
-from libqtile.widget import base
+
+from utils import LoopWidget, get_stdout
+
 
 class NetworkError(Exception):
     def __init__(self, message: str):
         super().__init__(message)
+
 
 class NetworkState:
     def __init__(self):
@@ -17,15 +18,10 @@ class NetworkState:
     def refresh(self) -> None:
         self.wifi = False
         self.ethernet = False
-        try:
-            proc = subprocess.run(
-                ['nmcli', 'connection', 'show', '--active'],
-                stdout=subprocess.PIPE,
-                timeout=1,
-            )
-        except (FileNotFoundError, subprocess.TimeoutExpired):
+        stdout = get_stdout(['nmcli', 'connection', 'show', '--active'])
+        if stdout == "":
             return
-        lines = proc.stdout.decode("utf-8").split("\n")
+        lines = stdout.split("\n")
         if len(lines) < 2:
             return
         type_index = lines[0].find("TYPE")
@@ -44,10 +40,9 @@ class NetworkState:
                 continue
 
 
-class Wifi(base.ThreadPoolText):
-    def __init__(self, **config):
-        super().__init__("", update_interval=10, qtile=qtile, **config)
-        self.name = "Wifi widget"
+class Wifi(LoopWidget):
+    def __init__(self):
+        super().__init__(name="Wifi widget")
         self.__connected = False
         self.__state = NetworkState()
         self.add_callbacks({

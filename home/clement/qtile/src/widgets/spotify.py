@@ -1,20 +1,12 @@
-from typing import List, Optional
-import subprocess
+from typing import Optional
 import urllib.request
 
-from libqtile import qtile, widget
-from libqtile.widget import base
+from libqtile import widget
+
+from utils import get_stdout, LoopWidget
 
 
 COVER_PATH = "/tmp/spotify-now-playing.png"
-
-
-def get_stdout(cmd: List[str]) -> str:
-    try:
-        sub = subprocess.run(cmd, stdout=subprocess.PIPE, timeout=1)
-    except (FileNotFoundError, subprocess.TimeoutExpired):
-        return ""
-    return sub.stdout.decode("utf-8").strip()
 
 
 class SpotifyCover(widget.Image):
@@ -53,10 +45,9 @@ class SpotifyCover(widget.Image):
         self.update_cover()
 
 
-class SpotifyNowPlaying(base.ThreadPoolText):
-    def __init__(self, cover: SpotifyCover, **config):
-        super().__init__("", update_interval=5, qtile=qtile, **config)
-        self.name = "Spotify now playing"
+class SpotifyNowPlaying(LoopWidget):
+    def __init__(self, cover: SpotifyCover):
+        super().__init__(update_interval=5, name="Spotify now playing")
         self.__cover = cover
 
     def poll(self) -> str:

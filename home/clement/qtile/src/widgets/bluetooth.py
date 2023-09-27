@@ -1,13 +1,11 @@
-import subprocess
-
-from libqtile import qtile
 from libqtile.lazy import lazy
-from libqtile.widget import base
+
+from utils import LoopWidget, get_stdout
 
 
-class Bluetooth(base.ThreadPoolText):
-    def __init__(self, **config):
-        super().__init__("󰂲 ", name="Bluetooth", update_interval=10, qtile=qtile, **config)
+class Bluetooth(LoopWidget):
+    def __init__(self):
+        super().__init__(text="󰂲 ", name="Bluetooth")
         self.add_callbacks({
             "Button1": self.open_bluetooth_manager(),
         })
@@ -16,16 +14,8 @@ class Bluetooth(base.ThreadPoolText):
         return lazy.spawn("rofi-bluetooth")
 
     def poll(self) -> str:
-        try:
-            proc = subprocess.run(
-                ["bluetoothctl", "devices", "Connected"],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                timeout=1,
-            )
-        except (FileNotFoundError, subprocess.TimeoutExpired):
+        stdout = get_stdout(["bluetoothctl", "devices", "Connected"])
+        if stdout == "":
             return "󰂲 "
-        if proc.stderr is not None or proc.returncode != 0:
-            return "󰂲 "
-        devices_count = proc.stdout.decode("utf-8").count("\n")
+        devices_count = stdout.count("\n")
         return f"󰂯 {devices_count or ''}"
