@@ -1,5 +1,6 @@
 from typing import Optional
 import urllib.request
+from urllib.error import URLError
 
 from libqtile import widget
 
@@ -29,7 +30,10 @@ class SpotifyCover(widget.Image):
         if cover_url == self.__last_cover:
             return
         self.__last_cover = cover_url
-        urllib.request.urlretrieve(cover_url, self.filename)
+        try:
+            urllib.request.urlretrieve(cover_url, self.filename)
+        except URLError:
+            return
 
         old_length = self.calculate_length()
         self._update_image()
