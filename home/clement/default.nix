@@ -6,13 +6,13 @@ in
 {
   imports = [
     ./nvim
+    ./qtile
+    ./rofi
     ./gtk.nix
     ./firefox.nix
     ./cursor.nix
-    ./qtile.nix
     ./zsh.nix
     ./discord.nix
-    ./rofi
     ../../.config
   ];
 
