@@ -3,7 +3,6 @@
   home.file = {
     ".config/btop/btop.conf".source = ./btop/btop.conf;
     ".config/btop/themes/onedark.theme".source = ./btop/themes/onedark.theme;
-    ".config/dunst/dunstrc".source = ./dunst/dunstrc;
     ".config/eww".source = ./eww;
     ".config/gh/config.yml".source = ./gh/config.yml;
     ".config/htop/htoprc".source = ./htop/htoprc;

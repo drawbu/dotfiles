@@ -7,7 +7,6 @@
       # ↓ Softwares
       qtile
       picom # Compositor
-      dunst # Notifications
       rofi # Apps launcher
       networkmanagerapplet # Network tools
       pavucontrol # Audio manager

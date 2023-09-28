@@ -15,6 +15,7 @@ in
     ./zsh.nix
     ./discord.nix
     ./tmux.nix
+    ./dunst.nix
     ../../.config
   ];
 
