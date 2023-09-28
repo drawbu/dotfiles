@@ -4,7 +4,7 @@ from libqtile import bar, widget
 
 from widgets import (
     Wakatime, Separator, Wifi, SpotifyNowPlaying, SpotifyCover,
-    Bluetooth,
+    Bluetooth, Battery
 )
 from utils import (
     TextWidget, 
@@ -63,7 +63,8 @@ class Bar(bar.Bar):
         widgets += [
             Wakatime(),
             self.sep(),
-        ] + self.__get_battery_widgets() + [
+            Battery(),
+            self.sep(),
             Wifi(),
             self.sep(),
             widget.Clock(format="%A, %b %-d"),
@@ -104,29 +105,6 @@ class Bar(bar.Bar):
             TextWidget("Pipe", "|", foreground=PRIMARY_COLOR),
         ]))
     
-    def __get_battery_widgets(self) -> List[WidgetType]:
-        return [
-            widget.Battery(
-                show_short_text=False,
-                format="{char} {percent:2.0%}",
-                full_char=" ",
-                charge_char=" ",
-                discharge_char=' ',
-                notify_below=20,
-                notification_timeout=30,
-                update_interval=5
-            ),
-            widget.Battery(
-                show_short_text=False,
-                format="{char}",
-                full_char="",
-                charge_char="󰁞",
-                discharge_char='󰁆',
-                update_interval=5
-            ),
-            self.sep(),
-        ] if get_stdout(["upower", "-e"]) != "" else []
-
     def __get_brightness_widgets(self) -> List[WidgetType]:
         stdout = get_stdout(["brightnessctl", "-m"])
         if stdout == "":

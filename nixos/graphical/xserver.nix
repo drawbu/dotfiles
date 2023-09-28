@@ -17,6 +17,7 @@ in
       enable = true;
       extraPackages = python3Packages: with python3Packages; [
         catppuccin
+        qtile-extras
       ];
     };
     desktopManager.gnome.enable = true;
