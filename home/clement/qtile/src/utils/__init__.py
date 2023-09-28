@@ -1,5 +1,5 @@
-from .widgets import TextWidget, LoopWidget, WidgetType
+from .widgets import TextWidget, LoopWidget
 from .shell import get_stdout
 
 
-__all__ = ("TextWidget", "LoopWidget", "WidgetType", "get_stdout")
+__all__ = ("TextWidget", "LoopWidget", "get_stdout")
