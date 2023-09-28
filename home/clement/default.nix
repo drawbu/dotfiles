@@ -14,6 +14,7 @@ in
     ./cursor.nix
     ./zsh.nix
     ./discord.nix
+    ./tmux.nix
     ../../.config
   ];
 
@@ -36,7 +37,6 @@ in
       wakatime
       btop
       neofetch
-      tmux
       speedtest-cli
       wget
       unstable.banana-vera
