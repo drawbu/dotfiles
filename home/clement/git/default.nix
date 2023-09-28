@@ -1,6 +1,6 @@
 { ... }:
 {
-  home.file.".globalgitgnore".source = ./.globalgitignore;
+  home.file.".globalgitignore".source = ./.globalgitignore;
 
   programs.git = {
     enable = true;
@@ -9,7 +9,7 @@
     lfs.enable = true;
     extraConfig = {
       init.defaultBranch = "main";
-      core.excludesFile = ".globalgitignore";
+      core.excludesFile = "~/.globalgitignore";
       push.autoSetupRemote = true;
       "url \"ssh://git@github.com/\"".insteadOf = "https://github.com/";
     };
