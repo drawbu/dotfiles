@@ -1,7 +1,7 @@
 from libqtile.config import Drag
 from libqtile.lazy import lazy
 
-from .keys import META
+from utils import META
 
 
 # Drag floating layouts.

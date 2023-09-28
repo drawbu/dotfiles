@@ -1,6 +1,7 @@
 from libqtile import layout
 from libqtile.config import Match
-from .widget_defaults import (
+
+from utils import (
     PRIMARY_COLOR,
     INACTIVE_COLOR,
 )

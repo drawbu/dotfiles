@@ -3,7 +3,8 @@ from typing import Final
 from libqtile.config import Group, Key, ScratchPad, DropDown
 from libqtile.lazy import lazy
 
-from .keys import keys, META, TERMINAL
+from utils import META, TERMINAL
+from .keys import keys
 
 
 groups = [Group(i) for i in "azerty"]

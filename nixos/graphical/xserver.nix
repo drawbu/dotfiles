@@ -13,7 +13,12 @@ in
     layout = "fr";
     libinput.enable = true;
 
-    windowManager.qtile.enable = true;
+    windowManager.qtile = {
+      enable = true;
+      extraPackages = python3Packages: with python3Packages; [
+        catppuccin
+      ];
+    };
     desktopManager.gnome.enable = true;
     displayManager.sddm = {
       enable = true;

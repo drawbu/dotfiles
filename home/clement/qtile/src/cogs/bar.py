@@ -6,8 +6,9 @@ from widgets import (
     Wakatime, Separator, Wifi, SpotifyNowPlaying, SpotifyCover,
     Bluetooth,
 )
-from utils import TextWidget, get_stdout
-from .widget_defaults import (
+from utils import (
+    TextWidget, 
+    get_stdout,
     TEXT_COLOR,
     PRIMARY_COLOR,
     INACTIVE_COLOR,

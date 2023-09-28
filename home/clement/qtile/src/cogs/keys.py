@@ -1,11 +1,7 @@
-from typing import Final
-
 from libqtile.config import Key
 from libqtile.lazy import lazy
 
-
-TERMINAL: Final[str] = "kitty"
-META: Final[str] = "mod4"  # Super key (Windows key)
+from utils import TERMINAL, META
 
 
 keys = [

@@ -4,15 +4,10 @@ from cogs import (
     keys,
     mouse,
     screens,
-    widget_defaults,
     layouts,
     floating_layout,
 )
-from plugins.catppuccin import Flavour
-
-terminal = "kitty"
-flavour = Flavour.mocha()
-
+from utils import widget_defaults
 
 extension_defaults = widget_defaults.copy()
 
