@@ -16,6 +16,7 @@ in
     ./discord.nix
     ./tmux.nix
     ./dunst.nix
+    ./kitty.nix
     ../../.config
   ];
 
@@ -50,7 +51,6 @@ in
       jetbrains.clion
       jetbrains.pycharm-professional
       jetbrains.webstorm
-      kitty
       feh
       thunderbird-bin
       vlc
