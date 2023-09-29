@@ -17,6 +17,7 @@ in
     ./tmux.nix
     ./dunst.nix
     ./kitty.nix
+    ./btop.nix
     ../../.config
   ];
 
