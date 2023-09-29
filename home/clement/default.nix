@@ -9,6 +9,7 @@ in
     ./qtile
     ./rofi
     ./git
+    ./eww
     ./gtk.nix
     ./firefox.nix
     ./cursor.nix
