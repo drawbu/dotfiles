@@ -18,6 +18,7 @@ in
     ./dunst.nix
     ./kitty.nix
     ./btop.nix
+    ./gh.nix
     ../../.config
   ];
 
