@@ -3,13 +3,15 @@ from typing import Final
 from catppuccin import Flavour
 
 
-flavour = Flavour.mocha()
+FLAVOUR = Flavour.mocha()
 
-BACKGROUND_COLOR = flavour.base.hex
-TEXT_COLOR = flavour.text.hex
-PRIMARY_COLOR = flavour.peach.hex
-INACTIVE_COLOR = flavour.surface1.hex
-FADED_COLOR = flavour.surface0.hex
+BACKGROUND_COLOR = FLAVOUR.base.hex
+TEXT_COLOR = FLAVOUR.text.hex
+PRIMARY_COLOR = FLAVOUR.peach.hex
+INACTIVE_COLOR = FLAVOUR.surface1.hex
+FADED_COLOR = FLAVOUR.surface0.hex
+WARN_COLOR = FLAVOUR.red.hex
+GOOD_COLOR = FLAVOUR.green.hex
 
 
 TERMINAL: Final[str] = "kitty"

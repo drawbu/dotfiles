@@ -1,18 +1,37 @@
+from enum import Enum
 from typing import Optional
+from typing_extensions import Self
 
 from qtile_extras.widget.mixins import TooltipMixin
 
-from utils import get_stdout
-from utils.widgets import LoopWidget
+from utils import get_stdout, LoopWidget
+from utils.defaults import GOOD_COLOR, TEXT_COLOR, WARN_COLOR
 
 
 def has_battery():
     return get_stdout(["upower", "-e"]) != ""
 
 
+class ChargeState(Enum):
+    unknown = 0
+    charging = 1
+    discharging = 2
+    full = 3
+
+    @classmethod
+    def from_string(cls, value: str) -> Self:
+        if value == "charging":
+            return cls.charging
+        if value == "discharging":
+            return cls.discharging
+        if value == "full":
+            return cls.full
+        return cls.unknown
+
+
 class BatteryState():
-    state: Optional[str] = None
-    percentage: Optional[str] = None
+    state: Optional[ChargeState] = None
+    percentage: Optional[int] = None
     time_to_full: Optional[str] = None
     sec_to_empty: Optional[str] = None
 
@@ -34,18 +53,21 @@ class BatteryState():
             tokens = line.split(":")
             if len(tokens) < 2:
                 continue
-            var = tokens[0].strip()
+            name = tokens[0].strip()
             value = tokens[1].strip()
-            if var == "state":
-                self.state = value
+            if name == "state":
+                self.state = ChargeState.from_string(value)
                 continue
-            if var == "percentage":
-                self.percentage = value
+            if name == "percentage":
+                try:
+                    self.percentage = int(value[:-1])
+                except ValueError:
+                    pass
                 continue
-            if var == "time to full":
+            if name == "time to full":
                 self.time_to_full = value
                 continue
-            if var == "time to empty":
+            if name == "time to empty":
                 self.time_to_empty = value
                 continue
 
@@ -60,6 +82,9 @@ class Battery(LoopWidget, TooltipMixin):
             return
         self.battery = BatteryState(battery)
         self.tooltip_text = ""
+        self.text_color = TEXT_COLOR
+        self.warn_color = WARN_COLOR
+        self.good_color = GOOD_COLOR
 
     def __get_device(self) -> Optional[str]:
         devices = get_stdout(["upower", "-e"])
@@ -71,12 +96,15 @@ class Battery(LoopWidget, TooltipMixin):
         return None
 
     def __set_tooltip(self) -> None:
+        state = self.battery.state
+        if state == ChargeState.full:
+            self.tooltip_text = f"The battery is full"
         time_to_full = self.battery.time_to_full
-        if time_to_full is not None:
+        if time_to_full is not None and state == ChargeState.charging:
             self.tooltip_text = f"{time_to_full} left to full"
             return
         time_to_empty = self.battery.time_to_empty
-        if time_to_empty is not None:
+        if time_to_empty is not None and state == ChargeState.discharging:
             self.tooltip_text = f"{time_to_empty} left on battery"
             return
         self.tooltip_text = ""
@@ -88,10 +116,16 @@ class Battery(LoopWidget, TooltipMixin):
         if state is None or percentage is None:
             return ""
         self.__set_tooltip()
-        battery_icon = " " if state == "discharging" else " "
         arrow_icon = (
-            "󰁞" if state == "charging" else
-            "󰁆" if state == "discharging" else
+            "󰁞" if state == ChargeState.charging else
+            "󰁆" if state == ChargeState.discharging else
             ""
         )
-        return f"{battery_icon} {percentage} {arrow_icon}"
+        battery_icon = " " if state == ChargeState.discharging else " "
+        text = f"{battery_icon} {percentage}% {arrow_icon}"
+        color = (
+            self.warn_color if percentage <= 10 else 
+            self.good_color if percentage >= 100 else 
+            self.text_color
+        )
+        return f"<span foreground='#{color}'>{text}</span>"

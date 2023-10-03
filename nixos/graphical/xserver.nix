@@ -18,6 +18,7 @@ in
       extraPackages = python3Packages: with python3Packages; [
         catppuccin
         qtile-extras
+        typing-extensions
       ];
     };
     desktopManager.gnome.enable = true;
