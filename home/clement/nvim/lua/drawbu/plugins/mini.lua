@@ -4,9 +4,6 @@ require('mini.trailspace').setup({})
 -- Start screen
 require('mini.starter').setup({})
 
--- Autopairs
-require('mini.pairs').setup({})
-
 -- Comment lines
 require('mini.comment').setup({})
 
