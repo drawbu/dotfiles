@@ -13,6 +13,7 @@ from .defaults import (
     TERMINAL,
     META,
 )
+from .notify import notify
 
 
 __all__ = (
@@ -30,4 +31,5 @@ __all__ = (
     "GOOD_COLOR",
     "TERMINAL",
     "META",
+    "notify",
 )

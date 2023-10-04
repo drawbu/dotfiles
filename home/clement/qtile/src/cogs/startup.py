@@ -1,18 +1,20 @@
 import subprocess
 import os
 
-from libqtile import hook, qtile
+from libqtile import hook
+
+from utils import notify
+
 
 SCRIPT_PATH = "~/assets/startup.sh"
 
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser(SCRIPT_PATH)
-    if not os.path.exists(home):
+    script = os.path.expanduser(SCRIPT_PATH)
+    if not os.path.exists(script):
         return
-    result = subprocess.call(["sh", home])
-    if result == 1:
-        qtile.cmd_spawn("notify-send 'Error while starting'")
+    if subprocess.call(["sh", script]) != 1:
+        notify("Error while starting")
         return
-    qtile.cmd_spawn("notify-send 'Started with success'")
+    notify("Started with success")

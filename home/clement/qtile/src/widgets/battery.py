@@ -4,8 +4,10 @@ from typing_extensions import Self
 
 from qtile_extras.widget.mixins import TooltipMixin
 
-from utils import get_stdout, LoopWidget
-from utils.defaults import GOOD_COLOR, TEXT_COLOR, WARN_COLOR
+from utils import (
+    get_stdout, LoopWidget, notify, 
+    GOOD_COLOR, TEXT_COLOR, WARN_COLOR
+)
 
 
 def has_battery():
@@ -85,6 +87,7 @@ class Battery(LoopWidget, TooltipMixin):
         self.text_color = TEXT_COLOR
         self.warn_color = WARN_COLOR
         self.good_color = GOOD_COLOR
+        self.__has_warned = False
 
     def __get_device(self) -> Optional[str]:
         devices = get_stdout(["upower", "-e"])
@@ -109,11 +112,25 @@ class Battery(LoopWidget, TooltipMixin):
             return
         self.tooltip_text = ""
 
+    def __warn(self) -> None:
+        percentage = self.battery.percentage
+        if percentage is None:
+            return
+        if percentage > 20:
+            self.__has_warned = False
+            return
+        if self.__has_warned == True:
+            return
+        self.__has_warned = True
+        notify(f"Warning: Battery is low: {percentage}%")
+
+
     def poll(self) -> str:
         self.battery.refresh()
         state = self.battery.state
         percentage = self.battery.percentage
         if state is None or percentage is None:
+            notify("Something went wrong with the battery widget.")
             return ""
         self.__set_tooltip()
         arrow_icon = (
@@ -128,4 +145,5 @@ class Battery(LoopWidget, TooltipMixin):
             self.good_color if percentage >= 100 else 
             self.text_color
         )
+        self.__warn()
         return f"<span foreground='#{color}'>{text}</span>"
