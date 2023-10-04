@@ -1,7 +1,13 @@
-from libqtile import qtile
 from libqtile.lazy import lazy
 
-from utils import LoopWidget, get_stdout
+from utils import (
+    LoopWidget,
+    get_stdout,
+    notify,
+    GOOD_COLOR,
+    TEXT_COLOR,
+    WARN_COLOR,
+)
 
 
 class NetworkError(Exception):
@@ -18,7 +24,7 @@ class NetworkState:
     def refresh(self) -> None:
         self.wifi = False
         self.ethernet = False
-        stdout = get_stdout(['nmcli', 'connection', 'show', '--active'])
+        stdout = get_stdout(["nmcli", "connection", "show", "--active"])
         if stdout == "":
             return
         lines = stdout.split("\n")
@@ -42,11 +48,17 @@ class NetworkState:
 
 class Wifi(LoopWidget):
     def __init__(self):
-        super().__init__(name="Wifi widget", callbacks={
-            "Button1": lazy.spawn("kitty -e nmtui"),
-        })
+        super().__init__(
+            name="Wifi widget",
+            callbacks={
+                "Button1": lazy.spawn("kitty -e nmtui"),
+            },
+        )
         self.__connected = False
         self.__state = NetworkState()
+        self.text_color = TEXT_COLOR
+        self.warn_color = WARN_COLOR
+        self.good_color = GOOD_COLOR
 
     @property
     def connected(self) -> bool:
@@ -54,21 +66,25 @@ class Wifi(LoopWidget):
 
     @connected.setter
     def connected(self, value: bool) -> None:
-        if self.__connected and not value:
-            qtile.cmd_spawn("notify-send 'Disconnected from network'")
+        if self.__connected != value:
+            notify("Connected to network" if value else "Disconnected from network")
         self.__connected = value
 
     def poll(self) -> str:
         try:
             self.__state.refresh()
         except NetworkError:
+            self.foreground = self.warn_color
             self.connected = False
             return "󰖪 "
         if self.__state.ethernet:
+            self.foreground = self.text_color
             self.connected = True
             return "󰈀 "
         if self.__state.wifi:
+            self.foreground = self.text_color
             self.connected = True
             return " "
+        self.foreground = self.warn_color
         self.connected = False
         return "󰤯 "
