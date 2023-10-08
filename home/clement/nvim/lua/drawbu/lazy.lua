@@ -212,5 +212,8 @@ return {
             require('drawbu.plugins.mini')
         end
     },
+
+    -- ↓ Epitech plugin
+    'drawbu/vim-epitech',
 }
 
