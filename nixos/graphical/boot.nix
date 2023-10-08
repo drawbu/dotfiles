@@ -1,10 +1,10 @@
 { pkgs, ... }:
 let
-  grub_catppuccin = pkgs.fetchFromGitHub {
-    owner = "catppuccin";
-    repo = "grub";
-    rev = "803c5df0e83aba61668777bb96d90ab8f6847106";
-    hash = "sha256-/bSolCta8GCZ4lP0u5NVqYQ9Y3ZooYCNdTwORNvR7M0=";
+  minegrub = pkgs.fetchFromGitHub {
+    owner = "Lxtharia";
+    repo = "minegrub-theme";
+    rev = "v2.0.0";
+    hash = "sha256-HZnVr9NtierP22pMy8C/BeZJDpBkKixROG0JaCAq5Y8=";
   };
 in
 {
@@ -17,7 +17,7 @@ in
         device = "nodev";
         gfxmodeEfi = "1920x1080x32";
         useOSProber = true;
-        theme = "${grub_catppuccin}/src/catppuccin-mocha-grub-theme";
+        theme = "${minegrub}/minegrub";
       };
     };
 
