@@ -12,8 +12,8 @@
   networking.hostName = "pain-de-mie";
 
   # Git signing
-  home-manager.users.clement.programs.git.extraConfig = {
-    key = "CFAE6BV61FF97205";
+  home-manager.users.clement.programs.git.signing = {
+    key = "CFAE6BC61FF97205";
     signByDefault = true;
   };
 
