@@ -21,6 +21,7 @@ in
     ./btop.nix
     ./gh.nix
     ./vim.nix
+    ./bash.nix
     ../../.config
   ];
 
