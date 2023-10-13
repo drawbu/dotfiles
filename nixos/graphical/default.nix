@@ -42,13 +42,6 @@
     };
 
     printing.enable = true;
-
-    physlock = {
-      enable = true;
-      lockMessage = "This computer is locked :)";
-      muteKernelMessages = true;
-      allowAnyUser = true;
-    };
   };
 
   programs.steam = {
@@ -64,6 +57,7 @@
       libsForQt5.plasma-nm
       modemmanager
       networkmanagerapplet
+      physlock
     ];
   };
 }

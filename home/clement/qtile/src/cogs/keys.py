@@ -38,7 +38,7 @@ keys = [
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pamixer --increase 5")),
 
     # ↓ Lock Screen
-    Key([META], "l", lazy.spawn("physlock"), desc="Locks Screen"),
+    Key([META], "l", lazy.spawn("i3lock -c 000000 -fe"), desc="Locks Screen"),
 
     # ↓ Media
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
