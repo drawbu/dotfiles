@@ -20,6 +20,7 @@ in
     ./kitty.nix
     ./btop.nix
     ./gh.nix
+    ./vim.nix
     ../../.config
   ];
 

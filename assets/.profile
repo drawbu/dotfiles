@@ -49,8 +49,6 @@ fi
 
 # NeoVim
 if [ -x "$(command -v nvim)" ]; then
-    alias vim="nvim"
-    alias vi="nvim"
     export EDITOR="nvim"
     export VISUAL="nvim"
 fi
