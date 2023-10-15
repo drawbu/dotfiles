@@ -12,6 +12,13 @@ return {
         end
     },
 
+    -- ↓ Gruvbox theme
+    {
+        'ellisonleao/gruvbox.nvim',
+        priority = 1000 ,
+        config = true,
+    },
+
     {
         'xiyaowong/transparent.nvim',
         lazy = false,
