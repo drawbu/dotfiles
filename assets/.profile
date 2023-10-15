@@ -51,6 +51,7 @@ fi
 if [ -x "$(command -v nvim)" ]; then
     export EDITOR="nvim"
     export VISUAL="nvim"
+    alias vim="nvim"
 fi
 
 # GitHub GPG Key

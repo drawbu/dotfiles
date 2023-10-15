@@ -10,6 +10,7 @@ in
     ./rofi
     ./git
     ./eww
+    ./vim
     ./gtk.nix
     ./firefox.nix
     ./cursor.nix
@@ -20,7 +21,6 @@ in
     ./kitty.nix
     ./btop.nix
     ./gh.nix
-    ./vim.nix
     ./bash.nix
     ../../.config
   ];
