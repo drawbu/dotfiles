@@ -28,5 +28,7 @@ in
       ];
       theme = "nixos-bgrt";
     };
+
+    consoleLogLevel = 0;
   };
 }
