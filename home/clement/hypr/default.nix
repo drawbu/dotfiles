@@ -18,6 +18,8 @@ in
       hyprland
       wofi
       waybar
+      swaybg
+      swaylock
     ];
   };
 }
