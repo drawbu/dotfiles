@@ -11,6 +11,7 @@ in
     ./git
     ./eww
     ./vim
+    ./hypr
     ./gtk.nix
     ./firefox.nix
     ./cursor.nix
