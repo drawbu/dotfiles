@@ -22,6 +22,7 @@ in
     ./btop.nix
     ./gh.nix
     ./bash.nix
+    ./lockscreen.nix
     ../../.config
   ];
 
@@ -36,7 +37,6 @@ in
     packages = with pkgs; [
       # ↓ ricing
       eww
-      i3lock
 
       # ↓ cli & tui
       direnv
@@ -97,12 +97,6 @@ in
         "95:class_g = 'Spotify'"
         "95:class_g = 'obsidian'"
       ];
-    };
-
-    screen-locker = {
-      enable = true;
-      lockCmd = "${pkgs.i3lock}/bin/i3lock -c 000000 -fe";
-      inactiveInterval = 60;
     };
   };
 }
