@@ -13,7 +13,7 @@ in
     enableCompletion = true;
     initExtra = ''
       source ${bashWakatime}/bash-wakatime.sh
-      source ~/assets/.profile
+      source ${./.profile}
     '';
   };
 }

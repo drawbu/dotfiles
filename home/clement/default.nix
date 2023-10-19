@@ -11,17 +11,17 @@ in
     ./git
     ./eww
     ./vim
+    ./shell/zsh
     ./gtk.nix
     ./firefox.nix
     ./cursor.nix
-    ./zsh.nix
     ./discord.nix
     ./tmux.nix
     ./dunst.nix
     ./kitty.nix
     ./btop.nix
     ./gh.nix
-    ./bash.nix
+    ./shell/bash.nix
     ./lockscreen.nix
     ../../.config
   ];
@@ -41,7 +41,6 @@ in
       # ↓ cli & tui
       direnv
       bat
-      exa
       wakatime
       btop
       neofetch
@@ -73,7 +72,6 @@ in
 
     file = {
       "assets".source = ../../assets;
-      ".xinitrc".source = ../../.xinitrc;
     };
   };
 
@@ -98,5 +96,15 @@ in
         "95:class_g = 'obsidian'"
       ];
     };
+  };
+
+  programs.exa = {
+    enable = true;
+    enableAliases = true;
+    git = true;
+    icons = true;
+    extraOptions = [
+      "--group-directories-first"
+    ];
   };
 }

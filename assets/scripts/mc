@@ -1,6 +1,0 @@
-# Minecraft fix on arch
-if [! -x "$(command -v minecraft-launcher)" ]; then
-    exit
-fi
-
-LC_ALL=C minecraft-launcher

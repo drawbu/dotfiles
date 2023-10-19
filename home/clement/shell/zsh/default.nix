@@ -1,10 +1,17 @@
-{ pkgs, lib, ... }: {
+{ pkgs, ... }: {
   programs.zsh = {
     enable = true;
-    dotDir = ".nix-zsh";
     initExtra = ''
-      source ~/.zshrc
+      COMPLETION_WAITING_DOTS="true"
+      HIST_STAMPS="mm/dd/yyyy"
+
+      # powerline10k
+      source ${./.p10k.zsh}
+
+      # Load custom shell config for any shell
+      source ${../.profile}
     '';
+
     plugins = [
       {
         name = "wakatime";
@@ -66,6 +73,4 @@
       ];
     };
   };
-
-  home.file.".zshrc".source = ../../.zshrc;
 }
