@@ -23,6 +23,7 @@ in
     ./gh.nix
     ./shell/bash.nix
     ./lockscreen.nix
+    ./picom.nix
     ../../.config
   ];
 
@@ -75,26 +76,11 @@ in
     };
   };
 
-  services = {
-    flameshot = {
-      enable = true;
-      settings.General = {
-        savePath = "/home/${username}/Downloads";
-        showStartupLaunchMessage = false;
-      };
-    };
-
-    picom = {
-      enable = true;
-      backend = "glx";
-      vSync = true;
-      opacityRules = [
-        "95:class_g = 'kitty'"
-        "95:class_g = 'thunderbird'"
-        "95:class_g = 'Thunar'"
-        "95:class_g = 'Spotify'"
-        "95:class_g = 'obsidian'"
-      ];
+  services.flameshot = {
+    enable = true;
+    settings.General = {
+      savePath = "/home/${username}/Downloads";
+      showStartupLaunchMessage = false;
     };
   };
 
