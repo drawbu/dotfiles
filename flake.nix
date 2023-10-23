@@ -7,12 +7,14 @@
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs =
     { nixpkgs
     , home-manager
     , nixpkgs_unstable
+    , nixos-hardware
     , ...
     }:
     let
@@ -52,6 +54,7 @@
             ./pancake.nix
             home-manager.nixosModules.home-manager
             { home-manager = hm; }
+            nixos-hardware.nixosModules.common-gpu-intel
           ];
         };
         "croissant" = nixpkgs.lib.nixosSystem {
