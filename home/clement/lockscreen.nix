@@ -3,7 +3,7 @@ let
   lock = "${pkgs.i3lock}/bin/i3lock -c 000000 -fe";
 in
 {
-  home.file."lock" = {
+  home.file."scripts/lock" = {
     text = lock;
     executable = true;
   };
