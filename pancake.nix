@@ -18,8 +18,8 @@
   };
 
   services = {
-    thermald.enable = true;
-    upower.enable = true;
+    thermald.enable = true;  # thermal daemon
+    power-profiles-daemon.enable = false;  # disable power thing from Gnome
 
     # idk intel hardware is borken
     xserver.videoDrivers = [ "modesetting" ];
@@ -27,4 +27,5 @@
 
   # Hardware acceleration
   hardware.opengl.enable = true;
+
 }

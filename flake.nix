@@ -55,6 +55,9 @@
             home-manager.nixosModules.home-manager
             { home-manager = hm; }
             nixos-hardware.nixosModules.common-gpu-intel
+            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.common-pc-laptop
+            nixos-hardware.nixosModules.common-pc-laptop-ssd
           ];
         };
         "croissant" = nixpkgs.lib.nixosSystem {
