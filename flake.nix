@@ -8,6 +8,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    ecsls = {
+      url = "github:Sigmapitech/ecsls";
+      inputs.nixpkgs.follows = "nixpkgs_unstable";
+    };
   };
 
   outputs =
@@ -15,6 +20,7 @@
     , home-manager
     , nixpkgs_unstable
     , nixos-hardware
+    , ecsls
     , ...
     }:
     let
@@ -27,7 +33,10 @@
       pkgs = import nixpkgs cfg;
       unstable = import nixpkgs_unstable cfg;
       hm = {
-        extraSpecialArgs = { inherit unstable pkgs; };
+        extraSpecialArgs = {
+          inherit unstable pkgs;
+          ecsls = ecsls.packages.${cfg.system}.default;
+        };
       };
     in
     {

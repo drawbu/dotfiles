@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, ecsls, ... }: {
   home.file = {
     ".config/nvim/lua".source = ./lua;
     ".config/nvim/ftplugin".source = ./ftplugin;
@@ -39,6 +39,8 @@
       nodePackages.vscode-langservers-extracted
       # Svelte
       nodePackages.svelte-language-server
+      # Epitech Coding Style
+      ecsls
 
       # Telescope tools
       ripgrep
