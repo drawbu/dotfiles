@@ -61,6 +61,7 @@ in
       thunderbird-bin
       vlc
       aseprite
+      teams-for-linux
 
       # ↓ games
       prismlauncher
