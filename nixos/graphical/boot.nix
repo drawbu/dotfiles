@@ -2,9 +2,9 @@
 let
   minegrub = pkgs.fetchFromGitHub {
     owner = "Lxtharia";
-    repo = "minegrub-theme";
-    rev = "v2.0.0";
-    hash = "sha256-HZnVr9NtierP22pMy8C/BeZJDpBkKixROG0JaCAq5Y8=";
+    repo = "minegrub-world-sel-theme";
+    rev = "4fd49ce76c6ed5077676326aeb99d69db480575e";
+    hash = "sha256-59fehgaYd4zz2A0A90qMtnKtPBGqW4Njk8niYPL2E0o=";
   };
 in
 {
@@ -17,7 +17,7 @@ in
         device = "nodev";
         gfxmodeEfi = "1920x1080x32";
         useOSProber = true;
-        theme = "${minegrub}/minegrub";
+        theme = "${minegrub}/minegrub-world-selection";
       };
     };
 
