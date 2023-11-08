@@ -170,6 +170,7 @@ return {
         'zbirenbaum/copilot.lua',
         cmd = 'Copilot',
         event = 'InsertEnter',
+        enabled = false,
         config = function()
             require('drawbu.plugins.copilot')
         end,
