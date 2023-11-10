@@ -44,24 +44,19 @@ cmp.setup({
 -- Autocomplete search
 cmp.setup.cmdline({'/', '?'}, {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = 'buffer' }
-    }
+    sources = {{ name = 'buffer' }}
 })
 
 -- Autocomplete command
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-        { name = 'path' }
-    }, {
-        {
+    sources = cmp.config.sources(
+        {{ name = 'path' }},
+        {{
             name = 'cmdline',
-            option = {
-                ignore_cmds = { 'Man', '!' }
-            }
-        }
-    })
+            option = { ignore_cmds = { 'Man', '!' } }
+        }}
+    )
 })
 
 -- Highlighting

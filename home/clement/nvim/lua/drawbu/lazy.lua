@@ -4,7 +4,7 @@ return {
     -- Catppuccin theme
     {
         'catppuccin/nvim',
-        as = 'catppuccin',
+        name = 'catppuccin',
         lazy = false,
         priority = 1000,
         config = function()
@@ -41,11 +41,11 @@ return {
     -- Syntax Highlighing
     {
         'nvim-treesitter/nvim-treesitter',
-        run = function()
+        build = function()
             local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
             ts_update()
         end,
-        tag = 'v0.9.1',
+        version = 'v0.9.1',
         config = function()
             require('drawbu.plugins.treesitter')
         end,
@@ -97,7 +97,6 @@ return {
     -- LSP
     {
         'VonHeikemen/lsp-zero.nvim',
-        after = { 'nvim-cmp' },
         branch = 'v2.x',
         dependencies = {
             -- LSP Support
