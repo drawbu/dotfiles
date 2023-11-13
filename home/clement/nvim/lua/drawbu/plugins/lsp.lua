@@ -13,7 +13,10 @@ lsp.lua_ls.setup({})
 lsp.clangd.setup({
   cmd = {
     'clangd',
+    '--background-index',
     '--offset-encoding=utf-16',
+    '--clang-tidy',
+    '--cross-file-rename',
   },
 })
 

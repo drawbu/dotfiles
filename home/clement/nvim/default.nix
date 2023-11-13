@@ -2,6 +2,7 @@
   home.file = {
     ".config/nvim/lua".source = ./lua;
     ".config/nvim/ftplugin".source = ./ftplugin;
+    ".clang-tidy".source = ./.clang-tidy;
   };
 
   programs.neovim = {
@@ -31,6 +32,7 @@
       # C
       llvmPackages_latest.clang
       clang-tools
+      clang-analyzer
       # Python
       pyright
       # Typescript
