@@ -154,9 +154,14 @@ return {
         config = function()
             require('nvim-tree').setup({
                 filters = {
-                    dotfiles = true,
+                    dotfiles = false,
                     git_ignored = false,
-                    custom = { '^\\.git' },
+                    custom = {
+                        '^\\.git',
+                        '^\\.cache',
+                        '^\\.direnv',
+                        '^\\.build',
+                    },
                 },
                 renderer = {
                     icons = {

@@ -1,5 +1,6 @@
 Checks: "-*,
   bugprone-*,
+  -bugprone-easily-swappable-parameters,
   misc-*,
   -misc-no-recursion,
   performance-*,
