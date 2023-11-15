@@ -62,6 +62,7 @@ in
       vlc
       aseprite
       teams-for-linux
+      zathura
 
       # ↓ games
       prismlauncher
