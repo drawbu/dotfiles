@@ -31,8 +31,8 @@
       nil
       # C
       llvmPackages_latest.clang
-      clang-tools
       clang-analyzer
+      clang-tools_16
       # Python
       pyright
       # Typescript

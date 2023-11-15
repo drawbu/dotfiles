@@ -107,21 +107,6 @@ return {
         end,
     },
 
-    {
-        'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-        after = { 'lsp-zero.nvim' },
-        config = function()
-            require('lsp_lines').setup()
-            vim.diagnostic.config({ virtual_text = false })
-            vim.keymap.set(
-                '',
-                '<Leader>t',
-                require('lsp_lines').toggle,
-                { desc = 'Toggle lsp_lines' }
-            )
-        end,
-    },
-
     -- Distraction free mode
     {
         'folke/zen-mode.nvim',
@@ -157,7 +142,7 @@ return {
                     dotfiles = false,
                     git_ignored = false,
                     custom = {
-                        '^\\.git',
+                        '^\\.git$',
                         '^\\.cache',
                         '^\\.direnv',
                         '^\\.build',
@@ -243,5 +228,10 @@ return {
             })
         end
     },
-}
 
+    -- ↓ Highlighing TODO
+    {
+        'folke/todo-comments.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+    },
+}
