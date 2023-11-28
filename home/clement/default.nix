@@ -63,6 +63,7 @@ in
       aseprite
       teams-for-linux
       zathura
+      godot_4
 
       # ↓ games
       prismlauncher

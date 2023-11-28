@@ -35,6 +35,9 @@ lsp.svelte.setup({})
 -- ↓ HTML
 lsp.html.setup({})
 
+-- ↓ Godot
+lsp.gdscript.setup({})
+
 -- ↓ Epitech C Style Checker
 if not configs.ecsls then
   configs.ecsls = {

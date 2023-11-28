@@ -43,6 +43,8 @@
       nodePackages.svelte-language-server
       # Epitech Coding Style
       ecsls
+      # Godot
+      gdtoolkit
 
       # Telescope tools
       ripgrep
