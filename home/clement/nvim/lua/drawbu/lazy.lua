@@ -234,4 +234,12 @@ return {
         'folke/todo-comments.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
     },
+
+    -- ↓ Refactor utils
+    {
+        'ThePrimeagen/refactoring.nvim',
+        config = function ()
+            require('refactoring').setup({})
+        end
+    },
 }
