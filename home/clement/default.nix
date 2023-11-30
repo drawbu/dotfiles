@@ -64,6 +64,8 @@ in
       teams-for-linux
       zathura
       godot_4
+      croc
+      wireguard-tools
 
       # ↓ games
       prismlauncher
