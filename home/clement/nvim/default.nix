@@ -8,7 +8,10 @@
   programs.neovim = {
     enable = true;
     extraConfig = ''
-      lua require('drawbu')
+      lua require('remap')
+      lua require('settings')
+      lua require('status-line')
+      lua require('lazy').setup('plugins')
     '';
 
     plugins = with pkgs.vimPlugins; [

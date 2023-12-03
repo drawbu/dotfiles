@@ -1,7 +1,6 @@
 -- Shoutout to https://nuxsh.is-a.dev/blog/custom-nvim-statusline.html
 -- for the inspiration and the help
 
-local vim = vim
 local modes = {
   ["n"] = "NORMAL",
   ["no"] = "NORMAL",
