@@ -5,6 +5,7 @@
     keyMode = "vi";
     mouse = true;
     baseIndex = 1;
+    secureSocket = true;
 
     plugins = with pkgs.tmuxPlugins; [
       sensible
