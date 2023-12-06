@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  lock = "${pkgs.i3lock}/bin/i3lock -c 000000 -fe";
+  lock = "${pkgs.i3lock}/bin/i3lock -c 000000 -fe -i ${./../../assets/wallpapers/diner.png}";
 in
 {
   home.file."scripts/lock" = {
