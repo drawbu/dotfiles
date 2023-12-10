@@ -21,36 +21,24 @@
     ];
 
     extraPackages = with pkgs; [
-      git
       tree-sitter
       unzip
       nodejs
-      lazygit
+      ripgrep
 
       # ↓ Language Servers ↓
-      # Lua
       lua-language-server
-      # Nix
       nil
-      # C
       llvmPackages_latest.clang
       clang-analyzer
       clang-tools_16
-      # Python
       pyright
-      # Typescript
       nodePackages.typescript-language-server
-      # CSS
       nodePackages.vscode-langservers-extracted
-      # Svelte
       nodePackages.svelte-language-server
-      # Epitech Coding Style
       ecsls
-      # Godot
       gdtoolkit
-
-      # Telescope tools
-      ripgrep
+      rust-analyzer
     ];
   };
 }
