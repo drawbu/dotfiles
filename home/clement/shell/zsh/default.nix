@@ -11,6 +11,7 @@
       # Load custom shell config for any shell
       source ${../.profile}
     '';
+    enableCompletion = false;
 
     plugins = [
       {
