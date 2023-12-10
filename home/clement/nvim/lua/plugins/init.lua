@@ -23,9 +23,6 @@ return {
     end,
   },
 
-  -- ↓ Easy navigation between neovim & tmux
-  'christoomey/vim-tmux-navigator',
-
   -- ↓ Jinja support
   { 'Glench/Vim-Jinja2-Syntax', ft = { 'jinja' } },
 
