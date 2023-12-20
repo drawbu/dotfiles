@@ -9,10 +9,7 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    ecsls = {
-      url = "github:Sigmapitech/ecsls";
-      inputs.nixpkgs.follows = "nixpkgs_unstable";
-    };
+    ecsls.url = "github:Sigmapitech/ecsls";
   };
 
   outputs =
