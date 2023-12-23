@@ -17,7 +17,6 @@ in
       enable = true;
       extraPackages = python3Packages: with python3Packages; [
         catppuccin
-        qtile-extras
         typing-extensions
       ];
     };

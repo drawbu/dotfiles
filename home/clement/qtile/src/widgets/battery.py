@@ -2,8 +2,6 @@ from enum import Enum
 from typing import Optional
 from typing_extensions import Self
 
-from qtile_extras.widget.mixins import TooltipMixin
-
 from utils import (
     get_stdout, LoopWidget, notify, 
     GOOD_COLOR, TEXT_COLOR, WARN_COLOR
@@ -74,16 +72,13 @@ class BatteryState():
                 continue
 
 
-class Battery(LoopWidget, TooltipMixin):
+class Battery(LoopWidget):
     def __init__(self):
         LoopWidget.__init__(self, name="Battery")
-        TooltipMixin.__init__(self)
-        self.add_defaults(TooltipMixin.defaults)
         battery = self.__get_device()
         if battery is None:
             return
         self.battery = BatteryState(battery)
-        self.tooltip_text = ""
         self.text_color = TEXT_COLOR
         self.warn_color = WARN_COLOR
         self.good_color = GOOD_COLOR
@@ -97,20 +92,6 @@ class Battery(LoopWidget, TooltipMixin):
             if dev.startswith("/org/freedesktop/UPower/devices/battery_"):
                 return dev
         return None
-
-    def __set_tooltip(self) -> None:
-        state = self.battery.state
-        if state == ChargeState.full:
-            self.tooltip_text = f"The battery is full"
-        time_to_full = self.battery.time_to_full
-        if time_to_full is not None and state == ChargeState.charging:
-            self.tooltip_text = f"{time_to_full} left to full"
-            return
-        time_to_empty = self.battery.time_to_empty
-        if time_to_empty is not None and state == ChargeState.discharging:
-            self.tooltip_text = f"{time_to_empty} left on battery"
-            return
-        self.tooltip_text = ""
 
     def __warn(self) -> None:
         percentage = self.battery.percentage
@@ -132,7 +113,6 @@ class Battery(LoopWidget, TooltipMixin):
         if state is None or percentage is None:
             notify("Something went wrong with the battery widget.")
             return ""
-        self.__set_tooltip()
         arrow_icon = (
             "󰁞" if state == ChargeState.charging else
             "󰁆" if state == ChargeState.discharging else
