@@ -5,7 +5,6 @@ let
 in
 {
   imports = [
-    ./nvim
     ./qtile
     ./rofi
     ./git

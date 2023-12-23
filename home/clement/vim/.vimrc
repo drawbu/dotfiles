@@ -1,15 +1,3 @@
-" my VIM config
-
-
-" Plugins
-call plug#begin()
-
-Plug 'wakatime/vim-wakatime'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'drawbu/vim-epitech'
-
-call plug#end()
-
 let mapleader = " "
 
 " File format
@@ -36,8 +24,11 @@ if has('persistent_undo')
     set undofile
 endif
 
-" Swapfiles
+" All my homies hate swapfile
 set noswapfile
+
+" Custom settings
+filetype plugin on
 
 " Colors
 syntax off
@@ -49,10 +40,12 @@ highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$/
 
 " Switch between buffers
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
-map <leader>x :bdelete<cr>
+nnoremap <leader>pv :Ex<CR>
+nnoremap <leader>l :bnext<cr>
+nnoremap <leader>h :bprevious<cr>
 
 " Smooth scroll
 map <C-u> <C-u>zz<cr>
 map <C-d> <C-d>zz<cr>
+map n nzz
+map N Nzz

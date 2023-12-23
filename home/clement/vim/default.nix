@@ -1,12 +1,46 @@
-{ pkgs, ... }:
-{
-  home = {
-    file.".vimrc".text = ''
-      source ${pkgs.vimPlugins.vim-plug}/plug.vim
-    '' + builtins.readFile ./.vimrc;
+{ pkgs, ecsls, ... }: {
+  imports = [
+    ./vim.nix
+  ];
+  home.file = {
+    ".config/nvim/lua".source = ./lua;
+    ".config/nvim/ftplugin".source = ./ftplugin;
+    ".clang-tidy".source = ./.clang-tidy;
+  };
 
-    packages = with pkgs; [
-      vim
+  programs.neovim = {
+    enable = true;
+    extraConfig = builtins.readFile ./.vimrc + ''
+      lua require('settings')
+      lua require('status-line')
+      lua require('lazy').setup('plugins')
+    '';
+
+    plugins = with pkgs.vimPlugins; [
+      lazy-nvim
+      # Syntax highlighting
+      nvim-treesitter.withAllGrammars
+    ];
+
+    extraPackages = with pkgs; [
+      tree-sitter
+      unzip
+      nodejs
+      ripgrep
+
+      # ↓ Language Servers ↓
+      lua-language-server
+      nil
+      llvmPackages_latest.clang
+      clang-analyzer
+      clang-tools_17
+      pyright
+      nodePackages.typescript-language-server
+      nodePackages.vscode-langservers-extracted
+      nodePackages.svelte-language-server
+      ecsls
+      gdtoolkit
+      rust-analyzer
     ];
   };
 }
