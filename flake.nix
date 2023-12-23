@@ -39,12 +39,6 @@
     {
       formatter.${cfg.system} = pkgs.nixpkgs-fmt;
 
-      homeConfigurations = {
-        "linux" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./home/clement ];
-        };
-      };
       nixosConfigurations = {
         "pain-de-mie" = nixpkgs.lib.nixosSystem {
           system = cfg.system;
@@ -64,14 +58,6 @@
             nixos-hardware.nixosModules.common-cpu-intel
             nixos-hardware.nixosModules.common-pc-laptop
             nixos-hardware.nixosModules.common-pc-laptop-ssd
-          ];
-        };
-        "croissant" = nixpkgs.lib.nixosSystem {
-          system = cfg.system;
-          modules = [
-            ./croissant.nix
-            home-manager.nixosModules.home-manager
-            { home-manager = hm; }
           ];
         };
       };
