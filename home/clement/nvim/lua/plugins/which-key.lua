@@ -17,9 +17,6 @@ return {{
     wk.register({
       ['<leader>u'] = 'Undo tree',
       ['<leader> '] = 'Open a terminal',
-      ['<leader>a'] = 'Add to Harpoon',
-      ['<leader>l'] = 'Previous Harpoon file',
-      ['<leader>h'] = 'Next Harpoon file',
       ['<leader>x'] = 'Open all errors',
     })
 
