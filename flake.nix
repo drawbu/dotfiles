@@ -1,5 +1,4 @@
 {
-  description = "Home Manager configuration of clement";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.11";
     nixpkgs_legacy.url = "nixpkgs/nixos-23.05";
@@ -29,9 +28,6 @@
         system = "x86_64-linux";
         config = {
           allowUnfree = true;
-          permittedInsecurePackages = [
-            "electron-25.9.0" # obsidian
-          ];
         };
       };
       pkgs = import nixpkgs cfg;

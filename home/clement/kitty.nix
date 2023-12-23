@@ -17,7 +17,7 @@
       background_opacity = "0.95";
       dynamic_background_opacity = "yes";
       window_padding_width = "0.0";
-      remember_window_size = "no"; 
+      remember_window_size = "no";
       initial_window_width = "640";
       initial_window_height = "400";
 

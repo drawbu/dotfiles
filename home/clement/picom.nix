@@ -29,9 +29,9 @@
       animation-window-mass = 0.5;
       animation-clamping = true;
       animation-for-open-window = "zoom";
-      animation-delta = 10;  # Adjust this value
-      animation-stiffness = 110;  # Adjust this value
-      animation-dampening = 20;  # Adjust this value
+      animation-delta = 10; # Adjust this value
+      animation-stiffness = 110; # Adjust this value
+      animation-dampening = 20; # Adjust this value
       animation-for-unmap-window = "slide-left";
       animation-for-transient-window = "slide-down";
     };

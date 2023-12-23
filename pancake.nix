@@ -10,7 +10,7 @@
   ];
 
   networking.hostName = "pancake";
-  
+
   # Git signing
   home-manager.users.clement.programs.git.signing = {
     key = "6e7293f5e7427602";
@@ -18,8 +18,8 @@
   };
 
   services = {
-    thermald.enable = true;  # thermal daemon
-    power-profiles-daemon.enable = false;  # disable power thing from Gnome
+    thermald.enable = true; # thermal daemon
+    power-profiles-daemon.enable = false; # disable power thing from Gnome
 
     # idk intel hardware is borken
     xserver.videoDrivers = [ "modesetting" ];

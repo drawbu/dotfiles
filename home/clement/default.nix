@@ -1,5 +1,5 @@
 # 'clement' user home-manager config for NixOS & generic linux
-{ pkgs, unstable, ... }:
+{ pkgs, unstable, pkgs_legacy, ... }:
 let
   username = "clement";
 in
@@ -47,11 +47,11 @@ in
       neofetch
       ookla-speedtest
       wget
-      unstable.banana-vera
+      banana-vera
       lazygit
 
       # ↓ softwares
-      obsidian
+      pkgs_legacy.obsidian
       spotify
       unstable.vscode
       jetbrains.clion
