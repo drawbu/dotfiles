@@ -45,7 +45,7 @@ in
       wakatime
       btop
       neofetch
-      speedtest-cli
+      ookla-speedtest
       wget
       unstable.banana-vera
       lazygit
@@ -93,7 +93,7 @@ in
     };
   };
 
-  programs.exa = {
+  programs.eza = {
     enable = true;
     enableAliases = true;
     git = true;

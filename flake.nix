@@ -1,12 +1,15 @@
 {
   description = "Home Manager configuration of clement";
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-23.05";
+    nixpkgs.url = "nixpkgs/nixos-23.11";
+    nixpkgs_legacy.url = "nixpkgs/nixos-23.05";
     nixpkgs_unstable.url = "nixpkgs/nixos-unstable";
+
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     ecsls.url = "github:Sigmapitech/ecsls";
@@ -14,8 +17,9 @@
 
   outputs =
     { nixpkgs
-    , home-manager
     , nixpkgs_unstable
+    , nixpkgs_legacy
+    , home-manager
     , nixos-hardware
     , ecsls
     , ...
@@ -25,15 +29,20 @@
         system = "x86_64-linux";
         config = {
           allowUnfree = true;
+          permittedInsecurePackages = [
+            "electron-25.9.0" # obsidian
+          ];
         };
       };
       pkgs = import nixpkgs cfg;
       unstable = import nixpkgs_unstable cfg;
+      pkgs_legacy = import nixpkgs_legacy cfg;
+      extraArgs = {
+        inherit pkgs unstable pkgs_legacy;
+        ecsls = ecsls.packages.${cfg.system}.default;
+      };
       hm = {
-        extraSpecialArgs = {
-          inherit unstable pkgs;
-          ecsls = ecsls.packages.${cfg.system}.default;
-        };
+        extraSpecialArgs = extraArgs;
       };
     in
     {
@@ -42,6 +51,7 @@
       nixosConfigurations = {
         "pain-de-mie" = nixpkgs.lib.nixosSystem {
           system = cfg.system;
+          specialArgs = extraArgs;
           modules = [
             ./pain-de-mie.nix
             home-manager.nixosModules.home-manager
@@ -50,6 +60,7 @@
         };
         "pancake" = nixpkgs.lib.nixosSystem {
           system = cfg.system;
+          specialArgs = extraArgs;
           modules = [
             ./pancake.nix
             home-manager.nixosModules.home-manager
