@@ -1,13 +1,18 @@
 { pkgs, ... }:
 let
-  sddm_catppuccin = pkgs.fetchFromGitHub {
-    owner = "catppuccin";
-    repo = "sddm";
-    rev = "7fc67d1027cdb7f4d833c5d23a8c34a0029b0661";
-    hash = "sha256-SjYwyUvvx/ageqVH5MmYmHNRKNvvnF3DYMJ/f2/L+Go=";
+  sddmAstronautTheme = pkgs.fetchFromGitHub {
+    owner = "Keyitdev";
+    repo = "sddm-astronaut-theme";
+    rev = "468a100460d5feaa701c2215c737b55789cba0fc";
+    hash = "sha256-L+5xoyjX3/nqjWtMRlHR/QfAXtnICyGzxesSZexZQMA=";
   };
 in
 {
+  environment.systemPackages = with pkgs.libsForQt5.qt5; [
+    qtgraphicaleffects
+    qtquickcontrols2
+    qtsvg
+  ];
   services.xserver = {
     enable = true;
     layout = "fr";
@@ -24,7 +29,8 @@ in
     displayManager.sddm = {
       enable = true;
       autoNumlock = true;
-      theme = "${sddm_catppuccin}/src/catppuccin-mocha";
+      theme = "${sddmAstronautTheme}";
+      defaultSession = "none+qtile";
     };
   };
 
