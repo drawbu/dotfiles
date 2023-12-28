@@ -26,11 +26,13 @@ in
       ];
     };
     desktopManager.gnome.enable = true;
-    displayManager.sddm = {
-      enable = true;
-      autoNumlock = true;
-      theme = "${sddmAstronautTheme}";
+    displayManager = {
       defaultSession = "none+qtile";
+      sddm = {
+        enable = true;
+        autoNumlock = true;
+        theme = "${sddmAstronautTheme}";
+      };
     };
   };
 
