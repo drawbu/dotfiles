@@ -10,6 +10,7 @@
   ];
 
   networking.hostName = "pain-de-mie";
+  system.stateVersion = "22.11";
 
   # Git signing
   home-manager.users.clement.programs.git.signing = {

@@ -1,9 +1,6 @@
 { pkgs, ... }:
 {
-  system = {
-    copySystemConfiguration = false;
-    stateVersion = "23.05";
-  };
+  system.copySystemConfiguration = false;
   nix = {
     gc = {
       automatic = true;

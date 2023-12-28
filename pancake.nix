@@ -10,6 +10,7 @@
   ];
 
   networking.hostName = "pancake";
+  system.stateVersion = "23.05";
 
   # Git signing
   home-manager.users.clement.programs.git.signing = {
