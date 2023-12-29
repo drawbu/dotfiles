@@ -80,8 +80,8 @@ return {
     'folke/trouble.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      require('trouble').setup {}
-      vim.keymap.set('n', '<leader>x', function() require('trouble').open() end)
+      require('trouble').setup({})
+      vim.keymap.set('n', '<leader>x', require('trouble').open, { desc = 'Open all errors' })
     end,
   },
 

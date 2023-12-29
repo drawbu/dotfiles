@@ -1,6 +1,7 @@
-return {{
+return {
   'akinsho/toggleterm.nvim',
   version = '*',
+  priority = 1000,
   config = function()
     local Terminal  = require('toggleterm.terminal').Terminal
     local lazygit = Terminal:new({
@@ -21,7 +22,7 @@ return {{
       end,
     })
 
-    vim.keymap.set('n', '<leader> ', function() terminal:toggle() end)
-    vim.keymap.set('n', '<leader>gl', function() lazygit:toggle() end)
+    vim.keymap.set('n', '<leader> ', function() terminal:toggle() end, { desc = 'Open a terminal' })
+    vim.keymap.set('n', '<leader>gl', function() lazygit:toggle() end, { desc = 'Open lazygit' })
   end,
-}}
+}

@@ -1,4 +1,4 @@
-return {{
+return {
   'echasnovski/mini.nvim',
   version = '*',
   config = function ()
@@ -28,4 +28,4 @@ return {{
       },
     })
     end
-}}
+}
