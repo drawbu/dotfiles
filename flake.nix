@@ -52,6 +52,11 @@
             ./pain-de-mie.nix
             home-manager.nixosModules.home-manager
             { home-manager = hm; }
+            # nixos-hardware.nixosModules.common-gpu-nvidia
+            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.common-pc
+            nixos-hardware.nixosModules.common-pc-ssd
+            nixos-hardware.nixosModules.common-pc-hdd
           ];
         };
         "pancake" = nixpkgs.lib.nixosSystem {

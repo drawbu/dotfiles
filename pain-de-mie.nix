@@ -19,7 +19,17 @@
   };
 
   # nvidia, fuck you
-  hardware.opengl.enable = true;
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+    nvidia = {
+      nvidiaSettings = true;
+      open = false;
+    };
+  };
   services.xserver.videoDrivers = [ "nvidia" ];
   services.xserver.displayManager.setupCommands = ''
     ${pkgs.xorg.xrandr}/bin/xrandr --output DVI-D-0 --right-of HDMI-0
