@@ -110,7 +110,7 @@ class Battery(LoopWidget):
         self.battery.refresh()
         state = self.battery.state
         percentage = self.battery.percentage
-        if state is None or percentage is None:
+        if percentage is None:
             notify("Something went wrong with the battery widget.")
             return ""
         arrow_icon = (
