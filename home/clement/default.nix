@@ -65,6 +65,7 @@ in
       godot_4
       croc
       wireguard-tools
+      beeper
 
       # ↓ games
       prismlauncher
