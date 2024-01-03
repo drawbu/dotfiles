@@ -41,6 +41,7 @@
       ecsls
       gdtoolkit
       rust-analyzer
+      haskell-language-server
     ];
   };
 }
