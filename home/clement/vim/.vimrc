@@ -30,15 +30,6 @@ set noswapfile
 " Custom settings
 filetype plugin on
 
-" Colors
-syntax off
-colorscheme pablo
-hi Normal guibg=NONE ctermbg=NONE
-
-" Hightlight spaces
-highlight RedundantSpaces ctermbg=red guibg=red
-match RedundantSpaces /\s\+$/
-
 " Switch between buffers
 nnoremap <leader>pv :Ex<CR>
 nnoremap <leader>l :bnext<cr>

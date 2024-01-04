@@ -12,6 +12,12 @@
 
       call plug#end()
 
+      syntax off
+      colorscheme pablo
+      hi Normal guibg=NONE ctermbg=NONE
+
+      highlight RedundantSpaces ctermbg=red guibg=red
+      match RedundantSpaces /\s\+$/
     '' + builtins.readFile ./.vimrc;
 
     packages = with pkgs; [
