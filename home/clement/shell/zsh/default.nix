@@ -37,8 +37,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "zsh-users";
           repo = "zsh-syntax-highlighting";
-          rev = "0.7.1";
-          hash = "sha256-gOG0NLlaJfotJfs+SUhGgLTNOnGLjoqnUp54V9aFJg8=";
+          rev = "0.8.0";
+          hash = "sha256-c7jLX8u5QfW4ukxYd5mBmMY5e7unDEjsvbIUxg3jnaA=";
         };
       }
       {
@@ -46,23 +46,24 @@
         src = pkgs.fetchFromGitHub {
           owner = "marlonrichert";
           repo = "zsh-autocomplete";
-          rev = "eee8bbeb717e44dc6337a799ae60eda02d371b73";
-          hash = "sha256-2qkB8I3GXeg+mH8l12N6dnKtdnaxTeLf5lUHWxA2rNg=";
-        };
-      }
-      {
-        name = "nix-zsh-completions";
-        src = pkgs.fetchFromGitHub {
-          owner = "nix-community";
-          repo = "nix-zsh-completions";
-          rev = "0.5.0";
-          hash = "sha256-DKvCpjAeCiUwD5l6PUW7WlEvM0cNZEOk41IiVXoh9D8=";
+          rev = "6d059a3634c4880e8c9bb30ae565465601fb5bd2"; # 2023-07-13
+          hash = "sha256-0NW0TI//qFpUA2Hdx6NaYdQIIUpRSd0Y4NhwBbdssCs=";
         };
       }
       {
         name = "powerlevel10k";
         src = pkgs.zsh-powerlevel10k;
         file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
+      {
+        name = "colored-man-pages";
+        src = pkgs.fetchFromGitHub {
+          owner = "ael-code";
+          repo = "zsh-colored-man-pages";
+          rev = "57bdda68e52a09075352b18fa3ca21abd31df4cb";
+          hash = "sha256-087bNmB5gDUKoSriHIjXOVZiUG5+Dy9qv3D69E8GBhs=";
+        };
+        file = "colored-man-pages.plugin.zsh";
       }
     ];
 
