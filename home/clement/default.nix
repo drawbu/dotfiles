@@ -10,7 +10,7 @@ in
     ./git
     ./eww
     ./vim
-    ./shell/zsh
+    ./shell
     ./gtk.nix
     ./firefox.nix
     ./cursor.nix
@@ -20,7 +20,6 @@ in
     ./kitty.nix
     ./btop.nix
     ./gh.nix
-    ./shell/bash.nix
     ./lockscreen.nix
     ./picom.nix
     ./mimeapps.nix

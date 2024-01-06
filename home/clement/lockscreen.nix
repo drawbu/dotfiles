@@ -10,7 +10,7 @@ in
 
   services.screen-locker = {
     enable = true;
-    lockCmd = lock;
+    lockCmd = "sh ~/scripts/lock";
     inactiveInterval = 60;
   };
 }
