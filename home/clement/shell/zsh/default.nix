@@ -25,30 +25,18 @@
       }
       {
         name = "zsh-autosuggestions";
-        src = pkgs.fetchFromGitHub {
-          owner = "zsh-users";
-          repo = "zsh-autosuggestions";
-          rev = "v0.7.0";
-          hash = "sha256-KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
-        };
+        src = pkgs.zsh-autosuggestions;
+        file = "share/zsh-autosuggestions/zsh-autosuggestions.zsh";
       }
       {
-        name = "zsh-syntax-highlighting";
-        src = pkgs.fetchFromGitHub {
-          owner = "zsh-users";
-          repo = "zsh-syntax-highlighting";
-          rev = "0.8.0";
-          hash = "sha256-c7jLX8u5QfW4ukxYd5mBmMY5e7unDEjsvbIUxg3jnaA=";
-        };
+        name = "zsh-fzf-tab";
+        src = pkgs.zsh-fzf-tab;
+        file = "share/fzf-tab/fzf-tab.plugin.zsh";
       }
       {
-        name = "zsh-autocomplete";
-        src = pkgs.fetchFromGitHub {
-          owner = "marlonrichert";
-          repo = "zsh-autocomplete";
-          rev = "6d059a3634c4880e8c9bb30ae565465601fb5bd2"; # 2023-07-13
-          hash = "sha256-0NW0TI//qFpUA2Hdx6NaYdQIIUpRSd0Y4NhwBbdssCs=";
-        };
+        name = "zsh-nix-shell";
+        src = pkgs.zsh-nix-shell;
+        file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
       }
       {
         name = "powerlevel10k";
@@ -56,22 +44,23 @@
         file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
       {
-        name = "colored-man-pages";
-        src = pkgs.fetchFromGitHub {
-          owner = "ael-code";
-          repo = "zsh-colored-man-pages";
-          rev = "57bdda68e52a09075352b18fa3ca21abd31df4cb";
-          hash = "sha256-087bNmB5gDUKoSriHIjXOVZiUG5+Dy9qv3D69E8GBhs=";
-        };
-        file = "colored-man-pages.plugin.zsh";
+        name = "zsh-defer";
+        src = pkgs.zsh-defer;
+        file = "share/zsh-defer/zsh-defer.plugin.zsh";
+      }
+      {
+        name = "F-Sy-H";
+        src = pkgs.zsh-f-sy-h;
+        file = "share/zsh/site-functions/F-Sy-H.plugin.zsh";
       }
     ];
 
     oh-my-zsh = {
       enable = true;
       plugins = [
-        "git"
         "direnv"
+        "colored-man-pages"
+        "copyfile"
       ];
     };
   };

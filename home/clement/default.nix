@@ -47,6 +47,7 @@ in
       wget
       banana-vera
       lazygit
+      entr
 
       # ↓ softwares
       pkgs_legacy.obsidian
