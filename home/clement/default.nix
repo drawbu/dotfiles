@@ -48,6 +48,7 @@ in
       banana-vera
       lazygit
       entr
+      xclip
 
       # ↓ softwares
       pkgs_legacy.obsidian
