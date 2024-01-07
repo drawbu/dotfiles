@@ -7,6 +7,11 @@
 
       # Load custom shell config for any shell
       source ${./.profile}
+
+      if [ $(${pkgs.todo}/bin/todo | wc -l) != 0 ]; then
+          echo "Today's tasks:"
+          todo
+      fi
     '';
     enableCompletion = false;
 

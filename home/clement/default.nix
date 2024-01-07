@@ -49,6 +49,7 @@ in
       lazygit
       entr
       xclip
+      todo
 
       # ↓ softwares
       pkgs_legacy.obsidian
