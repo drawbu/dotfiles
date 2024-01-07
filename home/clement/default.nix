@@ -48,6 +48,7 @@ in
       banana-vera
       lazygit
       entr
+      xsel
       xclip
       todo
 
