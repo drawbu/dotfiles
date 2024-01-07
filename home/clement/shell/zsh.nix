@@ -5,11 +5,8 @@
       COMPLETION_WAITING_DOTS="true"
       HIST_STAMPS="mm/dd/yyyy"
 
-      # powerline10k
-      source ${./.p10k.zsh}
-
       # Load custom shell config for any shell
-      source ${../.profile}
+      source ${./.profile}
     '';
     enableCompletion = false;
 
@@ -37,11 +34,6 @@
         name = "zsh-nix-shell";
         src = pkgs.zsh-nix-shell;
         file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
-      }
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
       {
         name = "zsh-defer";
