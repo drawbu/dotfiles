@@ -6,6 +6,7 @@
     ".config/nvim/lua".source = ./lua;
     ".config/nvim/ftplugin".source = ./ftplugin;
     ".clang-tidy".source = ./.clang-tidy;
+    ".clang-format".source = ./.clang-format;
   };
 
   programs.neovim = {

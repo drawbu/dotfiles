@@ -8,9 +8,12 @@ Checks: "-*,
   readability-*,
   -readability-braces-around-statements,
   -readability-identifier-length,
+  -readability-magic-numbers,
   clang-analyzer-*,
   modernize-*,
+  -modernize-use-trailing-return-type,
   llvm-*,
+  cppcoreguidelines-*,
 "
 
 CheckOptions:

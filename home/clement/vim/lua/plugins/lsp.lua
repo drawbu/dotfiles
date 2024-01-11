@@ -10,6 +10,7 @@ return {
       local lsp = require('lspconfig')
       local configs = require('lspconfig.configs')
 
+
       lsp.nil_ls.setup({})
       lsp.lua_ls.setup({})
       lsp.clangd.setup({
@@ -62,11 +63,12 @@ return {
       lsp_zero.on_attach(function(_, bufnr)
         local opts = {buffer = bufnr, remap = false}
 
-        vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
-        vim.keymap.set('n', 'gr', function() vim.lsp.buf.rename() end, opts)
-        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
-        vim.keymap.set('n', 'ga', function() vim.lsp.buf.code_action() end, opts)
-        vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.rename, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, opts)
+        vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
+        vim.keymap.set('n', 'gf', vim.lsp.buf.format, opts)
         lsp_zero.default_keymaps({buffer = bufnr})
       end)
 
