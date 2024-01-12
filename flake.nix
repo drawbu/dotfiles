@@ -15,16 +15,7 @@
     ehcsls.url = "github:Sigmapitech/ehcsls";
   };
 
-  outputs =
-    { nixpkgs
-    , nixpkgs_unstable
-    , nixpkgs_legacy
-    , home-manager
-    , nixos-hardware
-    , ecsls
-    , ehcsls
-    , ...
-    }:
+  outputs = {self, ...} @ inputs:
     let
       cfg = {
         system = "x86_64-linux";
@@ -32,47 +23,48 @@
           allowUnfree = true;
         };
       };
-      pkgs = import nixpkgs cfg;
-      unstable = import nixpkgs_unstable cfg;
-      pkgs_legacy = import nixpkgs_legacy cfg;
+      pkgs = import inputs.nixpkgs cfg;
+      unstable = import inputs.nixpkgs_unstable cfg;
+      pkgs_legacy = import inputs.nixpkgs_legacy cfg;
       extraArgs = {
         inherit pkgs unstable pkgs_legacy;
-        ecsls = ecsls.packages.${cfg.system}.default;
-        ehcsls = ehcsls.packages.${cfg.system}.default;
+        ecsls = inputs.ecsls.packages.${cfg.system}.default;
+        ehcsls = inputs.ehcsls.packages.${cfg.system}.default;
       };
       hm = {
         extraSpecialArgs = extraArgs;
       };
+      hardware = inputs.nixos-hardware.nixosModules;
     in
     {
       formatter.${cfg.system} = pkgs.nixpkgs-fmt;
 
       nixosConfigurations = {
-        "pain-de-mie" = nixpkgs.lib.nixosSystem {
+        "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem {
           system = cfg.system;
           specialArgs = extraArgs;
           modules = [
             ./pain-de-mie.nix
-            home-manager.nixosModules.home-manager
+            inputs.home-manager.nixosModules.home-manager
             { home-manager = hm; }
             # nixos-hardware.nixosModules.common-gpu-nvidia
-            nixos-hardware.nixosModules.common-cpu-intel
-            nixos-hardware.nixosModules.common-pc
-            nixos-hardware.nixosModules.common-pc-ssd
-            nixos-hardware.nixosModules.common-pc-hdd
+            hardware.common-cpu-intel
+            hardware.common-pc
+            hardware.common-pc-ssd
+            hardware.common-pc-hdd
           ];
         };
-        "pancake" = nixpkgs.lib.nixosSystem {
+        "pancake" = inputs.nixpkgs.lib.nixosSystem {
           system = cfg.system;
           specialArgs = extraArgs;
           modules = [
             ./pancake.nix
-            home-manager.nixosModules.home-manager
+            inputs.home-manager.nixosModules.home-manager
             { home-manager = hm; }
-            nixos-hardware.nixosModules.common-gpu-intel
-            nixos-hardware.nixosModules.common-cpu-intel
-            nixos-hardware.nixosModules.common-pc-laptop
-            nixos-hardware.nixosModules.common-pc-laptop-ssd
+            hardware.common-gpu-intel
+            hardware.common-cpu-intel
+            hardware.common-pc-laptop
+            hardware.common-pc-laptop-ssd
           ];
         };
       };
