@@ -11,22 +11,27 @@
 
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+
     extraConfig = builtins.readFile ./.vimrc + ''
       lua require('settings')
       lua require('status-line')
       lua require('lazy').setup('plugins')
     '';
 
+    withNodeJs = true;
+    withPython3 = true;
+    withRuby = true;
+
     plugins = with pkgs.vimPlugins; [
       lazy-nvim
-      # Syntax highlighting
       nvim-treesitter.withAllGrammars
     ];
 
     extraPackages = with pkgs; [
       tree-sitter
-      unzip
-      nodejs
       ripgrep
 
       # ↓ Language Servers ↓
