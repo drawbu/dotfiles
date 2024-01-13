@@ -17,7 +17,6 @@
 
     extraConfig = builtins.readFile ./.vimrc + ''
       lua require('settings')
-      lua require('status-line')
       lua require('lazy').setup('plugins')
     '';
 
