@@ -6,7 +6,7 @@
   ];
 
   home.file = {
-    "scripts/fixwifi" =
+    ".local/bin/fixwifi" =
       let
         nmcli = "${pkgs.networkmanager}/bin/nmcli";
       in {
