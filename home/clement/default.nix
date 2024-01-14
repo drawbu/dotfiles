@@ -23,6 +23,7 @@ in
     ./lockscreen.nix
     ./picom.nix
     ./mimeapps.nix
+    ./editorconfig.nix
   ];
 
   programs.home-manager.enable = true;
