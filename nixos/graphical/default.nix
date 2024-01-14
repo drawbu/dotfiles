@@ -15,6 +15,11 @@
   hardware = {
     pulseaudio.enable = false;
     bluetooth.enable = true;
+
+    logitech.wireless = {
+      enable = true;
+      enableGraphical = true;
+    };
   };
 
   programs = {
