@@ -12,8 +12,8 @@ in
     enable = true;
     enableCompletion = true;
     initExtra = ''
+      source ~/.shell-extra
       source ${bashWakatime}/bash-wakatime.sh
-      source ${./.profile}
     '';
   };
 }

@@ -40,7 +40,6 @@ in
 
       # ↓ cli & tui
       direnv
-      bat
       wakatime
       btop
       neofetch
@@ -94,21 +93,37 @@ in
     };
   };
 
-  services.flameshot = {
-    enable = true;
-    settings.General = {
-      savePath = "/home/${username}/Downloads";
-      showStartupLaunchMessage = false;
+  services = {
+    flameshot = {
+      enable = true;
+      settings.General = {
+        savePath = "/home/${username}/Downloads";
+        showStartupLaunchMessage = false;
+      };
+    };
+
+    gpg-agent = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+      enableSshSupport = true;
     };
   };
 
-  programs.eza = {
-    enable = true;
-    enableAliases = true;
-    git = true;
-    icons = true;
-    extraOptions = [
-      "--group-directories-first"
-    ];
+  programs = {
+    eza = {
+      enable = true;
+      enableAliases = true;
+      git = true;
+      icons = true;
+      extraOptions = [
+        "--group-directories-first"
+      ];
+    };
+
+    bat = {
+      enable = true;
+      config.theme = "TwoDark";
+    };
   };
 }

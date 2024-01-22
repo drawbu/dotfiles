@@ -2,11 +2,7 @@
   programs.zsh = {
     enable = true;
     initExtra = ''
-      COMPLETION_WAITING_DOTS="true"
-      HIST_STAMPS="mm/dd/yyyy"
-
-      # Load custom shell config for any shell
-      source ${./.profile}
+      source ~/.shell-extra
 
       if [ $(${pkgs.todo}/bin/todo | wc -l) != 0 ]; then
           echo "Today's tasks:"
@@ -56,7 +52,6 @@
       enable = true;
       plugins = [
         "direnv"
-        "colored-man-pages"
         "copyfile"
       ];
     };
