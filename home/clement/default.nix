@@ -52,6 +52,11 @@ in
       xsel
       xclip
       todo
+      man-pages
+      man-pages-posix
+      stdman
+      tldr
+      linux-manual
 
       # ↓ softwares
       pkgs_legacy.obsidian
