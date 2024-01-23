@@ -1,7 +1,12 @@
 # Dependencies I use for qtile
 { pkgs, ... }: {
   home = {
-    file.".config/qtile".source = ./src;
+    file.".config/qtile" = {
+      source = ./src;
+      onChange = ''
+        echo "reload_config()" | ${pkgs.pkgs.qtile-unwrapped}/bin/qtile shell
+      '';
+    };
 
     packages = with pkgs; [
       # ↓ Softwares
