@@ -1,16 +1,14 @@
 { pkgs, ... }:
-let
-  lock = "${pkgs.i3lock}/bin/i3lock -c 000000 -fe -i ${./../../assets/wallpapers/diner.png}";
-in
 {
-  home.file.".local/bin/lock" = {
-    text = lock;
-    executable = true;
+  home.file.".local/share/lock/wallpaper.jpg" = {
+    source = ./../../assets/wallpapers/hallway-banbooru.jpg;
+    onChange = ''
+      ${pkgs.betterlockscreen}/bin/betterlockscreen --update ~/.local/share/lock/wallpaper.jpg
+    '';
   };
 
-  services.screen-locker = {
+  services.betterlockscreen = {
     enable = true;
-    lockCmd = "sh ~/.local/bin/lock";
     inactiveInterval = 60;
   };
 }
