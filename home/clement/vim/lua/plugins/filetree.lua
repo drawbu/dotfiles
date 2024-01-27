@@ -11,6 +11,7 @@ return {
           '^\\.cache',
           '^\\.direnv',
           '^\\.build',
+          '*.o',
         },
       },
       renderer = {
