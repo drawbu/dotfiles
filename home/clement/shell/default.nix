@@ -37,9 +37,6 @@
         # Rust
         export CARGO_NET_GIT_FETCH_WITH_CLI=true
         export PATH="$HOME/.cargo/bin:$PATH"
-
-        # Colored man pages
-        export PAGER="${pkgs.most}/bin/most"
       '';
     };
 
