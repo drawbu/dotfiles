@@ -1,10 +1,13 @@
-﻿---
+---
 BasedOnStyle: Google
 IndentWidth: 4
 TabWidth: 4
 UseTab: Never
 AllowShortBlocksOnASingleLine: false
 AllowShortIfStatementsOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: Empty
 AllowShortLoopsOnASingleLine: false
 AlignAfterOpenBracket: AlwaysBreak
+BreakBeforeBraces: Mozilla
+IndentPPDirectives: BeforeHash
 ...
