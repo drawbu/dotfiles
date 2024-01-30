@@ -21,6 +21,7 @@
   services = {
     thermald.enable = true; # thermal daemon
     power-profiles-daemon.enable = false; # disable power thing from Gnome
+    fprintd.enable = true;
 
     # idk intel hardware is borken
     xserver.videoDrivers = [ "modesetting" ];
