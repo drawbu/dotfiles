@@ -46,6 +46,7 @@
       v="nvim .";
       t="tmux new-session \; split-window -h";
       epidock="docker run -it --rm -v \$(pwd):/home/project -w /home/project epitechcontent/epitest-docker:latest /bin/bash";
+      gnome="dbus-run-session -- gnome-shell --display-server --wayland";
     };
   };
 
