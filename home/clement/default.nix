@@ -57,7 +57,6 @@ in
       stdman
       tldr
       linux-manual
-      wofi
 
       # ↓ softwares
       pkgs_legacy.obsidian

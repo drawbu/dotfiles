@@ -6,6 +6,7 @@ in
   imports = [
     ./waybar.nix
     ./powermenu.nix
+    ./wofi.nix
   ];
 
   wayland.windowManager.hyprland = {
