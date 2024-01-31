@@ -11,6 +11,7 @@ in
     ./eww
     ./vim
     ./shell
+    ./hypr
     ./gtk.nix
     ./firefox.nix
     ./cursor.nix
@@ -56,6 +57,7 @@ in
       stdman
       tldr
       linux-manual
+      wofi
 
       # ↓ softwares
       pkgs_legacy.obsidian
