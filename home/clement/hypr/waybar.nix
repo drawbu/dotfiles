@@ -57,13 +57,19 @@ in
 
         #clock {
           background-color: #${background};
-          margin: 4px 4px 4px 4px;
+          margin: 4px 0 4px 0;
           padding: 5px 12px;
           border-radius: 5px;
         }
         #privacy {
           background-color: #${background};
-          margin: 4px 0 4px 0;
+          margin: 4px 0 4px 4px;
+          padding: 5px 12px;
+          border-radius: 5px;
+        }
+        #mpris {
+          background-color: #${background};
+          margin: 4px 0 4px 4px;
           padding: 5px 12px;
           border-radius: 5px;
         }
@@ -164,10 +170,26 @@ in
         modules-center = [
           "clock"
           "privacy"
+          "mpris"
         ];
         clock = {
           format = "{:%d %A %H:%M}";
           tooltip-format = "{:%Y-%m-%d | %H:%M}";
+        };
+        mpris = {
+          format = "{player_icon} {dynamic}";
+          format-paused = "{status_icon} <i>{dynamic}</i>";
+          dynamic-order = ["artist" "title"];
+          dynamic-importance-order = ["title" "artist"];
+          dynamic-len = 30;
+          player-icons = {
+              default = " ";
+              spotify = " ";
+              firefox = " ";
+          };
+          status-icons = {
+              paused = " ";
+          };
         };
 
         # ↓ Right widgets
