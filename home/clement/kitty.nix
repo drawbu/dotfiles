@@ -3,8 +3,8 @@
   programs.kitty = {
     enable = true;
     font = {
-      package = (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; });
-      name = "JetBrainsMono Nerd Font";
+      package = (pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; });
+      name = "Iosevka Nerd Font";
       size = 12;
     };
     shellIntegration = {
