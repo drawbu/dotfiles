@@ -10,7 +10,6 @@
 
     packages = with pkgs; [
       # ↓ Softwares
-      qtile
       rofi # Apps launcher
       networkmanagerapplet # Network tools
       pavucontrol # Audio manager
