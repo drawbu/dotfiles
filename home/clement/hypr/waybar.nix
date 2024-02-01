@@ -24,29 +24,33 @@ in
 
         /* left widgets */
 
-        #custom-launcher {
+        box > widget > label,
+        box > widget > box {
           background-color: #${background};
-          color: #${raw.blue};
-          margin: 4px 0 4px 4px;
+          margin-top: 4px;
+          margin-bottom: 4px;
           padding: 5px 12px;
-          font-size: 18px;
           border-radius: 5px;
+        }
+
+        #custom-launcher {
+          color: #${raw.blue};
+          margin-left: 4px;
+          font-size: 18px;
         }
         #workspaces {
-          background-color: #${background};
-          margin: 4px 0 4px 4px;
+          margin-left: 4px;
           font-size: 20px;
-          border-radius: 5px;
         }
         #workspaces button {
+          color: #${raw.blue};
           font-size: 18px;
           background-color: transparent;
-          color: #${raw.blue};
           transition: all 0.1s ease;
         }
         #workspaces button.focused {
-          font-size: 18px;
           color: #${raw.green};
+          font-size: 18px;
         }
         #workspaces button.persistent {
           color: #${raw.yellow};
@@ -55,51 +59,30 @@ in
 
         /* center widgets */
 
-        #clock {
-          background-color: #${background};
-          margin: 4px 0 4px 0;
-          padding: 5px 12px;
-          border-radius: 5px;
-        }
-        #privacy {
-          background-color: #${background};
-          margin: 4px 0 4px 4px;
-          padding: 5px 12px;
-          border-radius: 5px;
-        }
+        #privacy,
         #mpris {
-          background-color: #${background};
-          margin: 4px 0 4px 4px;
-          padding: 5px 12px;
-          border-radius: 5px;
+          margin-left: 4px;
         }
 
         /* right widgets */
 
         #pulseaudio {
-          background-color: #${background};
-          margin: 4px 0 4px 0;
-          padding: 5px 12px;
-          border-radius: 5px 0 0 5px;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
         }
         #bluetooth {
-          background-color: #${background};
-          margin: 4px 0 4px 0;
-          padding: 5px 12px;
+          border-radius: 0;
         }
         #bluetooth.connected {
           color: #${raw.blue};
         }
         #network {
-          background-color: #${background};
-          margin: 4px 0 4px 0;
-          padding: 5px 12px;
+          border-radius: 0;
         }
         #battery {
-          background-color: #${background};
-          margin: 4px 4px 4px 0;
-          padding: 5px 12px;
-          border-radius: 0 5px 5px 0;
+          margin-right: 4px;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
         }
         #battery.charging {
           color: #${raw.green};
@@ -123,17 +106,11 @@ in
           animation-direction: alternate;
         }
         #tray {
-          background-color: #${background};
-          margin: 4px 4px 4px 0;
-          padding: 5px 11px 5px 13px;
-          border-radius: 5px;
+          margin-right: 4px;
         }
         #custom-power {
-          background-color: #${background};
           color: #${raw.red};
-          margin: 4px 4px 4px 0;
-          padding: 5px 11px 5px 13px;
-          border-radius: 5px;
+          margin-right: 4px;
         }
       '';
       settings = [{
