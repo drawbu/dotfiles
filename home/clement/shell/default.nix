@@ -21,7 +21,11 @@
               exit 1
             fi
             ${nmcli} dev wifi rescan
-            ${nmcli} dev wifi list
+            while [ -z "$(${nmcli} dev wifi list | grep "$ssid")" ]; do
+              echo "Waiting for $ssid to be available..."
+              sleep 1
+            done
+            echo "Connecting to $ssid..."
             ${nmcli} dev wifi connect "$ssid"
           '';
         };
