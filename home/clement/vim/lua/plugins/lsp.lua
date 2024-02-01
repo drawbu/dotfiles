@@ -30,6 +30,7 @@ return {
       lsp.gdscript.setup({})
       lsp.rust_analyzer.setup({})
       lsp.hls.setup({})
+      lsp.asm_lsp.setup({})
 
       -- ↓ Epitech C Style Checker
       if not configs.ecsls then

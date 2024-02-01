@@ -48,6 +48,7 @@
       gdtoolkit
       rust-analyzer
       haskell-language-server
+      asm-lsp
     ];
   };
 }
