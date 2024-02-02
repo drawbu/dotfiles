@@ -15,7 +15,8 @@ in
     extraConfig = ''
       monitor=,highres,auto,1
 
-      exec-once = waybar & hyprpaper
+      exec-once = ${pkgs.waybar}/bin/waybar
+      exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
 
       env = XCURSOR_SIZE,16
 
@@ -89,26 +90,32 @@ in
       $mainMod = SUPER
 
       # General Keybinds
-      bind = $mainMod, return, exec, kitty
+      bind = $mainMod, return, exec, ${pkgs.kitty}/bin/kitty
       bind = $mainMod, W, killactive, 
       bind = $mainMod, F, togglefloating, 
-      bind = $mainMod, R, exec, wofi --show drun
-      bind = $mainMod, J, togglesplit, # dwindle
+      bind = $mainMod, R, exec, ${pkgs.wofi}/bin/wofi --show drun
+      bind = $mainMod, J, togglesplit,
+      bind = $mainMod, K, fullscreen,
+      bind = $mainMod, O, exec, pkill -SIGUSR1 waybar # Waybar toggle
 
       # Brightness Control Keybinds
-      binde = ,XF86MonBrightnessUp, exec, brightnessctl set +5%
-      binde = ,XF86MonBrightnessDown, exec, brightnessctl set 5%-
+      binde = ,XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set +5%
+      binde = ,XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-
 
       # Volume Control Keybinds
-      binde = ,XF86AudioMute, exec, pamixer --toggle-mute
-      binde = ,XF86AudioRaiseVolume, exec, pamixer --increase 5
-      binde = ,XF86AudioLowerVolume, exec, pamixer --decrease 5
-      binde = ,XF86AudioMicMute, exec, pamixer --default-source -t
+      binde = ,XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer --toggle-mute
+      binde = ,XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer --increase 5
+      binde = ,XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer --decrease 5
+      binde = ,XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source -t
 
       # Media Control Keybinds
-      bind = ,XF86AudioPlay, exec, playerctl play-pause
-      bind = ,XF86AudioNext, exec, playerctl next
-      bind = ,XF86AudioPrev, exec, playerctl previous
+      bind = ,XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause
+      bind = ,XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next
+      bind = ,XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous
+
+      # Screenshot Keybinds
+      bind = $mainMod, Print, exec, ${pkgs.grimblast}/bin/grimblast copy area
+      bind = $mainMod shift, Print, exec, ${pkgs.grimblast}/bin/grimblast copy window
 
       # Move focus
       bind = $mainMod, left, movefocus, l
@@ -139,14 +146,14 @@ in
       # Move/resize windows
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
-
-      # Waybar toggle
-      bind = $mainMod, O, exec, pkill -SIGUSR1 waybar
     '';
   };
 
   home = {
-    packages = [ pkgs.hyprpaper ];
+    packages = with pkgs; [
+      hyprpaper
+      grimblast
+    ];
     file.".config/hypr/hyprpaper.conf".text = ''
       preload = ${wallpaper}
       wallpaper = ,${wallpaper}
