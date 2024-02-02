@@ -17,6 +17,7 @@ in
 
       exec-once = ${pkgs.waybar}/bin/waybar
       exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
+      exec-once = ${pkgs.xwaylandvideobridge}/bin/xwaylandvideobridge
 
       env = XCURSOR_SIZE,16
 
@@ -152,6 +153,7 @@ in
   home = {
     packages = with pkgs; [
       hyprpaper
+      xwaylandvideobridge
       grimblast
     ];
     file.".config/hypr/hyprpaper.conf".text = ''

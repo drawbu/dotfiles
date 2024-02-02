@@ -4,6 +4,7 @@
     ./polkit.nix
     ./xserver.nix
     ./boot.nix
+    ./xdg.nix
   ];
 
   console = {
@@ -44,6 +45,7 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+      wireplumber.enable = true;
     };
 
     printing.enable = true;
