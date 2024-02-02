@@ -12,7 +12,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     ecsls.url = "github:Sigmapitech/ecsls";
-    ehcsls.url = "github:Sigmapitech/ehcsls";
   };
 
   outputs = {self, ...} @ inputs:
@@ -29,7 +28,6 @@
       extraArgs = {
         inherit pkgs unstable pkgs_legacy;
         ecsls = inputs.ecsls.packages.${cfg.system}.default;
-        ehcsls = inputs.ehcsls.packages.${cfg.system}.default;
       };
       hm = {
         extraSpecialArgs = extraArgs;

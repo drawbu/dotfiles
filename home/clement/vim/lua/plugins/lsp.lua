@@ -46,21 +46,6 @@ return {
       end
       lsp.ecsls.setup({})
 
-      -- ↓ Epitech HCS
-      if not configs.ehcsls then
-        configs.ehcsls = {
-          default_config = {
-            root_dir = lsp.util.root_pattern(".git"),
-            cmd = { "ehcsls_run" },
-            autostart = true,
-            name = "ehcsls",
-            filetypes = { "haskell" },
-          },
-        }
-      end
-      lsp.ehcsls.setup({})
-
-
       lsp_zero.on_attach(function(_, bufnr)
         local opts = {buffer = bufnr, remap = false}
 

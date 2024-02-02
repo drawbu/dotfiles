@@ -1,4 +1,4 @@
-{ pkgs, ecsls, ehcsls, ... }: {
+{ pkgs, ecsls, ... }: {
   imports = [
     ./vim.nix
   ];
@@ -44,7 +44,6 @@
       nodePackages.vscode-langservers-extracted
       nodePackages.svelte-language-server
       ecsls
-      ehcsls
       gdtoolkit
       rust-analyzer
       haskell-language-server
