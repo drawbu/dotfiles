@@ -35,4 +35,5 @@
     ${pkgs.xorg.xrandr}/bin/xrandr --output DVI-D-0 --right-of HDMI-0
     ${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-0 --primary
   '';
+  services.xserver.displayManager.sddm.enable = true;
 }
