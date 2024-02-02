@@ -115,8 +115,8 @@ in
       bind = ,XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous
 
       # Screenshot Keybinds
-      bind = $mainMod, Print, exec, ${pkgs.grimblast}/bin/grimblast copy area
-      bind = $mainMod shift, Print, exec, ${pkgs.grimblast}/bin/grimblast copy window
+      bind = , Print, exec, ${pkgs.grimblast}/bin/grimblast copy area
+      bind = shift, Print, exec, ${pkgs.grimblast}/bin/grimblast copy
 
       # Move focus
       bind = $mainMod, left, movefocus, l
