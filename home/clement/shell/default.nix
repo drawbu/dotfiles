@@ -20,8 +20,7 @@
               echo "Usage: fixwifi <ssid>"
               exit 1
             fi
-            ${nmcli} dev wifi rescan
-            while [ -z "$(${nmcli} dev wifi list | grep "$ssid")" ]; do
+            while [ -z "$((${nmcli} dev wifi rescan && ${nmcli} dev wifi list) | grep "$ssid")" ]; do
               echo "Waiting for $ssid to be available..."
               sleep 1
             done
