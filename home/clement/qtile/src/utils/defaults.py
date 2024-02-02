@@ -19,8 +19,8 @@ META: Final[str] = "mod4"  # Super key (Windows key)
 
 
 widget_defaults = dict(
-    font="JetBrainsMono Nerd Font",
-    fontsize=12,
+    font="Iosevka Nerd Font",
+    fontsize=13,
     padding=3,
     foreground=TEXT_COLOR,
 )

@@ -11,7 +11,7 @@ in
     };
     style = ''
       * {
-        font-family: "JetBrainsMono Nerd Font";
+        font-family: "Iosevka Nerd Font";
       }
 
       window {

@@ -14,7 +14,7 @@
         always_run_script = true;
         browser = "firefox";
 
-        font = "JetBrainsMono Nerd Font Mono 10";
+        font = "Iosevka Nerd Font 10";
         frame_color = "#8AADF4";
         separator_color = "frame";
 
