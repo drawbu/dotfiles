@@ -5,7 +5,6 @@ in
 {
   imports = [
     ./waybar.nix
-    ./powermenu.nix
     ./wofi.nix
   ];
 

@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 let
   colors = import ./colors.nix { };
 in
@@ -183,7 +183,7 @@ in
           format-bluetooth = "{icon}";
           format-muted = "";
           format-icons = { "default" = ["" ""]; };
-          on-click = "pavucontrol";
+          on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
           tooltip-format = "{volume}%";
         };
         bluetooth = {
@@ -194,11 +194,11 @@ in
           tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
           tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
           tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
-          on-click = "rofi-bluetooth";
+          on-click = "${pkgs.rofi-bluetooth}/bin/rofi-bluetooth";
         };
         network = {
           interval = 1;
-          on-click = "kitty -e nmtui";
+          on-click = "${pkgs.kitty}/bin/kitty -e nmtui";
           format-disconnected = "󰤮 ";
           format-ethernet = "󰈀 ";
           format-wifi = "󰤨 ";
@@ -219,9 +219,9 @@ in
         };
         tray = { spacing = 10; };
         "custom/power" = {
-          on-click = "powermenu";
+          on-click = "${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
           format = " ";
-          tooltip-format = "Power menu";
+          tooltip = "Power menu";
         };
       }];
     };
