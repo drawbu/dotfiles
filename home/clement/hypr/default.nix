@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, hyprland, hyprland-plugins, ... }:
 let
   wallpaper = ./../../../assets/wallpapers/japan-market.jpg;
 in
@@ -10,7 +10,7 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    enableNvidiaPatches = true;
+    package = hyprland;
     extraConfig = ''
       monitor=,highres,auto,1
 

@@ -12,6 +12,15 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     ecsls.url = "github:Sigmapitech/ecsls";
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs_unstable";
+    };
+    hyprland-plugins = {
+      url = "github:hyprwm/Hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
   outputs = {self, ...} @ inputs:
@@ -28,6 +37,8 @@
       extraArgs = {
         inherit pkgs unstable pkgs_legacy;
         ecsls = inputs.ecsls.packages.${cfg.system}.default;
+        hyprland = inputs.hyprland.packages.${cfg.system}.default;
+        hyprland-plugins = inputs.hyprland-plugins.packages.${cfg.system};
       };
       hm = {
         extraSpecialArgs = extraArgs;
