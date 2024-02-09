@@ -57,6 +57,7 @@ in
       stdman
       tldr
       linux-manual
+      comma
 
       # ↓ softwares
       pkgs_legacy.obsidian
