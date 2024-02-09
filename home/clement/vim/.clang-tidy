@@ -4,6 +4,7 @@ Checks: "-*,
   misc-*,
   -misc-no-recursion,
   performance-*,
+  -performance-avoid-endl
   portability-*,
   readability-*,
   -readability-braces-around-statements,
