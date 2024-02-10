@@ -5,7 +5,6 @@ vim.g.python_indent = {
 }
 
 -- ↓ Search
-vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 -- ↓ Curor never touching borders

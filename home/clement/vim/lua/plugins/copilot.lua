@@ -5,12 +5,6 @@ return {
     event = 'InsertEnter',
     config = function()
       require('copilot').setup({
-        panel = {
-          enabled = false,
-        },
-        suggestion = {
-          enabled = false,
-        },
         filetypes = {
           yaml = true,
           markdown = true,
@@ -20,15 +14,7 @@ return {
   },
 
   {
-    'zbirenbaum/copilot-cmp',
-    after = { 'copilot.lua', 'nvim-cmp' },
-    config = function ()
-      require('copilot_cmp').setup()
-    end
-  },
-
-  {
-  "jackMort/ChatGPT.nvim",
+    "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
       local home = vim.fn.expand("$HOME")
@@ -41,5 +27,5 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim"
     }
-}
+  }
 }
