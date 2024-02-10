@@ -58,6 +58,7 @@ in
       tldr
       linux-manual
       comma
+      jq
 
       # ↓ softwares
       pkgs_legacy.obsidian
