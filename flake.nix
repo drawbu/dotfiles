@@ -31,11 +31,15 @@
           allowUnfree = true;
         };
       };
-      pkgs = import inputs.nixpkgs cfg;
-      unstable = import inputs.nixpkgs_unstable cfg;
-      pkgs_legacy = import inputs.nixpkgs_legacy cfg;
+
+      pkgs = import inputs.nixpkgs (cfg // {
+        overlays = [
+          (final: _prev: { unstable = import inputs.nixpkgs_unstable cfg; })
+          (final: _prev: { legacy = import inputs.nixpkgs_legacy cfg; })
+        ];
+      });
       extraArgs = {
-        inherit pkgs unstable pkgs_legacy;
+        inherit pkgs;
         ecsls = inputs.ecsls.packages.${cfg.system}.default;
         hyprland = inputs.hyprland.packages.${cfg.system}.default;
         hyprland-plugins = inputs.hyprland-plugins.packages.${cfg.system};

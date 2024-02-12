@@ -1,5 +1,5 @@
 # 'clement' user home-manager config for NixOS & generic linux
-{ pkgs, unstable, pkgs_legacy, ... }:
+{ pkgs, ... }:
 let
   username = "clement";
 in
@@ -61,7 +61,7 @@ in
       jq
 
       # ↓ softwares
-      pkgs_legacy.obsidian
+      legacy.obsidian
       spotify
       unstable.vscode
       jetbrains.clion
@@ -79,7 +79,7 @@ in
       beeper
 
       # ↓ games
-      prismlauncher
+      legacy.prismlauncher
       heroic
 
       # ↓ fonts
