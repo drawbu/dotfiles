@@ -23,7 +23,7 @@
     };
   };
 
-  outputs = {self, ...} @ inputs:
+  outputs = { self, ... } @ inputs:
     let
       cfg = {
         system = "x86_64-linux";
@@ -34,8 +34,8 @@
 
       pkgs = import inputs.nixpkgs (cfg // {
         overlays = [
-          (final: _prev: { unstable = import inputs.nixpkgs_unstable cfg; })
-          (final: _prev: { legacy = import inputs.nixpkgs_legacy cfg; })
+          (_: _: { unstable = import inputs.nixpkgs_unstable cfg; })
+          (_: _: { legacy = import inputs.nixpkgs_legacy cfg; })
         ];
       });
       extraArgs = {

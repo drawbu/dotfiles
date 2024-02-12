@@ -10,7 +10,8 @@
       ".local/bin/fixwifi" =
         let
           nmcli = "${pkgs.networkmanager}/bin/nmcli";
-        in {
+        in
+        {
           executable = true;
           text = ''
             #!${pkgs.runtimeShell}
@@ -55,11 +56,11 @@
     };
 
     shellAliases = {
-      lz="lazygit";
-      portainer="docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest";
-      v="nvim .";
-      t="tmux new-session \; split-window -h";
-      epidock="docker run -it --rm -v \$(pwd):/home/project -w /home/project epitechcontent/epitest-docker:latest /bin/bash";
+      lz = "lazygit";
+      portainer = "docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest";
+      v = "nvim .";
+      t = "tmux new-session \; split-window -h";
+      epidock = "docker run -it --rm -v \$(pwd):/home/project -w /home/project epitechcontent/epitest-docker:latest /bin/bash";
     };
   };
 

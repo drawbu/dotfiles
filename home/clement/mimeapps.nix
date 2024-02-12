@@ -19,7 +19,7 @@ in
         "application/zip" = "org.gnome.FileRoller.desktop";
         "x-scheme-handler/jetbrains" = "jetbrains-toolbox.desktop";
 
-# ↓ Mails
+        # ↓ Mails
         "application/x-extension-ics" = mailApp;
         "x-scheme-handler/mailto" = mailApp;
         "x-scheme-handler/mid" = mailApp;

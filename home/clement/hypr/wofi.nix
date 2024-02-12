@@ -1,6 +1,6 @@
 { ... }:
 let
-  colors = import ./colors.nix {};
+  colors = import ./colors.nix { };
 in
 {
   programs.wofi = {

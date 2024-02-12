@@ -75,9 +75,11 @@ in
         ];
       };
 
-      windowrule = let
-        win = [ "^(kitty)$" ];
-      in with builtins; (genList (x: "float, ${elemAt win x}") (length win));
+      windowrule =
+        let
+          win = [ "^(kitty)$" ];
+        in
+        with builtins; (genList (x: "float, ${elemAt win x}") (length win));
 
       dwindle = {
         preserve_split = "yes";
@@ -110,14 +112,17 @@ in
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
 
-        ] ++ (
-          let
-            letters = ["A" "Z" "E" "R" "T" "Y"];
-          in with builtins;
-          concatLists (genList ( x: [
+      ] ++ (
+        let
+          letters = [ "A" "Z" "E" "R" "T" "Y" ];
+        in
+        with builtins;
+        concatLists (genList
+          (x: [
             "$mod shift, ${elemAt letters x}, workspace,       ${toString (x + 1)}"
             "$mod alt,   ${elemAt letters x}, movetoworkspace, ${toString (x + 1)}"
-          ]) (length letters))
+          ])
+          (length letters))
       ) ++ [
 
         # Scroll through existing workspaces
