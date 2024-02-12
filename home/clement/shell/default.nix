@@ -29,6 +29,17 @@
           '';
         };
 
+      ".local/bin/run_gnome" = {
+        executable = true;
+        text = ''
+          #!${pkgs.runtimeShell}
+
+          export DISPLAY=:0
+          export XDG_SESSION_TYPE=wayland
+          ${pkgs.dbus}/bin/dbus-run-session ${pkgs.gnome.gnome-session}/bin/gnome-session
+        '';
+      };
+
       ".config/starship.toml".source = ./starship.toml;
 
       ".shell-extra".text = ''
@@ -49,7 +60,6 @@
       v="nvim .";
       t="tmux new-session \; split-window -h";
       epidock="docker run -it --rm -v \$(pwd):/home/project -w /home/project epitechcontent/epitest-docker:latest /bin/bash";
-      gnome="dbus-run-session -- gnome-shell --display-server --wayland";
     };
   };
 
