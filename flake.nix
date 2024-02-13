@@ -14,7 +14,7 @@
     ecsls.url = "github:Sigmapitech/ecsls";
 
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      url = "github:hyprwm/Hyprland/v0.35.0";
       inputs.nixpkgs.follows = "nixpkgs_unstable";
     };
     hyprland-plugins = {
@@ -27,9 +27,7 @@
     let
       cfg = {
         system = "x86_64-linux";
-        config = {
-          allowUnfree = true;
-        };
+        config.allowUnfree = true;
       };
 
       pkgs = import inputs.nixpkgs (cfg // {
@@ -38,48 +36,47 @@
           (_: _: { legacy = import inputs.nixpkgs_legacy cfg; })
         ];
       });
+
       extraArgs = {
         inherit pkgs;
         ecsls = inputs.ecsls.packages.${cfg.system}.default;
         hyprland = inputs.hyprland.packages.${cfg.system}.default;
         hyprland-plugins = inputs.hyprland-plugins.packages.${cfg.system};
       };
-      hm = {
-        extraSpecialArgs = extraArgs;
-      };
+
       hardware = inputs.nixos-hardware.nixosModules;
+
+      defaultConfig = {
+        system = cfg.system;
+        specialArgs = extraArgs;
+        modules = [
+          inputs.home-manager.nixosModules.home-manager { home-manager.extraSpecialArgs = extraArgs; }
+        ];
+      };
     in
     {
       formatter.${cfg.system} = pkgs.nixpkgs-fmt;
 
       nixosConfigurations = {
-        "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem {
-          system = cfg.system;
-          specialArgs = extraArgs;
-          modules = [
+        "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (defaultConfig // {
+          modules = defaultConfig.modules ++ [
             ./pain-de-mie.nix
-            inputs.home-manager.nixosModules.home-manager
-            { home-manager = hm; }
-            # nixos-hardware.nixosModules.common-gpu-nvidia
+            # hardware.common-gpu-nvidia
             hardware.common-cpu-intel
             hardware.common-pc
             hardware.common-pc-ssd
             hardware.common-pc-hdd
           ];
-        };
-        "pancake" = inputs.nixpkgs.lib.nixosSystem {
-          system = cfg.system;
-          specialArgs = extraArgs;
-          modules = [
+        });
+        "pancake" = inputs.nixpkgs.lib.nixosSystem (defaultConfig // {
+          modules = defaultConfig.modules ++ [
             ./pancake.nix
-            inputs.home-manager.nixosModules.home-manager
-            { home-manager = hm; }
             hardware.common-gpu-intel
             hardware.common-cpu-intel
             hardware.common-pc-laptop
             hardware.common-pc-laptop-ssd
           ];
-        };
+        });
       };
     };
 }
