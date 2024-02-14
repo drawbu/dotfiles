@@ -14,11 +14,13 @@ return {
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
     'rafamadriz/friendly-snippets',
+    'zbirenbaum/copilot-cmp',
 
     -- Icons
     'onsails/lspkind.nvim',
   },
   config = function()
+    require('copilot_cmp').setup()
     require('luasnip.loaders.from_vscode').lazy_load() -- lspkind
     local cmp = require('cmp')
 
@@ -28,6 +30,7 @@ return {
         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
       }),
       sources = {
+        { name = 'copilot' },
         { name = 'path' },
         { name = 'luasnip' },
         { name = 'nvim_lsp' },
@@ -40,7 +43,7 @@ return {
           local kind = require('lspkind').cmp_format({
             mode = 'symbol_text',
             max_width = 50,
-            symbol_map = { nvim_lua = ' ', dotenv = '' },
+            symbol_map = { nvim_lua = ' ', dotenv = '', Copilot = '' },
           })(entry, vim_item)
           local strings = vim.split(kind.kind, '%s', { trimempty = true })
           kind.kind = ' ' .. (strings[1] or '') .. ' '

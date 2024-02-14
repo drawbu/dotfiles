@@ -9,6 +9,7 @@ return {
           yaml = true,
           markdown = true,
         },
+        suggestion = { enabled = false, },
       })
     end,
   },
