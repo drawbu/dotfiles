@@ -12,8 +12,7 @@ in
     enable = true;
     package = hyprland;
 
-    plugins = with hyprland-plugins; [
-    ];
+    plugins = with hyprland-plugins; [];
 
     settings = {
       monitor = ",highres,auto,1";
@@ -22,6 +21,7 @@ in
         "${pkgs.waybar}/bin/waybar"
         "${pkgs.hyprpaper}/bin/hyprpaper"
         "${pkgs.xwaylandvideobridge}/bin/xwaylandvideobridge"
+        "${pkgs.pyprland}/bin/pypr"
       ];
 
       env = "XCURSOR_SIZE,16";
@@ -105,6 +105,7 @@ in
         "$mod, J, togglesplit,"
         "$mod, K, fullscreen,"
         "$mod, O, exec, pkill -SIGUSR1 waybar # Waybar toggle"
+        "$mod, space, exec, ${pkgs.pyprland}/bin/pypr toggle term"
 
         # Move focus
         "$mod, left, movefocus, l"
@@ -159,8 +160,23 @@ in
     };
   };
 
-  home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ${wallpaper}
-    wallpaper = ,${wallpaper}
-  '';
+  xdg.configFile = {
+    "hypr/hyprpaper.conf".text = ''
+      preload = ${wallpaper}
+      wallpaper = ,${wallpaper}
+    '';
+
+    "hypr/pyprland.toml".text = ''
+      [pyprland]
+      plugins = [
+        "scratchpads",
+      ]
+
+      [scratchpads.term]
+      animation = "fromTop"
+      command = "kitty --class kitty-dropterm"
+      class = "kitty-dropterm"
+      size = "100% 100%"
+    '';
+  };
 }
