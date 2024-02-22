@@ -76,7 +76,7 @@ in
       godot_4
       croc
       wireguard-tools
-      beeper
+      unstable.beeper
 
       # ↓ games
       legacy.prismlauncher
