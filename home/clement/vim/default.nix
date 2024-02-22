@@ -7,6 +7,7 @@
     ".config/nvim/ftplugin".source = ./ftplugin;
     ".clang-tidy".source = ./.clang-tidy;
     ".clang-format".source = ./.clang-format;
+    ".clangd".source = ./.clangd;
   };
 
   programs.neovim = {
