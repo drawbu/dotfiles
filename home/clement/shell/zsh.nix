@@ -8,6 +8,10 @@
           echo "Today's tasks:"
           todo
       fi
+
+      if [ -z $TMUX ]; then
+        ${pkgs.bunnyfetch}/bin/bunnyfetch
+      fi
     '';
     enableCompletion = false;
 
