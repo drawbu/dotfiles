@@ -12,3 +12,10 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99 -- Minimum number of screen line below and above the cursor
 vim.opt.foldenable = true
 vim.opt.scrolloff = 99
+
+vim.cmd([[
+  augroup FileTypeOverride
+    autocmd!
+    autocmd BufRead,BufNewFile *.asm set filetype=nasm
+  augroup END
+]])
