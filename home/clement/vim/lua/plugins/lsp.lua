@@ -31,6 +31,8 @@ return {
       lsp.rust_analyzer.setup({})
       lsp.hls.setup({})
       lsp.asm_lsp.setup({})
+      lsp.dockerls.setup({})
+      lsp.docker_compose_language_service.setup({})
 
       -- ↓ Epitech C Style Checker
       if not configs.ecsls then

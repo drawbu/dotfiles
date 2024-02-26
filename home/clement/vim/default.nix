@@ -49,6 +49,8 @@
       rust-analyzer
       haskell-language-server
       asm-lsp
+      dockerfile-language-server-nodejs
+      docker-compose-language-service
     ];
   };
 }
