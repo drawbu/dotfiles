@@ -10,6 +10,7 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nix-alien.url = "github:thiagokokada/nix-alien";
 
     ecsls.url = "github:Sigmapitech/ecsls";
 
@@ -42,6 +43,7 @@
         ecsls = inputs.ecsls.packages.${cfg.system}.default;
         hyprland = inputs.hyprland.packages.${cfg.system}.default;
         hyprland-plugins = inputs.hyprland-plugins.packages.${cfg.system};
+        nix-alien = inputs.nix-alien.packages.${cfg.system}.nix-alien;
       };
 
       hardware = inputs.nixos-hardware.nixosModules;

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nix-alien, ... }:
 {
   system.copySystemConfiguration = false;
   nix = {
@@ -42,6 +42,11 @@
     };
 
     zsh.enable = true;
+
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [];
+    };
   };
 
   services.openssh = {
@@ -65,6 +70,7 @@
       vim
       wget
       virt-manager
+      nix-alien
     ];
     pathsToLink = [ "/share/nix-direnv" ];
     etc.issue.text = (builtins.readFile ./issue.txt);
