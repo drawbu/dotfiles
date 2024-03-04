@@ -7,6 +7,7 @@ in
   imports = [
     ./waybar.nix
     ./wofi.nix
+    ./hyprlock.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -107,6 +108,7 @@ in
         "$mod, K, fullscreen,"
         "$mod, O, exec, pkill -SIGUSR1 waybar # Waybar toggle"
         "$mod, Z, exec, ${pypr}/bin/pypr zoom"
+        "$mod, L, exec, ${pkgs.unstable.hyprlock}/bin/hyprlock"
 
         # Move focus
         "$mod, left, movefocus, l"
