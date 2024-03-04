@@ -11,7 +11,6 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-alien.url = "github:thiagokokada/nix-alien";
-
     ecsls.url = "github:Sigmapitech/ecsls";
 
     hyprland = {
@@ -58,6 +57,14 @@
     in
     {
       formatter.${cfg.system} = pkgs.nixpkgs-fmt;
+
+      homeConfigurations = {
+        "clement" = inputs.home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home/clement ];
+        };
+      };
+
 
       nixosConfigurations = {
         "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (defaultConfig // {
