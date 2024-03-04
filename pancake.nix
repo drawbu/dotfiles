@@ -24,7 +24,7 @@
     fprintd.enable = true;
 
     # idk intel hardware is borken
-    xserver.videoDrivers = [ "modesetting" ];
+    xserver.videoDrivers = [ "intel" ];
   };
 
   # Hardware acceleration

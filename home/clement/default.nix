@@ -51,6 +51,8 @@ in
       entr
       xsel
       xclip
+      wl-clipboard
+      #wl-clipboard-x11
       todo
       man-pages
       man-pages-posix
@@ -59,6 +61,7 @@ in
       linux-manual
       comma
       jq
+      nix-index
 
       # ↓ softwares
       legacy.obsidian
@@ -77,6 +80,7 @@ in
       croc
       wireguard-tools
       unstable.beeper
+      libreoffice
 
       # ↓ games
       legacy.prismlauncher

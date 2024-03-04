@@ -72,4 +72,6 @@
       physlock
     ];
   };
+
+  virtualisation.waydroid.enable = true;
 }
