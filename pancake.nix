@@ -14,7 +14,7 @@
 
   # Git signing
   home-manager.users.clement.programs.git.signing = {
-    key = "6e7293f5e7427602";
+    key = "005280E9B819AECF";
     signByDefault = true;
   };
 
