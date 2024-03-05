@@ -162,6 +162,7 @@ in
           player-icons = {
             default = " ";
             spotify = " ";
+            spotifyd = " ";
             firefox = " ";
           };
           status-icons = {

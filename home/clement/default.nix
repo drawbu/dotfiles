@@ -62,6 +62,7 @@ in
       comma
       jq
       nix-index
+      spotify-tui
 
       # ↓ softwares
       legacy.obsidian
@@ -114,6 +115,15 @@ in
       enableBashIntegration = true;
       enableZshIntegration = true;
       enableSshSupport = true;
+    };
+
+    spotifyd = {
+      enable = true;
+      settings.global = {
+        username = "clement2104.boillot@gmail.com";
+        password_cmd = "gpg -r clement2104.boillot@gmail.com -q --decrypt .spotify.txt.gpg 2>/dev/null";
+        use_mpris = true;
+      };
     };
   };
 
