@@ -1,7 +1,6 @@
 { pkgs, hyprland, hyprland-plugins, ... }:
 let
   wallpaper = ./../../../assets/wallpapers/japan-market.jpg;
-  pypr = pkgs.unstable.pyprland;
 in
 {
   imports = [
@@ -23,7 +22,8 @@ in
         "${pkgs.waybar}/bin/waybar"
         "${pkgs.hyprpaper}/bin/hyprpaper"
         "${pkgs.xwaylandvideobridge}/bin/xwaylandvideobridge"
-        "${pypr}/bin/pypr"
+        "${pkgs.unstable.pyprland}/bin/pypr"
+        "${pkgs.unstable.hypridle}/bin/hypridle"
       ];
 
       env = "XCURSOR_SIZE,16";
@@ -107,7 +107,7 @@ in
         "$mod, J, togglesplit,"
         "$mod, K, fullscreen,"
         "$mod, O, exec, pkill -SIGUSR1 waybar # Waybar toggle"
-        "$mod, Z, exec, ${pypr}/bin/pypr zoom"
+        "$mod, Z, exec, ${pkgs.unstable.pyprland}/bin/pypr zoom"
         "$mod, L, exec, ${pkgs.unstable.hyprlock}/bin/hyprlock"
 
         # Move focus
@@ -177,6 +177,30 @@ in
 
       [magnify]
       factor = 4
+    '';
+
+    "hypr/hypridle.conf".text = ''
+      general {
+          lock_cmd = pidof hyprlock || ${pkgs.unstable.hyprlock}/bin/hyprlock
+          before_sleep_cmd = loginctl lock-session
+          after_sleep_cmd = ${pkgs.hyprland}/bin/hyprctl dispatch dpms on
+      }
+
+      listener {
+          timeout = 150
+          on-timeout = ${pkgs.brightnessctl}/bin/brightnessctl -s set 10
+          on-resume = ${pkgs.brightnessctl}/bin/brightnessctl -r
+      }
+
+      listener {
+          timeout = 600
+          on-timeout = loginctl lock-session
+      }
+
+      listener {
+          timeout = 630
+          on-timeout = systemctl suspend
+      }
     '';
   };
 }
