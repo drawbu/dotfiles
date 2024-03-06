@@ -13,7 +13,7 @@ in
     enable = true;
     package = hyprland;
 
-    plugins = with hyprland-plugins; [];
+    plugins = with hyprland-plugins; [ ];
 
     settings = {
       monitor = ",highres,auto,1";

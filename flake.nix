@@ -51,7 +51,8 @@
         system = cfg.system;
         specialArgs = extraArgs;
         modules = [
-          inputs.home-manager.nixosModules.home-manager { home-manager.extraSpecialArgs = extraArgs; }
+          inputs.home-manager.nixosModules.home-manager
+          { home-manager.extraSpecialArgs = extraArgs; }
         ];
       };
     in

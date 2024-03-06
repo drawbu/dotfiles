@@ -22,7 +22,7 @@ in
 
     plugins = with pkgs.tmuxPlugins; [
       { plugin = sensible; }
-      { 
+      {
         plugin = vimTmuxNavigator;
         extraConfig = ''
           # Smart pane switching with awareness of Vim splits.
