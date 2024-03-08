@@ -24,7 +24,16 @@ in
         "${pkgs.xwaylandvideobridge}/bin/xwaylandvideobridge"
         "${pkgs.unstable.pyprland}/bin/pypr"
         "${pkgs.unstable.hypridle}/bin/hypridle"
-      ];
+      ] ++ (
+        let
+          targets = [ "text" "image" ];
+        in
+        (builtins.genList
+          (i:
+            "${pkgs.wl-clipboard}/bin/wl-paste --type ${builtins.elemAt targets i} --watch ${pkgs.cliphist}/bin/cliphist store"
+          )
+          (builtins.length targets))
+      );
 
       env = "XCURSOR_SIZE,16";
 
@@ -108,13 +117,15 @@ in
         "$mod, K, fullscreen,"
         "$mod, O, exec, pkill -SIGUSR1 waybar # Waybar toggle"
         "$mod, Z, exec, ${pkgs.unstable.pyprland}/bin/pypr zoom"
-        "$mod, L, exec, ${pkgs.unstable.hyprlock}/bin/hyprlock"
+        "$mod, L, exec, systemctl suspend"
 
         # Move focus
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
+
+        "$mod, V, exec, ${pkgs.cliphist}/bin/cliphist list | ${pkgs.wofi}/bin/wofi --dmenu | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy"
 
       ] ++ (
         let
