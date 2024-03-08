@@ -22,6 +22,7 @@ in
     ./hyprlock.nix
   ];
 
+  services.swayosd.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
     package = hyprland;
@@ -169,10 +170,10 @@ in
         ",XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-"
 
         # Volume Control Keybinds
-        ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer --toggle-mute"
-        ",XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer --increase 5"
-        ",XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer --decrease 5"
-        ",XF86AudioMicMute, exec, ${pkgs.pamixer}/bin/pamixer --default-source -t"
+        ",XF86AudioMute, exec, ${pkgs.swayosd}/bin/swayosd --output-volume mute-toggle"
+        ",XF86AudioRaiseVolume, exec, ${pkgs.swayosd}/bin/swayosd --output-volume raise"
+        ",XF86AudioLowerVolume, exec, ${pkgs.swayosd}/bin/swayosd --output-volume lower"
+        ",XF86AudioMicMute, exec, ${pkgs.swayosd}/bin/swayosd --input-volume mute-toggle"
 
         # Media Control Keybinds
         ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
