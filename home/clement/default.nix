@@ -75,6 +75,7 @@ in
       feh
       thunderbird-bin
       vlc
+      chromium
       aseprite
       teams-for-linux
       zathura
