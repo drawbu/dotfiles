@@ -51,6 +51,7 @@
       asm-lsp
       dockerfile-language-server-nodejs
       docker-compose-language-service
+      gopls
     ];
   };
 }

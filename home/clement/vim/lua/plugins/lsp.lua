@@ -33,6 +33,7 @@ return {
       lsp.asm_lsp.setup({})
       lsp.dockerls.setup({})
       lsp.docker_compose_language_service.setup({})
+      lsp.gopls.setup({})
 
       -- ↓ Epitech C Style Checker
       if not configs.ecsls then
