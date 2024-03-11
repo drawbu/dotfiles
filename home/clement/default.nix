@@ -63,6 +63,7 @@ in
       jq
       nix-index
       spotify-tui
+      nurl
 
       # ↓ softwares
       legacy.obsidian
