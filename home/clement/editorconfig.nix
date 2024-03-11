@@ -15,7 +15,7 @@
       "{Makefile,*.mk}" = {
         indent_style = "tab";
       };
-      "{*.nix,*.yml,*.asm,*.lua}" = {
+      "{*.nix,*.yml,*.asm,*.s,*.S,*.lua}" = {
         indent_size = 2;
       };
     };
