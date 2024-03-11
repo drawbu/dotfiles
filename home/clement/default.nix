@@ -82,6 +82,7 @@ in
       wireguard-tools
       unstable.beeper
       libreoffice
+      (pkgs.callPackage ./notflix.nix { })
 
       # ↓ games
       legacy.prismlauncher
