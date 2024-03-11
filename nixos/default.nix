@@ -60,6 +60,7 @@
   };
 
   networking.networkmanager.enable = true;
+  zramSwap.enable = true;
 
   environment = {
     shells = with pkgs; [ zsh ];
