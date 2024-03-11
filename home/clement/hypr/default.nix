@@ -1,19 +1,6 @@
 { pkgs, hyprland, hyprland-plugins, ... }:
 let
   wallpaper = ./../../../assets/wallpapers/japan-market.jpg;
-  winwrap = {
-    kitty = pkgs.writeText "hyprwinwrapkitty.conf" ''
-      font_size 12
-      background_opacity 0.0
-      dynamic_background_opacity yes
-      hide_window_decorations yes
-      remember_window_size no
-      window_padding_width 0.0
-    '';
-    script = pkgs.writeScript "hyprwinwrapscript" ''
-      sleep 1 && ${pkgs.cava}/bin/cava
-    '';
-  };
 in
 {
   imports = [
@@ -27,7 +14,7 @@ in
     enable = true;
     package = hyprland;
 
-    plugins = with hyprland-plugins; [ hyprwinwrap ];
+    plugins = with hyprland-plugins; [];
 
     settings = {
       monitor = ",highres,auto,1";
@@ -38,7 +25,6 @@ in
         "${pkgs.xwaylandvideobridge}/bin/xwaylandvideobridge"
         "${pkgs.unstable.pyprland}/bin/pypr"
         "${pkgs.unstable.hypridle}/bin/hypridle"
-        "${pkgs.kitty}/bin/kitty -c ${winwrap.kitty} --class=\"kitty-bg\" ${winwrap.script}"
       ] ++ (
         let
           targets = [ "text" "image" ];
@@ -186,11 +172,6 @@ in
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
       ];
-
-      plugin = {
-        hyprwinwrap.class = "kitty-bg";
-      };
-
     };
   };
 
