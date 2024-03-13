@@ -52,6 +52,7 @@
       dockerfile-language-server-nodejs
       docker-compose-language-service
       gopls
+      cmake-language-server
     ];
   };
 }
