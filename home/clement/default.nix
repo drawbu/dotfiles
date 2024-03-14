@@ -66,7 +66,7 @@ in
       nurl
 
       # ↓ softwares
-      legacy.obsidian
+      unstable.obsidian
       spotify
       unstable.vscode
       jetbrains.clion
