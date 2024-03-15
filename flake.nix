@@ -13,10 +13,7 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
     ecsls.url = "github:Sigmapitech/ecsls";
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland/v0.36.0";
-      inputs.nixpkgs.follows = "nixpkgs_unstable";
-    };
+    hyprland.url = "github:hyprwm/Hyprland/v0.36.0";
     hyprland-plugins = {
       url = "github:hyprwm/Hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
@@ -40,7 +37,7 @@
       extraArgs = {
         inherit pkgs;
         ecsls = inputs.ecsls.packages.${cfg.system}.default;
-        hyprland = inputs.hyprland.packages.${cfg.system}.default;
+        hyprland = inputs.hyprland.packages.${cfg.system};
         hyprland-plugins = inputs.hyprland-plugins.packages.${cfg.system};
         nix-alien = inputs.nix-alien.packages.${cfg.system}.nix-alien;
       };

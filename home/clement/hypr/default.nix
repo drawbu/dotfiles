@@ -12,7 +12,7 @@ in
   services.swayosd.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
-    package = hyprland;
+    package = hyprland.hyprland;
 
     plugins = with hyprland-plugins; [];
 
