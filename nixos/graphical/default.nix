@@ -38,6 +38,7 @@
     # For the file manager
     gvfs.enable = true;
     tumbler.enable = true;
+    blueman.enable = true;
 
     # Sounds
     pipewire = {

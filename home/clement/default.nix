@@ -129,6 +129,8 @@ in
         use_mpris = true;
       };
     };
+
+    blueman-applet.enable = true;
   };
 
   programs = {
