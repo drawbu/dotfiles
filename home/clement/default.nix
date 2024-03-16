@@ -72,6 +72,7 @@ in
       jetbrains.clion
       jetbrains.pycharm-professional
       jetbrains.webstorm
+      jetbrains.datagrip
       feh
       thunderbird-bin
       vlc
