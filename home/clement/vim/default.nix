@@ -1,4 +1,8 @@
-{ pkgs, ecsls, ... }: {
+{
+  pkgs,
+  ecsls,
+  ...
+}: {
   imports = [
     ./vim.nix
   ];
@@ -16,10 +20,12 @@
     vimAlias = true;
     vimdiffAlias = true;
 
-    extraConfig = builtins.readFile ./.vimrc + ''
-      lua require('settings')
-      lua require('lazy').setup('plugins')
-    '';
+    extraConfig =
+      builtins.readFile ./.vimrc
+      + ''
+        lua require('settings')
+        lua require('lazy').setup('plugins')
+      '';
 
     withNodeJs = true;
     withPython3 = true;

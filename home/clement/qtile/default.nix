@@ -1,5 +1,5 @@
 # Dependencies I use for qtile
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home = {
     file.".config/qtile" = {
       source = ./src;

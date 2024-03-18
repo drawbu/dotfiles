@@ -1,8 +1,6 @@
-{ ... }:
-let
-  colors = import ./colors.nix { };
-in
-{
+{...}: let
+  colors = import ./colors.nix {};
+in {
   programs.wofi = {
     enable = true;
     settings = {

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./bash.nix
     ./zsh.nix
@@ -7,28 +6,26 @@
 
   home = {
     file = {
-      ".local/bin/fixwifi" =
-        let
-          nmcli = "${pkgs.networkmanager}/bin/nmcli";
-        in
-        {
-          executable = true;
-          text = ''
-            #!${pkgs.runtimeShell}
+      ".local/bin/fixwifi" = let
+        nmcli = "${pkgs.networkmanager}/bin/nmcli";
+      in {
+        executable = true;
+        text = ''
+          #!${pkgs.runtimeShell}
 
-            ssid="$1"
-            if [ -z "$ssid" ]; then
-              echo "Usage: fixwifi <ssid>"
-              exit 1
-            fi
-            while [ -z "$((${nmcli} dev wifi rescan && ${nmcli} dev wifi list) | grep "$ssid")" ]; do
-              echo "Waiting for $ssid to be available..."
-              sleep 1
-            done
-            echo "Connecting to $ssid..."
-            ${nmcli} dev wifi connect "$ssid"
-          '';
-        };
+          ssid="$1"
+          if [ -z "$ssid" ]; then
+            echo "Usage: fixwifi <ssid>"
+            exit 1
+          fi
+          while [ -z "$((${nmcli} dev wifi rescan && ${nmcli} dev wifi list) | grep "$ssid")" ]; do
+            echo "Waiting for $ssid to be available..."
+            sleep 1
+          done
+          echo "Connecting to $ssid..."
+          ${nmcli} dev wifi connect "$ssid"
+        '';
+      };
 
       ".local/bin/run_gnome" = {
         executable = true;
@@ -79,5 +76,4 @@
       enableBashIntegration = true;
     };
   };
-
 }

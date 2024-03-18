@@ -1,5 +1,8 @@
-{ pkgs, hyprland, ... }:
 {
+  pkgs,
+  hyprland,
+  ...
+}: {
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [

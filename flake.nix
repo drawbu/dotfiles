@@ -20,70 +20,74 @@
     };
   };
 
-  outputs = { self, ... } @ inputs:
-    let
-      cfg = {
-        system = "x86_64-linux";
-        config.allowUnfree = true;
-      };
+  outputs = {self, ...} @ inputs: let
+    cfg = {
+      system = "x86_64-linux";
+      config.allowUnfree = true;
+    };
 
-      pkgs = import inputs.nixpkgs (cfg // {
+    pkgs = import inputs.nixpkgs (cfg
+      // {
         overlays = [
-          (_: _: { unstable = import inputs.nixpkgs_unstable cfg; })
-          (_: _: { legacy = import inputs.nixpkgs_legacy cfg; })
+          (_: _: {unstable = import inputs.nixpkgs_unstable cfg;})
+          (_: _: {legacy = import inputs.nixpkgs_legacy cfg;})
         ];
       });
 
-      extraArgs = {
+    extraArgs = {
+      inherit pkgs;
+      ecsls = inputs.ecsls.packages.${cfg.system}.default;
+      hyprland = inputs.hyprland.packages.${cfg.system};
+      hyprland-plugins = inputs.hyprland-plugins.packages.${cfg.system};
+      nix-alien = inputs.nix-alien.packages.${cfg.system}.nix-alien;
+    };
+
+    hardware = inputs.nixos-hardware.nixosModules;
+
+    defaultConfig = {
+      system = cfg.system;
+      specialArgs = extraArgs;
+      modules = [
+        inputs.home-manager.nixosModules.home-manager
+        {home-manager.extraSpecialArgs = extraArgs;}
+      ];
+    };
+  in {
+    formatter.${cfg.system} = pkgs.alejandra;
+
+    homeConfigurations = {
+      "clement" = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        ecsls = inputs.ecsls.packages.${cfg.system}.default;
-        hyprland = inputs.hyprland.packages.${cfg.system};
-        hyprland-plugins = inputs.hyprland-plugins.packages.${cfg.system};
-        nix-alien = inputs.nix-alien.packages.${cfg.system}.nix-alien;
-      };
-
-      hardware = inputs.nixos-hardware.nixosModules;
-
-      defaultConfig = {
-        system = cfg.system;
-        specialArgs = extraArgs;
-        modules = [
-          inputs.home-manager.nixosModules.home-manager
-          { home-manager.extraSpecialArgs = extraArgs; }
-        ];
-      };
-    in
-    {
-      formatter.${cfg.system} = pkgs.nixpkgs-fmt;
-
-      homeConfigurations = {
-        "clement" = inputs.home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./home/clement ];
-        };
-      };
-
-
-      nixosConfigurations = {
-        "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (defaultConfig // {
-          modules = defaultConfig.modules ++ [
-            ./pain-de-mie.nix
-            # hardware.common-gpu-nvidia
-            hardware.common-cpu-intel
-            hardware.common-pc
-            hardware.common-pc-ssd
-            hardware.common-pc-hdd
-          ];
-        });
-        "pancake" = inputs.nixpkgs.lib.nixosSystem (defaultConfig // {
-          modules = defaultConfig.modules ++ [
-            ./pancake.nix
-            hardware.common-gpu-intel
-            hardware.common-cpu-intel
-            hardware.common-pc-laptop
-            hardware.common-pc-laptop-ssd
-          ];
-        });
+        modules = [./home/clement];
       };
     };
+
+    nixosConfigurations = {
+      "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (defaultConfig
+        // {
+          modules =
+            defaultConfig.modules
+            ++ [
+              ./pain-de-mie.nix
+              # hardware.common-gpu-nvidia
+              hardware.common-cpu-intel
+              hardware.common-pc
+              hardware.common-pc-ssd
+              hardware.common-pc-hdd
+            ];
+        });
+      "pancake" = inputs.nixpkgs.lib.nixosSystem (defaultConfig
+        // {
+          modules =
+            defaultConfig.modules
+            ++ [
+              ./pancake.nix
+              hardware.common-gpu-intel
+              hardware.common-cpu-intel
+              hardware.common-pc-laptop
+              hardware.common-pc-laptop-ssd
+            ];
+        });
+    };
+  };
 }

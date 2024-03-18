@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     xcb-util-cursor
   ];
@@ -19,4 +18,4 @@
       package = pkgs.catppuccin-cursors.mochaLight;
     };
   };
-} 
+}

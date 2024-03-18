@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   home.file.".globalgitignore".source = ./.globalgitignore;
 
   programs.git = {

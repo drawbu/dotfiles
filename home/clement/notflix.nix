@@ -1,7 +1,8 @@
-{ stdenvNoCC
-, fetchFromGitHub
-, nodePackages
-, ...
+{
+  stdenvNoCC,
+  fetchFromGitHub,
+  nodePackages,
+  ...
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "notflix";
@@ -25,4 +26,3 @@ stdenvNoCC.mkDerivation rec {
       --replace "https://1337x.to" "https://www.1337xx.to" \
   '';
 }
-

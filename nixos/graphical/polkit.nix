@@ -1,16 +1,14 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   pgaa = "polkit-gnome-authentication-agent-1";
-in
-{
+in {
   security.polkit.enable = true;
 
   systemd = {
     user.services.${pgaa} = {
       description = pgaa;
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
+      wantedBy = ["graphical-session.target"];
+      wants = ["graphical-session.target"];
+      after = ["graphical-session.target"];
       serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.polkit_gnome}/libexec/${pgaa}";

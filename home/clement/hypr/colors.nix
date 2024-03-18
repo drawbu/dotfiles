@@ -1,5 +1,4 @@
-{}:
-rec {
+{}: rec {
   # Catppuccin Mocha
   foreground = raw.text;
   background = raw.base;

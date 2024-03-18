@@ -1,9 +1,7 @@
 # 'clement' user home-manager config for NixOS & generic linux
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   username = "clement";
-in
-{
+in {
   imports = [
     ./qtile
     ./rofi
@@ -86,7 +84,7 @@ in
       wireguard-tools
       unstable.beeper
       libreoffice
-      (pkgs.callPackage ./notflix.nix { })
+      (pkgs.callPackage ./notflix.nix {})
 
       # ↓ games
       legacy.prismlauncher

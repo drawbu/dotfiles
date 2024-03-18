@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   dconf = {
     enable = true;
     settings = {
@@ -20,9 +19,9 @@
     theme = {
       name = "Catppuccin-Mocha-Compact-Peach-Dark";
       package = pkgs.catppuccin-gtk.override {
-        accents = [ "peach" ];
+        accents = ["peach"];
         size = "compact";
-        tweaks = [ "rimless" ];
+        tweaks = ["rimless"];
         variant = "mocha";
       };
     };

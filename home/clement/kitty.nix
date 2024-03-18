@@ -1,9 +1,8 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.kitty = {
     enable = true;
     font = {
-      package = (pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; });
+      package = pkgs.nerdfonts.override {fonts = ["Iosevka"];};
       name = "Iosevka Nerd Font";
       size = 12;
     };
@@ -20,7 +19,6 @@
       remember_window_size = "no";
       initial_window_width = "640";
       initial_window_height = "400";
-
 
       # Tabs
       tab_bar_min_tabs = "2";

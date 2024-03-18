@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services.picom = {
     enable = true;
     backend = "glx";
@@ -14,7 +13,7 @@
         hash = "sha256-dB8DaCPWPoZlyaNaO5A38fpPVzFT6/8tqJ+5B2aYmnI=";
       };
 
-      buildInputs = old.buildInputs ++ [ pkgs.xorg.xcbutil pkgs.pcre2 ];
+      buildInputs = old.buildInputs ++ [pkgs.xorg.xcbutil pkgs.pcre2];
     });
     vSync = true;
     opacityRules = [

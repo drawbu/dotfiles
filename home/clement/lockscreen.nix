@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.file.".local/share/lock/wallpaper.jpg" = {
     source = ./../../assets/wallpapers/hallway-banbooru.jpg;
     onChange = ''

@@ -1,5 +1,8 @@
-{ pkgs, nix-alien, ... }:
 {
+  pkgs,
+  nix-alien,
+  ...
+}: {
   system.copySystemConfiguration = false;
   nix = {
     gc = {
@@ -8,8 +11,8 @@
       options = "--delete-older-than 7d";
     };
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      trusted-users = [ "root" "@wheel" ];
+      experimental-features = ["nix-command" "flakes"];
+      trusted-users = ["root" "@wheel"];
       keep-outputs = true;
       keep-derivations = true;
       auto-optimise-store = true;
@@ -45,7 +48,7 @@
 
     nix-ld = {
       enable = true;
-      libraries = with pkgs; [ ];
+      libraries = with pkgs; [];
     };
   };
 
@@ -63,7 +66,7 @@
   zramSwap.enable = true;
 
   environment = {
-    shells = with pkgs; [ zsh ];
+    shells = with pkgs; [zsh];
     systemPackages = with pkgs; [
       git
       btop
@@ -73,7 +76,7 @@
       virt-manager
       nix-alien
     ];
-    pathsToLink = [ "/share/nix-direnv" ];
-    etc.issue.text = (builtins.readFile ./issue.txt);
+    pathsToLink = ["/share/nix-direnv"];
+    etc.issue.text = builtins.readFile ./issue.txt;
   };
 }

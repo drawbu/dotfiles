@@ -1,7 +1,6 @@
 # My config for NixOS on my laptop
 # The name: pancake
-{ ... }:
-{
+{...}: {
   imports = [
     ./nixos/hardware/hardware-pancake.nix
     ./nixos
@@ -24,10 +23,9 @@
     fprintd.enable = true;
 
     # idk intel hardware is borken
-    xserver.videoDrivers = [ "intel" ];
+    xserver.videoDrivers = ["intel"];
   };
 
   # Hardware acceleration
   hardware.opengl.enable = true;
-
 }

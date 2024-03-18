@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   vimTmuxNavigator = pkgs.tmuxPlugins.mkTmuxPlugin rec {
     pluginName = src.repo;
     version = "unstable-2024-02-05";
@@ -11,8 +10,7 @@ let
       hash = "sha256-CxAgQSbOrg/SsQXupwCv8cyZXIB7tkWO+Y6FDtoR8xk=";
     };
   };
-in
-{
+in {
   programs.tmux = {
     enable = true;
     keyMode = "vi";
@@ -21,7 +19,7 @@ in
     secureSocket = true;
 
     plugins = with pkgs.tmuxPlugins; [
-      { plugin = sensible; }
+      {plugin = sensible;}
       {
         plugin = vimTmuxNavigator;
         extraConfig = ''

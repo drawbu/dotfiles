@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./polkit.nix
     ./xserver.nix
@@ -64,7 +63,7 @@
   };
 
   environment = {
-    shells = with pkgs; [ zsh ];
+    shells = with pkgs; [zsh];
     systemPackages = with pkgs; [
       libsForQt5.ark
       libsForQt5.plasma-nm
