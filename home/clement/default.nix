@@ -64,6 +64,7 @@ in
       nix-index
       spotify-tui
       nurl
+      unzip
 
       # ↓ softwares
       unstable.obsidian
