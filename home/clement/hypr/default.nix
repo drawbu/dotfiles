@@ -10,6 +10,7 @@ in {
     ./waybar.nix
     ./wofi.nix
     ./hyprlock.nix
+    ./colortheme.nix
   ];
 
   services.swayosd.enable = true;

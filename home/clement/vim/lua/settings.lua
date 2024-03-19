@@ -14,6 +14,12 @@ vim.opt.foldenable = true
 vim.opt.scrolloff = 99
 
 vim.cmd([[
+  " Infinite undo
+  if has('persistent_undo')
+      set undodir=$HOME/.nvim/undo
+      set undofile
+  endif
+
   augroup FileTypeOverride
     autocmd!
     autocmd BufRead,BufNewFile *.asm set filetype=nasm

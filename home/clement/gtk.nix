@@ -1,4 +1,20 @@
 {pkgs, ...}: {
+  home.packages = [
+    (pkgs.catppuccin-gtk.override {
+      accents = ["peach"];
+      size = "compact";
+      tweaks = ["rimless"];
+      variant = "mocha";
+    })
+
+    (pkgs.catppuccin-gtk.override {
+      accents = ["peach"];
+      size = "compact";
+      tweaks = ["rimless"];
+      variant = "latte";
+    })
+  ];
+
   dconf = {
     enable = true;
     settings = {
@@ -16,15 +32,7 @@
       package = pkgs.papirus-icon-theme;
     };
 
-    theme = {
-      name = "Catppuccin-Mocha-Compact-Peach-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["peach"];
-        size = "compact";
-        tweaks = ["rimless"];
-        variant = "mocha";
-      };
-    };
+    theme.name = "Catppuccin-Mocha-Compact-Peach-Dark";
   };
 
   qt = {

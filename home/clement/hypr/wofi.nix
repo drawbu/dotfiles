@@ -1,5 +1,5 @@
 {...}: let
-  colors = import ./colors.nix {};
+  colors = import ./colors.nix {theme = "dark";};
 in {
   programs.wofi = {
     enable = true;
@@ -8,13 +8,15 @@ in {
       allow_images = true;
     };
     style = ''
+      @import "~/theme.css";
+
       * {
         font-family: "Iosevka Nerd Font";
       }
 
       window {
-        background-color: #${colors.background};
-        color = #${colors.foreground};
+        background-color: var(${colors.background.css});
+        color = var(${colors.foreground.css});
       }
     '';
   };

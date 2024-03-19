@@ -1,11 +1,11 @@
 {...}: let
-  colors = import ./colors.nix {};
+  colors = import ./colors.nix {theme = "dark";};
 in {
   xdg.configFile."hypr/hyprlock.conf".text = ''
     background {
         monitor =
         path = ${../../../assets/wallpapers/diner.png}
-        color = ${colors.foreground}
+        color = ${colors.foreground.hex}
 
         # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
         blur_size = 4
@@ -24,9 +24,9 @@ in {
         dots_size = 0.2 # Scale of input-field height, 0.2 - 0.8
         dots_spacing = 0.64 # Scale of dots' absolute size, 0.0 - 1.0
         dots_center = true
-        outer_color = ${colors.background}
-        inner_color = ${colors.accent}
-        font_color = ${colors.foreground}
+        outer_color = ${colors.background.hex}
+        inner_color = ${colors.accent.hex}
+        font_color = ${colors.foreground.hex}
         fade_on_empty = true
         placeholder_text = <i>Password...</i> # Text rendered in the input box when it's empty.
         hide_input = false
@@ -39,7 +39,7 @@ in {
     label {
         monitor =
         text = cmd[update:1000] echo "<b><big> $(date +"%H:%M:%S") </big></b>"
-        color = ${colors.foreground}
+        color = ${colors.foreground.hex}
         font_size = 64
         font_family = JetBrains Mono Nerd Font 10
         position = 0, 16
@@ -51,7 +51,7 @@ in {
     label {
         monitor =
         text = Hey <span text_transform="capitalize" size="larger">$USER</span>
-        color = ${colors.foreground}
+        color = ${colors.foreground.hex}
         font_size = 20
         font_family = JetBrains Mono Nerd Font 10
         position = 0, 0
@@ -64,7 +64,7 @@ in {
     label {
         monitor =
         text = Type to unlock!
-        color = ${colors.foreground}
+        color = ${colors.foreground.hex}
         font_size = 16
         font_family = JetBrains Mono Nerd Font 10
         position = 0, 30

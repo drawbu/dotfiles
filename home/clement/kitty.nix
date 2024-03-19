@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  theme = pkgs.fetchFromGitHub {
+    owner = "catppuccin";
+    repo = "kitty";
+    rev = "d7d61716a83cd135344cbb353af9d197c5d7cec1";
+    hash = "sha256-mRFa+40fuJCUrR1o4zMi7AlgjRtFmii4fNsQyD8hIjM=";
+  };
+in {
   programs.kitty = {
     enable = true;
     font = {
@@ -26,7 +33,18 @@
       tab_bar_style = "powerline";
       tab_powerline_style = "slanted";
       tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
+
+      # Remote control
+      allow_remote_control = "yes";
+      listen_on = "unix:/tmp/kitty";
     };
     theme = "Catppuccin-Mocha";
+
+    environment.TERMINAL = "kitty";
+  };
+
+  xdg.configFile = {
+    "kitty/dark.conf".source = "${theme}/themes/mocha.conf";
+    "kitty/light.conf".source = "${theme}/themes/latte.conf";
   };
 }

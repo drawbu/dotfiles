@@ -1,6 +1,25 @@
-{pkgs, ...}: let
-  colors = import ./colors.nix {};
+{pkgs, config, ...}: let
+  colors = import ./colors.nix {theme = "dark";};
+  theme = pkgs.fetchFromGitHub {
+    owner = "catppuccin";
+    repo = "waybar";
+    rev = "f74ab1eecf2dcaf22569b396eed53b2b2fbe8aff";
+    hash = "sha256-WLJMA2X20E5PCPg0ZPtSop0bfmu+pLImP9t8A8V4QK8=";
+  };
+
+  activation = pkgs.writeShellScript "activation" ''
+    path="$XDG_CONFIG_HOME/waybar"
+    file="$path/theme.css"
+
+    [ -f $file ] || ln -s "$path/dark.css" $file
+  '';
 in {
+  xdg.configFile = {
+    "waybar/dark.css".source = "${theme}/themes/mocha.css";
+    "waybar/light.css".source = "${theme}/themes/latte.css";
+  };
+  home.activation.createWaybarGTKTheme = "sh ${activation}";
+
   programs.waybar = with colors; {
     enable = true;
     systemd = {
@@ -8,12 +27,14 @@ in {
       target = "graphical-session.target";
     };
     style = ''
+      @import "./theme.css";
+
       window#waybar {
-        background-color: #${darker};
+        background-color: ${darker.gtk};
         border-bottom: none;
       }
       * {
-        color: #${foreground};
+        color: ${foreground.gtk};
         font-size: 16px;
         min-height: 0;
         font-family: "Iosevka Nerd Font", "Material Design Icons Desktop";
@@ -23,7 +44,7 @@ in {
 
       box > widget > label,
       box > widget > box {
-        background-color: #${background};
+        background-color: ${background.gtk};
         margin-top: 4px;
         margin-bottom: 4px;
         padding: 5px 12px;
@@ -31,7 +52,7 @@ in {
       }
 
       #custom-launcher {
-        color: #${raw.blue};
+        color: ${raw.blue.gtk};
         margin-left: 4px;
         font-size: 18px;
       }
@@ -40,22 +61,23 @@ in {
         font-size: 20px;
       }
       #workspaces button {
-        color: #${raw.blue};
+        color: ${raw.blue.gtk};
         font-size: 18px;
         background-color: transparent;
         transition: all 0.1s ease;
       }
       #workspaces button.focused {
-        color: #${raw.green};
+        color: ${raw.green.gtk};
         font-size: 18px;
       }
       #workspaces button.persistent {
-        color: #${raw.yellow};
+        color: ${raw.yellow.gtk};
         font-size: 12px;
       }
 
       /* center widgets */
 
+      #clock,
       #privacy,
       #mpris {
         margin-left: 4px;
@@ -71,7 +93,7 @@ in {
         border-radius: 0;
       }
       #bluetooth.connected {
-        color: #${raw.blue};
+        color: ${raw.blue.gtk};
       }
       #network {
         border-radius: 0;
@@ -82,7 +104,7 @@ in {
         border-bottom-left-radius: 0;
       }
       #battery.charging {
-        color: #${raw.green};
+        color: ${raw.green.gtk};
       }
       @keyframes blink {
         to {
@@ -91,10 +113,10 @@ in {
         }
       }
       #battery.warning:not(.charging) {
-        color: #${raw.yellow};
+        color: ${raw.yellow.gtk};
       }
       #battery.critical:not(.charging) {
-        background: #${raw.red};
+        background: ${raw.red.gtk};
         color: white;
         animation-name: blink;
         animation-duration: 0.5s;
@@ -106,7 +128,7 @@ in {
         margin-right: 4px;
       }
       #custom-power {
-        color: #${raw.red};
+        color: ${raw.red.gtk};
         margin-right: 4px;
       }
     '';
@@ -143,10 +165,16 @@ in {
 
         # ↓ Center widgets
         modules-center = [
+          "custom/dark-switch"
           "clock"
           "privacy"
           "mpris"
         ];
+        "custom/dark-switch" = {
+          format = "󱎖 ";
+          on-click = "dark";
+          tooltip = "Dark mode";
+        };
         clock = {
           format = "{:%d %A %H:%M}";
           tooltip-format = "{:%Y-%m-%d | %H:%M}";

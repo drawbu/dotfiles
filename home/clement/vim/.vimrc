@@ -18,12 +18,6 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-" Infinite undo
-if has('persistent_undo')
-    set undodir=$HOME/.vim/undo
-    set undofile
-endif
-
 " All my homies hate swapfile
 set noswapfile
 

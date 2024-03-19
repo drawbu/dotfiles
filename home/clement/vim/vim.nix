@@ -18,6 +18,12 @@
 
         highlight RedundantSpaces ctermbg=red guibg=red
         match RedundantSpaces /\s\+$/
+
+        " Infinite undo
+        if has('persistent_undo')
+            set undodir=$HOME/.nvim/undo
+            set undofile
+        endif
       ''
       + builtins.readFile ./.vimrc;
 
