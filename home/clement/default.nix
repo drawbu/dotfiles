@@ -18,6 +18,7 @@ in {
     ./dunst.nix
     ./kitty.nix
     ./btop.nix
+    ./gitlab.nix
     ./gh.nix
     ./lockscreen.nix
     ./picom.nix
