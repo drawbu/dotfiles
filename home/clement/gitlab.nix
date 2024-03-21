@@ -11,7 +11,7 @@
 
     Service = {
       ExecStart = "${pkgs.gitlab-runner}/bin/gitlab-runner run";
-      Restart = "on-failure";
+      Restart = "always";
       RestartSec = 3;
     };
   };
