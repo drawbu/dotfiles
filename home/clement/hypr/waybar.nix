@@ -22,6 +22,9 @@ in {
 
   programs.waybar = with colors; {
     enable = true;
+    package = pkgs.unstable.waybar.overrideAttrs (old: {
+      buildInputs = old.buildInputs ++ [pkgs.wireplumber];
+    });
     systemd = {
       enable = false;
       target = "graphical-session.target";
