@@ -35,6 +35,8 @@
       t = "tmux new-session \\; split-window -h";
       epidock = "docker run -it --rm -v \$(pwd):/home/project -w /home/project epitechcontent/epitest-docker:latest /bin/bash";
       vi = "${pkgs.vim}/bin/vim";
+      "'??'" = "gh copilot suggest -t shell";
+      "'git?'" = "gh copilot suggest -t git";
     };
   };
 
