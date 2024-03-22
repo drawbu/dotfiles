@@ -1,6 +1,6 @@
 # My config for NixOS on my laptop
 # The name: pancake
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./nixos/hardware/hardware-pancake.nix
     ./nixos
@@ -10,6 +10,8 @@
 
   networking.hostName = "pancake";
   system.stateVersion = "23.05";
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Git signing
   home-manager.users.clement.programs.git.signing = {
