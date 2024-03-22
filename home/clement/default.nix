@@ -13,7 +13,6 @@ in {
     ./gtk.nix
     ./firefox.nix
     ./cursor.nix
-    ./discord.nix
     ./tmux.nix
     ./dunst.nix
     ./kitty.nix
@@ -64,6 +63,7 @@ in {
       spotify-tui
       nurl
       unzip
+      unar
 
       # ↓ softwares
       unstable.obsidian
@@ -86,6 +86,7 @@ in {
       unstable.beeper
       libreoffice
       (pkgs.callPackage ./notflix.nix {})
+      unstable.vesktop
 
       # ↓ games
       legacy.prismlauncher
