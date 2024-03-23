@@ -1,4 +1,4 @@
 CompileFlags:
   Add: -Wno-unknown-warning-option
-  Add: -Wno-compare-distinct-pointer-types
+       -Wno-compare-distinct-pointer-types
   Remove: [-m*, -f*]
