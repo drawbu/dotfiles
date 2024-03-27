@@ -36,6 +36,12 @@
       gtk_theme="Catppuccin-Latte-Compact-Peach-Dark";
     fi
     gsettings set org.gnome.desktop.interface gtk-theme $gtk_theme
+
+    # Update wallpaper
+    file=$XDG_CONFIG_HOME/hypr/hyprpaper.conf
+    rm -f $file
+    ln -s "$XDG_CONFIG_HOME/hypr/paper/$theme.conf" $file
+    pkill hyprpaper && hyprpaper &
   '';
 
   run_gnome = pkgs.writeShellScriptBin "run_gnome" ''

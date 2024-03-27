@@ -4,7 +4,12 @@
   hyprland-plugins,
   ...
 }: let
-  wallpaper = ./../../../assets/wallpapers/japan-market.jpg;
+  hyprpaperActivation = import ./symlink.nix {
+    inherit pkgs;
+    path = "$XDG_CONFIG_HOME/hypr";
+    file = "hyprpaper.conf";
+    default = "paper/dark.conf";
+  };
 in {
   imports = [
     ./waybar.nix
@@ -12,6 +17,13 @@ in {
     ./hyprlock.nix
     ./colortheme.nix
   ];
+
+  home = {
+    activation.createHyprpaper = "sh ${hyprpaperActivation.script}";
+    packages = with pkgs; [
+      hyprpaper
+    ];
+  };
 
   services.swayosd.enable = true;
   wayland.windowManager.hyprland = {
@@ -25,8 +37,8 @@ in {
 
       exec-once =
         [
+          "hyprpaper"
           "${pkgs.waybar}/bin/waybar"
-          "${pkgs.hyprpaper}/bin/hyprpaper"
           "${pkgs.xwaylandvideobridge}/bin/xwaylandvideobridge"
           "${pkgs.unstable.pyprland}/bin/pypr"
           "${pkgs.unstable.hypridle}/bin/hypridle"
@@ -196,9 +208,13 @@ in {
   };
 
   xdg.configFile = {
-    "hypr/hyprpaper.conf".text = ''
-      preload = ${wallpaper}
-      wallpaper = ,${wallpaper}
+    "hypr/paper/dark.conf".text = ''
+      preload = ${../../../assets/wallpapers/japan-market.jpg}
+      wallpaper = ,${../../../assets/wallpapers/japan-market.jpg}
+    '';
+    "hypr/paper/light.conf".text = ''
+      preload = ${../../../assets/wallpapers/sunflower.jpg}
+      wallpaper = ,${../../../assets/wallpapers/sunflower.jpg}
     '';
 
     "hypr/pyprland.toml".text = ''
