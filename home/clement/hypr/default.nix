@@ -67,8 +67,15 @@ in {
 
         blur = {
           enabled = true;
-          size = 3;
-          passes = 1;
+          popups = true;
+          ignore_opacity = false;
+          xray = false;
+          size = 4;
+          passes = 4;
+          contrast = 1.5;
+          brightness = 1;
+          vibrancy = 0.1697;
+          noise = 0;
         };
 
         drop_shadow = "yes";
@@ -92,10 +99,18 @@ in {
         ];
       };
 
-      windowrule = let
-        win = ["^(kitty)$"];
-      in
-        with builtins; (genList (x: "float, ${elemAt win x}") (length win));
+      windowrule =
+        [
+          "noblur,^(kitty)$"
+        ]
+        ++ builtins.map (e: "float, ${e}") ["^(kitty)$"]
+        ++ builtins.map (e: "opacity 0.9, ${e}") [
+          "^(discord)$"
+          "^(vesktop)$"
+          "^(obsidian)$"
+          "^(waybar)$"
+          "^(Rofi)$"
+        ];
 
       dwindle = {
         preserve_split = "yes";
