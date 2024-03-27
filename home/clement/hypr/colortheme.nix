@@ -20,18 +20,18 @@
     };
   '';
 
-  activation = pkgs.writeShellScript "activation" ''
-    path="$HOME"
-    file="$path/theme.css"
-
-    [ -f $file ] || ln -s "$path/dark.css" $file
-  '';
+  activation = import ./symlink.nix {
+    inherit pkgs;
+    path = "$HOME";
+    file = "theme.css";
+    default = "dark.css";
+  };
 in {
   home = {
     file = {
       "dark.css".text = createCSS "dark";
       "light.css".text = createCSS "light";
     };
-    activation.createCSSTheme = "sh ${activation}";
+    activation.createCSSTheme = "sh ${activation.script}";
   };
 }

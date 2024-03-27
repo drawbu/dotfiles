@@ -1,4 +1,4 @@
-{pkgs, config, ...}: let
+{pkgs, ...}: let
   colors = import ./colors.nix {theme = "dark";};
   theme = pkgs.fetchFromGitHub {
     owner = "catppuccin";
@@ -7,18 +7,18 @@
     hash = "sha256-WLJMA2X20E5PCPg0ZPtSop0bfmu+pLImP9t8A8V4QK8=";
   };
 
-  activation = pkgs.writeShellScript "activation" ''
-    path="$XDG_CONFIG_HOME/waybar"
-    file="$path/theme.css"
-
-    [ -f $file ] || ln -s "$path/dark.css" $file
-  '';
+  activation = import ./symlink.nix {
+    inherit pkgs;
+    path = "$XDG_CONFIG_HOME/waybar";
+    file = "theme.css";
+    default = "dark.css";
+  };
 in {
   xdg.configFile = {
     "waybar/dark.css".source = "${theme}/themes/mocha.css";
     "waybar/light.css".source = "${theme}/themes/latte.css";
   };
-  home.activation.createWaybarGTKTheme = "sh ${activation}";
+  home.activation.createWaybarGTKTheme = "sh ${activation.script}";
 
   programs.waybar = with colors; {
     enable = true;
