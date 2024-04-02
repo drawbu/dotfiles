@@ -37,6 +37,7 @@ in {
       # Remote control
       allow_remote_control = "yes";
       listen_on = "unix:/tmp/kitty";
+      enable_audio_bell = "no";
     };
     theme = "Catppuccin-Mocha";
 
