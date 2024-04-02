@@ -178,8 +178,7 @@ in {
           "$mod, mouse_up, workspace, e-1"
 
           # Screenshot Keybinds
-          ", Print, exec, ${pkgs.grimblast}/bin/grimblast copy area"
-          "shift, Print, exec, ${pkgs.grimblast}/bin/grimblast copy"
+          ", Print, exec, ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.unstable.satty}/bin/satty -f -"
         ];
 
       binde = [
