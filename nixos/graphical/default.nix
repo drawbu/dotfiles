@@ -49,6 +49,8 @@
     };
 
     printing.enable = true;
+
+    flatpak.enable = true;
   };
 
   programs = {

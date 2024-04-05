@@ -20,6 +20,7 @@ in {
     ./gitlab.nix
     ./gh.nix
     ./lockscreen.nix
+    ./flatpak.nix
     ./picom.nix
     ./mimeapps.nix
     ./editorconfig.nix
