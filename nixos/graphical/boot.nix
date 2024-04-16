@@ -14,7 +14,6 @@ in {
         efiSupport = true;
         device = "nodev";
         gfxmodeEfi = "1920x1080x32";
-        useOSProber = true;
         theme = "${minegrub}/minegrub-world-selection";
       };
     };

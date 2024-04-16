@@ -11,6 +11,9 @@
   networking.hostName = "pain-de-mie";
   system.stateVersion = "22.11";
 
+  # Yeah I have Windows
+  boot.loader.grub.useOSProber = true;
+
   # Git signing
   home-manager.users.clement.programs.git.signing = {
     key = "CFAE6BC61FF97205";
