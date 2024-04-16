@@ -1,15 +1,11 @@
-{pkgs, ...}: {
+{pkgs, config, ...}: {
   programs.zsh = {
     enable = true;
     initExtra = ''
-      source ~/.shell-extra
+      source ${config.home.homeDirectory}/.shell-extra
 
-      if [ $(${pkgs.todo}/bin/todo | wc -l) != 0 ]; then
-          echo "Today's tasks:"
-          todo
-      fi
-
-      if [ -z $TMUX ]; then
+      if [ -z $FETCH_RAN ]; then
+        export FETCH_RAN=1
         ${pkgs.bunnyfetch}/bin/bunnyfetch
       fi
     '';

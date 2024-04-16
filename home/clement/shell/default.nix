@@ -6,7 +6,14 @@
   ];
 
   home = {
-    sessionVariables.THEMEFILE = "$HOME/.currenttheme";
+    sessionVariables = {
+      # Defaults
+      EDITOR = "nvim";
+      BROWSER = "firefox";
+      TERMINAL = "kitty";
+
+      THEMEFILE = "$HOME/.currenttheme";
+    };
 
     file = {
       ".config/starship.toml".source = ./starship.toml;
@@ -21,7 +28,7 @@
         export CARGO_NET_GIT_FETCH_WITH_CLI=true
         export PATH="$HOME/.cargo/bin:$PATH"
 
-        if [ -f "$THEMEFILE" ] && [ $TERMINAL = "kitty" ]; then
+        if [ -f "$THEMEFILE" ] && [ "$CURRENT_TERMINAL" = "kitty" ]; then
           theme=$(cat "$THEMEFILE")
           ${pkgs.kitty}/bin/kitty @ set-colors -a "$XDG_CONFIG_HOME/kitty/$theme.conf"
         fi

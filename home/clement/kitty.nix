@@ -41,7 +41,7 @@ in {
     };
     theme = "Catppuccin-Mocha";
 
-    environment.TERMINAL = "kitty";
+    environment.CURRENT_TERMINAL = "kitty";
   };
 
   xdg.configFile = {
