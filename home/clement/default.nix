@@ -65,6 +65,7 @@ in {
       nurl
       unzip
       unar
+      distrobox
 
       # ↓ softwares
       unstable.obsidian

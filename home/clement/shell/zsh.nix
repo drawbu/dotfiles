@@ -11,6 +11,10 @@
     '';
     enableCompletion = false;
 
+    sessionVariables = {
+      ZSH_DISABLE_COMPFIX = true;
+    };
+
     plugins = [
       {
         name = "wakatime";
