@@ -13,7 +13,6 @@
 in {
   imports = [
     ./waybar.nix
-    ./wofi.nix
     ./hyprlock.nix
     ./colortheme.nix
   ];
@@ -115,14 +114,14 @@ in {
         [
           "noblur,^(kitty)$"
         ]
-        ++ builtins.map (e: "float, ${e}") ["^(kitty)$"]
-        ++ builtins.map (e: "opacity 0.9, ${e}") [
+        ++ (builtins.map (e: "float, ${e}") ["^(kitty)$"])
+        ++ (builtins.map (e: "opacity 0.9, ${e}") [
           "^(discord)$"
           "^(vesktop)$"
           "^(obsidian)$"
           "^(waybar)$"
           "^(Rofi)$"
-        ];
+        ]);
 
       dwindle = {
         preserve_split = "yes";
@@ -145,7 +144,7 @@ in {
           "$mod, return, exec, ${pkgs.kitty}/bin/kitty"
           "$mod, W, killactive,"
           "$mod, F, togglefloating,"
-          "$mod, R, exec, ${pkgs.wofi}/bin/wofi --show drun"
+          "$mod, R, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
           "$mod, J, togglesplit,"
           "$mod, K, fullscreen,"
           "$mod, O, exec, pkill -SIGUSR1 waybar # Waybar toggle"

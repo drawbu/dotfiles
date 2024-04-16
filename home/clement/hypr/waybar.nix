@@ -249,7 +249,7 @@ in {
         };
         tray = {spacing = 10;};
         "custom/power" = {
-          on-click = "${pkgs.rofi}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
+          on-click = "${pkgs.rofi-wayland}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
           format = " ";
           tooltip = "Power menu";
         };
