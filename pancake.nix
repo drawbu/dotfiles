@@ -27,7 +27,6 @@
     # idk intel hardware is borken
     xserver.videoDrivers = ["intel"];
 
-
     # Allows for updating firmware via `fwupdmgr`.
     fwupd.enable = true;
   };
