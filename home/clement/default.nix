@@ -24,6 +24,7 @@ in {
     ./picom.nix
     ./mimeapps.nix
     ./editorconfig.nix
+    ./distrobox.nix
   ];
 
   programs.home-manager.enable = true;
@@ -65,7 +66,6 @@ in {
       nurl
       unzip
       unar
-      distrobox
 
       # ↓ softwares
       unstable.obsidian

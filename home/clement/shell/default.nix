@@ -44,6 +44,8 @@
       vi = "${pkgs.vim}/bin/vim";
       "'??'" = "gh copilot suggest -t shell";
       "'git?'" = "gh copilot suggest -t git";
+      arch = "distrobox enter arch";
+      fedora = "distrobox enter fedora";
     };
   };
 
