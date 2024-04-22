@@ -25,6 +25,7 @@ in {
     ./mimeapps.nix
     ./editorconfig.nix
     ./distrobox.nix
+    ./login.nix
   ];
 
   programs.home-manager.enable = true;

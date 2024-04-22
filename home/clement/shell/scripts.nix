@@ -44,12 +44,6 @@
     pkill hyprpaper && hyprpaper &
   '';
 
-  run_gnome = pkgs.writeShellScriptBin "run_gnome" ''
-    export DISPLAY=:0
-    export XDG_SESSION_TYPE=wayland
-    ${pkgs.dbus}/bin/dbus-run-session ${pkgs.gnome.gnome-session}/bin/gnome-session
-  '';
-
   fixwifi = let
     nmcli = "${pkgs.networkmanager}/bin/nmcli";
   in
@@ -70,6 +64,5 @@ in {
   home.packages = [
     fixwifi
     dark
-    run_gnome
   ];
 }

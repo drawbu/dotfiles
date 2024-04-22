@@ -4,7 +4,7 @@
     file.".config/qtile" = {
       source = ./src;
       onChange = ''
-        echo "reload_config()" | ${pkgs.pkgs.qtile-unwrapped}/bin/qtile shell
+        echo "reload_config()" | ${pkgs.qtile-unwrapped}/bin/qtile shell
       '';
     };
 
