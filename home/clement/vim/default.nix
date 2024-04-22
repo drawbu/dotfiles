@@ -51,6 +51,8 @@
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.svelte-language-server
+      nodePackages.bash-language-server
+      shellcheck
       ecsls
       gdtoolkit
       rust-analyzer

@@ -35,6 +35,7 @@ return {
       lsp.docker_compose_language_service.setup({})
       lsp.gopls.setup({})
       lsp.cmake.setup({})
+      lsp.bashls.setup({})
 
       -- ↓ Epitech C Style Checker
       if not configs.ecsls then
