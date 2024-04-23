@@ -35,19 +35,9 @@
         file = "share/zsh-autosuggestions/zsh-autosuggestions.zsh";
       }
       {
-        name = "zsh-fzf-tab";
-        src = pkgs.zsh-fzf-tab;
-        file = "share/fzf-tab/fzf-tab.plugin.zsh";
-      }
-      {
         name = "zsh-nix-shell";
         src = pkgs.zsh-nix-shell;
         file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
-      }
-      {
-        name = "zsh-defer";
-        src = pkgs.zsh-defer;
-        file = "share/zsh-defer/zsh-defer.plugin.zsh";
       }
       {
         name = "F-Sy-H";
@@ -61,6 +51,10 @@
       plugins = [
         "direnv"
         "copyfile"
+        "colored-man-pages"
+        "fzf"
+        "history"
+        "sudo"
       ];
     };
   };

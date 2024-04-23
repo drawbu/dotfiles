@@ -39,7 +39,7 @@
       lz = "lazygit";
       portainer = "docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest";
       v = "nvim .";
-      t = "tmux new-session \\; split-window -h";
+      t = "tmux new-session -s";
       epidock = "docker run -it --rm -v \$(pwd):/home/project -w /home/project epitechcontent/epitest-docker:latest /bin/bash";
       vi = "${pkgs.vim}/bin/vim";
       "'??'" = "gh copilot suggest -t shell";
