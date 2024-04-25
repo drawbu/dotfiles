@@ -1,6 +1,14 @@
 # 'clement' user home-manager config for NixOS & generic linux
 {pkgs, ...}: let
   username = "clement";
+  code = pkgs.writeShellScriptBin "code" ''
+    code="${pkgs.unstable.vscode}/bin/code"
+    if [ "$#" -eq 0 ]; then
+      exec $code .
+    else
+      exec $code "$@"
+    fi
+  '';
 in {
   imports = [
     ./qtile
@@ -71,7 +79,7 @@ in {
       # ↓ softwares
       unstable.obsidian
       spotify
-      unstable.vscode
+      code
       jetbrains.clion
       jetbrains.pycharm-professional
       jetbrains.webstorm

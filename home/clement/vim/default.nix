@@ -6,12 +6,23 @@
   imports = [
     ./vim.nix
   ];
-  home.file = {
-    ".config/nvim/lua".source = ./lua;
-    ".config/nvim/ftplugin".source = ./ftplugin;
-    ".clang-tidy".source = ./.clang-tidy;
-    ".clang-format".source = ./.clang-format;
-    ".clangd".source = ./.clangd;
+  home = {
+    packages = [
+      (pkgs.writeShellScriptBin "v" ''
+        if [ "$#" -eq 0 ]; then
+          exec nvim .
+        else
+          exec nvim "$@"
+        fi
+      '')
+    ];
+    file = {
+      ".config/nvim/lua".source = ./lua;
+      ".config/nvim/ftplugin".source = ./ftplugin;
+      ".clang-tidy".source = ./.clang-tidy;
+      ".clang-format".source = ./.clang-format;
+      ".clangd".source = ./.clangd;
+    };
   };
 
   programs.neovim = {
