@@ -1,5 +1,8 @@
-{pkgs, hyprland, ...}:
-let
+{
+  pkgs,
+  hyprland,
+  ...
+}: let
   run_gnome = pkgs.writeShellScriptBin "run_gnome" ''
     export DISPLAY=:0
     export XDG_SESSION_TYPE=wayland
@@ -42,15 +45,17 @@ let
     if __name__ == "__main__":
         main()
   '';
-in
-{
-  home.file."login.sh" = {
-    text = ''
-      #!/bin/sh
+in {
+  home = {
+    packages = [run_gnome];
+    file."login.sh" = {
+      text = ''
+        #!/bin/sh
 
-      choice=$(${pkgs.python312}/bin/python3 ${choiceSelectorPy})
-      exec $choice
-    '';
-    executable = true;
+        choice=$(${pkgs.python312}/bin/python3 ${choiceSelectorPy})
+        exec $choice
+      '';
+      executable = true;
+    };
   };
 }
