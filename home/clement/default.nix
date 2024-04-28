@@ -101,7 +101,7 @@ in {
       unstable.vesktop
 
       # ↓ games
-      legacy.prismlauncher
+      prismlauncher
       heroic
 
       # ↓ fonts
