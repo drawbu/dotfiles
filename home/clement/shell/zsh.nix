@@ -24,6 +24,7 @@
       enable = true;
       initExtra = ''
         source ${config.home.homeDirectory}/.shell-extra
+        source <(${pkgs.unstable.nh}/bin/nh completions --shell zsh)
 
         if [ -z $FETCH_RAN ]; then
           export FETCH_RAN=1

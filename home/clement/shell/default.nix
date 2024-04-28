@@ -13,6 +13,7 @@
       TERMINAL = "kitty";
 
       THEMEFILE = "$HOME/.currenttheme";
+      FLAKE = "$HOME/Developer/dotfiles"; # TODO: programs.nh.flake
     };
 
     file = {
@@ -26,7 +27,6 @@
 
         # Rust
         export CARGO_NET_GIT_FETCH_WITH_CLI=true
-        export PATH="$HOME/.cargo/bin:$PATH"
 
         if [ -f "$THEMEFILE" ] && [ "$CURRENT_TERMINAL" = "kitty" ]; then
           theme=$(cat "$THEMEFILE")

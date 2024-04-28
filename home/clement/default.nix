@@ -75,6 +75,7 @@ in {
       nurl
       unzip
       unar
+      unstable.nh # TODO: use program.nh on 24.05
 
       # ↓ softwares
       unstable.obsidian
