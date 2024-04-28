@@ -25,7 +25,7 @@
     fprintd.enable = true;
 
     # idk intel hardware is borken
-    xserver.videoDrivers = ["intel"];
+    xserver.videoDrivers = ["modesettings"];
 
     # Allows for updating firmware via `fwupdmgr`.
     fwupd.enable = true;
@@ -33,4 +33,7 @@
 
   # Hardware acceleration
   hardware.opengl.enable = true;
+
+  networking.firewall.allowedUDPPorts = [6969];
+  networking.firewall.allowedTCPPorts = [6969];
 }
