@@ -58,12 +58,13 @@
   };
 
   virtualisation = {
+    libvirtd.enable = true;
+
     podman = {
       enable = true;
       dockerCompat = true;
       dockerSocket.enable = true;
     };
-    libvirtd.enable = true;
   };
 
   networking.networkmanager.enable = true;
@@ -79,6 +80,7 @@
       wget
       virt-manager
       nix-alien
+      podman-compose
     ];
     pathsToLink = ["/share/nix-direnv"];
     etc.issue.text = builtins.readFile ./issue.txt;

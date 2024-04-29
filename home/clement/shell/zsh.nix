@@ -22,6 +22,7 @@
 
     zsh = {
       enable = true;
+      package = pkgs.unstable.zsh;
       initExtra = ''
         source ${config.home.homeDirectory}/.shell-extra
         source <(${pkgs.unstable.nh}/bin/nh completions --shell zsh)
@@ -75,6 +76,7 @@
 
       oh-my-zsh = {
         enable = true;
+        package = pkgs.unstable.oh-my-zsh;
         plugins = [
           "colored-man-pages"
           "copyfile"
@@ -82,6 +84,7 @@
           "history"
           "sudo"
           "zoxide"
+          "podman"
         ];
       };
     };
