@@ -2,11 +2,10 @@
 {pkgs, ...}: let
   username = "clement";
   code = pkgs.writeShellScriptBin "code" ''
-    code="${pkgs.unstable.vscode}/bin/code"
     if [ "$#" -eq 0 ]; then
-      exec $code .
+      exec env code .
     else
-      exec $code "$@"
+      exec env code "$@"
     fi
   '';
 in {
@@ -78,8 +77,6 @@ in {
       unstable.nh # TODO: use program.nh on 24.05
 
       # ↓ softwares
-      unstable.obsidian
-      spotify
       code
       jetbrains.clion
       jetbrains.pycharm-professional
@@ -87,22 +84,13 @@ in {
       jetbrains.datagrip
       feh
       thunderbird-bin
-      vlc
-      chromium
       aseprite
-      teams-for-linux
       zathura
       godot_4
       croc
       wireguard-tools
       unstable.beeper
-      libreoffice
       (pkgs.callPackage ./notflix.nix {})
-      unstable.vesktop
-
-      # ↓ games
-      prismlauncher
-      heroic
 
       # ↓ fonts
       jetbrains-mono

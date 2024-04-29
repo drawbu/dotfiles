@@ -12,6 +12,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-alien.url = "github:thiagokokada/nix-alien";
     ecsls.url = "github:Sigmapitech/ecsls";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/v0.4.1";
 
     hyprland.url = "github:hyprwm/Hyprland/v0.38.1";
     hyprland-plugins = {
@@ -36,6 +37,7 @@
 
     extraArgs = {
       inherit pkgs;
+      finputs = inputs;
       ecsls = inputs.ecsls.packages.${cfg.system}.default;
       hyprland = inputs.hyprland.packages.${cfg.system};
       hyprland-plugins = inputs.hyprland-plugins.packages.${cfg.system};
@@ -48,6 +50,7 @@
       system = cfg.system;
       specialArgs = extraArgs;
       modules = [
+        inputs.nix-flatpak.nixosModules.nix-flatpak
         inputs.home-manager.nixosModules.home-manager
         {home-manager.extraSpecialArgs = extraArgs;}
       ];
