@@ -33,6 +33,7 @@ in {
     ./editorconfig.nix
     ./distrobox.nix
     ./login.nix
+    ./gaming.nix
   ];
 
   programs.home-manager.enable = true;
