@@ -31,6 +31,22 @@
           export FETCH_RAN=1
           ${pkgs.bunnyfetch}/bin/bunnyfetch
         fi
+
+        code() {
+          if [ "$#" -eq 0 ]; then
+            /usr/bin/env code .
+          else
+            /usr/bin/env code "$@"
+          fi
+        }
+
+        v() {
+          if [ "$#" -eq 0 ]; then
+            /usr/bin/env nvim .
+          else
+            /usr/bin/env nvim "$@"
+          fi
+        }
       '';
       enableCompletion = false;
 

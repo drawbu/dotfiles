@@ -1,13 +1,6 @@
 # 'clement' user home-manager config for NixOS & generic linux
 {pkgs, ...}: let
   username = "clement";
-  code = pkgs.writeShellScriptBin "code" ''
-    if [ "$#" -eq 0 ]; then
-      exec env code .
-    else
-      exec env code "$@"
-    fi
-  '';
 in {
   imports = [
     ./qtile
@@ -78,7 +71,7 @@ in {
       unstable.nh # TODO: use program.nh on 24.05
 
       # ↓ softwares
-      code
+      unstable.vscode
       jetbrains.clion
       jetbrains.pycharm-professional
       jetbrains.webstorm

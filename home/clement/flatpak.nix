@@ -19,7 +19,6 @@
     "com.heroicgameslauncher.hgl"
     "md.obsidian.Obsidian"
     "org.chromium.Chromium"
-    "com.visualstudio.code"
     "org.libreoffice.LibreOffice"
     "org.videolan.VLC"
     "com.obsproject.Studio"
