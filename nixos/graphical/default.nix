@@ -62,6 +62,7 @@
     };
 
     kdeconnect.enable = true;
+    gamemode.enable = true;
   };
 
   environment = {
@@ -71,7 +72,6 @@
       libsForQt5.plasma-nm
       modemmanager
       networkmanagerapplet
-      physlock
     ];
   };
 

@@ -34,7 +34,6 @@ in {
         }
       ];
     };
-    desktopManager.gnome.enable = true;
     displayManager = {
       defaultSession = "none+qtile";
       sddm = {

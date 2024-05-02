@@ -32,7 +32,11 @@
   };
 
   # Hardware acceleration
-  hardware.opengl.enable = true;
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
 
   networking.firewall.allowedUDPPorts = [6969];
   networking.firewall.allowedTCPPorts = [6969];

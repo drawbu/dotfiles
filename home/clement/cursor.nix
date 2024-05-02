@@ -11,11 +11,8 @@
     size = 24;
   };
 
-  gtk = {
-    enable = true;
-    cursorTheme = {
-      name = "Catppuccin-Mocha-Light";
-      package = pkgs.catppuccin-cursors.mochaLight;
-    };
+  gtk.cursorTheme = {
+    name = "Catppuccin-Mocha-Light";
+    package = pkgs.catppuccin-cursors.mochaLight;
   };
 }
