@@ -69,6 +69,9 @@ in {
       unzip
       unar
       unstable.nh # TODO: use program.nh on 24.05
+      bear
+      ripgrep
+      vgrep
 
       # ↓ softwares
       unstable.vscode
