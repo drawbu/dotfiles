@@ -21,6 +21,7 @@ in {
     activation.createHyprpaper = "sh ${hyprpaperActivation.script}";
     packages = with pkgs; [
       hyprpaper
+      unstable.nwg-displays
     ];
   };
 

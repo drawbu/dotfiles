@@ -146,7 +146,10 @@ in {
           "custom/launcher"
           "hyprland/workspaces"
         ];
-        "custom/launcher" = {format = " ";};
+        "custom/launcher" = {
+          format = " ";
+          on-click = "nwg-displays";
+        };
         "hyprland/workspaces" = {
           on-click = "activate";
           all-outputs = true;
