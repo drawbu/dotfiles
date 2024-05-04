@@ -149,8 +149,10 @@ in {
           "$mod, J, togglesplit,"
           "$mod, K, fullscreen,"
           "$mod, O, exec, pkill -SIGUSR1 waybar # Waybar toggle"
-          "$mod, Z, exec, ${pkgs.unstable.pyprland}/bin/pypr zoom"
-          "$mod, L, exec, systemctl suspend"
+          "$mod, L, exec, loginctl lock-session"
+
+          "$mod, Z, exec, ${pkgs.unstable.pyprland}/bin/pypr zoom ++0.5"
+          "$mod SHIFT, Z, exec, ${pkgs.unstable.pyprland}/bin/pypr zoom"
 
           # Move focus
           "$mod, left, movefocus, l"
@@ -193,9 +195,11 @@ in {
         ",XF86AudioMicMute, exec, ${pkgs.swayosd}/bin/swayosd --input-volume mute-toggle"
 
         # Media Control Keybinds
-        ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
         ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
         ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
+      ];
+      bindl = [
+        ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
       ];
 
       bindm = [
@@ -230,7 +234,7 @@ in {
       general {
           lock_cmd = pidof hyprlock || ${pkgs.unstable.hyprlock}/bin/hyprlock
           before_sleep_cmd = loginctl lock-session
-          after_sleep_cmd = ${pkgs.hyprland}/bin/hyprctl dispatch dpms on
+          after_sleep_cmd = hyprctl dispatch dpms on
       }
 
       listener {
