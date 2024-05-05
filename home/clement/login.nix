@@ -1,6 +1,6 @@
 {
+  config,
   pkgs,
-  hyprland,
   ...
 }: let
   run_gnome = pkgs.writeShellScriptBin "run_gnome" ''
@@ -16,9 +16,9 @@
 
 
     DISPLAYS = {
-        "Hyprland": "${hyprland.hyprland}/bin/Hyprland",
-        "qtile": f"startx ${pkgs.qtile-unwrapped}/bin/qtile start",
-        "Gnome": "${run_gnome}/bin/run_gnome",
+        "Hyprland": "Hyprland",
+        "qtile": "startx ${config.home.homeDirectory}/.nix-profile/bin/qtile start",
+        "Gnome": "run_gnome",
     }
 
 

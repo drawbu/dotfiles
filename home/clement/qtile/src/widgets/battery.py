@@ -1,6 +1,9 @@
+from __future__ import annotations
 from enum import Enum
-from typing import Optional
-from typing_extensions import Self
+from typing import Optional, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
 
 from utils import (
     get_stdout, LoopWidget, notify, 

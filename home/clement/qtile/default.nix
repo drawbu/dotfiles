@@ -1,14 +1,24 @@
-# Dependencies I use for qtile
-{pkgs, ...}: {
+{pkgs, ...}: let
+  py = pkgs.python3.withPackages (p:
+    [pkgs.qtile-unwrapped]
+    ++ (with p; [
+      catppuccin
+      typing-extensions
+    ]));
+in {
   home = {
     file.".config/qtile" = {
       source = ./src;
       onChange = ''
-        echo "reload_config()" | ${pkgs.qtile-unwrapped}/bin/qtile shell
+        pkill -f qtile -SIGUSR1
       '';
     };
 
     packages = with pkgs; [
+      (pkgs.writeShellScriptBin "qtile" ''
+        ${py}/bin/qtile "$@"
+      '')
+
       # ↓ Softwares
       rofi # Apps launcher
       networkmanagerapplet # Network tools
