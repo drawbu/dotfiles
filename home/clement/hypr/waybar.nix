@@ -22,8 +22,14 @@ in {
 
   programs.waybar = with colors; {
     enable = true;
-    package = pkgs.unstable.waybar.overrideAttrs (old: {
+    package = pkgs.hyprpkgs.waybar.overrideAttrs (old: {
       buildInputs = old.buildInputs ++ [pkgs.wireplumber];
+      src = pkgs.fetchFromGitHub {
+        owner = "Alexays";
+        repo = "Waybar";
+        rev = "f41458ea24a57bb71b629089396c31fe4dd97f1c";
+        hash = "sha256-rgBFaUVE8x/NoZyq8TK20IqbTBQa4deYm+Jc+L2aHEg=";
+      };
     });
     systemd = {
       enable = false;

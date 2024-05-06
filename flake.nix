@@ -14,11 +14,7 @@
     ecsls.url = "github:Sigmapitech/ecsls";
     nix-flatpak.url = "github:gmodena/nix-flatpak/v0.4.1";
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.38.1";
-    hyprland-plugins = {
-      url = "github:hyprwm/Hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
+    hyprland.url = "github:hyprwm/Hyprland/v0.40.0";
   };
 
   outputs = {self, ...} @ inputs: let
@@ -32,6 +28,7 @@
         overlays = [
           (_: _: {unstable = import inputs.nixpkgs_unstable cfg;})
           (_: _: {legacy = import inputs.nixpkgs_legacy cfg;})
+          (_: _: {hyprpkgs = import inputs.hyprland.inputs.nixpkgs cfg;})
         ];
       });
 
@@ -40,7 +37,6 @@
       finputs = inputs;
       ecsls = inputs.ecsls.packages.${cfg.system}.default;
       hyprland = inputs.hyprland.packages.${cfg.system};
-      hyprland-plugins = inputs.hyprland-plugins.packages.${cfg.system};
       nix-alien = inputs.nix-alien.packages.${cfg.system}.nix-alien;
     };
 

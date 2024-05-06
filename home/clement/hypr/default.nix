@@ -1,7 +1,6 @@
 {
   pkgs,
   hyprland,
-  hyprland-plugins,
   ...
 }: let
   hyprpaperActivation = import ./symlink.nix {
@@ -19,9 +18,13 @@ in {
 
   home = {
     activation.createHyprpaper = "sh ${hyprpaperActivation.script}";
-    packages = with pkgs; [
+    packages = with pkgs.hyprpkgs; [
       hyprpaper
-      unstable.nwg-displays
+      nwg-displays
+      xwaylandvideobridge
+      pyprland
+      hypridle
+      hyprlock
     ];
   };
 
@@ -30,18 +33,16 @@ in {
     enable = true;
     package = hyprland.hyprland;
 
-    plugins = with hyprland-plugins; [];
-
     settings = {
       monitor = ",highres,auto,1";
 
       exec-once =
         [
           "hyprpaper"
-          "${pkgs.waybar}/bin/waybar"
-          "${pkgs.xwaylandvideobridge}/bin/xwaylandvideobridge"
-          "${pkgs.unstable.pyprland}/bin/pypr"
-          "${pkgs.unstable.hypridle}/bin/hypridle"
+          "waybar"
+          "xwaylandvideobridge"
+          "pypr"
+          "hypridle"
         ]
         ++ (
           let
@@ -142,7 +143,7 @@ in {
       bind =
         [
           # General Keybinds
-          "$mod, return, exec, ${pkgs.kitty}/bin/kitty"
+          "$mod, return, exec, kitty"
           "$mod, W, killactive,"
           "$mod, F, togglefloating,"
           "$mod, R, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
@@ -151,8 +152,8 @@ in {
           "$mod, O, exec, pkill -SIGUSR1 waybar # Waybar toggle"
           "$mod, L, exec, loginctl lock-session"
 
-          "$mod, Z, exec, ${pkgs.unstable.pyprland}/bin/pypr zoom ++0.5"
-          "$mod SHIFT, Z, exec, ${pkgs.unstable.pyprland}/bin/pypr zoom"
+          "$mod, Z, exec, pypr zoom ++0.5"
+          "$mod ctrl, Z, exec, pypr zoom"
 
           # Move focus
           "$mod, left, movefocus, l"
@@ -232,7 +233,7 @@ in {
 
     "hypr/hypridle.conf".text = ''
       general {
-          lock_cmd = pidof hyprlock || ${pkgs.unstable.hyprlock}/bin/hyprlock
+          lock_cmd = pidof hyprlock || hyprlock
           before_sleep_cmd = loginctl lock-session
           after_sleep_cmd = hyprctl dispatch dpms on
       }
