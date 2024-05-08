@@ -19,6 +19,7 @@
         "Hyprland": "Hyprland",
         "qtile": "startx ${config.home.homeDirectory}/.nix-profile/bin/qtile start",
         "Gnome": "run_gnome",
+        "Steam": "steam-gamescope",
     }
 
 

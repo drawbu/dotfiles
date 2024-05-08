@@ -27,8 +27,8 @@ in {
       src = pkgs.fetchFromGitHub {
         owner = "Alexays";
         repo = "Waybar";
-        rev = "f41458ea24a57bb71b629089396c31fe4dd97f1c";
-        hash = "sha256-rgBFaUVE8x/NoZyq8TK20IqbTBQa4deYm+Jc+L2aHEg=";
+        rev = "0.10.3";
+        hash = "sha256-PY6Vh9mOYjBC1wrWohIPw9eh1dDrDG9uBsZJjwRzGpI=";
       };
     });
     systemd = {

@@ -71,6 +71,7 @@ in {
       unstable.nh # TODO: use program.nh on 24.05
       bear
       ripgrep
+      fd
       vgrep
 
       # ↓ softwares

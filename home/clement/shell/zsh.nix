@@ -94,7 +94,6 @@
         enable = true;
         package = pkgs.unstable.oh-my-zsh;
         plugins = [
-          "colored-man-pages"
           "copyfile"
           "direnv"
           "history"
