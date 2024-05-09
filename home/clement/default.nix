@@ -10,6 +10,7 @@ in {
     ./vim
     ./shell
     ./hypr
+    ./dev
     ./gtk.nix
     ./firefox.nix
     ./cursor.nix
@@ -23,7 +24,6 @@ in {
     ./flatpak.nix
     ./picom.nix
     ./mimeapps.nix
-    ./editorconfig.nix
     ./distrobox.nix
     ./login.nix
     ./gaming.nix

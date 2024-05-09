@@ -25,9 +25,6 @@
         # WakaTime
         export ZSH_WAKATIME_PROJECT_DETECTION=true
 
-        # Rust
-        export CARGO_NET_GIT_FETCH_WITH_CLI=true
-
         if [ -f "$THEMEFILE" ] && [ "$CURRENT_TERMINAL" = "kitty" ]; then
           theme=$(cat "$THEMEFILE")
           ${pkgs.kitty}/bin/kitty @ set-colors -a "$XDG_CONFIG_HOME/kitty/$theme.conf"

@@ -9,9 +9,6 @@
   home.file = {
     ".config/nvim/lua".source = ./lua;
     ".config/nvim/ftplugin".source = ./ftplugin;
-    ".clang-tidy".source = ./.clang-tidy;
-    ".clang-format".source = ./.clang-format;
-    ".clangd".source = ./.clangd;
   };
 
   programs.neovim = {
@@ -37,31 +34,6 @@
       nvim-treesitter.withAllGrammars
     ];
 
-    extraPackages = with pkgs; [
-      tree-sitter
-      ripgrep
-
-      # ↓ Language Servers ↓
-      lua-language-server
-      nil
-      llvmPackages_latest.clang
-      clang-analyzer
-      clang-tools_17
-      pyright
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
-      nodePackages.svelte-language-server
-      nodePackages.bash-language-server
-      shellcheck
-      ecsls
-      gdtoolkit
-      rust-analyzer
-      haskell-language-server
-      asm-lsp
-      dockerfile-language-server-nodejs
-      docker-compose-language-service
-      gopls
-      cmake-language-server
-    ];
+    extraPackages = with pkgs; [tree-sitter];
   };
 }
