@@ -13,9 +13,7 @@
 
     config = {
       common = {
-        default = [
-          "gtk"
-        ];
+        default = ["gtk"];
       };
     };
   };

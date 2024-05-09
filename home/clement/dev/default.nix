@@ -4,9 +4,7 @@
   config,
   ...
 }: {
-  imports = [
-    ./editorconfig.nix
-  ];
+  imports = [./editorconfig.nix];
 
   home = {
     file = {
@@ -19,8 +17,8 @@
       # Rust
       CARGO_NET_GIT_FETCH_WITH_CLI = "true";
       RUSTC_VERSION = "stable";
-      CARGO_HOME="${config.home.homeDirectory}/.cargo";
-      RUSTUP_HOME="${config.home.homeDirectory}/.rustup";
+      CARGO_HOME = "${config.home.homeDirectory}/.cargo";
+      RUSTUP_HOME = "${config.home.homeDirectory}/.rustup";
       PATH = "$PATH:$CARGO_HOME/bin:$RUSTUP_HOME/toolchains/$RUSTC_VERSION-x86_64-unknown-linux-gnu/bin/";
     };
 

@@ -59,7 +59,9 @@
     crust = "dce0e8";
   };
 
-  attrs = {inherit dark light;};
+  attrs = {
+    inherit dark light;
+  };
 
   transformColor = name: value: {
     hex = "#${value}";

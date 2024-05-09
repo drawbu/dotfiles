@@ -53,6 +53,7 @@ in {
       entr
       xsel
       xclip
+
       wl-clipboard
       #wl-clipboard-x11
       todo
@@ -138,9 +139,7 @@ in {
       enableAliases = true;
       git = true;
       icons = true;
-      extraOptions = [
-        "--group-directories-first"
-      ];
+      extraOptions = ["--group-directories-first"];
     };
 
     bat = {

@@ -23,14 +23,16 @@
       config.allowUnfree = true;
     };
 
-    pkgs = import inputs.nixpkgs (cfg
+    pkgs = import inputs.nixpkgs (
+      cfg
       // {
         overlays = [
           (_: _: {unstable = import inputs.nixpkgs_unstable cfg;})
           (_: _: {legacy = import inputs.nixpkgs_legacy cfg;})
           (_: _: {hyprpkgs = import inputs.hyprland.inputs.nixpkgs cfg;})
         ];
-      });
+      }
+    );
 
     extraArgs = {
       inherit pkgs;
@@ -62,7 +64,8 @@
     };
 
     nixosConfigurations = {
-      "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (defaultConfig
+      "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (
+        defaultConfig
         // {
           modules =
             defaultConfig.modules
@@ -74,8 +77,10 @@
               hardware.common-pc-ssd
               hardware.common-pc-hdd
             ];
-        });
-      "pancake" = inputs.nixpkgs.lib.nixosSystem (defaultConfig
+        }
+      );
+      "pancake" = inputs.nixpkgs.lib.nixosSystem (
+        defaultConfig
         // {
           modules =
             defaultConfig.modules
@@ -86,7 +91,8 @@
               hardware.common-pc-laptop
               hardware.common-pc-laptop-ssd
             ];
-        });
+        }
+      );
     };
   };
 }

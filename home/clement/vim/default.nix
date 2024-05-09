@@ -3,9 +3,7 @@
   ecsls,
   ...
 }: {
-  imports = [
-    ./vim.nix
-  ];
+  imports = [./vim.nix];
   home.file = {
     ".config/nvim/lua".source = ./lua;
     ".config/nvim/ftplugin".source = ./ftplugin;

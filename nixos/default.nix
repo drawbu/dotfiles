@@ -11,8 +11,14 @@
       options = "--delete-older-than 7d";
     };
     settings = {
-      experimental-features = ["nix-command" "flakes"];
-      trusted-users = ["root" "@wheel"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
       keep-outputs = true;
       keep-derivations = true;
       auto-optimise-store = true;
@@ -23,13 +29,7 @@
 
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [
-      (self: super: {
-        nix-direnv = super.nix-direnv.override {
-          enableFlakes = true;
-        };
-      })
-    ];
+    overlays = [(self: super: {nix-direnv = super.nix-direnv.override {enableFlakes = true;};})];
   };
 
   time.timeZone = "Europe/Paris";

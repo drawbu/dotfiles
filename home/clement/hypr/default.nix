@@ -34,7 +34,7 @@ in {
     package = hyprland.hyprland;
 
     settings = {
-      monitor = ",highres,auto,1";
+      monitor = ",highres,auto-up,1";
 
       exec-once =
         [
@@ -46,12 +46,13 @@ in {
         ]
         ++ (
           let
-            targets = ["text" "image"];
-          in (builtins.genList
-            (
-              i: "${pkgs.wl-clipboard}/bin/wl-paste --type ${builtins.elemAt targets i} --watch ${pkgs.cliphist}/bin/cliphist store"
-            )
-            (builtins.length targets))
+            targets = [
+              "text"
+              "image"
+            ];
+          in (builtins.genList (
+            i: "${pkgs.wl-clipboard}/bin/wl-paste --type ${builtins.elemAt targets i} --watch ${pkgs.cliphist}/bin/cliphist store"
+          ) (builtins.length targets))
         );
 
       env = "XCURSOR_SIZE,16";
@@ -113,9 +114,7 @@ in {
       };
 
       windowrule =
-        [
-          "noblur,^(kitty)$"
-        ]
+        ["noblur,^(kitty)$"]
         ++ (builtins.map (e: "float, ${e}") ["^(kitty)$"])
         ++ (builtins.map (e: "opacity 0.9, ${e}") [
           "^(discord)$"
@@ -165,15 +164,22 @@ in {
         ]
         ++ (
           let
-            letters = ["A" "Z" "E" "R" "T" "Y"];
+            letters = [
+              "A"
+              "Z"
+              "E"
+              "R"
+              "T"
+              "Y"
+            ];
           in
             with builtins;
-              concatLists (genList
-                (x: [
+              concatLists (
+                genList (x: [
                   "$mod shift, ${elemAt letters x}, workspace,       ${toString (x + 1)}"
                   "$mod alt,   ${elemAt letters x}, movetoworkspace, ${toString (x + 1)}"
-                ])
-                (length letters))
+                ]) (length letters)
+              )
         )
         ++ [
           # Scroll through existing workspaces
@@ -199,9 +205,7 @@ in {
         ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
         ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
       ];
-      bindl = [
-        ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
-      ];
+      bindl = [",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"];
 
       bindm = [
         # Move/resize windows

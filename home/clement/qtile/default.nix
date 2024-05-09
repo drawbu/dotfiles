@@ -1,10 +1,12 @@
 {pkgs, ...}: let
-  py = pkgs.python3.withPackages (p:
-    [pkgs.qtile-unwrapped]
-    ++ (with p; [
-      catppuccin
-      typing-extensions
-    ]));
+  py = pkgs.python3.withPackages (
+    p:
+      [pkgs.qtile-unwrapped]
+      ++ (with p; [
+        catppuccin
+        typing-extensions
+      ])
+  );
 in {
   home = {
     file.".config/qtile" = {

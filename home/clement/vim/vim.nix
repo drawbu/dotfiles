@@ -27,8 +27,6 @@
       ''
       + builtins.readFile ./.vimrc;
 
-    packages = with pkgs; [
-      vim
-    ];
+    packages = with pkgs; [vim];
   };
 }

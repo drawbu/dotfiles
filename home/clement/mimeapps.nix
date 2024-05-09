@@ -21,7 +21,10 @@ in {
       enable = true;
       defaultApplications =
         {
-          "image/*" = ["org.gnome.eog.desktop" "feh.desktop"];
+          "image/*" = [
+            "org.gnome.eog.desktop"
+            "feh.desktop"
+          ];
           "text/*" = "nvim.desktop";
           "video/*" = "vlc.desktop";
           "x-scheme-handler/msteams" = "teams-for-linux.desktop";
