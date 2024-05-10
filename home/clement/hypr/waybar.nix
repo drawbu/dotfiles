@@ -22,15 +22,7 @@ in {
 
   programs.waybar = with colors; {
     enable = true;
-    package = pkgs.hyprpkgs.waybar.overrideAttrs (old: {
-      buildInputs = old.buildInputs ++ [pkgs.wireplumber];
-      src = pkgs.fetchFromGitHub {
-        owner = "Alexays";
-        repo = "Waybar";
-        rev = "0.10.3";
-        hash = "sha256-PY6Vh9mOYjBC1wrWohIPw9eh1dDrDG9uBsZJjwRzGpI=";
-      };
-    });
+    package = pkgs.unstable.waybar; # TODO: hyprpkgs.waybar
     systemd = {
       enable = false;
       target = "graphical-session.target";

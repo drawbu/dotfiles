@@ -27,6 +27,7 @@
       gcc13
       cmake
       gnumake
+      gcovr
       libcxx
       python312Full
       rustup
@@ -34,7 +35,25 @@
       corepack_21
       typescript
 
-      # Language Servers
+      # man pages
+      man-pages
+      man-pages-posix
+      stdman
+
+      # random tools
+      hyperfine
+      tldr
+      linux-manual
+      ripgrep
+      fd
+      vgrep
+      jq
+      bear
+      unstable.lazygit
+      nixpkgs-review
+      entr
+
+      # language servers
       lua-language-server
       nil
       clang-analyzer

@@ -18,14 +18,15 @@ in {
 
   home = {
     activation.createHyprpaper = "sh ${hyprpaperActivation.script}";
-    packages = with pkgs.hyprpkgs; [
-      hyprpaper
-      nwg-displays
-      xwaylandvideobridge
-      pyprland
-      hypridle
-      hyprlock
-    ];
+    packages =
+      (with pkgs.hyprpkgs; [
+        hyprpaper
+        xwaylandvideobridge
+        pyprland
+        hypridle
+        hyprlock
+      ])
+      ++ [pkgs.unstable.nwg-displays]; # TODO: hyprpkgs.nwg-displays
   };
 
   services.swayosd.enable = true;

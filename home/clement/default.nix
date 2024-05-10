@@ -48,32 +48,19 @@ in {
       neofetch
       ookla-speedtest
       wget
-      banana-vera
-      lazygit
-      entr
       xsel
       xclip
 
       wl-clipboard
       #wl-clipboard-x11
       todo
-      man-pages
-      man-pages-posix
-      stdman
-      tldr
-      linux-manual
       comma
-      jq
       nix-index
       spotify-tui
       nurl
       unzip
       unar
       unstable.nh # TODO: use program.nh on 24.05
-      bear
-      ripgrep
-      fd
-      vgrep
 
       # ↓ softwares
       unstable.vscode
