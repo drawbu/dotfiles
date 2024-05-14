@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  config,
+  ...
+}: let
   bashWakatime = pkgs.fetchFromGitHub {
     owner = "gjsheep";
     repo = "bash-wakatime";
@@ -10,7 +14,7 @@ in {
     enable = true;
     enableCompletion = true;
     initExtra = ''
-      source ~/.shell-extra
+      source ${config.home.homeDirectory}/.shell-extra
       source ${bashWakatime}/bash-wakatime.sh
     '';
   };

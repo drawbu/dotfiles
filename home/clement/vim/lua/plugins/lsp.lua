@@ -25,7 +25,7 @@ return {
         capabilities = caps,
         settings = {
           ['nil'] = {
-            formatting = { command = { "nix", "fmt", "--", "--quiet" }, },
+            formatting = { command = { "nix", "fmt", "--no-net", "--", "--quiet" }, },
           },
           nix = {
             flake = {

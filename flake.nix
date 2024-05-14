@@ -27,30 +27,32 @@
       cfg
       // {
         overlays = [
-          (_: _: {unstable = import inputs.nixpkgs_unstable cfg;})
-          (_: _: {legacy = import inputs.nixpkgs_legacy cfg;})
-          (_: _: {hyprpkgs = import inputs.hyprland.inputs.nixpkgs cfg;})
+          (_: _: {
+            unstable = import inputs.nixpkgs_unstable cfg;
+            legacy = import inputs.nixpkgs_legacy cfg;
+            hyprpkgs = import inputs.hyprland.inputs.nixpkgs cfg;
+          })
         ];
       }
     );
 
-    extraArgs = {
+    specialArgs = {
       inherit pkgs;
       finputs = inputs;
-      ecsls = inputs.ecsls.packages.${cfg.system}.default;
       hyprland = inputs.hyprland.packages.${cfg.system};
-      nix-alien = inputs.nix-alien.packages.${cfg.system}.nix-alien;
+      inherit (inputs.ecsls.packages.${cfg.system}) ecsls;
+      inherit (inputs.nix-alien.packages.${cfg.system}) nix-alien;
     };
 
     hardware = inputs.nixos-hardware.nixosModules;
 
     defaultConfig = {
-      system = cfg.system;
-      specialArgs = extraArgs;
+      inherit (cfg) system;
+      inherit specialArgs;
       modules = [
         inputs.nix-flatpak.nixosModules.nix-flatpak
         inputs.home-manager.nixosModules.home-manager
-        {home-manager.extraSpecialArgs = extraArgs;}
+        {home-manager.extraSpecialArgs = specialArgs;}
       ];
     };
   in {

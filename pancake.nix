@@ -40,4 +40,9 @@
 
   networking.firewall.allowedUDPPorts = [6969];
   networking.firewall.allowedTCPPorts = [6969];
+
+  services.tlp.settings = {
+    PCIE_ASPM_ON_AC = "performance";
+    PCIE_ASPM_ON_BAT = "default";
+  };
 }

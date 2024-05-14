@@ -25,9 +25,6 @@
     packages = with pkgs; [
       # tools
       gcc13
-      cmake
-      gnumake
-      gcovr
       libcxx
       python312Full
       rustup
@@ -52,12 +49,20 @@
       unstable.lazygit
       nixpkgs-review
       entr
+      ffmpeg
+      valgrind
+      gdb
+      cmake
+      gnumake
+      gcovr
+      unstable.nixfmt-rfc-style
+      alejandra
 
       # language servers
       lua-language-server
       nil
       clang-analyzer
-      clang-tools_17
+      unstable.clang-tools_18
       pyright
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
