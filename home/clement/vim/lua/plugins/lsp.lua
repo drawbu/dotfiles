@@ -3,14 +3,14 @@ return {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
     dependencies = {
-      {'neovim/nvim-lspconfig'},
+      { 'neovim/nvim-lspconfig' },
     },
     config = function()
       local lsp_zero = require('lsp-zero').preset({})
       local lsp = require('lspconfig')
       local configs = require('lspconfig.configs')
 
-     -- https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
+      -- https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
       -- https://github.com/hrsh7th/cmp-nvim-lsp/issues/42#issuecomment-1283825572
       local caps = vim.tbl_deep_extend(
         'force',
@@ -37,6 +37,7 @@ return {
       })
       lsp.lua_ls.setup({})
       lsp.clangd.setup({
+        capabilities = caps,
         cmd = {
           'clangd',
           '--background-index',
@@ -75,7 +76,7 @@ return {
       lsp.ecsls.setup({})
 
       lsp_zero.on_attach(function(_, bufnr)
-        local opts = {buffer = bufnr, remap = false}
+        local opts = { buffer = bufnr, remap = false }
 
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', 'gr', vim.lsp.buf.rename, opts)
@@ -83,7 +84,7 @@ return {
         vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, opts)
         vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
         vim.keymap.set('n', 'gf', vim.lsp.buf.format, opts)
-        lsp_zero.default_keymaps({buffer = bufnr})
+        lsp_zero.default_keymaps({ buffer = bufnr })
       end)
 
       lsp_zero.setup()
@@ -92,7 +93,7 @@ return {
 
   {
     'kosayoda/nvim-lightbulb',
-    config = function ()
+    config = function()
       require("nvim-lightbulb").setup({
         autocmd = { enabled = true }
       })
@@ -101,7 +102,7 @@ return {
 
   {
     'ThePrimeagen/refactoring.nvim',
-    config = function ()
+    config = function()
       require('refactoring').setup({})
     end
   },

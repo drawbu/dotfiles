@@ -12,7 +12,7 @@ end
 
 dark()
 
-vim.keymap.set('n', '<C-t>', function ()
+vim.keymap.set('n', '<C-t>', function()
   vim.cmd(':silent exec "!dark 2>/dev/null"')
   dark()
 end)

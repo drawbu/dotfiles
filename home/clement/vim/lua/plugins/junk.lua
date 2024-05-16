@@ -14,7 +14,7 @@ return {
   'gpanders/editorconfig.nvim',
 
   -- ↓ Epitech plugin
-  'drawbu/vim-epitech',
+  -- 'drawbu/vim-epitech',
 
   -- ↓ Highlighing TODO
   {

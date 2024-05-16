@@ -21,7 +21,7 @@
 
         " Infinite undo
         if has('persistent_undo')
-            set undodir=$HOME/.nvim/undo
+            set undodir=$HOME/.vim/undo
             set undofile
         endif
       ''

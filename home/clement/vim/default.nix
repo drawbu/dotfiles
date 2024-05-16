@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ecsls,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [./vim.nix];
   home.file = {
     ".config/nvim/lua".source = ./lua;
