@@ -58,13 +58,6 @@
   in {
     formatter.${cfg.system} = pkgs.alejandra;
 
-    homeConfigurations = {
-      "clement" = inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [./home/clement];
-      };
-    };
-
     nixosConfigurations = {
       "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (
         defaultConfig
@@ -88,7 +81,6 @@
             defaultConfig.modules
             ++ [
               ./pancake.nix
-              hardware.common-gpu-intel
               hardware.common-cpu-intel
               hardware.common-pc-laptop
               hardware.common-pc-laptop-ssd
