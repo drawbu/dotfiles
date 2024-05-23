@@ -64,8 +64,10 @@
       clang-analyzer
       unstable.clang-tools_18
       pyright
+      vscode-langservers-extracted
+      unstable.emmet-language-server
+      tailwindcss-language-server
       nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
       nodePackages.svelte-language-server
       nodePackages.bash-language-server
       shellcheck

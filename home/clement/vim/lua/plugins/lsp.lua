@@ -60,6 +60,9 @@ return {
       lsp.gopls.setup({})
       lsp.cmake.setup({})
       lsp.bashls.setup({})
+      lsp.eslint.setup({})
+      lsp.emmet_language_server.setup({})
+      lsp.tailwindcss.setup({})
 
       -- ↓ Epitech C Style Checker
       if not configs.ecsls then
