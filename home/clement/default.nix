@@ -77,6 +77,7 @@ in {
       wireguard-tools
       unstable.beeper
       (pkgs.callPackage ./notflix.nix {})
+      ida
 
       # ↓ fonts
       jetbrains-mono

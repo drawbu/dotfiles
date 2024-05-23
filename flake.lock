@@ -222,6 +222,22 @@
         "type": "github"
       }
     },
+    "ida": {
+      "locked": {
+        "lastModified": 1677172271,
+        "narHash": "sha256-MfuXzqwi+a5gawnZ6sfqoAbIINoNNeusVqoOXbKB7x8=",
+        "owner": "bbjubjub2494",
+        "repo": "nixpkgs",
+        "rev": "dc39c67665c0b0572f952d216b7c33f5876d7717",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bbjubjub2494",
+        "ref": "idafree",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nix-alien": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -426,6 +442,7 @@
         "ecsls": "ecsls",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "ida": "ida",
         "nix-alien": "nix-alien",
         "nix-flatpak": "nix-flatpak",
         "nixos-hardware": "nixos-hardware",
