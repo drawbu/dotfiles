@@ -27,9 +27,8 @@
         source ${config.home.homeDirectory}/.shell-extra
         source <(${pkgs.unstable.nh}/bin/nh completions --shell zsh)
 
-        if [ -z $FETCH_RAN ]; then
-          export FETCH_RAN=1
-          ${pkgs.bunnyfetch}/bin/bunnyfetch
+        if [ "$TERM" != "linux" ] && [ -z "$TMUX" ]; then
+          exec tmux new
         fi
 
         code() {
