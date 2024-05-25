@@ -15,6 +15,7 @@ keys = [
     # ↓ Layout
     Key([META], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([META], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
+    Key([META], "k", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
     Key(
         [META, "control"],
         "Right",
