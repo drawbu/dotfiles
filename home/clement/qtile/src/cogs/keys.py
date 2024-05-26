@@ -5,7 +5,7 @@ from utils import TERMINAL, META
 
 
 keys = [
-    Key([META], "Return", lazy.spawn(TERMINAL), desc="Launch terminal"),
+    Key([META], "Return", lazy.spawn("kitty -d $HOME -e tmux new-session"), desc="Launch terminal"),
     Key([META], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([META, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([META, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),

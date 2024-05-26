@@ -143,7 +143,7 @@ in {
       bind =
         [
           # General Keybinds
-          "$mod, return, exec, kitty"
+          "$mod, return, exec, kitty -d $HOME -e tmux new-session"
           "$mod, W, killactive,"
           "$mod, F, togglefloating,"
           "$mod, R, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"

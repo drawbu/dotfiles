@@ -27,10 +27,6 @@
         source ${config.home.homeDirectory}/.shell-extra
         source <(${pkgs.unstable.nh}/bin/nh completions --shell zsh)
 
-        if [ "$TERM" != "linux" ] && [ -z "$TMUX" ]; then
-          exec tmux new
-        fi
-
         code() {
           if [ "$#" -eq 0 ]; then
             /usr/bin/env code .
