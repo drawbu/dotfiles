@@ -41,6 +41,9 @@
       "'git?'" = "gh copilot suggest -t git";
       arch = "distrobox enter arch";
       fedora = "distrobox enter fedora";
+      macos = "nix run github:matthewcroughan/NixThePlanet#macos-ventura";
+      please = "sudo";
+      senpai = "sudo";
     };
   };
 }
