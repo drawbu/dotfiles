@@ -1,8 +1,4 @@
-{
-  pkgs,
-  hyprland,
-  ...
-}: let
+{ pkgs, ... }: let
   hyprpaperActivation = import ./symlink.nix {
     inherit pkgs;
     path = "$XDG_CONFIG_HOME/hypr";
@@ -18,22 +14,20 @@ in {
 
   home = {
     activation.createHyprpaper = "sh ${hyprpaperActivation.script}";
-    packages =
-      (with pkgs.hyprpkgs; [
-        hyprpaper
-        xwaylandvideobridge
-        pyprland
-        hypridle
-        hyprlock
-      ])
-      ++ [pkgs.unstable.nwg-displays]; # TODO: hyprpkgs.nwg-displays
+    packages = with pkgs; [
+      hyprpaper
+      xwaylandvideobridge
+      pyprland
+      hypridle
+      hyprlock
+      nwg-displays
+    ];
   };
 
   services.swayosd.enable = true;
+
   wayland.windowManager.hyprland = {
     enable = true;
-    package = hyprland.hyprland;
-
     settings = {
       monitor = ",highres,auto-up,1";
 
@@ -188,23 +182,28 @@ in {
           "$mod, mouse_up, workspace, e-1"
 
           # Screenshot Keybinds
-          ", Print, exec, ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.unstable.satty}/bin/satty -f -"
+          ", Print, exec, ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.satty}/bin/satty -f -"
         ];
 
       binde = [
-        # Brightness Control Keybinds
-        ",XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set +5%"
-        ",XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-"
+        # Brightness
+        ",XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
+        ",XF86MonBrightnessDown, exec, swayosd-client --brightness lower"
 
         # Volume Control Keybinds
-        ",XF86AudioMute, exec, ${pkgs.swayosd}/bin/swayosd --output-volume mute-toggle"
-        ",XF86AudioRaiseVolume, exec, ${pkgs.swayosd}/bin/swayosd --output-volume raise"
-        ",XF86AudioLowerVolume, exec, ${pkgs.swayosd}/bin/swayosd --output-volume lower"
-        ",XF86AudioMicMute, exec, ${pkgs.swayosd}/bin/swayosd --input-volume mute-toggle"
+        ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
+        ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+        ",XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+        ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
+
+        ",Caps_Lock, exec, swayosd-client --caps-lock"
 
         # Media Control Keybinds
         ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
         ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
+
+        # Select monoitors
+        "$mod, p, exec, nwg-displays"
       ];
       bindl = [",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"];
 

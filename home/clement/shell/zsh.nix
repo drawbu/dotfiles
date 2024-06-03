@@ -22,10 +22,9 @@
 
     zsh = {
       enable = true;
-      package = pkgs.unstable.zsh;
       initExtra = ''
         source ${config.home.homeDirectory}/.shell-extra
-        source <(${pkgs.unstable.nh}/bin/nh completions --shell zsh)
+        source <(nh completions --shell zsh)
 
         code() {
           if [ "$#" -eq 0 ]; then
@@ -87,7 +86,7 @@
 
       oh-my-zsh = {
         enable = true;
-        package = pkgs.unstable.oh-my-zsh;
+        package = pkgs.oh-my-zsh;
         plugins = [
           "copyfile"
           "direnv"

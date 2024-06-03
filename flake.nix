@@ -1,11 +1,11 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-23.11";
-    nixpkgs_legacy.url = "nixpkgs/nixos-23.05";
+    nixpkgs.url = "nixpkgs/nixos-24.05";
+    nixpkgs_legacy.url = "nixpkgs/nixos-23.11";
     nixpkgs_unstable.url = "nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -14,8 +14,6 @@
     ida.url = "github:bbjubjub2494/nixpkgs/idafree";
     ecsls.url = "github:Sigmapitech/ecsls";
     nix-flatpak.url = "github:gmodena/nix-flatpak/v0.4.1";
-
-    hyprland.url = "github:hyprwm/Hyprland/v0.40.0";
   };
 
   outputs = {self, ...} @ inputs: let
@@ -29,10 +27,14 @@
       // {
         overlays = [
           (_: _: {
+            # Other nixpkgs
             unstable = import inputs.nixpkgs_unstable cfg;
             legacy = import inputs.nixpkgs_legacy cfg;
-            hyprpkgs = import inputs.hyprland.inputs.nixpkgs cfg;
+
+            # Softwares
             ida = (import inputs.ida cfg).ida-free;
+            inherit (inputs.ecsls.packages.${cfg.system}) ecsls;
+            inherit (inputs.nix-alien.packages.${cfg.system}) nix-alien;
           })
         ];
       }
@@ -41,9 +43,6 @@
     specialArgs = {
       inherit pkgs;
       finputs = inputs;
-      hyprland = inputs.hyprland.packages.${cfg.system};
-      inherit (inputs.ecsls.packages.${cfg.system}) ecsls;
-      inherit (inputs.nix-alien.packages.${cfg.system}) nix-alien;
     };
 
     hardware = inputs.nixos-hardware.nixosModules;

@@ -1,6 +1,5 @@
 {
   pkgs,
-  ecsls,
   config,
   ...
 }: {
@@ -28,8 +27,8 @@
       libcxx
       python312Full
       rustup
-      nodejs_21
-      corepack_21
+      nodejs_22
+      corepack_22
       typescript
 
       # man pages
@@ -46,7 +45,7 @@
       vgrep
       jq
       bear
-      unstable.lazygit
+      lazygit
       nixpkgs-review
       entr
       ffmpeg
@@ -55,17 +54,17 @@
       cmake
       gnumake
       gcovr
-      unstable.nixfmt-rfc-style
+      nixfmt-rfc-style
       alejandra
 
       # language servers
       lua-language-server
       nil
       clang-analyzer
-      unstable.clang-tools_18
+      clang-tools_18
       pyright
       vscode-langservers-extracted
-      unstable.emmet-language-server
+      emmet-language-server
       tailwindcss-language-server
       nodePackages.typescript-language-server
       nodePackages.svelte-language-server
@@ -77,17 +76,17 @@
       asm-lsp
       dockerfile-language-server-nodejs
       docker-compose-language-service
-      unstable.gopls
+      gopls
       cmake-language-server
-      unstable.templ
+      templ
 
       # softs
-      unstable.vscode
-      unstable.jetbrains.clion
-      unstable.jetbrains.pycharm-professional
-      unstable.jetbrains.webstorm
-      unstable.jetbrains.datagrip
-      unstable.jetbrains.goland
+      vscode
+      jetbrains.clion
+      jetbrains.pycharm-professional
+      jetbrains.webstorm
+      jetbrains.datagrip
+      jetbrains.goland
     ];
   };
 }

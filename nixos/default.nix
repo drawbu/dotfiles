@@ -1,8 +1,4 @@
-{
-  pkgs,
-  nix-alien,
-  ...
-}: {
+{ pkgs, ... }: {
   system.copySystemConfiguration = false;
   nix = {
     gc = {
@@ -49,6 +45,12 @@
     nix-ld = {
       enable = true;
       libraries = with pkgs; [];
+    };
+
+    nh = {
+      enable = true;
+      flake = /home/clement/Developer/dotfiles;
+      clean.enable = true;
     };
   };
 

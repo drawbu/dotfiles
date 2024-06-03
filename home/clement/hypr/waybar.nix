@@ -22,7 +22,6 @@ in {
 
   programs.waybar = with colors; {
     enable = true;
-    package = pkgs.unstable.waybar; # TODO: hyprpkgs.waybar
     systemd = {
       enable = false;
       target = "graphical-session.target";

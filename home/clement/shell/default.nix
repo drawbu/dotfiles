@@ -13,7 +13,6 @@
       TERMINAL = "kitty";
 
       THEMEFILE = "$HOME/.currenttheme";
-      FLAKE = "$HOME/Developer/dotfiles"; # TODO: programs.nh.flake
     };
 
     file = {

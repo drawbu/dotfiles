@@ -56,11 +56,10 @@ in {
       todo
       comma
       nix-index
-      spotify-tui
+      legacy.spotify-tui
       nurl
       unzip
       unar
-      unstable.nh # TODO: use program.nh on 24.05
 
       # ↓ softwares
       feh
@@ -70,7 +69,7 @@ in {
       godot_4
       croc
       wireguard-tools
-      unstable.beeper
+      beeper
       (pkgs.callPackage ./notflix.nix {})
       ida
 
@@ -119,7 +118,6 @@ in {
   programs = {
     eza = {
       enable = true;
-      enableAliases = true;
       git = true;
       icons = true;
       extraOptions = ["--group-directories-first"];
