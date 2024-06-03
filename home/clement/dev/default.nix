@@ -77,8 +77,17 @@
       asm-lsp
       dockerfile-language-server-nodejs
       docker-compose-language-service
-      gopls
+      unstable.gopls
       cmake-language-server
+      unstable.templ
+
+      # softs
+      unstable.vscode
+      unstable.jetbrains.clion
+      unstable.jetbrains.pycharm-professional
+      unstable.jetbrains.webstorm
+      unstable.jetbrains.datagrip
+      unstable.jetbrains.goland
     ];
   };
 }

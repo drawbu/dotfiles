@@ -63,6 +63,7 @@ return {
       lsp.eslint.setup({})
       lsp.emmet_language_server.setup({})
       lsp.tailwindcss.setup({})
+      lsp.templ.setup({})
 
       -- ↓ Epitech C Style Checker
       if not configs.ecsls then
@@ -122,4 +123,6 @@ return {
   },
 
   'sakhnik/nvim-gdb',
+
+  'tjdevries/templ.nvim',
 }

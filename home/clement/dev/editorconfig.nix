@@ -12,11 +12,11 @@
         tab_width = 4;
         trim_trailing_whitespace = true;
       };
-      "{Makefile,*.mk}" = {
-        indent_style = "tab";
-      };
       "*.{nix,yml,asm,s,S,lua,js,ts,jsx,tsx}" = {
         indent_size = 2;
+      };
+      "Makefile,*.{mk,go,templ}" = {
+        indent_style = "tab";
       };
     };
   };

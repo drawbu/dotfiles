@@ -6,12 +6,15 @@ return {
       filters = {
         dotfiles = false,
         git_ignored = false,
+        no_buffer = false,
         custom = {
           '^\\.git$',
           '^\\.cache',
           '^\\.direnv',
           '^\\.build',
+          '^\\.idea$',
           '*.o',
+          '.*_templ.go$',
         },
       },
       renderer = {

@@ -63,11 +63,6 @@ in {
       unstable.nh # TODO: use program.nh on 24.05
 
       # ↓ softwares
-      unstable.vscode
-      jetbrains.clion
-      jetbrains.pycharm-professional
-      jetbrains.webstorm
-      jetbrains.datagrip
       feh
       thunderbird-bin
       aseprite
