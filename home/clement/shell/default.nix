@@ -44,6 +44,7 @@
       macos = "nix run github:matthewcroughan/NixThePlanet#macos-ventura";
       please = "sudo";
       senpai = "sudo";
+      ufda = "echo 'use flake' | tee .envrc";
     };
   };
 }
