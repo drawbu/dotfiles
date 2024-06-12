@@ -26,7 +26,7 @@
       cfg
       // {
         overlays = [
-          (_: _: {
+          (_: super: {
             # Other nixpkgs
             unstable = import inputs.nixpkgs_unstable cfg;
             legacy = import inputs.nixpkgs_legacy cfg;
@@ -35,6 +35,7 @@
             ida = (import inputs.ida cfg).ida-free;
             inherit (inputs.ecsls.packages.${cfg.system}) ecsls;
             inherit (inputs.nix-alien.packages.${cfg.system}) nix-alien;
+            nix-direnv = super.nix-direnv.override {enableFlakes = true;};
           })
         ];
       }

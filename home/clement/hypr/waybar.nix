@@ -157,7 +157,7 @@ in {
             default = "";
             active = "";
           };
-          persistent_workspaces = {
+          persistent-workspaces = {
             "1" = [];
             "2" = [];
             "3" = [];

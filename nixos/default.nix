@@ -23,11 +23,6 @@
     optimise.automatic = true;
   };
 
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = [(self: super: {nix-direnv = super.nix-direnv.override {enableFlakes = true;};})];
-  };
-
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_US.UTF-8";
 

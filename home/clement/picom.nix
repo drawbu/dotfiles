@@ -2,24 +2,7 @@
   services.picom = {
     enable = true;
     backend = "glx";
-    package = pkgs.picom.overrideAttrs (old: {
-      pname = "picom-FT-Labs";
-      version = "2023-09-30";
-
-      src = pkgs.fetchFromGitHub {
-        owner = "FT-Labs";
-        repo = "picom";
-        rev = "98e842e83b5b873c03b13ee835a14ead73359b9d";
-        hash = "sha256-dB8DaCPWPoZlyaNaO5A38fpPVzFT6/8tqJ+5B2aYmnI=";
-      };
-
-      buildInputs =
-        old.buildInputs
-        ++ [
-          pkgs.xorg.xcbutil
-          pkgs.pcre2
-        ];
-    });
+    package = pkgs.picom;
     vSync = true;
     opacityRules = [
       "95:class_g = 'kitty'"

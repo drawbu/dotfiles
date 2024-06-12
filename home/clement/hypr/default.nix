@@ -1,4 +1,4 @@
-{ pkgs, ... }: let
+{pkgs, ...}: let
   hyprpaperActivation = import ./symlink.nix {
     inherit pkgs;
     path = "$XDG_CONFIG_HOME/hypr";
@@ -30,6 +30,11 @@ in {
     enable = true;
     settings = {
       monitor = ",highres,auto-up,1";
+
+      source = [
+        "~/.config/hypr/monitors.conf"
+        "~/.config/hypr/workspaces.conf"
+      ];
 
       exec-once =
         [
