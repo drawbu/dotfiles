@@ -11,6 +11,7 @@ in {
     ./shell
     ./hypr
     ./dev
+    ./fonts.nix
     ./gtk.nix
     ./firefox.nix
     ./cursor.nix
@@ -72,10 +73,6 @@ in {
       beeper
       (pkgs.callPackage ./notflix.nix {})
       ida
-
-      # ↓ fonts
-      jetbrains-mono
-      nerdfonts
     ];
 
     file = {
