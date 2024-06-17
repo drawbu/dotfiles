@@ -84,6 +84,10 @@
         }
       ];
 
+      loginExtra = ''
+        systemctl --user import-environment PATH
+      '';
+
       oh-my-zsh = {
         enable = true;
         package = pkgs.oh-my-zsh;
