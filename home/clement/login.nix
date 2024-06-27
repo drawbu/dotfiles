@@ -9,51 +9,52 @@
     ${pkgs.dbus}/bin/dbus-run-session ${pkgs.gnome.gnome-session}/bin/gnome-session
   '';
 
-  choiceSelectorPy = pkgs.writeText "choiceSelector.py" ''
-    import subprocess
-    import os
-    import shutil
+  choiceSelectorPy =
+    pkgs.writers.writePython3Bin "choiceSelector.py" {
+      makeWrapperArgs = ["--prefix PATH : ${pkgs.fzf}/bin"];
+    } ''
+      import subprocess
 
 
-    DISPLAYS = {
-        "Hyprland": "Hyprland",
-        "qtile": "startx ${config.home.homeDirectory}/.nix-profile/bin/qtile start",
-        "Gnome": "run_gnome",
-        "Steam": "steam-gamescope",
-    }
+      DISPLAYS = {
+          "Hyprland": "Hyprland",
+          "qtile": "startx ${config.home.homeDirectory}/.nix-profile/bin/qtile start",
+          "Gnome": "run_gnome",
+          "Steam": "steam-gamescope",
+      }
 
 
-    def select_display():
-        fzf = subprocess.Popen(
-            ["${pkgs.fzf}/bin/fzf"],
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            text=True
-        )
-        display, _ = fzf.communicate(input="\n".join(DISPLAYS.keys()))
+      def select_display():
+          fzf = subprocess.Popen(
+              ["fzf"],
+              stdin=subprocess.PIPE,
+              stdout=subprocess.PIPE,
+              text=True
+          )
+          display, _ = fzf.communicate(input="\n".join(DISPLAYS.keys()))
 
-        return DISPLAYS.get(display.strip())
-
-
-    def main():
-        command = select_display()
-        if command is None:
-            print("Invalid display selected.")
-            exit(1)
-        print(command)
+          return DISPLAYS.get(display.strip())
 
 
-    if __name__ == "__main__":
-        main()
-  '';
+      def main():
+          command = select_display()
+          if command is None:
+              print("Invalid display selected.")
+              exit(1)
+          print(command)
+
+
+      if __name__ == "__main__":
+          main()
+    '';
 in {
   home = {
     packages = [run_gnome];
     file."login.sh" = {
-      text = ''
+      text = /*bash*/ ''
         #!/bin/sh
 
-        choice=$(${pkgs.python312}/bin/python3 ${choiceSelectorPy})
+        choice=$(${pkgs.lib.getExe choiceSelectorPy})
         exec $choice
       '';
       executable = true;

@@ -1,15 +1,10 @@
 return {
   {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
+    "supermaven-inc/supermaven-nvim",
     config = function()
-      require('copilot').setup({
-        filetypes = {
-          yaml = true,
-          markdown = true,
-        },
-        suggestion = { enabled = false, },
+      require("supermaven-nvim").setup({
+        disable_inline_completion = true,
+        disable_keymaps = true,
       })
     end,
   },

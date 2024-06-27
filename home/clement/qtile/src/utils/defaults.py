@@ -1,9 +1,9 @@
 from typing import Final
 
-from catppuccin import Flavour
+from catppuccin import PALETTE
 
 
-FLAVOUR = Flavour.mocha()
+FLAVOUR = PALETTE.mocha.colors
 
 BACKGROUND_COLOR = FLAVOUR.base.hex
 TEXT_COLOR = FLAVOUR.text.hex

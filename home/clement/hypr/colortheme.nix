@@ -5,7 +5,7 @@
       transformedAttrs = builtins.mapAttrs (name: value: "${value.css}: ${value.hex};") attrs;
     in
       builtins.concatStringsSep "\n  " (builtins.attrValues transformedAttrs);
-  in ''
+  in /*css*/ ''
     * {
       --foreground: ${colors.foreground.hex};
       --background: ${colors.background.hex};

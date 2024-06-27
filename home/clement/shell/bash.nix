@@ -13,7 +13,7 @@ in {
   programs.bash = {
     enable = true;
     enableCompletion = true;
-    initExtra = ''
+    initExtra = /*bash*/ ''
       source ${config.home.homeDirectory}/.shell-extra
       source ${bashWakatime}/bash-wakatime.sh
     '';

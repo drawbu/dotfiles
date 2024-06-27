@@ -78,7 +78,7 @@ in {
     file = {
       "assets".source = ../../assets;
       ".config/nix/nix.conf".text = "experimental-features = nix-command flakes";
-      ".config/nixpkgs/config.nix".text = ''
+      ".config/nixpkgs/config.nix".text = /*nix*/ ''
         { allowUnfree = true; allowUnsupportedSystem = true; }
       '';
     };

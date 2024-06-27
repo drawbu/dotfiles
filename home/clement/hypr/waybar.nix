@@ -26,7 +26,7 @@ in {
       enable = false;
       target = "graphical-session.target";
     };
-    style = ''
+    style = /*css*/ ''
       @import "./theme.css";
 
       window#waybar {

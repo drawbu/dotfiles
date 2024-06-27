@@ -13,7 +13,7 @@
 
     extraConfig =
       builtins.readFile ./.vimrc
-      + ''
+      + /*lua*/ ''
         lua require('dark-switch')
         lua require('settings')
         lua require('lazy').setup('plugins')

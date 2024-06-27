@@ -18,7 +18,7 @@
     file = {
       ".config/starship.toml".source = ./starship.toml;
 
-      ".shell-extra".text = ''
+      ".shell-extra".text = /*bash*/ ''
         export PATH="$HOME/.local/bin:$PATH"
 
         # WakaTime

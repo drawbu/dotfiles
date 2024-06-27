@@ -1,18 +1,20 @@
 {pkgs, ...}: {
-  home.packages = [
-    (pkgs.catppuccin-gtk.override {
+  home.packages = with pkgs; [
+    (catppuccin-gtk.override {
       accents = ["peach"];
       size = "compact";
       tweaks = ["rimless"];
       variant = "mocha";
     })
 
-    (pkgs.catppuccin-gtk.override {
+    (catppuccin-gtk.override {
       accents = ["peach"];
       size = "compact";
       tweaks = ["rimless"];
       variant = "latte";
     })
+
+    glib # gsettings
   ];
 
   dconf = {

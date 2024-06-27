@@ -22,7 +22,7 @@ in {
       {plugin = sensible;}
       {
         plugin = vimTmuxNavigator;
-        extraConfig = ''
+        extraConfig /*bash*/ = ''
           # Smart pane switching with awareness of Vim splits.
           # See: https://github.com/christoomey/vim-tmux-navigator
 
@@ -54,7 +54,7 @@ in {
       }
       {
         plugin = catppuccin;
-        extraConfig = ''
+        extraConfig = /*bash*/ ''
           set -g @catppuccin_flavour 'mocha'
           set -g @catppuccin_date_time ""
           set -g @catppuccin_user "off"
@@ -62,7 +62,7 @@ in {
         '';
       }
     ];
-    extraConfig = ''
+    extraConfig = /*bash*/ ''
       # Open panes in current directory
       bind '"' split-window -v -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"

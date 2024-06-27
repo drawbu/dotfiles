@@ -14,13 +14,11 @@ return {
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
     'rafamadriz/friendly-snippets',
-    'zbirenbaum/copilot-cmp',
 
     -- Icons
     'onsails/lspkind.nvim',
   },
   config = function()
-    require('copilot_cmp').setup()
     require('luasnip.loaders.from_vscode').lazy_load() -- lspkind
     local cmp = require('cmp')
 
@@ -30,11 +28,12 @@ return {
         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
       }),
       sources = {
-        { name = 'copilot' },
+        { name = 'supermaven' },
         { name = 'path' },
         { name = 'luasnip' },
         { name = 'nvim_lsp' },
         { name = 'nvim_lua' },
+        { name = 'otter' },
         { name = 'dotenv' },
       },
       formatting = {
@@ -43,7 +42,7 @@ return {
           local kind = require('lspkind').cmp_format({
             mode = 'symbol_text',
             max_width = 50,
-            symbol_map = { nvim_lua = ' ', dotenv = '', Copilot = '' },
+            symbol_map = { nvim_lua = ' ', dotenv = '', Supermaven = "" },
           })(entry, vim_item)
           local strings = vim.split(kind.kind, '%s', { trimempty = true })
           kind.kind = ' ' .. (strings[1] or '') .. ' '
@@ -83,5 +82,7 @@ return {
         { { name = 'zsh' } }
       )
     })
+
+    vim.api.nvim_set_hl(0, "CmpItemKindSupermaven", {fg ="#6CC644"})
   end,
 }

@@ -24,8 +24,8 @@
           replace = false;
         };
       };
-      onChange = ''
-        distrobox assemble create --file $out
+      onChange = /*bash*/ ''
+        distrobox assemble create --file "$out"
       '';
     };
   };

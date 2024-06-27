@@ -11,7 +11,7 @@ in {
   home = {
     file.".config/qtile" = {
       source = ./src;
-      onChange = ''
+      onChange = /*bash*/ ''
         pkill -f qtile -SIGUSR1
       '';
     };

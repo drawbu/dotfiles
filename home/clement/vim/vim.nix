@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home = {
     file.".vimrc".text =
-      ''
+      /*vim*/ ''
         source ${pkgs.vimPlugins.vim-plug}/plug.vim
 
         call plug#begin()

@@ -1,7 +1,7 @@
 {config, ...}: let
   colors = import ./colors.nix {theme = "dark";};
 in {
-  xdg.configFile."hypr/hyprlock.conf".text = ''
+  xdg.configFile."hypr/hyprlock.conf".text = /*conf*/ ''
     # https://github.com/specarino/dotfiles/blob/f4fc7bd5f67628dc41f19d86be8b8922a3592b65/.config/hypr/hyprlock.conf
     source = ${config.home.homeDirectory}/theme.css
 

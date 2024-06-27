@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   system.copySystemConfiguration = false;
   nix = {
     gc = {
