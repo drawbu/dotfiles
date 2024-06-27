@@ -1,5 +1,5 @@
 {...}: {
-  editorconfig = {
+  editorconfig = rec {
     enable = true;
     settings = {
       "*" = {
@@ -15,9 +15,10 @@
       "*.{nix,yml,asm,s,S,lua,js,ts,jsx,tsx}" = {
         indent_size = 2;
       };
-      "Makefile,*.{mk,go,templ}" = {
+      "Makefile" = {
         indent_style = "tab";
       };
+      "*.{mk,go,templ}" = settings."Makefile";
     };
   };
 }
