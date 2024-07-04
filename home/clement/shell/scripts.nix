@@ -31,7 +31,7 @@
       css="$XDG_CONFIG_HOME/waybar/theme.css"
       rm -f "$css"
       ln -s "$XDG_CONFIG_HOME/waybar/$theme.css" "$css"
-      pkill waybar && waybar &
+      pkill -f waybar && waybar & disown
 
       # Update gtk theme
       gtk_theme=${config.gtk.theme.name}
@@ -44,7 +44,7 @@
       file=$XDG_CONFIG_HOME/hypr/hyprpaper.conf
       rm -f "$file"
       ln -s "$XDG_CONFIG_HOME/hypr/paper/$theme.conf" "$file"
-      pkill hyprpaper && hyprpaper &
+      pkill -f hyprpaper && hyprpaper & disown
     '';
   };
 
@@ -59,7 +59,7 @@
           echo "Usage: fixwifi <ssid>"
           exit 1
         fi
-        while (${nmcli} dev wifi rescan && ${nmcli} dev wifi list) | grep -q "$ssid"; do
+        while ! (${nmcli} dev wifi rescan && ${nmcli} dev wifi list | grep -q "$ssid"); do
           echo "Waiting for $ssid to be available..."
           sleep 1
         done
