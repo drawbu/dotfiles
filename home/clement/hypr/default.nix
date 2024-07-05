@@ -15,6 +15,7 @@ in {
   home = {
     activation.createHyprpaper = "sh ${hyprpaperActivation.script}";
     packages = with pkgs; [
+      hyprqtile
       hyprpaper
       xwaylandvideobridge
       pyprland
@@ -176,7 +177,7 @@ in {
             with builtins;
               concatLists (
                 genList (x: [
-                  "$mod shift, ${elemAt letters x}, workspace,       ${toString (x + 1)}"
+                  "$mod shift, ${elemAt letters x}, exec, hyprqtile move ${toString (x + 1)}"
                   "$mod alt,   ${elemAt letters x}, movetoworkspace, ${toString (x + 1)}"
                 ]) (length letters)
               )

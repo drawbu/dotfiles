@@ -14,6 +14,7 @@
     ida.url = "github:bbjubjub2494/nixpkgs/idafree";
     ecsls.url = "github:Sigmapitech/ecsls";
     nix-flatpak.url = "github:gmodena/nix-flatpak/v0.4.1";
+    hyprqtile.url = "github:drawbu/hyprqtile";
   };
 
   outputs = {self, ...} @ inputs: let
@@ -35,6 +36,7 @@
             ida = (import inputs.ida cfg).ida-free;
             inherit (inputs.ecsls.packages.${cfg.system}) ecsls;
             inherit (inputs.nix-alien.packages.${cfg.system}) nix-alien;
+            inherit (inputs.hyprqtile.packages.${cfg.system}) hyprqtile;
             nix-direnv = super.nix-direnv.override {enableFlakes = true;};
           })
         ];
