@@ -13,6 +13,11 @@
     starship = {
       enable = true;
       enableZshIntegration = true;
+
+      enableBashIntegration = false;
+      enableFishIntegration = false;
+      enableIonIntegration = false;
+      enableNushellIntegration = false;
     };
 
     zoxide = {
@@ -98,6 +103,7 @@
           "sudo"
           "zoxide"
           "podman"
+          "rust"
         ];
       };
     };

@@ -3,12 +3,6 @@
   pkgs,
   ...
 }: let
-  run_gnome = pkgs.writeShellScriptBin "run_gnome" ''
-    export DISPLAY=:0
-    export XDG_SESSION_TYPE=wayland
-    ${pkgs.dbus}/bin/dbus-run-session ${pkgs.gnome.gnome-session}/bin/gnome-session
-  '';
-
   choiceSelectorPy =
     pkgs.writers.writePython3Bin "choiceSelector.py" {
       makeWrapperArgs = ["--prefix PATH : ${pkgs.fzf}/bin"];
@@ -18,8 +12,7 @@
 
       DISPLAYS = {
           "Hyprland": "Hyprland",
-          "qtile": "startx ${config.home.homeDirectory}/.nix-profile/bin/qtile start",
-          "Gnome": "run_gnome",
+          "qtile": "startx ${config.home.profileDirectory}/bin/qtile start",
           "Steam": "steam-gamescope",
       }
 
@@ -47,17 +40,13 @@
       if __name__ == "__main__":
           main()
     '';
-in {
-  home = {
-    packages = [run_gnome];
-    file."login.sh" = {
-      text = /*bash*/ ''
-        #!/bin/sh
-
-        choice=$(${pkgs.lib.getExe choiceSelectorPy})
-        exec $choice
-      '';
-      executable = true;
-    };
+  loginScript = pkgs.writeShellApplication {
+    name = "login.sh";
+    text = /*bash*/ ''
+      choice=$(${pkgs.lib.getExe choiceSelectorPy})
+      exec $choice
+    '';
   };
+in {
+  home.packages = [loginScript];
 }
