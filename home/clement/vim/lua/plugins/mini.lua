@@ -1,7 +1,10 @@
 return {
   'echasnovski/mini.nvim',
-  version = '*',
+  version = false,
   config = function()
+    -- Icons
+    require('mini.icons').setup({})
+
     -- Trailing whitespaces
     require('mini.trailspace').setup({})
 
