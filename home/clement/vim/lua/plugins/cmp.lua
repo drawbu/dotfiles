@@ -88,13 +88,14 @@ return {
     end,
   },
   {
-    "jmbuhr/otter.nvim", -- Embeded code lsp
-    dependencies = {
-      'neovim/nvim-lspconfig',
-      'nvim-treesitter/nvim-treesitter'
-    },
-    config = function()
-      vim.keymap.set('n', '<C-o>', require('otter').activate, { desc = 'Trigger otter', silent = true })
-    end,
+    -- "jmbuhr/otter.nvim", -- Embeded code lsp
+    -- version = '*',
+    -- dependencies = {
+    --   'neovim/nvim-lspconfig',
+    --   'nvim-treesitter/nvim-treesitter'
+    -- },
+    -- config = function()
+    --   vim.keymap.set('n', '<C-o>', require('otter').activate, { desc = 'Trigger otter', silent = true })
+    -- end,
   },
 }
