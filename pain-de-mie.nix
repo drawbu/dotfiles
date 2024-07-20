@@ -4,7 +4,6 @@
   imports = [
     ./nixos/hardware/hardware-pain-de-mie.nix
     ./nixos
-    ./nixos/graphical
     ./nixos/users/clement.nix
   ];
 

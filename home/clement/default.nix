@@ -1,34 +1,41 @@
 # 'clement' user home-manager config for NixOS & generic linux
-{pkgs, ...}: let
+{
+  pkgs,
+  graphical,
+  ...
+}: let
   username = "clement";
 in {
-  imports = [
-    ./qtile
-    ./rofi
-    ./git
-    ./eww
-    ./vim
-    ./shell
-    ./hypr
-    ./dev
-    ./fonts.nix
-    ./gtk.nix
-    ./firefox.nix
-    ./cursor.nix
-    ./tmux.nix
-    ./dunst.nix
-    ./kitty.nix
-    ./btop.nix
-    ./gitlab.nix
-    ./gh.nix
-    ./lockscreen.nix
-    ./flatpak.nix
-    ./picom.nix
-    ./mimeapps.nix
-    ./distrobox.nix
-    ./login.nix
-    ./gaming.nix
-  ];
+  imports =
+    [
+      ./git
+      ./vim
+      ./shell
+      ./dev
+      ./tmux.nix
+      ./btop.nix
+      ./gitlab.nix
+      ./gh.nix
+      ./distrobox.nix
+    ]
+    ++ (pkgs.lib.optionals graphical [
+      ./qtile
+      ./rofi
+      ./hypr
+      ./eww
+      ./fonts.nix
+      ./gtk.nix
+      ./firefox.nix
+      ./cursor.nix
+      ./dunst.nix
+      ./kitty.nix
+      ./lockscreen.nix
+      ./flatpak.nix
+      ./picom.nix
+      ./mimeapps.nix
+      ./login.nix
+      ./gaming.nix
+    ]);
 
   programs.home-manager.enable = true;
 
@@ -81,9 +88,6 @@ in {
       vlc
       obs-studio
       filelight
-
-      prismlauncher
-      heroic
     ];
 
     file = {

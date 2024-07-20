@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  graphical,
+  ...
+}: {
+  imports = pkgs.lib.optionals graphical [./graphical];
+
   system.copySystemConfiguration = false;
   nix = {
     gc = {

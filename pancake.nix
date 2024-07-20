@@ -4,7 +4,6 @@
   imports = [
     ./nixos/hardware/hardware-pancake.nix
     ./nixos
-    ./nixos/graphical
     ./nixos/users/clement.nix
   ];
 

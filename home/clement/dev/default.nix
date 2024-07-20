@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  graphical,
   ...
 }: {
   imports = [./editorconfig.nix];
@@ -79,7 +80,7 @@
       gopls
       cmake-language-server
       templ
-
+    ] ++ lib.optionals graphical [
       # softs
       vscode
       jetbrains.clion

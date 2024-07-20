@@ -43,14 +43,17 @@
       }
     );
 
-    specialArgs = {
-      inherit pkgs;
-      finputs = inputs;
-    };
-
     hardware = inputs.nixos-hardware.nixosModules;
 
-    defaultConfig = {
+    defaultConfig = args: let
+      specialArgs =
+        {
+          inherit pkgs;
+          finputs = inputs;
+          graphical = pkgs.lib.mkDefault false;
+        }
+        // args;
+    in {
       inherit (cfg) system;
       inherit specialArgs;
       modules = [
@@ -64,32 +67,38 @@
 
     nixosConfigurations = {
       "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (
-        defaultConfig
-        // {
-          modules =
-            defaultConfig.modules
-            ++ [
-              ./pain-de-mie.nix
-              # hardware.common-gpu-nvidia
-              hardware.common-cpu-intel
-              hardware.common-pc
-              hardware.common-pc-ssd
-              hardware.common-pc-hdd
-            ];
-        }
+        let
+          def = defaultConfig {graphical = true;};
+        in
+          def
+          // {
+            modules =
+              def.modules
+              ++ [
+                ./pain-de-mie.nix
+                # hardware.common-gpu-nvidia
+                hardware.common-cpu-intel
+                hardware.common-pc
+                hardware.common-pc-ssd
+                hardware.common-pc-hdd
+              ];
+          }
       );
       "pancake" = inputs.nixpkgs.lib.nixosSystem (
-        defaultConfig
-        // {
-          modules =
-            defaultConfig.modules
-            ++ [
-              ./pancake.nix
-              hardware.common-cpu-intel
-              hardware.common-pc-laptop
-              hardware.common-pc-laptop-ssd
-            ];
-        }
+        let
+          def = defaultConfig {graphical = true;};
+        in
+          def
+          // {
+            modules =
+              def.modules
+              ++ [
+                ./pancake.nix
+                hardware.common-cpu-intel
+                hardware.common-pc-laptop
+                hardware.common-pc-laptop-ssd
+              ];
+          }
       );
     };
   };
