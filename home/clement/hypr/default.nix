@@ -56,7 +56,10 @@ in {
           ) (builtins.length targets))
         );
 
-      env = "XCURSOR_SIZE,16";
+      env = [
+        "XCURSOR_SIZE,16"
+        "ELECTRON_OZONE_PLATFORM_HINT,wayland"
+      ];
 
       input = {
         kb_layout = "fr";

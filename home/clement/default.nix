@@ -67,12 +67,23 @@ in {
       thunderbird-bin
       aseprite
       zathura
-      godot_4
       croc
       wireguard-tools
       beeper
-      (pkgs.callPackage ./notflix.nix {})
       ida
+      vesktop
+      discord
+      ungoogled-chromium
+      libreoffice-qt6-fresh
+      teams-for-linux
+      spotify
+      obsidian
+      vlc
+      obs-studio
+      filelight
+
+      prismlauncher
+      heroic
     ];
 
     file = {
