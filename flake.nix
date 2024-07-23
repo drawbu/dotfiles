@@ -45,14 +45,16 @@
 
     hardware = inputs.nixos-hardware.nixosModules;
 
+    specialArgs' = args:
+      {
+        inherit pkgs;
+        finputs = inputs;
+        graphical = false;
+      }
+      // args;
+
     defaultConfig = args: let
-      specialArgs =
-        {
-          inherit pkgs;
-          finputs = inputs;
-          graphical = pkgs.lib.mkDefault false;
-        }
-        // args;
+      specialArgs = specialArgs' args;
     in {
       inherit (cfg) system;
       inherit specialArgs;
@@ -64,6 +66,14 @@
     };
   in {
     formatter.${cfg.system} = pkgs.alejandra;
+
+    homeConfigurations = {
+      "home-generic" = inputs.home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = specialArgs' {};
+        modules = [./home/clement];
+      };
+    };
 
     nixosConfigurations = {
       "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (

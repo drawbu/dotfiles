@@ -29,7 +29,10 @@
       enable = true;
       initExtra = ''
         source ${config.home.homeDirectory}/.shell-extra
-        source <(nh completions --shell zsh)
+
+        if [ "$(command -v nh)" ]; then
+          source <(nh completions --shell zsh)
+        fi
 
         code() {
           if [ "$#" -eq 0 ]; then

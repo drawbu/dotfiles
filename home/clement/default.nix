@@ -17,8 +17,7 @@ in {
       ./gitlab.nix
       ./gh.nix
       ./distrobox.nix
-    ]
-    ++ (pkgs.lib.optionals graphical [
+    ] ++ pkgs.lib.optionals graphical [
       ./qtile
       ./rofi
       ./hypr
@@ -35,7 +34,7 @@ in {
       ./mimeapps.nix
       ./login.nix
       ./gaming.nix
-    ]);
+    ];
 
   programs.home-manager.enable = true;
 
@@ -68,7 +67,7 @@ in {
       nurl
       unzip
       unar
-
+    ] ++ pkgs.lib.optionals graphical [
       # ↓ softwares
       feh
       thunderbird-bin

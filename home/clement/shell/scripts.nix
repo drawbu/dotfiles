@@ -32,14 +32,14 @@
       rm -f "$css"
       ln -s "$XDG_CONFIG_HOME/waybar/$theme.css" "$css"
       pkill -f waybar && waybar & disown
-
+    '' + pkgs.lib.optionalString (config.gtk.enable) ''
       # Update gtk theme
       gtk_theme=${config.gtk.theme.name}
       if [ "$theme" = "light" ]; then
         gtk_theme="Catppuccin-Latte-Compact-Peach-Light";
       fi
       gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme"
-
+    '' + ''
       # Update wallpaper
       file=$XDG_CONFIG_HOME/hypr/hyprpaper.conf
       rm -f "$file"

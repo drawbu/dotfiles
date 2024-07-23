@@ -6,10 +6,11 @@ return {
     vim.o.timeoutlen = 300
     local wk = require('which-key')
 
-    wk.register({
-      ['<leader>g'] = { name = '+git' },
-      ['<leader>d'] = { name = '+gdb' },
-      ['<leader>p'] = { name = '+project', p = 'Open directory' },
+    wk.add({
+      { "<leader>d",  group = "gdb" },
+      { "<leader>g",  group = "git" },
+      { "<leader>p",  group = "project" },
+      { "<leader>pp", desc = "Open directory" },
     })
   end,
 }
