@@ -22,6 +22,7 @@ in {
       ./rofi
       ./hypr
       ./eww
+      ./kanata
       ./fonts.nix
       ./gtk.nix
       ./firefox.nix
