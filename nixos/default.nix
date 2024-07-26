@@ -51,7 +51,6 @@
     nh = {
       enable = true;
       flake = /home/clement/Developer/dotfiles;
-      clean.enable = true;
     };
   };
 

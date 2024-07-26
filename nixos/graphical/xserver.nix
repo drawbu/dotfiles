@@ -6,8 +6,7 @@
   ];
   services.xserver = {
     enable = true;
-    layout = "fr";
-    libinput.enable = true;
+    xkb.layout = "fr";
     displayManager.startx.enable = true;
   };
 }

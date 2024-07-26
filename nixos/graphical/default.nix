@@ -49,11 +49,12 @@
     };
 
     printing.enable = true;
-
+    libinput.enable = true;
     flatpak.enable = true;
   };
 
   programs = {
+    xwayland.enable = true;
     steam = {
       enable = true;
       remotePlay.openFirewall = true;
