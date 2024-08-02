@@ -17,33 +17,32 @@
       echo "$theme" > "$THEMEFILE"
 
       # Update kitty theme
+      echo "[DARK] Updating kitty theme..."
       while IFS= read -r -d "" sock; do
         kitty @ --to "unix:$sock" set-colors -a -- "$XDG_CONFIG_HOME/kitty/$theme.conf" \
           || rm -f "$sock"
       done <   <(find /tmp -maxdepth 1 -name "kitty-*" -type 's' -print0)
 
       # Update css theme
-      css="$HOME/theme.css"
-      rm -f "$css"
-      ln -s "$HOME/$theme.css" "$css"
+      echo "[DARK] Updating css theme..."
+      ln -fs "$HOME/$theme.css" "$HOME/theme.css"
 
       # Update waybar theme
-      css="$XDG_CONFIG_HOME/waybar/theme.css"
-      rm -f "$css"
-      ln -s "$XDG_CONFIG_HOME/waybar/$theme.css" "$css"
+      echo "[DARK] Updating waybar theme..."
+      ln -fs "$XDG_CONFIG_HOME/waybar/$theme.css" "$XDG_CONFIG_HOME/waybar/theme.css"
       pkill -f waybar && waybar & disown
     '' + pkgs.lib.optionalString (config.gtk.enable) ''
       # Update gtk theme
+      echo "[DARK] Updating GTK theme..."
       gtk_theme=${config.gtk.theme.name}
       if [ "$theme" = "light" ]; then
         gtk_theme="Catppuccin-Latte-Compact-Peach-Light";
       fi
-      gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme"
+      gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme" || true
     '' + ''
       # Update wallpaper
-      file=$XDG_CONFIG_HOME/hypr/hyprpaper.conf
-      rm -f "$file"
-      ln -s "$XDG_CONFIG_HOME/hypr/paper/$theme.conf" "$file"
+      echo "[DARK] Updating hyprpaper..."
+      ln -fs "$XDG_CONFIG_HOME/hypr/paper/$theme.conf" "$XDG_CONFIG_HOME/hypr/hyprpaper.conf"
       pkill -f hyprpaper && hyprpaper & disown
     '';
   };
