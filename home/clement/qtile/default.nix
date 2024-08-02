@@ -12,7 +12,7 @@ in {
     file.".config/qtile" = {
       source = ./src;
       onChange = /*bash*/ ''
-        pkill -f qtile -SIGUSR1
+        ${pkgs.lib.getExe' pkgs.toybox "pkill"} -f qtile -SIGUSR1
       '';
     };
 
