@@ -37,10 +37,45 @@ return {
       })
 
       vim.keymap.set('n', '<leader>a', function() harpoon:list():add() end, { desc = 'Add to harpoon' })
-      vim.keymap.set('n', '<C-e>', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = 'Open harpoon window' })
+      vim.keymap.set('n', '<C-e>', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+        { desc = 'Open harpoon window' })
 
-      vim.keymap.set('n', '<leader>h', function() harpoon:list():prev() end, { desc = 'Next Harpoon file' })
-      vim.keymap.set('n', '<leader>l', function() harpoon:list():next() end, { desc = 'Previous Harpoon file' })
+      vim.keymap.set('n', '<leader>h', function() harpoon:list():prev({ ui_nav_wrap = true }) end,
+        { desc = 'Next Harpoon file' })
+      vim.keymap.set('n', '<leader>l', function() harpoon:list():next({ ui_nav_wrap = true }) end,
+        { desc = 'Previous Harpoon file' })
     end,
   },
+
+
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = { 'echasnovski/mini.icons' },
+    config = function()
+      local ignored = {
+        '^\\.git$',
+        '^\\.cache',
+        '^\\.direnv',
+        '^\\.build',
+        '^\\.idea$',
+        '*.o',
+        '.*_templ.go$',
+      }
+      require('oil').setup({
+        view_options = {
+          show_hidden = false,
+          is_hidden_file = function(name, bufnr)
+            for _, pattern in ipairs(ignored) do
+              if string.match(name, pattern) then
+                return true
+              end
+            end
+            return false
+          end,
+        }
+      })
+      vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory', silent = true })
+    end,
+  }
 }
