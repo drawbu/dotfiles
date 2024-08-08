@@ -47,25 +47,24 @@ return {
     end,
   },
 
-
   {
     'stevearc/oil.nvim',
     opts = {},
     dependencies = { 'echasnovski/mini.icons' },
     config = function()
       local ignored = {
-        '^\\.git$',
-        '^\\.cache',
-        '^\\.direnv',
-        '^\\.build',
-        '^\\.idea$',
-        '*.o',
-        '.*_templ.go$',
+        '^%.git$',
+        '^%.direnv$',
+        '^%.cache$',
+        '^%.build$',
+        '^%.idea$',
+        '%.o$',
+        '_templ%.go$',
       }
       require('oil').setup({
         view_options = {
           show_hidden = false,
-          is_hidden_file = function(name, bufnr)
+          is_hidden_file = function(name, _)
             for _, pattern in ipairs(ignored) do
               if string.match(name, pattern) then
                 return true
@@ -77,5 +76,4 @@ return {
       })
       vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory', silent = true })
     end,
-  }
-}
+  } }
