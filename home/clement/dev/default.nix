@@ -60,7 +60,7 @@
 
       # language servers
       lua-language-server
-      nil
+      unstable.nixd
       clang-analyzer
       clang-tools_18
       pyright

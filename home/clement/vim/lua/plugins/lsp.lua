@@ -21,20 +21,7 @@ return {
         { workspace = { didChangeWatchedFiles = { dynamicRegistration = true } } }
       );
 
-      lsp.nil_ls.setup({
-        capabilities = caps,
-        settings = {
-          ['nil'] = {
-            formatting = { command = { "nix", "fmt", "--no-net", "--", "--quiet" }, },
-          },
-          nix = {
-            flake = {
-              autoArchive = true,
-              autoEvalInputs = true
-            }
-          }
-        }
-      })
+      lsp.nixd.setup({})
       lsp.lua_ls.setup({})
       lsp.clangd.setup({
         capabilities = caps,
