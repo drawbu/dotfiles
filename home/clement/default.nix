@@ -68,6 +68,7 @@ in {
       nurl
       unzip
       unar
+      nmap
     ] ++ pkgs.lib.optionals graphical [
       # ↓ softwares
       feh
