@@ -8,10 +8,10 @@
 in {
   imports =
     [
-      ./git
       ./vim
       ./shell
       ./dev
+      ./git.nix
       ./tmux.nix
       ./btop.nix
       ./gitlab.nix
