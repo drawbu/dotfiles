@@ -4,6 +4,7 @@
       protonup
       prismlauncher
       heroic
+      lutris
     ];
 
     sessionVariables = {
