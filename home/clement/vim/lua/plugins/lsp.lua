@@ -51,6 +51,7 @@ return {
       lsp.emmet_language_server.setup({})
       lsp.tailwindcss.setup({})
       lsp.templ.setup({})
+      lsp.htmx.setup{}
 
       -- ↓ Epitech C Style Checker
       if not configs.ecsls then

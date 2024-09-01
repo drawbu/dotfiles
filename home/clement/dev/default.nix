@@ -80,6 +80,7 @@
       gopls
       cmake-language-server
       templ
+      htmx-lsp
     ] ++ lib.optionals graphical [
       # softs
       vscode
