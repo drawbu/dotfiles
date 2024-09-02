@@ -27,17 +27,18 @@
       cfg
       // {
         overlays = [
-          (_: super: {
+          (final: prev: {
             # Other nixpkgs
             unstable = import inputs.nixpkgs_unstable cfg;
             legacy = import inputs.nixpkgs_legacy cfg;
+
 
             # Softwares
             ida = (import inputs.ida cfg).ida-free;
             inherit (inputs.ecsls.packages.${cfg.system}) ecsls;
             inherit (inputs.nix-alien.packages.${cfg.system}) nix-alien;
             inherit (inputs.hyprqtile.packages.${cfg.system}) hyprqtile;
-            nix-direnv = super.nix-direnv.override {enableFlakes = true;};
+            nix-direnv = prev.nix-direnv.override {enableFlakes = true;};
           })
         ];
       }
@@ -90,7 +91,6 @@
                 hardware.common-cpu-intel
                 hardware.common-pc
                 hardware.common-pc-ssd
-                hardware.common-pc-hdd
               ];
           }
       );
