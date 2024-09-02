@@ -89,6 +89,7 @@ in {
       vlc
       obs-studio
       filelight
+      gnome.gnome-font-viewer
     ];
 
     file = {
