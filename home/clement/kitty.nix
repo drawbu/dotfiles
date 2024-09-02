@@ -9,8 +9,7 @@ in {
   programs.kitty = {
     enable = true;
     font = {
-      package = pkgs.nerdfonts.override {fonts = ["ZedMono"];};
-      name = "ZedMono Nerd Font";
+      name = "0xProto Nerd Font";
       size = 12;
     };
     shellIntegration = {

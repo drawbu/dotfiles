@@ -13,7 +13,7 @@
         always_run_script = true;
         browser = "firefox";
 
-        font = "ZedMono Nerd Font 10";
+        font = "0xProto Nerd Font 10";
         frame_color = "#8AADF4";
         separator_color = "frame";
 

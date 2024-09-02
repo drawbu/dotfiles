@@ -3,7 +3,7 @@ $text-color: #c6d0f5;
 
 * {
   color: $base-color;
-  font-family: "ZedMono Nerd Font";
+  font-family: "0xProto Nerd Font";
 }
 
 window {
@@ -36,7 +36,7 @@ label {
   label.title {
     font-weight: bold;
   }
-  
+
   box.art {
     background-size: 150px;
     min-height: 150px;
@@ -44,7 +44,7 @@ label {
     margin: 10px;
     border-radius: 10px;
   }
-  
+
   .buttons button {
     font-size: 20px;
   }
