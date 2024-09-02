@@ -21,9 +21,9 @@ return {
         { workspace = { didChangeWatchedFiles = { dynamicRegistration = true } } }
       );
 
-      lsp.nixd.setup({})
-      lsp.lua_ls.setup({})
-      lsp.clangd.setup({
+      lsp.nixd.setup {}
+      lsp.lua_ls.setup {}
+      lsp.clangd.setup {
         capabilities = caps,
         cmd = {
           'clangd',
@@ -32,26 +32,26 @@ return {
           '--clang-tidy',
           '--cross-file-rename',
         },
-      })
-      lsp.pyright.setup({})
-      lsp.tsserver.setup({})
-      lsp.cssls.setup({})
-      lsp.svelte.setup({})
-      lsp.html.setup({})
-      lsp.gdscript.setup({})
-      lsp.rust_analyzer.setup({})
-      lsp.hls.setup({})
-      lsp.asm_lsp.setup({})
-      lsp.dockerls.setup({})
-      lsp.docker_compose_language_service.setup({})
-      lsp.gopls.setup({})
-      lsp.cmake.setup({})
-      lsp.bashls.setup({})
-      lsp.eslint.setup({})
-      lsp.emmet_language_server.setup({})
-      lsp.tailwindcss.setup({})
-      lsp.templ.setup({})
-      lsp.htmx.setup{}
+      }
+      lsp.pyright.setup {}
+      lsp.tsserver.setup {}
+      lsp.cssls.setup {}
+      lsp.svelte.setup {}
+      lsp.html.setup {}
+      lsp.gdscript.setup {}
+      lsp.rust_analyzer.setup {}
+      lsp.hls.setup {}
+      lsp.asm_lsp.setup {}
+      lsp.dockerls.setup {}
+      lsp.docker_compose_language_service.setup {}
+      lsp.gopls.setup {}
+      lsp.cmake.setup {}
+      lsp.bashls.setup {}
+      lsp.eslint.setup {}
+      lsp.emmet_language_server.setup {}
+      lsp.tailwindcss.setup {}
+      lsp.templ.setup {}
+      lsp.htmx.setup {}
 
       -- ↓ Epitech C Style Checker
       if not configs.ecsls then
@@ -65,7 +65,7 @@ return {
           },
         }
       end
-      lsp.ecsls.setup({})
+      lsp.ecsls.setup {}
 
       lsp_zero.on_attach(function(_, bufnr)
         local opts = { buffer = bufnr, remap = false }
@@ -84,6 +84,15 @@ return {
   },
 
   {
+    "chrisgrieser/nvim-lsp-endhints",
+    event = "LspAttach",
+    opts = {},
+    config = function()
+      require("lsp-endhints").setup {}
+    end,
+  },
+
+  {
     'kosayoda/nvim-lightbulb',
     config = function()
       require("nvim-lightbulb").setup({
@@ -95,7 +104,7 @@ return {
   {
     'ThePrimeagen/refactoring.nvim',
     config = function()
-      require('refactoring').setup({})
+      require('refactoring').setup {}
     end
   },
 
@@ -105,7 +114,7 @@ return {
     'folke/trouble.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      require('trouble').setup({})
+      require('trouble').setup {}
       vim.keymap.set('n', '<leader>x', require('trouble').open, { desc = 'Open all errors' })
     end,
   },
