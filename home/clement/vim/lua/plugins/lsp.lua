@@ -75,7 +75,7 @@ return {
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
         vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, opts)
         vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
-        vim.keymap.set('n', '<C-i>', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts)
+        vim.keymap.set('n', '<C-l>', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts)
         vim.keymap.set('n', 'gf', vim.lsp.buf.format, opts)
         lsp_zero.default_keymaps({ buffer = bufnr })
       end)

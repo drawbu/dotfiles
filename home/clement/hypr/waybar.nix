@@ -37,7 +37,7 @@ in {
         color: ${foreground.gtk};
         font-size: 16px;
         min-height: 0;
-        font-family: "0xProto Nerd Font", "Material Design Icons Desktop";
+        font-family: "Iosevka Comfy", "Material Design Icons Desktop";
       }
 
       /* left widgets */
