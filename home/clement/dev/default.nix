@@ -89,6 +89,7 @@
       jetbrains.webstorm
       jetbrains.datagrip
       jetbrains.goland
+      jetbrains.rust-rover
       unstable.zed-editor
     ];
   };
