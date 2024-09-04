@@ -1,6 +1,7 @@
 # My config for NixOS on my laptop
 # The name: pancake
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./nixos/hardware/hardware-pancake.nix
     ./nixos
@@ -10,7 +11,7 @@
   networking.hostName = "pancake";
   system.stateVersion = "23.05";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Git signing
   home-manager.users.clement.programs.git.signing = {
@@ -24,10 +25,16 @@
     fprintd.enable = true;
 
     # idk intel hardware is borken
-    xserver.videoDrivers = ["modesettings"];
+    xserver.videoDrivers = [ "modesettings" ];
 
     # Allows for updating firmware via `fwupdmgr`.
     fwupd.enable = true;
+  };
+
+  hardware.enableAllFirmware = true;
+  hardware.ipu6 = {
+    enable = true;
+    platform = "ipu6ep";
   };
 
   # Hardware acceleration
@@ -37,8 +44,8 @@
     driSupport32Bit = true;
   };
 
-  networking.firewall.allowedUDPPorts = [6969];
-  networking.firewall.allowedTCPPorts = [6969];
+  networking.firewall.allowedUDPPorts = [ 6969 ];
+  networking.firewall.allowedTCPPorts = [ 6969 ];
 
   services.tlp.settings = {
     PCIE_ASPM_ON_AC = "performance";
