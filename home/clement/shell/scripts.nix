@@ -6,6 +6,8 @@
   dark = pkgs.writeShellApplication {
     name = "dark";
     text = ''
+      set +e errexit # Don't exit on error
+
       theme=$(cat "$THEMEFILE")
       if [ "$theme" = "light" ]; then
           theme="dark"
@@ -38,7 +40,9 @@
       if [ "$theme" = "light" ]; then
         gtk_theme="Catppuccin-Latte-Compact-Peach-Light";
       fi
-      gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme" || true
+      echo "[org/gnome/desktop/interface]
+      color-scheme='prefer-$theme'
+      gtk-theme='$gtk_theme'" | dconf load /
     '' + ''
       # Update wallpaper
       echo "[DARK] Updating hyprpaper..."
