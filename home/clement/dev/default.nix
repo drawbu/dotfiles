@@ -81,7 +81,7 @@
       cmake-language-server
       templ
       htmx-lsp
-    ] ++ lib.optionals graphical [
+    ] ++ lib.optionals graphical (with unstable; [
       # softs
       vscode
       jetbrains.clion
@@ -90,7 +90,8 @@
       jetbrains.datagrip
       jetbrains.goland
       jetbrains.rust-rover
-      unstable.zed-editor
-    ];
+      jetbrains-toolbox
+      zed-editor
+    ]);
   };
 }

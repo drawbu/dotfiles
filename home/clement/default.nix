@@ -79,7 +79,7 @@ in {
       wireguard-tools
       beeper
       ida
-      vesktop
+      unstable.vesktop
       discord
       ungoogled-chromium
       libreoffice-qt6-fresh
