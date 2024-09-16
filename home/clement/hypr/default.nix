@@ -22,6 +22,7 @@ in {
       hypridle
       hyprlock
       nwg-displays
+      gnome3.gnome-keyring
     ];
   };
 
@@ -44,6 +45,7 @@ in {
           "xwaylandvideobridge"
           "pypr"
           "hypridle"
+          "gnome-keyring gnome-keyring-daemon --daemonize --components=ssh,secrets"
         ]
         ++ (
           let
@@ -57,7 +59,7 @@ in {
         );
 
       env = [
-        "XCURSOR_SIZE,16"
+        "XCURSOR_SIZE,24"
         "ELECTRON_OZONE_PLATFORM_HINT,wayland"
       ];
 
