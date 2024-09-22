@@ -1,11 +1,5 @@
-{pkgs, ...}: let
-  theme = pkgs.fetchFromGitHub {
-    owner = "catppuccin";
-    repo = "kitty";
-    rev = "d7d61716a83cd135344cbb353af9d197c5d7cec1";
-    hash = "sha256-mRFa+40fuJCUrR1o4zMi7AlgjRtFmii4fNsQyD8hIjM=";
-  };
-in {
+{ pkgs, ... }:
+{
   programs.kitty = {
     enable = true;
     font = {
@@ -37,14 +31,15 @@ in {
       allow_remote_control = "yes";
       listen_on = "unix:/tmp/kitty";
       enable_audio_bell = "no";
-    };
-    theme = "Catppuccin-Mocha";
 
+      # theme
+      include = "./current-theme.conf";
+    };
     environment.CURRENT_TERMINAL = "kitty";
   };
 
   xdg.configFile = {
-    "kitty/dark.conf".source = "${theme}/themes/mocha.conf";
-    "kitty/light.conf".source = "${theme}/themes/latte.conf";
+    "kitty/dark.conf".source = "${pkgs.kitty-themes}/share/kitty-themes/themes/Catppuccin-Mocha.conf";
+    "kitty/light.conf".source = "${pkgs.kitty-themes}/share/kitty-themes/themes/Catppuccin-Latte.conf";
   };
 }

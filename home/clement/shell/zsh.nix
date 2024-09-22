@@ -1,8 +1,7 @@
+{ pkgs, config, ... }:
 {
-  pkgs,
-  config,
-  ...
-}: {
+  xdg.configFile."starship.toml".source = ./starship.toml;
+
   programs = {
     fzf = {
       enable = true;
@@ -28,8 +27,6 @@
     zsh = {
       enable = true;
       initExtra = ''
-        source ${config.home.homeDirectory}/.shell-extra
-
         if [ "$(command -v nh)" ]; then
           source <(nh completions --shell zsh)
         fi
@@ -54,6 +51,7 @@
 
       sessionVariables = {
         ZSH_DISABLE_COMPFIX = true;
+        ZSH_WAKATIME_PROJECT_DETECTION = true;
       };
 
       shellAliases = {

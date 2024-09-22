@@ -1,8 +1,9 @@
-{pkgs, ...}: {
+{ config, ... }:
+{
   imports = [
     ./bash.nix
     ./zsh.nix
-    ./scripts.nix
+    ./scripts
   ];
 
   home = {
@@ -12,23 +13,7 @@
       BROWSER = "firefox";
       TERMINAL = "kitty";
 
-      THEMEFILE = "$HOME/.currenttheme";
-    };
-
-    file = {
-      ".config/starship.toml".source = ./starship.toml;
-
-      ".shell-extra".text = /*bash*/ ''
-        export PATH="$HOME/.local/bin:$PATH"
-
-        # WakaTime
-        export ZSH_WAKATIME_PROJECT_DETECTION=true
-
-        if [ -f "$THEMEFILE" ] && [ "$CURRENT_TERMINAL" = "kitty" ]; then
-          theme=$(cat "$THEMEFILE")
-          kitty @ set-colors -a "$XDG_CONFIG_HOME/kitty/$theme.conf"
-        fi
-      '';
+      THEMEFILE = "${config.home.homeDirectory}/.currenttheme";
     };
 
     shellAliases = {
@@ -43,7 +28,7 @@
       macos = "nix run github:matthewcroughan/NixThePlanet#macos-ventura";
       please = "sudo";
       senpai = "sudo";
-      ufda = "echo 'use flake' >> .envrc && direnv allow";
+      ufda = "test -z \"$(grep 'use flake' .envrc)\" && (echo 'use flake' >> .envrc); direnv allow";
       tree = "ls --tree";
     };
   };

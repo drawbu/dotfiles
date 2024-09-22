@@ -28,12 +28,15 @@
       RUSTC_VERSION = "stable";
       CARGO_HOME = "${config.home.homeDirectory}/.cargo";
       RUSTUP_HOME = "${config.home.homeDirectory}/.rustup";
+
       NPM_PREFIX = "${config.home.homeDirectory}/.npm";
+
       PATH = "$PATH:${
         pkgs.lib.makeBinPath [
           "$CARGO_HOME"
           "$RUSTUP_HOME/toolchains/$RUSTC_VERSION-x86_64-unknown-linux-gnu"
           "$NPM_PREFIX"
+          "$HOME/.local"
         ]
       }";
     };
