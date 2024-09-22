@@ -9,7 +9,7 @@ in {
   programs.kitty = {
     enable = true;
     font = {
-      name = "0xProto Nerd Font";
+      name = "JetBrainsMono Nerd Font";
       size = 12;
     };
     shellIntegration = {

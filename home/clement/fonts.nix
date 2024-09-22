@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   monolisa = pkgs.stdenvNoCC.mkDerivation {
     pname = "monolisa";
     version = "2.0";
@@ -22,9 +23,20 @@
       runHook postInstall
     '';
   };
-in {
+in
+{
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      monospace = [ "JetBrains Mono" ];
+      sansSerif = [ "Helvetica Neue" ];
+      serif = [ "Liberation Serif" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
+
+  };
   home.packages =
-    [monolisa]
+    [ monolisa ]
     ++ (with pkgs; [
       monaspace
       iosevka-bin
@@ -33,8 +45,10 @@ in {
       nerdfonts
       liberation_ttf
       mplus-outline-fonts.githubRelease
+      ubuntu_font_family
       noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
+      noto-fonts-color-emoji
+      inter
+      helvetica-neue-lt-std
     ]);
 }

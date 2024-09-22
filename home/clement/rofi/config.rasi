@@ -83,7 +83,7 @@ configuration {
 
 	/*---------- Misc setting ----------*/
 	terminal: "kitty";
-	font: "0xProto Nerd Font 12";
+	font: "Helvetica Neue 12";
 	sort: false;
 	threads: 0;
 	click-to-exit: true;
