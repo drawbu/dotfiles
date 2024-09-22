@@ -15,7 +15,6 @@ Checks: "-*,
   -modernize-use-trailing-return-type,
   llvm-*,
   cppcoreguidelines-*,
-  llvmlibc-*,
   concurrency-*,
 "
 

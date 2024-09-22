@@ -26,7 +26,7 @@
 
         if [ -f "$THEMEFILE" ] && [ "$CURRENT_TERMINAL" = "kitty" ]; then
           theme=$(cat "$THEMEFILE")
-          ${pkgs.kitty}/bin/kitty @ set-colors -a "$XDG_CONFIG_HOME/kitty/$theme.conf"
+          kitty @ set-colors -a "$XDG_CONFIG_HOME/kitty/$theme.conf"
         fi
       '';
     };
