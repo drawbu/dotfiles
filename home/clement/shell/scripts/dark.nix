@@ -1,4 +1,20 @@
 { config, pkgs, ... }:
+let
+  inherit (pkgs) lib;
+  updateGtkTheme = pkgs.writeShellScriptBin "update-gtk-theme"
+    ''
+      echo "[DARK] Updating GTK theme..."
+      gtk_theme=${config.gtk.theme.name}
+      if [ "$theme" = "light" ]; then
+        gtk_theme="Catppuccin-Latte-Compact-Peach-Light";
+      fi
+
+      echo "[org/gnome/desktop/interface]
+      color-scheme='prefer-$theme'
+      gtk-theme='$gtk_theme'" | dconf load /
+    ''
+  ;
+in
 {
   home.packages = [
     (pkgs.writeShellApplication {
@@ -33,17 +49,7 @@
         pkill -f waybar && waybar & disown
 
         # Update gtk theme
-        if ${if config.gtk.enable then "true" else "false"}; then
-          echo "[DARK] Updating GTK theme..."
-          gtk_theme=${config.gtk.theme.name}
-          if [ "$theme" = "light" ]; then
-            gtk_theme="Catppuccin-Latte-Compact-Peach-Light";
-          fi
-
-          echo "[org/gnome/desktop/interface]
-          color-scheme='prefer-$theme'
-          gtk-theme='$gtk_theme'" | dconf load /
-        fi
+        ${lib.optionalString (config.gtk.enable) "source ${lib.getExe updateGtkTheme}"}
 
         # Update wallpaper
         echo "[DARK] Updating hyprpaper..."

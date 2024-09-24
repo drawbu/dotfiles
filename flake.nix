@@ -12,104 +12,103 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-alien.url = "github:thiagokokada/nix-alien";
     ida.url = "github:bbjubjub2494/nixpkgs/idafree";
-    ecsls.url = "github:Sigmapitech/ecsls";
+    # ecsls.url = "github:Sigmapitech/ecsls";
     nix-flatpak.url = "github:gmodena/nix-flatpak/v0.4.1";
     hyprqtile.url = "github:drawbu/hyprqtile";
   };
 
-  outputs = {self, ...} @ inputs: let
-    cfg = {
-      system = "x86_64-linux";
-      config.allowUnfree = true;
-    };
+  outputs =
+    { self, ... }@inputs:
+    let
+      cfg = {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
 
-    pkgs = import inputs.nixpkgs (
-      cfg
-      // {
-        overlays = [
-          (final: prev: {
-            # Other nixpkgs
-            unstable = import inputs.nixpkgs_unstable cfg;
-            legacy = import inputs.nixpkgs_legacy cfg;
+      pkgs = import inputs.nixpkgs (
+        cfg
+        // {
+          overlays = [
+            (final: prev: {
+              # Other nixpkgs
+              unstable = import inputs.nixpkgs_unstable cfg;
+              legacy = import inputs.nixpkgs_legacy cfg;
 
+              # Softwares
+              ida = (import inputs.ida cfg).ida-free;
+              # inherit (inputs.ecsls.packages.${cfg.system}) ecsls;
+              inherit (inputs.nix-alien.packages.${cfg.system}) nix-alien;
+              inherit (inputs.hyprqtile.packages.${cfg.system}) hyprqtile;
+              nix-direnv = prev.nix-direnv.override { enableFlakes = true; };
+            })
+          ];
+        }
+      );
 
-            # Softwares
-            ida = (import inputs.ida cfg).ida-free;
-            inherit (inputs.ecsls.packages.${cfg.system}) ecsls;
-            inherit (inputs.nix-alien.packages.${cfg.system}) nix-alien;
-            inherit (inputs.hyprqtile.packages.${cfg.system}) hyprqtile;
-            nix-direnv = prev.nix-direnv.override {enableFlakes = true;};
-          })
-        ];
-      }
-    );
+      hardware = inputs.nixos-hardware.nixosModules;
 
-    hardware = inputs.nixos-hardware.nixosModules;
-
-    specialArgs' = args:
-      {
+      specialArgs = {
         inherit pkgs;
         finputs = inputs;
         graphical = false;
-      }
-      // args;
+      };
 
-    defaultConfig = args: let
-      specialArgs = specialArgs' args;
-    in {
-      inherit (cfg) system;
-      inherit specialArgs;
-      modules = [
-        inputs.nix-flatpak.nixosModules.nix-flatpak
-        inputs.home-manager.nixosModules.home-manager
-        {home-manager.extraSpecialArgs = specialArgs;}
-      ];
-    };
-  in {
-    formatter.${cfg.system} = pkgs.alejandra;
+      defaultNixOS =
+        args:
+        let
+          completeArgs = specialArgs // args;
+        in
+        {
+          inherit (cfg) system;
+          specialArgs = completeArgs;
+          modules = [
+            inputs.nix-flatpak.nixosModules.nix-flatpak
+            inputs.home-manager.nixosModules.home-manager
+            { home-manager.extraSpecialArgs = completeArgs; }
+          ];
+        };
+    in
+    {
+      formatter.${cfg.system} = pkgs.alejandra;
 
-    homeConfigurations = {
-      "home-generic" = inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = specialArgs' {};
-        modules = [./home/clement];
+      homeConfigurations = {
+        "home-generic" = inputs.home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = specialArgs;
+          modules = [ ./home/clement ];
+        };
+      };
+
+      nixosConfigurations = {
+        "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (
+          let
+            def = defaultNixOS { graphical = true; };
+          in
+          def
+          // {
+            modules = def.modules ++ [
+              ./pain-de-mie.nix
+              # hardware.common-gpu-nvidia
+              hardware.common-cpu-intel
+              hardware.common-pc
+              hardware.common-pc-ssd
+            ];
+          }
+        );
+        "pancake" = inputs.nixpkgs.lib.nixosSystem (
+          let
+            def = defaultNixOS { graphical = true; };
+          in
+          def
+          // {
+            modules = def.modules ++ [
+              ./pancake.nix
+              hardware.common-cpu-intel
+              hardware.common-pc-laptop
+              hardware.common-pc-laptop-ssd
+            ];
+          }
+        );
       };
     };
-
-    nixosConfigurations = {
-      "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (
-        let
-          def = defaultConfig {graphical = true;};
-        in
-          def
-          // {
-            modules =
-              def.modules
-              ++ [
-                ./pain-de-mie.nix
-                # hardware.common-gpu-nvidia
-                hardware.common-cpu-intel
-                hardware.common-pc
-                hardware.common-pc-ssd
-              ];
-          }
-      );
-      "pancake" = inputs.nixpkgs.lib.nixosSystem (
-        let
-          def = defaultConfig {graphical = true;};
-        in
-          def
-          // {
-            modules =
-              def.modules
-              ++ [
-                ./pancake.nix
-                hardware.common-cpu-intel
-                hardware.common-pc-laptop
-                hardware.common-pc-laptop-ssd
-              ];
-          }
-      );
-    };
-  };
 }

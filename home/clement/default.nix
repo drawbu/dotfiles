@@ -1,41 +1,40 @@
 # 'clement' user home-manager config for NixOS & generic linux
-{
-  pkgs,
-  graphical,
-  ...
-}: let
+{ pkgs, graphical, ... }:
+let
   username = "clement";
-in {
+in
+{
   imports =
     [
-      ./vim
-      ./shell
-      ./dev
-      ./git.nix
-      ./tmux.nix
-      ./btop.nix
-      ./gitlab.nix
-      ./gh.nix
-      ./distrobox.nix
-    ] ++ pkgs.lib.optionals graphical [
-      ./qtile
-      ./rofi
-      ./hypr
-      ./eww
-      ./kanata
-      ./fonts.nix
-      ./gtk.nix
-      ./firefox.nix
-      ./cursor.nix
-      ./dunst.nix
-      ./kitty.nix
-      ./lockscreen.nix
-      ./flatpak.nix
-      ./picom.nix
-      ./mimeapps.nix
-      ./login.nix
-      ./gaming.nix
+     ./vim
+     ./shell
+     ./dev
+     ./git.nix
+     ./tmux.nix
+     ./btop.nix
+     ./gitlab.nix
+     ./gh.nix
+     ./distrobox.nix
     ];
+    # ++ pkgs.lib.optionals graphical [
+    #   ./qtile
+    #   ./rofi
+    #   ./hypr
+    #   ./eww
+    #   ./kanata
+    #   ./fonts.nix
+    #   ./gtk.nix
+    #   ./firefox.nix
+    #   ./cursor.nix
+    #   ./dunst.nix
+    #   ./kitty.nix
+    #   ./lockscreen.nix
+    #   ./flatpak.nix
+    #   ./picom.nix
+    #   ./mimeapps.nix
+    #   ./login.nix
+    #   ./gaming.nix
+    # ];
 
   programs.home-manager.enable = true;
 
@@ -45,59 +44,64 @@ in {
 
     stateVersion = "23.05";
 
-    packages = with pkgs; [
-      # ↓ ricing
-      eww
+    packages =
+      (with pkgs; [
+        # ↓ ricing
+        eww
 
-      # ↓ cli & tui
-      direnv
-      wakatime
-      btop
-      neofetch
-      ookla-speedtest
-      wget
-      xsel
-      xclip
+        # ↓ cli & tui
+        direnv
+        wakatime
+        btop
+        neofetch
+        ookla-speedtest
+        wget
+        xsel
+        xclip
 
-      wl-clipboard
-      #wl-clipboard-x11
-      todo
-      comma
-      nix-index
-      legacy.spotify-tui
-      nurl
-      unzip
-      unar
-      nmap
-    ] ++ pkgs.lib.optionals graphical [
-      # ↓ softwares
-      feh
-      thunderbird-bin
-      aseprite
-      zathura
-      croc
-      wireguard-tools
-      beeper
-      ida
-      unstable.vesktop
-      discord
-      ungoogled-chromium
-      libreoffice-qt6-fresh
-      teams-for-linux
-      spotify
-      obsidian
-      vlc
-      obs-studio
-      filelight
-      gnome.gnome-font-viewer
-    ];
+        wl-clipboard
+        #wl-clipboard-x11
+        todo
+        comma
+        nix-index
+        legacy.spotify-tui
+        nurl
+        unzip
+        unar
+        nmap
+      ])
+      ++ pkgs.lib.optionals graphical (
+        with pkgs;
+        [
+          feh
+          thunderbird-bin
+          aseprite
+          zathura
+          croc
+          wireguard-tools
+          beeper
+          ida
+          unstable.vesktop
+          discord
+          ungoogled-chromium
+          libreoffice-qt6-fresh
+          teams-for-linux
+          spotify
+          obsidian
+          vlc
+          obs-studio
+          filelight
+          gnome.gnome-font-viewer
+        ]
+      );
 
     file = {
       "assets".source = ../../assets;
       ".config/nix/nix.conf".text = "experimental-features = nix-command flakes";
-      ".config/nixpkgs/config.nix".text = /*nix*/ ''
-        { allowUnfree = true; allowUnsupportedSystem = true; }
-      '';
+      ".config/nixpkgs/config.nix".text = # nix
+        ''
+          { allowUnfree = true; allowUnsupportedSystem = true; }
+        '';
     };
   };
 
@@ -134,7 +138,7 @@ in {
       enable = true;
       git = true;
       icons = true;
-      extraOptions = ["--group-directories-first"];
+      extraOptions = [ "--group-directories-first" ];
     };
 
     bat = {

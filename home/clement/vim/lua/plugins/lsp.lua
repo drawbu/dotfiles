@@ -34,7 +34,7 @@ return {
         },
       }
       lsp.pyright.setup {}
-      lsp.tsserver.setup {}
+      lsp.ts_ls.setup {}
       lsp.cssls.setup {}
       lsp.svelte.setup {}
       lsp.html.setup {}
