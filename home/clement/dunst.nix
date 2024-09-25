@@ -13,7 +13,7 @@
         always_run_script = true;
         browser = "firefox";
 
-        font = "Helvetica Neue 10";
+        font = "Inter 12";
         frame_color = "#8AADF4";
         separator_color = "frame";
 

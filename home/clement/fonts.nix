@@ -29,7 +29,7 @@ in
     enable = true;
     defaultFonts = {
       monospace = [ "JetBrains Mono" ];
-      sansSerif = [ "Helvetica Neue" ];
+      sansSerif = [ "Inter" ];
       serif = [ "Liberation Serif" ];
       emoji = [ "Noto Color Emoji" ];
     };
