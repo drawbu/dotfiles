@@ -9,7 +9,7 @@
 
   activation = import ./symlink.nix {
     inherit pkgs;
-    path = "$XDG_CONFIG_HOME/waybar";
+    path = "/home/clement/.config/waybar";
     file = "theme.css";
     default = "dark.css";
   };

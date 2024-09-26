@@ -39,6 +39,8 @@
     tumbler.enable = true;
     blueman.enable = true;
 
+    resolved.enable = true; # wireguard
+
     # Sounds
     pipewire = {
       enable = true;

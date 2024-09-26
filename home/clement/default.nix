@@ -15,26 +15,26 @@ in
      ./gitlab.nix
      ./gh.nix
      ./distrobox.nix
+    ]
+    ++ pkgs.lib.optionals graphical [
+      ./qtile
+      ./rofi
+      ./hypr
+      ./eww
+      ./kanata
+      ./fonts.nix
+      ./gtk.nix
+      ./firefox.nix
+      ./cursor.nix
+      ./dunst.nix
+      ./kitty.nix
+      ./lockscreen.nix
+      ./flatpak.nix
+      ./picom.nix
+      ./mimeapps.nix
+      ./login.nix
+      ./gaming.nix
     ];
-    # ++ pkgs.lib.optionals graphical [
-    #   ./qtile
-    #   ./rofi
-    #   ./hypr
-    #   ./eww
-    #   ./kanata
-    #   ./fonts.nix
-    #   ./gtk.nix
-    #   ./firefox.nix
-    #   ./cursor.nix
-    #   ./dunst.nix
-    #   ./kitty.nix
-    #   ./lockscreen.nix
-    #   ./flatpak.nix
-    #   ./picom.nix
-    #   ./mimeapps.nix
-    #   ./login.nix
-    #   ./gaming.nix
-    # ];
 
   programs.home-manager.enable = true;
 

@@ -1,7 +1,7 @@
 {pkgs, ...}: let
   hyprpaperActivation = import ./symlink.nix {
     inherit pkgs;
-    path = "$XDG_CONFIG_HOME/hypr";
+    path = "/home/clement/.config/hypr";
     file = "hyprpaper.conf";
     default = "paper/dark.conf";
   };
