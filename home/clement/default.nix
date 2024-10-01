@@ -26,7 +26,6 @@ in
       ./gtk.nix
       ./firefox.nix
       ./cursor.nix
-      ./dunst.nix
       ./kitty.nix
       ./lockscreen.nix
       ./flatpak.nix
@@ -131,6 +130,8 @@ in
     };
 
     blueman-applet.enable = true;
+
+    swaync.enable = true;
   };
 
   programs = {
