@@ -1,5 +1,8 @@
-{ pkgs, config, ... }:
 {
+  pkgs,
+  config,
+  ...
+}: {
   xdg.configFile."starship.toml".source = ./starship.toml;
 
   programs = {
@@ -105,6 +108,7 @@
           "zoxide"
           "podman"
           "rust"
+          "kubectl"
         ];
       };
     };

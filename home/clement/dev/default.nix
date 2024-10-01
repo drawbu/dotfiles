@@ -79,6 +79,8 @@
         nixfmt-rfc-style
         alejandra
         pkg-config
+        just
+        kubectl
 
         # language servers
         lua-language-server

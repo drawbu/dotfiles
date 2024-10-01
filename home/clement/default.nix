@@ -91,6 +91,7 @@ in
           obs-studio
           filelight
           gnome.gnome-font-viewer
+          slack
         ]
       );
 
