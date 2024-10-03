@@ -22,17 +22,6 @@
     };
   };
 
-  programs = {
-    # File manager
-    thunar = {
-      enable = true;
-      plugins = with pkgs.xfce; [
-        thunar-archive-plugin
-        thunar-volman
-      ];
-    };
-  };
-
   services = {
     # For the file manager
     gvfs.enable = true;
