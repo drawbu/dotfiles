@@ -1,16 +1,17 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     (catppuccin-gtk.override {
-      accents = ["peach"];
+      accents = [ "peach" ];
       size = "compact";
-      tweaks = ["rimless"];
+      tweaks = [ "rimless" ];
       variant = "mocha";
     })
 
     (catppuccin-gtk.override {
-      accents = ["peach"];
+      accents = [ "peach" ];
       size = "compact";
-      tweaks = ["rimless"];
+      tweaks = [ "rimless" ];
       variant = "latte";
     })
 
@@ -32,14 +33,14 @@
     iconTheme = {
       name = "MoreWaita";
       package = pkgs.morewaita-icon-theme.overrideAttrs (old: {
-        version = "unstable-2024-09-19";
+        version = "unstable-2024-10-02";
         src = pkgs.fetchFromGitHub {
-          owner = "MoreWaita-Dev";
-          repo = "MoreWaita";
-          rev = "cc79d82f74034fb0cad6fe50d7fc5dee755546ba";
-          hash = "sha256-NkvrjeaIhx4aw0PC56fCxj0R+ZNKVEAhFPhzLEWGhh0=";
+          owner = "NeoWaita";
+          repo = "NeoWaita";
+          rev = "5b986c9e823e2453b90de81683b8e04cd74f82fd";
+          hash = "sha256-W/gKs7RKdB5ZJoxs2kF/z7eojOedJP7dWqqOQLAZsCo=";
         };
-        buildInputs = [pkgs.gnome.adwaita-icon-theme];
+        buildInputs = [ pkgs.gnome.adwaita-icon-theme ];
       });
     };
 

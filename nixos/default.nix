@@ -78,9 +78,6 @@
   environment = {
     shells = with pkgs; [zsh];
     systemPackages = with pkgs; [
-      git
-      btop
-      tree
       vim
       wget
       virt-manager

@@ -29,6 +29,7 @@
 in {
   programs.git = {
     enable = true;
+    package = pkgs.gitFull;
     userName = "Clément";
     userEmail = "clement2104.boillot@gmail.com";
     lfs.enable = true;
