@@ -37,7 +37,7 @@ in {
         color: ${foreground.gtk};
         font-size: 16px;
         min-height: 0;
-        font-family: "Inter", "Material Design Icons Desktop";
+        font-family: "Inter", "JetBrainsMono Nerd Font";
       }
 
       /* left widgets */
