@@ -79,7 +79,6 @@ in
           croc
           wireguard-tools
           beeper
-          ida
           unstable.vesktop
           discord
           ungoogled-chromium

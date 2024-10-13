@@ -11,7 +11,6 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-alien.url = "github:thiagokokada/nix-alien";
-    ida.url = "github:bbjubjub2494/nixpkgs/idafree";
     # ecsls.url = "github:Sigmapitech/ecsls";
     nix-flatpak.url = "github:gmodena/nix-flatpak/v0.4.1";
     hyprqtile.url = "github:drawbu/hyprqtile";
@@ -35,7 +34,6 @@
               legacy = import inputs.nixpkgs_legacy cfg;
 
               # Softwares
-              ida = (import inputs.ida cfg).ida-free;
               # inherit (inputs.ecsls.packages.${cfg.system}) ecsls;
               inherit (inputs.nix-alien.packages.${cfg.system}) nix-alien;
               inherit (inputs.hyprqtile.packages.${cfg.system}) hyprqtile;
