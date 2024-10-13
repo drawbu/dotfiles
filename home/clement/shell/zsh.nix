@@ -30,10 +30,6 @@
     zsh = {
       enable = true;
       initExtra = ''
-        if [ "$(command -v nh)" ]; then
-          source <(nh completions --shell zsh)
-        fi
-
         code() {
           if [ "$#" -eq 0 ]; then
             /usr/bin/env code .

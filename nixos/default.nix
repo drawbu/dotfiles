@@ -47,11 +47,6 @@
       enable = true;
       libraries = with pkgs; [];
     };
-
-    nh = {
-      enable = true;
-      flake = /home/clement/Developer/dotfiles;
-    };
   };
 
   services.openssh = {
