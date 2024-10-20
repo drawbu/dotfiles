@@ -74,4 +74,6 @@
       ${pkgs.nix}/bin/nix store diff-closures /run/current-system "$systemConfig"
     fi
   '';
+
+  fonts.enableDefaultPackages = true;
 }

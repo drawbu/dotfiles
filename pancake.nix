@@ -51,4 +51,12 @@
     PCIE_ASPM_ON_AC = "performance";
     PCIE_ASPM_ON_BAT = "default";
   };
+
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+    }
+  ];
+  zramSwap.enable = true;
 }

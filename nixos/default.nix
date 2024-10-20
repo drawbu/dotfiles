@@ -1,6 +1,7 @@
 {
   pkgs,
   graphical,
+  config,
   ...
 }: {
   imports = pkgs.lib.optionals graphical [./graphical];
@@ -68,8 +69,6 @@
 
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  zramSwap.enable = true;
-
   environment = {
     shells = with pkgs; [zsh];
     systemPackages = with pkgs; [
@@ -80,6 +79,12 @@
       podman-compose
     ];
     pathsToLink = ["/share/nix-direnv"];
-    etc.issue.text = builtins.readFile ./issue.txt;
+
+    etc = {
+      issue.text = builtins.readFile ./issue.txt;
+      motd.text = ''
+        Welcome on NixOS/${config.networking.hostName}
+      '';
+    };
   };
 }
