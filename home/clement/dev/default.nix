@@ -52,6 +52,7 @@
         nodejs_latest
         corepack_latest
         typescript
+        unstable.opentofu
 
         # man pages
         man-pages
@@ -81,6 +82,8 @@
         pkg-config
         just
         kubectl
+        terraform-ls
+        yaml-language-server
 
         # language servers
         lua-language-server

@@ -52,6 +52,16 @@ return {
       lsp.tailwindcss.setup {}
       lsp.templ.setup {}
       lsp.htmx.setup {}
+      lsp.terraformls.setup {}
+      lsp.yamlls.setup {
+        settings = {
+          yaml = {
+            schemas = {
+              ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+            },
+          },
+        }
+      }
 
       -- ↓ Epitech C Style Checker
       if not configs.ecsls then
