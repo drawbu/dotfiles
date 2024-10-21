@@ -1,10 +1,6 @@
+{ pkgs, graphical, config, ... }:
 {
-  pkgs,
-  graphical,
-  config,
-  ...
-}: {
-  imports = pkgs.lib.optionals graphical [./graphical];
+  imports = pkgs.lib.optionals graphical [ ./graphical ];
 
   system.copySystemConfiguration = false;
   nix = {
@@ -46,7 +42,7 @@
 
     nix-ld = {
       enable = true;
-      libraries = with pkgs; [];
+      libraries = with pkgs; [ ];
     };
   };
 
@@ -70,7 +66,7 @@
   systemd.services.NetworkManager-wait-online.enable = false;
 
   environment = {
-    shells = with pkgs; [zsh];
+    shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
       vim
       wget
@@ -78,13 +74,17 @@
       nix-alien
       podman-compose
     ];
-    pathsToLink = ["/share/nix-direnv"];
+    pathsToLink = [ "/share/nix-direnv" ];
 
     etc = {
-      issue.text = builtins.readFile ./issue.txt;
+      issue.source = ./issue.txt;
       motd.text = ''
         Welcome on NixOS/${config.networking.hostName}
       '';
     };
   };
+  users.motdFile = "/etc/motd";
+  boot.initrd.preDeviceCommands = ''
+    cat ${./issue.txt}
+  '';
 }
