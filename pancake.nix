@@ -14,9 +14,12 @@
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Git signing
-  home-manager.users.clement.programs.git.signing = {
-    key = "005280E9B819AECF";
-    signByDefault = true;
+  home-manager.users.clement.programs.git = {
+    signing = {
+      key = "~/.ssh/id_ed25519.pub";
+      signByDefault = true;
+    };
+    extraConfig.gpg.format = "ssh";
   };
 
   services = {
