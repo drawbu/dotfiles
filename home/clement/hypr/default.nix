@@ -20,7 +20,6 @@ in {
       xwaylandvideobridge
       pyprland
       hypridle
-      hyprlock
       nwg-displays
       gnome3.gnome-keyring
     ];
@@ -229,12 +228,12 @@ in {
 
   xdg.configFile = {
     "hypr/paper/dark.conf".text = ''
-      preload = ${../../../assets/wallpapers/japan-market.jpg}
-      wallpaper = ,${../../../assets/wallpapers/japan-market.jpg}
+      preload = ${../../../assets/wallpapers/cat-mocha_girl.jpg}
+      wallpaper = ,${../../../assets/wallpapers/cat-mocha_girl.jpg}
     '';
     "hypr/paper/light.conf".text = ''
-      preload = ${../../../assets/wallpapers/sunflower.jpg}
-      wallpaper = ,${../../../assets/wallpapers/sunflower.jpg}
+      preload = ${../../../assets/wallpapers/rocket-girl.png}
+      wallpaper = ,${../../../assets/wallpapers/rocket-girl.png}
     '';
 
     "hypr/pyprland.toml".text = ''
