@@ -25,6 +25,7 @@
 
     ## Nix
     result
+    result-*
   '';
 in {
   programs.git = {

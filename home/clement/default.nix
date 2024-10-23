@@ -6,15 +6,15 @@ in
 {
   imports =
     [
-     ./vim
-     ./shell
-     ./dev
-     ./git.nix
-     ./tmux.nix
-     ./btop.nix
-     ./gitlab.nix
-     ./gh.nix
-     ./distrobox.nix
+      ./vim
+      ./shell
+      ./dev
+      ./git.nix
+      ./tmux.nix
+      ./btop.nix
+      ./gitlab.nix
+      ./gh.nix
+      ./distrobox.nix
     ]
     ++ pkgs.lib.optionals graphical [
       ./qtile
@@ -92,6 +92,7 @@ in
           gnome.gnome-font-viewer
           gnome.file-roller
           gnome.nautilus
+          gnome.eog
           slack
         ]
       );
@@ -99,10 +100,7 @@ in
     file = {
       "assets".source = ../../assets;
       ".config/nix/nix.conf".text = "experimental-features = nix-command flakes";
-      ".config/nixpkgs/config.nix".text = # nix
-        ''
-          { allowUnfree = true; allowUnsupportedSystem = true; }
-        '';
+      ".config/nixpkgs/config.nix".text = "{ allowUnfree = true; allowUnsupportedSystem = true; }";
     };
   };
 

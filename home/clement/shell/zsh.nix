@@ -1,8 +1,5 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  config,
-  ...
-}: {
   xdg.configFile."starship.toml".source = ./starship.toml;
 
   programs = {
@@ -51,6 +48,14 @@
       sessionVariables = {
         ZSH_DISABLE_COMPFIX = true;
         ZSH_WAKATIME_PROJECT_DETECTION = true;
+      };
+
+      history = {
+        extended = true;
+        share = false;
+        # append = true; # TODO: New in 24.11
+        size = 100000; # Don't save too mush in memory
+        save = 100000000;
       };
 
       shellAliases = {
