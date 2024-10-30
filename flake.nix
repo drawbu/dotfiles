@@ -62,7 +62,12 @@
           modules = [
             inputs.nix-flatpak.nixosModules.nix-flatpak
             inputs.home-manager.nixosModules.home-manager
-            { home-manager.extraSpecialArgs = completeArgs; }
+            {
+              home-manager = {
+                extraSpecialArgs = completeArgs;
+                backupFileExtension = "backup";
+              };
+            }
           ];
         };
     in
@@ -73,6 +78,7 @@
         "home-generic" = inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = specialArgs;
+          backupFileExtension = "backup";
           modules = [ ./home/clement ];
         };
       };
@@ -101,9 +107,7 @@
           // {
             modules = def.modules ++ [
               ./pancake.nix
-              hardware.common-cpu-intel
-              hardware.common-pc-laptop
-              hardware.common-pc-laptop-ssd
+              hardware.dell-xps-13-9315
             ];
           }
         );

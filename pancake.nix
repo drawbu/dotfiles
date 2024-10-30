@@ -23,15 +23,8 @@
   };
 
   services = {
-    thermald.enable = true; # thermal daemon
     power-profiles-daemon.enable = false; # disable power thing from Gnome
-    fprintd.enable = true;
-
-    # idk intel hardware is borken
     xserver.videoDrivers = [ "modesettings" ];
-
-    # Allows for updating firmware via `fwupdmgr`.
-    fwupd.enable = true;
   };
 
   hardware.enableAllFirmware = true;
@@ -45,7 +38,13 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      onevpl-intel-gpu # unstable -> vpl-gpu-rt # Quick Sync Video
+      intel-media-driver # Accelerated Video Playback
+    ];
   };
+
+  services.fwupd.enable = true;
 
   networking.firewall.allowedUDPPorts = [ 6969 ];
   networking.firewall.allowedTCPPorts = [ 6969 ];
