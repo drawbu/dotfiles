@@ -1,11 +1,13 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   hyprpaperActivation = import ./symlink.nix {
     inherit pkgs;
     path = "/home/clement/.config/hypr";
     file = "hyprpaper.conf";
     default = "paper/dark.conf";
   };
-in {
+in
+{
   imports = [
     ./waybar.nix
     ./hyprlock.nix
@@ -16,7 +18,7 @@ in {
     activation.createHyprpaper = "sh ${hyprpaperActivation.script}";
     packages = with pkgs; [
       hyprqtile
-      hyprpaper
+      unstable.hyprpaper
       xwaylandvideobridge
       pyprland
       hypridle
@@ -52,8 +54,10 @@ in {
               "text"
               "image"
             ];
-          in (builtins.genList (
-            i: "${pkgs.wl-clipboard}/bin/wl-paste --type ${builtins.elemAt targets i} --watch ${pkgs.cliphist}/bin/cliphist store"
+          in
+          (builtins.genList (
+            i:
+            "${pkgs.wl-clipboard}/bin/wl-paste --type ${builtins.elemAt targets i} --watch ${pkgs.cliphist}/bin/cliphist store"
           ) (builtins.length targets))
         );
 
@@ -119,14 +123,22 @@ in {
       };
 
       windowrule =
-        ["noblur,^(kitty)$"]
-        ++ (builtins.map (e: "float, ${e}") ["^(kitty)$"])
-        ++ (builtins.map (e: "opacity 0.9, ${e}") [
+        (map (e: "float, ${e}") [
+          "^(kitty)$"
+          "class:^(jetbrains-).*, title:^(Welcome to).*$"
+
+          # class: jetbrains-clion
+          # title: Welcome to CLion
+        ])
+        ++ (map (e: "noblur, ${e}") [ "^(kitty)$" ])
+        ++ (map (e: "opacity 0.9, ${e}") [
           "^(discord)$"
           "^(vesktop)$"
           "^(obsidian)$"
           "^(waybar)$"
           "^(Rofi)$"
+          "^(jetbrains-).*"
+          "^(code-).*"
         ]);
 
       dwindle = {
@@ -179,13 +191,13 @@ in {
               "Y"
             ];
           in
-            with builtins;
-              concatLists (
-                genList (x: [
-                  "$mod shift, ${elemAt letters x}, exec, hyprqtile move ${toString (x + 1)}"
-                  "$mod alt,   ${elemAt letters x}, movetoworkspace, ${toString (x + 1)}"
-                ]) (length letters)
-              )
+          with builtins;
+          concatLists (
+            genList (x: [
+              "$mod shift, ${elemAt letters x}, exec, hyprqtile move ${toString (x + 1)}"
+              "$mod alt,   ${elemAt letters x}, movetoworkspace, ${toString (x + 1)}"
+            ]) (length letters)
+          )
         )
         ++ [
           # Scroll through existing workspaces
@@ -216,7 +228,7 @@ in {
         # Select monoitors
         "$mod, p, exec, nwg-displays"
       ];
-      bindl = [",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"];
+      bindl = [ ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause" ];
 
       bindm = [
         # Move/resize windows
@@ -229,9 +241,11 @@ in {
   xdg.configFile = {
     "hypr/paper/dark.conf".text = ''
       preload = ${../../../assets/wallpapers/cat-mocha_girl.jpg}
+      preload = ${../../../assets/wallpapers/rocket-girl.png}
       wallpaper = ,${../../../assets/wallpapers/cat-mocha_girl.jpg}
     '';
     "hypr/paper/light.conf".text = ''
+      preload = ${../../../assets/wallpapers/cat-mocha_girl.jpg}
       preload = ${../../../assets/wallpapers/rocket-girl.png}
       wallpaper = ,${../../../assets/wallpapers/rocket-girl.png}
     '';

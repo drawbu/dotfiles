@@ -53,13 +53,23 @@ return {
     dependencies = { 'echasnovski/mini.icons' },
     config = function()
       local ignored = {
+        '^%.%.$',
         '^%.git$',
         '^%.direnv$',
-        '^%.cache$',
         '^%.build$',
         '^%.idea$',
         '%.o$',
         '_templ%.go$',
+        '^%.DS_Store$',
+        '^target$',
+        '^node_modules$',
+        '^dist$',
+        '^%.cache[_-]?%g*',
+        '^%.%g+[_-]?cache',
+        '^zig%-out$',
+        '^result$',
+        '^result%-%a+$',
+        '^cmake%-build%-%a+$',
       }
       require('oil').setup({
         view_options = {

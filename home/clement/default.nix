@@ -94,6 +94,7 @@ in
           gnome.nautilus
           gnome.eog
           slack
+          tic-80
         ]
       );
 

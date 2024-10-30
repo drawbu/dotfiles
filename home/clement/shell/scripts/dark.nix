@@ -52,7 +52,7 @@ in
         # Update wallpaper
         echo "[DARK] Updating hyprpaper..."
         ln -fs "$XDG_CONFIG_HOME/hypr/paper/$theme.conf" "$XDG_CONFIG_HOME/hypr/hyprpaper.conf"
-        pkill -f hyprpaper && hyprpaper & disown
+        (pkill -f hyprpaper && sleep 1; hyprpaper & disown) &
       '';
     })
   ];

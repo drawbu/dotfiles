@@ -62,6 +62,7 @@ return {
           },
         }
       }
+      lsp.zls.setup {}
 
       -- ↓ Epitech C Style Checker
       if not configs.ecsls then
