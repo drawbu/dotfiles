@@ -3,6 +3,7 @@
     nixpkgs.url = "nixpkgs/nixos-24.05";
     nixpkgs_legacy.url = "nixpkgs/nixos-23.11";
     nixpkgs_unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs_unstable_small.url = "nixpkgs/nixos-unstable-small";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
@@ -31,6 +32,7 @@
             (final: prev: {
               # Other nixpkgs
               unstable = import inputs.nixpkgs_unstable cfg;
+              unstable_small = import inputs.nixpkgs_unstable_small cfg;
               legacy = import inputs.nixpkgs_legacy cfg;
 
               # Softwares

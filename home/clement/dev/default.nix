@@ -100,6 +100,7 @@
         nodePackages.svelte-language-server
         nodePackages.bash-language-server
         shellcheck
+        shfmt
         # ecsls
         gdtoolkit
         asm-lsp
@@ -126,6 +127,7 @@
           jetbrains.rust-rover
           jetbrains-toolbox
           zed-editor
+          ldtk
         ]
       );
   };

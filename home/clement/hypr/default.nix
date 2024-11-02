@@ -6,6 +6,7 @@ let
     file = "hyprpaper.conf";
     default = "paper/dark.conf";
   };
+  inherit (pkgs) lib;
 in
 {
   imports = [
@@ -24,6 +25,8 @@ in
       hypridle
       nwg-displays
       gnome3.gnome-keyring
+      cliphist
+      wl-clipboard
     ];
   };
 
@@ -56,8 +59,7 @@ in
             ];
           in
           (builtins.genList (
-            i:
-            "${pkgs.wl-clipboard}/bin/wl-paste --type ${builtins.elemAt targets i} --watch ${pkgs.cliphist}/bin/cliphist store"
+            i: "wl-paste --type ${builtins.elemAt targets i} --watch cliphist store"
           ) (builtins.length targets))
         );
 
@@ -124,21 +126,19 @@ in
 
       windowrule =
         (map (e: "float, ${e}") [
-          "^(kitty)$"
+          "^kitty$"
           "class:^(jetbrains-).*, title:^(Welcome to).*$"
-
-          # class: jetbrains-clion
-          # title: Welcome to CLion
+          "^satty$"
         ])
-        ++ (map (e: "noblur, ${e}") [ "^(kitty)$" ])
+        ++ (map (e: "noblur, ${e}") [ "^kitty$" ])
         ++ (map (e: "opacity 0.9, ${e}") [
-          "^(discord)$"
-          "^(vesktop)$"
-          "^(obsidian)$"
-          "^(waybar)$"
-          "^(Rofi)$"
-          "^(jetbrains-).*"
-          "^(code-).*"
+          "^discord$"
+          "^vesktop$"
+          "^obsidian$"
+          "^waybar$"
+          "^Rofi$"
+          "^jetbrains-.*"
+          "^code-.*"
         ]);
 
       dwindle = {
@@ -162,7 +162,7 @@ in
           "$mod, return, exec, kitty -d $HOME -e tmux new-session"
           "$mod, W, killactive,"
           "$mod, F, togglefloating,"
-          "$mod, R, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
+          "$mod, R, exec, ${lib.getExe pkgs.rofi-wayland} -show drun"
           "$mod, J, togglesplit,"
           "$mod, K, fullscreen,"
           "$mod, O, exec, pkill -SIGUSR1 waybar # Waybar toggle"
@@ -178,7 +178,7 @@ in
           "$mod, down, movefocus, d"
           "$mod shift, N, exec, swaync-client -t -sw"
 
-          "$mod, V, exec, ${pkgs.cliphist}/bin/cliphist list | ${pkgs.wofi}/bin/wofi --dmenu | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy"
+          "$mod, V, exec, cliphist list | ${lib.getExe pkgs.wofi} --dmenu | cliphist decode | wl-copy"
         ]
         ++ (
           let
@@ -205,7 +205,7 @@ in
           "$mod, mouse_up, workspace, e-1"
 
           # Screenshot Keybinds
-          ", Print, exec, ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.satty}/bin/satty -f -"
+          ", Print, exec, ${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | ${lib.getExe pkgs.satty} -f -"
         ];
 
       binde = [
@@ -219,16 +219,16 @@ in
         ",XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
         ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
 
-        ",Caps_Lock, exec, swayosd-client --caps-lock"
+        # ",Caps_Lock, exec, swayosd-client --caps-lock"
 
         # Media Control Keybinds
-        ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
-        ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
+        ",XF86AudioNext, exec, ${lib.getExe pkgs.playerctl} next"
+        ",XF86AudioPrev, exec, ${lib.getExe pkgs.playerctl} previous"
 
         # Select monoitors
         "$mod, p, exec, nwg-displays"
       ];
-      bindl = [ ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause" ];
+      bindl = [ ",XF86AudioPlay, exec, ${lib.getExe pkgs.playerctl} play-pause" ];
 
       bindm = [
         # Move/resize windows
@@ -269,8 +269,8 @@ in
 
       listener {
           timeout = 150
-          on-timeout = ${pkgs.brightnessctl}/bin/brightnessctl -s set 10
-          on-resume = ${pkgs.brightnessctl}/bin/brightnessctl -r
+          on-timeout = ${lib.getExe pkgs.brightnessctl} -s set 10
+          on-resume = ${lib.getExe pkgs.brightnessctl} -r
       }
 
       listener {

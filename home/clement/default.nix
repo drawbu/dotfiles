@@ -63,7 +63,7 @@ in
         todo
         comma
         nix-index
-        legacy.spotify-tui
+        unstable_small.spotify-player
         nurl
         unzip
         unar
@@ -95,6 +95,8 @@ in
           gnome.eog
           slack
           tic-80
+          orca-slicer
+          bambu-studio
         ]
       );
 
