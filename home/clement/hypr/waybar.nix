@@ -83,6 +83,11 @@ in {
         margin-left: 4px;
       }
 
+      #mpris.playing.spotify,
+      #mpris.playing.spotifyd {
+        color: ${raw.green.gtk};
+      }
+
       /* right widgets */
 
       #pulseaudio {
@@ -194,10 +199,10 @@ in {
             "artist"
           ];
           dynamic-len = 30;
-          player-icons = {
+          player-icons = rec {
             default = " ";
             spotify = " ";
-            spotifyd = " ";
+            spotifyd = spotify;
             firefox = " ";
           };
           status-icons = {

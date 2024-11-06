@@ -63,7 +63,7 @@ in
         todo
         comma
         nix-index
-        unstable_small.spotify-player
+        unstable.spotify-player
         nurl
         unzip
         unar

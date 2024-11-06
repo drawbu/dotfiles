@@ -1,30 +1,8 @@
 { pkgs, graphical, config, ... }:
 {
-  imports = pkgs.lib.optionals graphical [ ./graphical ];
+  imports = (pkgs.lib.optionals graphical [ ./graphical ]) ++ [ ./nix.nix ];
 
   system.copySystemConfiguration = false;
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      trusted-users = [
-        "root"
-        "@wheel"
-      ];
-      keep-outputs = true;
-      keep-derivations = true;
-      auto-optimise-store = true;
-      warn-dirty = false;
-    };
-    optimise.automatic = true;
-  };
 
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_US.UTF-8";
