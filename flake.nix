@@ -86,6 +86,7 @@
       };
 
       nixosConfigurations = {
+        # Home PC
         "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (
           let
             def = defaultNixOS { graphical = true; };
@@ -101,6 +102,8 @@
             ];
           }
         );
+
+        # Laptop
         "pancake" = inputs.nixpkgs.lib.nixosSystem (
           let
             def = defaultNixOS { graphical = true; };
@@ -112,6 +115,14 @@
               hardware.dell-xps-13-9315
             ];
           }
+        );
+
+        # Home server
+        "waffle" = inputs.nixpkgs.lib.nixosSystem (
+          let
+            def = defaultNixOS { graphical = false; };
+          in
+          def // { modules = def.modules ++ [ ./waffle.nix ]; }
         );
       };
     };
