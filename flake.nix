@@ -54,24 +54,28 @@
       };
 
       defaultNixOS =
-        args:
+        {
+          args ? { },
+          override ? (_: { }),
+        }:
         let
           completeArgs = specialArgs // args;
+          system = {
+            inherit (cfg) system;
+            specialArgs = completeArgs;
+            modules = [
+              inputs.nix-flatpak.nixosModules.nix-flatpak
+              inputs.home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  extraSpecialArgs = completeArgs;
+                  backupFileExtension = "backup";
+                };
+              }
+            ];
+          };
         in
-        {
-          inherit (cfg) system;
-          specialArgs = completeArgs;
-          modules = [
-            inputs.nix-flatpak.nixosModules.nix-flatpak
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                extraSpecialArgs = completeArgs;
-                backupFileExtension = "backup";
-              };
-            }
-          ];
-        };
+        system // (override system);
     in
     {
       formatter.${cfg.system} = pkgs.alejandra;
@@ -87,43 +91,35 @@
 
       nixosConfigurations = {
         # Home PC
-        "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (
-          let
-            def = defaultNixOS { graphical = true; };
-          in
-          def
-          // {
-            modules = def.modules ++ [
+        "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
+          args.graphical = true;
+          override = cfg: {
+            modules = cfg.modules ++ [
               ./pain-de-mie.nix
               # hardware.common-gpu-nvidia
               hardware.common-cpu-intel
               hardware.common-pc
               hardware.common-pc-ssd
             ];
-          }
-        );
+          };
+        });
 
         # Laptop
-        "pancake" = inputs.nixpkgs.lib.nixosSystem (
-          let
-            def = defaultNixOS { graphical = true; };
-          in
-          def
-          // {
-            modules = def.modules ++ [
+        "pancake" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
+          args.graphical = true;
+          override = cfg: {
+            modules = cfg.modules ++ [
               ./pancake.nix
               hardware.dell-xps-13-9315
             ];
-          }
-        );
+          };
+        });
 
         # Home server
-        "waffle" = inputs.nixpkgs.lib.nixosSystem (
-          let
-            def = defaultNixOS { graphical = false; };
-          in
-          def // { modules = def.modules ++ [ ./waffle.nix ]; }
-        );
+        "waffle" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
+          args.graphical = false;
+          override = cfg: { modules = cfg.modules ++ [ ./waffle.nix ]; };
+        });
       };
     };
 }
