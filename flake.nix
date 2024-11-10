@@ -78,7 +78,7 @@
         system // (override system);
     in
     {
-      formatter.${cfg.system} = pkgs.alejandra;
+      formatter.${cfg.system} = pkgs.nixfmt-rfc-style;
 
       homeConfigurations = {
         "home-generic" = inputs.home-manager.lib.homeManagerConfiguration {

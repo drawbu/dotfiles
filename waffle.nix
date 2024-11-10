@@ -18,6 +18,8 @@
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "24.05";
 
+  nix.settings.trusted-users = [ "@wheel" ];
+
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -60,12 +62,16 @@
   environment.systemPackages = with pkgs; [
     vim
     git
+    lazygit
     wget
     neofetch
+    tmux
   ];
+  environment.shellAliases.lz = "lazygit";
 
   services.technitium-dns-server = {
     enable = true;
+    package = pkgs.unstable.technitium-dns-server;
     openFirewall = true;
   };
 
@@ -74,42 +80,36 @@
     package = pkgs.unstable.home-assistant;
     openFirewall = true;
     extraComponents = [
-      # Components required to complete the onboarding
-      "analytics"
-      "google_translate"
-      "met"
-      "radio_browser"
-      "shopping_list"
-      "http"
-      # Recommended for fast zlib compression
-      # https://www.home-assistant.io/integrations/isal
-      # "isal"
-      "map"
+      "isal"
       "mobile_app"
+      "default_config"
+
+      "ffmpeg"
+      "sensor"
+      "history"
+      "recorder"
+      "history_stats"
+      "logbook"
 
       "freebox"
       "esphome"
       "homekit"
+      "homekit_controller"
       "hue"
       "tradfri"
-      "ping"
-
+      "weatherkit"
+      "met"
       "bring"
-
       "plex"
       "sonarr"
     ];
     extraPackages =
       p: with p; [
-        isal
-        psycopg2 # provide package for postgresql support
         zlib-ng
         pyatv # apple_tv
-        aiohomekit # homekit
         python-otbr-api
       ];
     customComponents = [
-
       (pkgs.unstable.buildHomeAssistantComponent rec {
         owner = "Amateur-God";
         domain = "technitiumdns";
@@ -122,7 +122,6 @@
           hash = "sha256-WzuBYT+BDYHQx8PqhsgZrE5xCgTdKrSLF3N8Zdv94wo=";
         };
       })
-
     ];
     configWritable = true;
     config = {
@@ -132,8 +131,17 @@
         unit_system = "metric";
         time_zone = "Europe/Paris";
       };
+      isal = {};
+      mobile_app = {};
+      ffmpeg = {};
+      sensor = {};
+      history = {};
+      recorder = {};
+      logbook = {};
     };
   };
+
+  networking.firewall.allowedTCPPorts = [ 21064 ]; # homekit
 
   # Plex
   services.plex = {
