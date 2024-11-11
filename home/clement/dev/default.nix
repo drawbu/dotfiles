@@ -29,7 +29,7 @@
       "${config.home.homeDirectory}/.local/bin"
     ];
 
-    sessionVariables = rec {
+    sessionVariables = {
       # Rust
       CARGO_NET_GIT_FETCH_WITH_CLI = "true";
       RUSTUP_TOOLCHAIN = "stable";
@@ -86,6 +86,7 @@
         just
         kubectl
         whois
+        tokei
 
         # language servers
         lua-language-server

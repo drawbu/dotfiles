@@ -76,7 +76,7 @@ in
           thunderbird-bin
           aseprite
           zathura
-          croc
+          unstable.croc
           wireguard-tools
           beeper
           unstable.vesktop
@@ -97,6 +97,8 @@ in
           tic-80
           orca-slicer
           bambu-studio
+          tor-browser
+          appimage-run
         ]
       );
 

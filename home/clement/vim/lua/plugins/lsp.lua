@@ -1,7 +1,7 @@
 return {
   {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v4.x',
+    branch = 'v2.x',
     dependencies = {
       { 'neovim/nvim-lspconfig' },
     },
