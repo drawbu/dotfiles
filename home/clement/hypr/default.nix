@@ -58,9 +58,9 @@ in
               "image"
             ];
           in
-          (builtins.genList (
-            i: "wl-paste --type ${builtins.elemAt targets i} --watch cliphist store"
-          ) (builtins.length targets))
+          (builtins.genList (i: "wl-paste --type ${builtins.elemAt targets i} --watch cliphist store") (
+            builtins.length targets
+          ))
         );
 
       env = [
@@ -189,15 +189,18 @@ in
               "R"
               "T"
               "Y"
+              "U"
+              "I"
+              "O"
+              "P"
+            ];
+            workspaceKeybinds = id: key: [
+              "$mod shift, ${key}, exec, hyprqtile move ${id}"
+              "$mod alt,   ${key}, movetoworkspace, ${id}"
             ];
           in
           with builtins;
-          concatLists (
-            genList (x: [
-              "$mod shift, ${elemAt letters x}, exec, hyprqtile move ${toString (x + 1)}"
-              "$mod alt,   ${elemAt letters x}, movetoworkspace, ${toString (x + 1)}"
-            ]) (length letters)
-          )
+          concatLists (genList (x: workspaceKeybinds (toString (x + 1)) (elemAt letters x)) (length letters))
         )
         ++ [
           # Scroll through existing workspaces
