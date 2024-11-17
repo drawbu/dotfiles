@@ -1,6 +1,10 @@
 { pkgs, ... }:
 {
-  imports = [ ./nixos/hardware/hardware-waffle.nix ];
+  imports = [
+    ./hardware.nix
+    ./home-assistant.nix
+    ./plex.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -72,92 +76,6 @@
   services.technitium-dns-server = {
     enable = true;
     package = pkgs.unstable.technitium-dns-server;
-    openFirewall = true;
-  };
-
-  services.home-assistant = {
-    enable = true;
-    package = pkgs.unstable.home-assistant;
-    openFirewall = true;
-    extraComponents = [
-      "isal"
-      "mobile_app"
-      "default_config"
-
-      "ffmpeg"
-      "sensor"
-      "history"
-      "recorder"
-      "history_stats"
-      "logbook"
-
-      "freebox"
-      "esphome"
-      "homekit"
-      "homekit_controller"
-      "hue"
-      "tradfri"
-      "weatherkit"
-      "met"
-      "bring"
-      "plex"
-      "sonarr"
-    ];
-    extraPackages =
-      p: with p; [
-        zlib-ng
-        pyatv # apple_tv
-        python-otbr-api
-      ];
-    customComponents = [
-      (pkgs.unstable.buildHomeAssistantComponent rec {
-        owner = "Amateur-God";
-        domain = "technitiumdns";
-        version = "2.3.0";
-        propagatedBuildInputs = with pkgs.unstable.python312Packages; [ aiohttp ];
-        src = pkgs.fetchFromGitHub {
-          owner = "Amateur-God";
-          repo = "home-assistant-technitiumdns";
-          rev = "v${version}";
-          hash = "sha256-WzuBYT+BDYHQx8PqhsgZrE5xCgTdKrSLF3N8Zdv94wo=";
-        };
-      })
-    ];
-    configWritable = true;
-    config = {
-      # default_config = {}; # TODO: fix
-      homeassistant = {
-        name = "Home";
-        unit_system = "metric";
-        time_zone = "Europe/Paris";
-      };
-      isal = {};
-      mobile_app = {};
-      ffmpeg = {};
-      sensor = {};
-      history = {};
-      recorder = {};
-      logbook = {};
-    };
-  };
-
-  networking.firewall.allowedTCPPorts = [ 21064 ]; # homekit
-
-  # Plex
-  services.plex = {
-    enable = true;
-    openFirewall = true;
-    extraScanners = with pkgs; [
-      sonarr
-      radarr
-    ];
-  };
-  services.sonarr = {
-    enable = true;
-    openFirewall = true;
-  };
-  services.radarr = {
-    enable = true;
     openFirewall = true;
   };
 }

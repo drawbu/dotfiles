@@ -3,9 +3,9 @@
 { pkgs, ... }:
 {
   imports = [
-    ./nixos/hardware/hardware-pancake.nix
-    ./nixos
-    ./nixos/users/clement.nix
+    ./hardware.nix
+    ../../nixos
+    ../../nixos/users/clement.nix
   ];
 
   networking.hostName = "pancake";

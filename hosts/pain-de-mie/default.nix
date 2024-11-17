@@ -2,9 +2,9 @@
 # The name: pain-de-mie
 {pkgs, ...}: {
   imports = [
-    ./nixos/hardware/hardware-pain-de-mie.nix
-    ./nixos
-    ./nixos/users/clement.nix
+    ./hardware.nix
+    ../../nixos
+    ../../nixos/users/clement.nix
   ];
 
   networking.hostName = "pain-de-mie";

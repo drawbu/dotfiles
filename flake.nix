@@ -95,7 +95,7 @@
           args.graphical = true;
           override = cfg: {
             modules = cfg.modules ++ [
-              ./pain-de-mie.nix
+              ./hosts/pain-de-mie
               # hardware.common-gpu-nvidia
               hardware.common-cpu-intel
               hardware.common-pc
@@ -109,7 +109,7 @@
           args.graphical = true;
           override = cfg: {
             modules = cfg.modules ++ [
-              ./pancake.nix
+              ./hosts/pancake
               hardware.dell-xps-13-9315
             ];
           };
@@ -118,7 +118,7 @@
         # Home server
         "waffle" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
           args.graphical = false;
-          override = cfg: { modules = cfg.modules ++ [ ./waffle.nix ]; };
+          override = cfg: { modules = cfg.modules ++ [ ./hosts/waffle ]; };
         });
       };
     };
