@@ -29,16 +29,27 @@
       "${config.home.homeDirectory}/.local/bin"
     ];
 
-    sessionVariables = {
-      # Rust
-      CARGO_NET_GIT_FETCH_WITH_CLI = "true";
-      RUSTUP_TOOLCHAIN = "stable";
-      CARGO_HOME = "${config.home.homeDirectory}/.cargo";
-      RUSTUP_HOME = "${config.home.homeDirectory}/.rustup";
+    sessionVariables =
+      {
+        # Rust
+        CARGO_NET_GIT_FETCH_WITH_CLI = "true";
+        RUSTUP_TOOLCHAIN = "stable";
+        CARGO_HOME = "${config.home.homeDirectory}/.cargo";
+        RUSTUP_HOME = "${config.home.homeDirectory}/.rustup";
 
-      NPM_PREFIX = "${config.home.homeDirectory}/.npm";
-      NODE_OPTIONS = "--max-old-space-size=8192";
-    };
+        NPM_PREFIX = "${config.home.homeDirectory}/.npm";
+        NODE_OPTIONS = "--max-old-space-size=8192";
+
+        # prisma
+      }
+      // (with pkgs.unstable; {
+        PRISMA_SCHEMA_ENGINE_BINARY = lib.getExe' prisma-engines "schema-engine";
+        PRISMA_QUERY_ENGINE_BINARY = lib.getExe' prisma-engines "query-engine";
+        PRISMA_FMT_BINARY = lib.getExe' prisma-engines "prisma-fmt";
+
+        PRISMA_QUERY_ENGINE_LIBRARY = "${prisma-engines}/lib/libquery_engine.node";
+        # PRISMA_INTROSPECTION_ENGINE_BINARY = "${prisma-engines}/bin/introspection-engine";
+      });
 
     packages =
       with pkgs;
@@ -96,7 +107,7 @@
         pyright
         vscode-langservers-extracted
         emmet-language-server
-        tailwindcss-language-server
+        # tailwindcss-language-server
         nodePackages.typescript-language-server
         nodePackages.svelte-language-server
         nodePackages.bash-language-server
@@ -127,7 +138,7 @@
           jetbrains.goland
           jetbrains.rust-rover
           jetbrains-toolbox
-          zed-editor
+          # zed-editor
           ldtk
         ]
       );

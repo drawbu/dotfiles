@@ -99,6 +99,7 @@ in
           bambu-studio
           tor-browser
           appimage-run
+          arduino-ide
         ]
       );
 
