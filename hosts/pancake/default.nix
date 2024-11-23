@@ -28,18 +28,16 @@
   };
 
   hardware.enableAllFirmware = true;
-  hardware.ipu6 = {
-    enable = true;
-    platform = "ipu6ep";
-  };
+  # hardware.ipu6 = {
+  #   enable = true;
+  #   platform = "ipu6ep";
+  # };
 
   # Hardware acceleration
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
     extraPackages = with pkgs; [
-      onevpl-intel-gpu # unstable -> vpl-gpu-rt # Quick Sync Video
+      vpl-gpu-rt # Quick Sync Video
       intel-media-driver # Accelerated Video Playback
     ];
   };

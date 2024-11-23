@@ -89,10 +89,10 @@ in
           vlc
           obs-studio
           filelight
-          gnome.gnome-font-viewer
-          gnome.file-roller
-          gnome.nautilus
-          gnome.eog
+          gnome-font-viewer
+          file-roller
+          nautilus
+          eog
           slack
           tic-80
           orca-slicer
@@ -144,7 +144,7 @@ in
     eza = {
       enable = true;
       git = true;
-      icons = true;
+      icons = "auto";
       extraOptions = [ "--group-directories-first" ];
     };
 

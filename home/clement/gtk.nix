@@ -40,7 +40,7 @@
           rev = "5b986c9e823e2453b90de81683b8e04cd74f82fd";
           hash = "sha256-W/gKs7RKdB5ZJoxs2kF/z7eojOedJP7dWqqOQLAZsCo=";
         };
-        buildInputs = [ pkgs.gnome.adwaita-icon-theme ];
+        buildInputs = [ pkgs.adwaita-icon-theme ];
       });
     };
 

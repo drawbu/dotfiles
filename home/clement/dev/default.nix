@@ -112,7 +112,7 @@
         shellcheck
         shfmt
         # ecsls
-        gdtoolkit
+        gdtoolkit_4
         asm-lsp
         dockerfile-language-server-nodejs
         docker-compose-language-service

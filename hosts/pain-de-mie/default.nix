@@ -21,11 +21,7 @@
 
   # nvidia, fuck you
   hardware = {
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-    };
+    graphics.enable = true;
     nvidia = {
       nvidiaSettings = true;
       open = false;
