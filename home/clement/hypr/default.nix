@@ -138,7 +138,7 @@ in
           "^waybar$"
           "^Rofi$"
           "^jetbrains-.*"
-          "^code-.*"
+          "^code$"
         ]);
 
       dwindle = {

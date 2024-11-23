@@ -23,8 +23,6 @@
     };
 
     sessionPath = [
-      "$CARGO_HOME/bin"
-      "$RUSTUP_HOME/toolchains/$RUSTUP_TOOLCHAIN-x86_64-unknown-linux-gnu/bin"
       "$NPM_PREFIX/bin"
       "${config.home.homeDirectory}/.local/bin"
     ];
@@ -36,7 +34,6 @@
         RUSTUP_TOOLCHAIN = "stable";
         CARGO_HOME = "${config.home.homeDirectory}/.cargo";
         RUSTUP_HOME = "${config.home.homeDirectory}/.rustup";
-
         NPM_PREFIX = "${config.home.homeDirectory}/.npm";
         NODE_OPTIONS = "--max-old-space-size=8192";
 
@@ -98,6 +95,7 @@
         kubectl
         whois
         tokei
+        nix-output-monitor
 
         # language servers
         lua-language-server
