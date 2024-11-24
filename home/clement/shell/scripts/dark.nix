@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 let
-  inherit (pkgs) lib;
   shBool = x: if x then "true" else "false";
 in
 {
@@ -50,9 +49,11 @@ in
         fi
 
         # Update wallpaper
-        echo "[DARK] Updating hyprpaper..."
-        ln -fs "$XDG_CONFIG_HOME/hypr/paper/$theme.conf" "$XDG_CONFIG_HOME/hypr/hyprpaper.conf"
-        (pkill -f hyprpaper && sleep 1; hyprpaper & disown) &
+        if pidof swww-daemon; then
+          echo "[DARK] Updating swww..."
+          ln -fs "$XDG_CONFIG_HOME/hypr/paper/$theme" "$XDG_CONFIG_HOME/hypr/paper/current"
+          swww img "$(realpath "$XDG_CONFIG_HOME/hypr/paper/current")" --transition-type wipe
+        fi
       '';
     })
   ];

@@ -2,9 +2,9 @@
 let
   hyprpaperActivation = import ./symlink.nix {
     inherit pkgs;
-    path = "/home/clement/.config/hypr";
-    file = "hyprpaper.conf";
-    default = "paper/dark.conf";
+    path = "/home/clement/.config/hypr/paper";
+    file = "current";
+    default = "dark";
   };
   inherit (pkgs) lib;
 in
@@ -19,7 +19,7 @@ in
     activation.createHyprpaper = "sh ${hyprpaperActivation.script}";
     packages = with pkgs; [
       hyprqtile
-      unstable.hyprpaper
+      swww
       xwaylandvideobridge
       pyprland
       hypridle
@@ -44,7 +44,8 @@ in
 
       exec-once =
         [
-          "hyprpaper"
+          "swww-daemon"
+          "swww img \"$(realpath \"$XDG_CONFIG_HOME/hypr/paper/current\")\" --transition-type wipe"
           "waybar"
           "xwaylandvideobridge"
           "pypr"
@@ -64,7 +65,7 @@ in
         );
 
       env = [
-        "XCURSOR_SIZE,24"
+        "XCURSOR_SIZE,16"
         "ELECTRON_OZONE_PLATFORM_HINT,wayland"
       ];
 
@@ -237,16 +238,8 @@ in
   };
 
   xdg.configFile = {
-    "hypr/paper/dark.conf".text = ''
-      preload = ${../../../assets/wallpapers/cat-mocha_girl.jpg}
-      preload = ${../../../assets/wallpapers/rocket-girl.png}
-      wallpaper = ,${../../../assets/wallpapers/cat-mocha_girl.jpg}
-    '';
-    "hypr/paper/light.conf".text = ''
-      preload = ${../../../assets/wallpapers/cat-mocha_girl.jpg}
-      preload = ${../../../assets/wallpapers/rocket-girl.png}
-      wallpaper = ,${../../../assets/wallpapers/rocket-girl.png}
-    '';
+    "hypr/paper/dark".source = ../../../assets/wallpapers/cat-mocha_girl.jpg;
+    "hypr/paper/light".source = ../../../assets/wallpapers/rocket-girl.png;
 
     "hypr/pyprland.toml".text = ''
       [pyprland]

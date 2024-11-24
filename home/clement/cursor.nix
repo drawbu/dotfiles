@@ -6,7 +6,7 @@
     x11.enable = true;
     name = "catppuccin-mocha-light-cursors";
     package = pkgs.catppuccin-cursors.mochaLight;
-    size = 24;
+    size = 16;
   };
 
   gtk.cursorTheme = {
