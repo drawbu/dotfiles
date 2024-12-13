@@ -70,6 +70,9 @@ return {
         '^result$',
         '^result%-%a+$',
         '^cmake%-build%-%a+$',
+        '^%.?venv$',
+        '%.egg%-info$',
+        '^__pycache__$',
       }
       require('oil').setup({
         view_options = {

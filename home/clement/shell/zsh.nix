@@ -53,8 +53,8 @@
       history = {
         extended = true;
         share = false;
-        # append = true; # TODO: New in 24.11
-        size = 100000; # Don't save too mush in memory
+        append = true; # TODO: New in 24.11
+        size = 100000; # Don't save too much in memory
         save = 100000000;
       };
 

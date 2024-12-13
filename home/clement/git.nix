@@ -9,8 +9,7 @@
 
     ## Python
     __pycache__/
-    venv/
-    .venv/
+    .?venv/
 
     ## Environment files
     .env

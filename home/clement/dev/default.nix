@@ -8,6 +8,16 @@
 {
   imports = [ ./editorconfig.nix ];
 
+  manual = {
+    manpages.enable = true;
+    html.enable = true;
+  };
+
+  programs.man = {
+    enable = true;
+    # generateCaches = true;
+  };
+
   home = {
     file = {
       ".clang-tidy".source = ./.clang-tidy;
@@ -27,33 +37,22 @@
       "${config.home.homeDirectory}/.local/bin"
     ];
 
-    sessionVariables =
-      {
-        # Rust
-        CARGO_NET_GIT_FETCH_WITH_CLI = "true";
-        RUSTUP_TOOLCHAIN = "stable";
-        CARGO_HOME = "${config.home.homeDirectory}/.cargo";
-        RUSTUP_HOME = "${config.home.homeDirectory}/.rustup";
-        NPM_PREFIX = "${config.home.homeDirectory}/.npm";
-        NODE_OPTIONS = "--max-old-space-size=8192";
-
-        # prisma
-      }
-      // (with pkgs.unstable; {
-        PRISMA_SCHEMA_ENGINE_BINARY = lib.getExe' prisma-engines "schema-engine";
-        PRISMA_QUERY_ENGINE_BINARY = lib.getExe' prisma-engines "query-engine";
-        PRISMA_FMT_BINARY = lib.getExe' prisma-engines "prisma-fmt";
-
-        PRISMA_QUERY_ENGINE_LIBRARY = "${prisma-engines}/lib/libquery_engine.node";
-        # PRISMA_INTROSPECTION_ENGINE_BINARY = "${prisma-engines}/bin/introspection-engine";
-      });
+    sessionVariables = {
+      # Rust
+      CARGO_NET_GIT_FETCH_WITH_CLI = "true";
+      RUSTUP_TOOLCHAIN = "stable";
+      CARGO_HOME = "${config.home.homeDirectory}/.cargo";
+      RUSTUP_HOME = "${config.home.homeDirectory}/.rustup";
+      NPM_PREFIX = "${config.home.homeDirectory}/.npm";
+      NODE_OPTIONS = "--max-old-space-size=8192";
+    };
 
     packages =
       with pkgs;
       [
         # tools
         (hiPrio gcc14) # note: cc from clang & gcc collides
-        unstable.clang_19
+        clang_19
         libcxx
         python312Full
         rustup
@@ -62,10 +61,10 @@
         # corepack_latest
         corepack_20
         typescript
-        unstable.opentofu
+        opentofu
         lua
 
-        # man pages
+        # cool man pages
         man-pages
         man-pages-posix
         stdman
@@ -101,7 +100,7 @@
         lua-language-server
         unstable.nixd
         clang-analyzer
-        unstable.clang-tools_19
+        clang-tools_19
         pyright
         vscode-langservers-extracted
         emmet-language-server
@@ -135,8 +134,8 @@
           jetbrains.datagrip
           jetbrains.goland
           jetbrains.rust-rover
-          jetbrains-toolbox
-          # zed-editor
+          # jetbrains-toolbox
+          zed-editor
           ldtk
         ]
       );
