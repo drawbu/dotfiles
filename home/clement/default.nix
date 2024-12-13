@@ -12,7 +12,6 @@ in
       ./git.nix
       ./tmux.nix
       ./btop.nix
-      ./gitlab.nix
       ./gh.nix
       ./distrobox.nix
     ]

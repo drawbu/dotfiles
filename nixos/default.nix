@@ -1,4 +1,9 @@
-{ pkgs, graphical, config, ... }:
+{
+  pkgs,
+  graphical,
+  config,
+  ...
+}:
 {
   imports = (pkgs.lib.optionals graphical [ ./graphical ]) ++ [ ./nix.nix ];
 
@@ -32,6 +37,8 @@
   virtualisation = {
     libvirtd.enable = true;
 
+    docker.enable = false;
+    oci-containers.backend = "podman";
     podman = {
       enable = true;
       dockerCompat = true;

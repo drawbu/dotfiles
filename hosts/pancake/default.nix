@@ -6,6 +6,7 @@
     ./hardware.nix
     ../../nixos
     ../../nixos/users/clement.nix
+    ./gitlab.nix
   ];
 
   networking.hostName = "pancake";
