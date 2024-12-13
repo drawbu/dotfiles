@@ -62,7 +62,7 @@ in
         todo
         comma
         nix-index
-        unstable.spotify-player
+        spotify-player
         nurl
         unzip
         unar
@@ -75,7 +75,7 @@ in
           thunderbird-bin
           aseprite
           zathura
-          unstable.croc
+          croc
           wireguard-tools
           beeper
           unstable.vesktop
@@ -99,6 +99,8 @@ in
           tor-browser
           appimage-run
           arduino-ide
+          pavucontrol
+          warp
         ]
       );
 

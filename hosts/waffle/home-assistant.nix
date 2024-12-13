@@ -2,7 +2,6 @@
 {
   services.home-assistant = {
     enable = true;
-    package = pkgs.unstable.home-assistant;
     openFirewall = true;
     extraComponents = [
       "isal"
@@ -15,6 +14,8 @@
       "recorder"
       "history_stats"
       "logbook"
+      "analytics"
+      "analytics_insights"
 
       "freebox"
       "esphome"
@@ -35,11 +36,11 @@
         python-otbr-api
       ];
     customComponents = [
-      (pkgs.unstable.buildHomeAssistantComponent rec {
+      (pkgs.buildHomeAssistantComponent rec {
         owner = "Amateur-God";
         domain = "technitiumdns";
         version = "2.3.0";
-        propagatedBuildInputs = with pkgs.unstable.python312Packages; [ aiohttp ];
+        propagatedBuildInputs = with pkgs.python312Packages; [ aiohttp ];
         src = pkgs.fetchFromGitHub {
           owner = "Amateur-God";
           repo = "home-assistant-technitiumdns";
@@ -63,6 +64,7 @@
       history = { };
       recorder = { };
       logbook = { };
+      analytics = { };
     };
   };
 

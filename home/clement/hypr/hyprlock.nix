@@ -1,8 +1,7 @@
-{ pkgs, ... }:
+{ ... }:
 {
   programs.hyprlock = {
     enable = true;
-    package = pkgs.unstable.hyprlock;
     settings = {
       # https://github.com/justinmdickey/publicdots/blob/c217f7571635d26302b89ce8529427da1b5c4b1b/.config/hypr/hyprlock.conf
       background = {

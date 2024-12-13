@@ -33,7 +33,7 @@ in
         # Update waybar theme
         echo "[DARK] Updating waybar theme..."
         ln -fs "$XDG_CONFIG_HOME/waybar/$theme.css" "$XDG_CONFIG_HOME/waybar/theme.css"
-        pkill -f waybar && waybar & disown
+        pkill -SIGUSR2 waybar
 
         # Update gtk theme
         if ${shBool config.gtk.enable}; then

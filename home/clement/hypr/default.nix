@@ -27,6 +27,7 @@ in
       gnome-keyring
       cliphist
       wl-clipboard
+      kooha
     ];
   };
 
@@ -205,6 +206,7 @@ in
 
           # Screenshot Keybinds
           ", Print, exec, ${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | ${lib.getExe pkgs.satty} -f -"
+          "$mod, Print, exec, kooha -f -"
         ];
 
       binde = [

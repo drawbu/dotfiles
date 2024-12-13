@@ -22,7 +22,10 @@
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "24.05";
 
-  nix.settings.trusted-users = [ "@wheel" ];
+  nix = {
+    settings.trusted-users = [ "@wheel" ];
+    optimise.automatic = true;
+  };
 
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -45,7 +48,14 @@
   console.keyMap = "fr";
 
   # SSH server
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
 
   # Don't forget to set a password with ‘passwd’.
   users.users.clement = {
@@ -75,7 +85,6 @@
 
   services.technitium-dns-server = {
     enable = true;
-    package = pkgs.unstable.technitium-dns-server;
     openFirewall = true;
   };
 }
