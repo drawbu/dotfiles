@@ -31,7 +31,6 @@ in {
       brightnessctl
       pamixer
       libnotify
-      upower
       playerctl
     ];
   };

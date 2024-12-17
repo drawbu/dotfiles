@@ -34,6 +34,7 @@
 
     sessionPath = [
       "$NPM_PREFIX/bin"
+      "$PNPM_HOME"
       "${config.home.homeDirectory}/.local/bin"
     ];
 
@@ -44,6 +45,7 @@
       CARGO_HOME = "${config.home.homeDirectory}/.cargo";
       RUSTUP_HOME = "${config.home.homeDirectory}/.rustup";
       NPM_PREFIX = "${config.home.homeDirectory}/.npm";
+      PNPM_HOME = "${config.home.homeDirectory}/.pnpm";
       NODE_OPTIONS = "--max-old-space-size=8192";
     };
 
@@ -95,6 +97,7 @@
         whois
         tokei
         nix-output-monitor
+        lucky-commit
 
         # language servers
         lua-language-server
@@ -103,8 +106,8 @@
         clang-tools_19
         pyright
         vscode-langservers-extracted
-        emmet-language-server
-        # tailwindcss-language-server
+        unstable.emmet-language-server
+        unstable.tailwindcss-language-server
         nodePackages.typescript-language-server
         nodePackages.svelte-language-server
         nodePackages.bash-language-server

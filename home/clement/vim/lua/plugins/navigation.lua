@@ -52,40 +52,63 @@ return {
     opts = {},
     dependencies = { 'echasnovski/mini.icons' },
     config = function()
-      local ignored = {
-        '^%.%.$',
-        '^%.git$',
-        '^%.direnv$',
-        '^%.build$',
-        '^%.idea$',
-        '%.o$',
-        '_templ%.go$',
-        '^%.DS_Store$',
-        '^target$',
-        '^node_modules$',
-        '^dist$',
-        '^%.cache[_-]?%g*',
-        '^%.%g+[_-]?cache',
-        '^zig%-out$',
-        '^result$',
-        '^result%-%a+$',
-        '^cmake%-build%-%a+$',
-        '^%.?venv$',
-        '%.egg%-info$',
-        '^__pycache__$',
-      }
+      -- Ignore these files when using oil
+      local ignored_files = function(name)
+        local ignored = {
+          '^%.%.$',
+          '^%.git$',
+          '^%.direnv$',
+          '^%.build$',
+          '^%.idea$',
+          '^%.vscode$',
+          '%.o$',
+          '_templ%.go$',
+          '^%.DS_Store$',
+          '^target$',
+          '^node_modules$',
+          '^dist$',
+          '^.turbo$',
+          '^%.cache[_-]?%g*',
+          '^%.%g+[_-]?cache',
+          '^zig%-out$',
+          '^result$',
+          '^result%-%a+$',
+          '^cmake%-build%-%a+$',
+          '^%.?venv$',
+          '%.egg%-info$',
+          '^__pycache__$',
+        }
+
+        -- return next(string.match(name, table.unpack(ignored))) ~= nil
+        for _, pattern in ipairs(ignored) do
+          if string.match(name, pattern) then
+            return true
+          end
+        end
+        return false
+      end
+
+      -- Declare a global function to retrieve the current directory
+      function _G.get_oil_winbar()
+        local dir = require("oil").get_current_dir()
+        if dir then
+          return vim.fn.fnamemodify(dir, ":~")
+        else
+          -- If there is no current directory (e.g. over ssh), just show the buffer name
+          return vim.api.nvim_buf_get_name(0)
+        end
+      end
+
       require('oil').setup({
         view_options = {
           show_hidden = false,
-          is_hidden_file = function(name, _)
-            for _, pattern in ipairs(ignored) do
-              if string.match(name, pattern) then
-                return true
-              end
-            end
-            return false
-          end,
-        }
+          is_hidden_file = function(name, _) return ignored_files(name) end,
+        },
+        skip_confirm_for_simple_edits = true,
+        watch_for_changes = true,
+        win_options = {
+          winbar = "%!v:lua.get_oil_winbar()",
+        },
       })
       vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory', silent = true })
     end,

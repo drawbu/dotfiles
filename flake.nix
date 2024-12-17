@@ -3,7 +3,6 @@
     nixpkgs.url = "nixpkgs/nixos-24.11";
     nixpkgs_legacy.url = "nixpkgs/nixos-24.05";
     nixpkgs_unstable.url = "nixpkgs/nixos-unstable";
-    nixpkgs_unstable_small.url = "nixpkgs/nixos-unstable-small";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
@@ -13,12 +12,11 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-alien.url = "github:thiagokokada/nix-alien";
     # ecsls.url = "github:Sigmapitech/ecsls";
-    nix-flatpak.url = "github:gmodena/nix-flatpak/v0.4.1";
     hyprqtile.url = "github:drawbu/hyprqtile";
   };
 
   outputs =
-    { self, ... }@inputs:
+    { ... }@inputs:
     let
       cfg = {
         system = "x86_64-linux";
@@ -32,7 +30,6 @@
             (final: prev: {
               # Other nixpkgs
               unstable = import inputs.nixpkgs_unstable cfg;
-              unstable_small = import inputs.nixpkgs_unstable_small cfg;
               legacy = import inputs.nixpkgs_legacy cfg;
 
               # Softwares
@@ -64,7 +61,6 @@
             inherit (cfg) system;
             specialArgs = completeArgs;
             modules = [
-              inputs.nix-flatpak.nixosModules.nix-flatpak
               inputs.home-manager.nixosModules.home-manager
               {
                 home-manager = {

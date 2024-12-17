@@ -1,5 +1,5 @@
 # 'clement' user home-manager config for NixOS & generic linux
-{ pkgs, graphical, ... }:
+{ pkgs, graphical, config, ... }:
 let
   username = "clement";
 in
@@ -27,7 +27,6 @@ in
       ./cursor.nix
       ./kitty.nix
       ./lockscreen.nix
-      ./flatpak.nix
       ./picom.nix
       ./mimeapps.nix
       ./login.nix
@@ -35,6 +34,11 @@ in
     ];
 
   programs.home-manager.enable = true;
+
+  xdg.systemDirs.data = [
+    "${config.home.homeDirectory}/.local/share/flatpak/exports/share"
+    "/var/lib/flatpak/exports/share"
+  ];
 
   home = {
     inherit username;
@@ -101,12 +105,12 @@ in
           arduino-ide
           pavucontrol
           warp
+          resources
         ]
       );
 
     file = {
       "assets".source = ../../assets;
-      ".config/nix/nix.conf".text = "experimental-features = nix-command flakes";
       ".config/nixpkgs/config.nix".text = "{ allowUnfree = true; allowUnsupportedSystem = true; }";
     };
   };

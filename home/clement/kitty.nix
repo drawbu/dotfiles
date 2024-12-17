@@ -3,7 +3,8 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "JetBrainsMono Nerd Font";
+      # name = "JetBrainsMono Nerd Font";
+      name = "Iosevka Mayukai Monolite";
       size = 12;
     };
     shellIntegration = {

@@ -3,7 +3,6 @@ vim.keymap.set('n', '<C-n>', function()
   -- check if a _test.go file exists
   local test_file = vim.fn.expand('%:p:h') .. '/' .. vim.fn.expand('%:t:r') .. '_test.go'
   if vim.fn.filereadable(test_file) == 1 then
-    print("test")
     vim.cmd('e ' .. test_file)
     return
   end

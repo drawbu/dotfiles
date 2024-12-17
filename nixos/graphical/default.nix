@@ -22,6 +22,7 @@
   };
 
   services = {
+    upower.enable = true;
     # For the file manager
     gvfs.enable = true;
     tumbler.enable = true;
