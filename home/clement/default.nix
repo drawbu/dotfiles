@@ -16,10 +16,8 @@ in
       ./distrobox.nix
     ]
     ++ pkgs.lib.optionals graphical [
-      ./qtile
       ./rofi
       ./hypr
-      ./eww
       ./kanata
       ./fonts.nix
       ./gtk.nix
@@ -48,9 +46,6 @@ in
 
     packages =
       (with pkgs; [
-        # ↓ ricing
-        eww
-
         # ↓ cli & tui
         direnv
         wakatime

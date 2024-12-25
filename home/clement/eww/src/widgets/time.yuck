@@ -1,4 +1,0 @@
-(defpoll time :interval "1s" `date +%H:%M:%S`)
-
-(defwidget time []
-  (label :text "${time}" :wrap "false" :limit-width 25))

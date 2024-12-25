@@ -22,7 +22,6 @@ in
       swww
       xwaylandvideobridge
       pyprland
-      hypridle
       nwg-displays
       gnome-keyring
       cliphist
@@ -31,7 +30,38 @@ in
     ];
   };
 
-  services.swayosd.enable = true;
+  services = {
+    swayosd.enable = true;
+    hypridle = {
+      enable = true;
+      settings = {
+
+        general = {
+          lock_cmd = "pidof hyprlock || hyprlock";
+          before_sleep_cmd = "loginctl lock-session";
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+        };
+
+        listener = [
+          {
+            timeout = 150;
+            on-timeout = "${lib.getExe pkgs.brightnessctl} -s set 10";
+            on-resume = "${lib.getExe pkgs.brightnessctl} -r";
+          }
+
+          {
+            timeout = 600;
+            on-timeout = "loginctl lock-session";
+          }
+
+          {
+            timeout = 630;
+            on-timeout = "systemctl suspend";
+          }
+        ];
+      };
+    };
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -47,10 +77,8 @@ in
         [
           "swww-daemon"
           "swww img \"$(realpath \"$XDG_CONFIG_HOME/hypr/paper/current\")\" --transition-type wipe"
-          "waybar"
           "xwaylandvideobridge"
           "pypr"
-          "hypridle"
           "gnome-keyring gnome-keyring-daemon --daemonize --components=ssh,secrets"
         ]
         ++ (
@@ -251,30 +279,6 @@ in
 
       [magnify]
       factor = 4
-    '';
-
-    "hypr/hypridle.conf".text = ''
-      general {
-          lock_cmd = pidof hyprlock || hyprlock
-          before_sleep_cmd = loginctl lock-session
-          after_sleep_cmd = hyprctl dispatch dpms on
-      }
-
-      listener {
-          timeout = 150
-          on-timeout = ${lib.getExe pkgs.brightnessctl} -s set 10
-          on-resume = ${lib.getExe pkgs.brightnessctl} -r
-      }
-
-      listener {
-          timeout = 600
-          on-timeout = loginctl lock-session
-      }
-
-      listener {
-          timeout = 630
-          on-timeout = systemctl suspend
-      }
     '';
   };
 }

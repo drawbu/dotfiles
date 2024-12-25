@@ -132,10 +132,6 @@ in {
       #tray {
         margin-right: 4px;
       }
-      #custom-power {
-        color: ${raw.red.gtk};
-        margin-right: 4px;
-      }
     '';
     settings = [
       {
@@ -217,7 +213,6 @@ in {
           "network"
           "battery"
           "tray"
-          "custom/power"
         ];
         pulseaudio = {
           format = "{icon}";
@@ -240,7 +235,7 @@ in {
           tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
           tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
           tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
-          on-click = "${pkgs.rofi-bluetooth}/bin/rofi-bluetooth";
+          on-click = pkgs.lib.getExe pkgs.rofi-bluetooth;
         };
         network = {
           interval = 1;
@@ -277,11 +272,6 @@ in {
         };
         tray = {
           spacing = 10;
-        };
-        "custom/power" = {
-          on-click = "${pkgs.rofi-wayland}/bin/rofi -show p -modi p:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
-          format = " ";
-          tooltip = "Power menu";
         };
       }
     ];

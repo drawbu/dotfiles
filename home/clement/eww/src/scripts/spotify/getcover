@@ -1,2 +1,0 @@
-#!/bin/bash
-echo "$HOME/.config/eww/tmp/cover.png"

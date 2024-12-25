@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-tmp_dir="$HOME/.config/eww/tmp"
-
-mkdir -p $tmp_dir
-artlink="$(playerctl --player=spotify metadata mpris:artUrl | sed -e 's/open.spotify.com/i.scdn.co/g')"
-
-if [ $(playerctl metadata mpris:artUrl) ]; then
-	curl -s "$artlink" --output $tmp_dir/cover.png;
-fi

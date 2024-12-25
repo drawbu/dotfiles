@@ -12,7 +12,6 @@
 
       DISPLAYS = {
           "Hyprland": "Hyprland",
-          "qtile": "startx ${config.home.profileDirectory}/bin/qtile start",
           "Steam": "steam-gamescope",
       }
 
