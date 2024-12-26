@@ -45,6 +45,8 @@ in {
       # Fix terminal features
       if-shell -b '[ "$(echo "$CURRENT_TERMINAL")" = kitty ]' \
           "set -g default-terminal 'xterm-kitty'"
+      if-shell -b 'test -z "$(echo "$GHOSTTY_BIN_DIR")"' \
+          "set -g default-terminal 'xterm-ghostty'"
 
       # Open panes & windows in $PWD
       bind '"' split-window -v -c "#{pane_current_path}"

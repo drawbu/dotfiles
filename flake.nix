@@ -13,6 +13,7 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
     # ecsls.url = "github:Sigmapitech/ecsls";
     hyprqtile.url = "github:drawbu/hyprqtile";
+    ghostty.url = "github:ghostty-org/ghostty/v1.0.0";
   };
 
   outputs =
@@ -37,6 +38,7 @@
               inherit (inputs.nix-alien.packages.${cfg.system}) nix-alien;
               inherit (inputs.hyprqtile.packages.${cfg.system}) hyprqtile;
               nix-direnv = prev.nix-direnv.override { enableFlakes = true; };
+              inherit (inputs.ghostty.packages.${cfg.system}) ghostty;
             })
           ];
         }

@@ -239,7 +239,7 @@ in {
         };
         network = {
           interval = 1;
-          on-click = "${pkgs.kitty}/bin/kitty -e nmtui";
+          on-click = "ghostty -e nmtui";
           format-disconnected = "󰤮 ";
           format-ethernet = "󰈀 ";
           format-wifi = "󰤨 ";

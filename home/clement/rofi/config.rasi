@@ -82,7 +82,7 @@ configuration {
 	display-filebrowser: "Files";
 
 	/*---------- Misc setting ----------*/
-	terminal: "kitty";
+	terminal: "ghostty";
 	font: "Inter 12";
 	sort: false;
 	threads: 0;

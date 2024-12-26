@@ -152,10 +152,14 @@ in
       windowrule =
         (map (e: "float, ${e}") [
           "^kitty$"
+          "^com.mitchellh.ghostty$"
           "class:^(jetbrains-).*, title:^(Welcome to).*$"
           "^satty$"
         ])
-        ++ (map (e: "noblur, ${e}") [ "^kitty$" ])
+        ++ (map (e: "noblur, ${e}") [
+          "^kitty$"
+          "^com.mitchellh.ghostty$"
+        ])
         ++ (map (e: "opacity 0.9, ${e}") [
           "^discord$"
           "^vesktop$"
@@ -184,7 +188,7 @@ in
       bind =
         [
           # General Keybinds
-          "$mod, return, exec, kitty -d $HOME -e tmux new-session"
+          "$mod, return, exec, ghostty"
           "$mod, W, killactive,"
           "$mod, F, togglefloating,"
           "$mod, R, exec, ${lib.getExe pkgs.rofi-wayland} -show drun"

@@ -11,7 +11,7 @@
       # Defaults
       EDITOR = "nvim";
       BROWSER = "firefox";
-      TERMINAL = "kitty";
+      TERMINAL = "ghostty";
 
       THEMEFILE = "${config.home.homeDirectory}/.currenttheme";
     };

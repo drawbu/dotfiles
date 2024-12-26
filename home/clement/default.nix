@@ -29,6 +29,7 @@ in
       ./mimeapps.nix
       ./login.nix
       ./gaming.nix
+      ./ghostty.nix
     ];
 
   programs.home-manager.enable = true;
