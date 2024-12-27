@@ -208,12 +208,15 @@ in {
 
         # ↓ Right widgets
         modules-right = [
+          "tray"
           "pulseaudio"
           "bluetooth"
           "network"
           "battery"
-          "tray"
         ];
+        tray = {
+          spacing = 10;
+        };
         pulseaudio = {
           format = "{icon}";
           format-bluetooth = "{icon}";
@@ -269,9 +272,6 @@ in {
             warning = 20;
           };
           tooltip-format = "{capacity}% - {time}";
-        };
-        tray = {
-          spacing = 10;
         };
       }
     ];

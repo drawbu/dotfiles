@@ -75,6 +75,7 @@
         hyperfine
         tldr
         linux-manual
+        file
         ripgrep
         fd
         vgrep

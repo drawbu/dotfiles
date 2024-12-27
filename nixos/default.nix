@@ -48,7 +48,13 @@
 
   networking.networkmanager.enable = true;
 
-  systemd.services.NetworkManager-wait-online.enable = false;
+  # this service sucks
+  systemd.services.NetworkManager-wait-online = {
+    serviceConfig.ExecStart = [
+      ""
+      "${pkgs.lib.getExe' pkgs.networkmanager "nm-online"} -q"
+    ];
+  };
 
   environment = {
     shells = with pkgs; [ zsh ];

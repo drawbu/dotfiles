@@ -24,8 +24,6 @@ in
       ./firefox.nix
       ./cursor.nix
       ./kitty.nix
-      ./lockscreen.nix
-      ./picom.nix
       ./mimeapps.nix
       ./login.nix
       ./gaming.nix

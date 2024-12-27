@@ -77,6 +77,7 @@ in
         [
           "swww-daemon"
           "swww img \"$(realpath \"$XDG_CONFIG_HOME/hypr/paper/current\")\" --transition-type wipe"
+          "waybar"
           "xwaylandvideobridge"
           "pypr"
           "gnome-keyring gnome-keyring-daemon --daemonize --components=ssh,secrets"
@@ -168,6 +169,9 @@ in
           "^Rofi$"
           "^jetbrains-.*"
           "^code$"
+        ])
+        ++ (map (e: "opacity 0, ${e}") [
+          "xwaylandvideobridge"
         ]);
 
       dwindle = {
