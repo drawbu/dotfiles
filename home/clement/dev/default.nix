@@ -27,7 +27,7 @@
 
     activation = {
       "npm_prefix" = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        run ${pkgs.lib.getExe' pkgs.nodejs_latest "npm"} config set \
+        run ${pkgs.lib.getExe' pkgs.nodejs "npm"} config set \
             prefix="${config.home.sessionVariables.NPM_PREFIX}/bin"
       '';
     };
@@ -36,6 +36,7 @@
       "$NPM_PREFIX/bin"
       "$PNPM_HOME"
       "${config.home.homeDirectory}/.local/bin"
+      "$ANDROID_HOME/platform-tools"
     ];
 
     sessionVariables = {
@@ -47,6 +48,7 @@
       NPM_PREFIX = "${config.home.homeDirectory}/.npm";
       PNPM_HOME = "${config.home.homeDirectory}/.pnpm";
       NODE_OPTIONS = "--max-old-space-size=8192";
+      ANDROID_HOME = "${config.home.homeDirectory}/.local/share/Android/Sdk";
     };
 
     packages =
@@ -58,10 +60,8 @@
         libcxx
         python312Full
         rustup
-        # nodejs_latest
-        nodejs_20
-        # corepack_latest
-        corepack_20
+        nodejs
+        corepack
         typescript
         opentofu
         lua
@@ -126,6 +126,9 @@
         terraform-ls
         yaml-language-server
         unstable.zls
+        haskell-language-server
+        harper
+        ijhttp
       ]
       ++ lib.optionals graphical (
         with unstable;
@@ -138,6 +141,7 @@
           jetbrains.datagrip
           jetbrains.goland
           jetbrains.rust-rover
+          android-studio
           # jetbrains-toolbox
           zed-editor
           ldtk

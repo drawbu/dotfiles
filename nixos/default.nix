@@ -78,4 +78,14 @@
   boot.initrd.preDeviceCommands = ''
     cat ${./issue.txt}
   '';
+
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true;
+    # sudo.enable = false;
+    pam.services.systemd-run0 = {
+      setEnvironment = true;
+      pamMount = false;
+    };
+  };
 }

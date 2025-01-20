@@ -30,7 +30,7 @@
   };
   services.xserver.videoDrivers = ["nvidia"];
   services.xserver.displayManager.setupCommands = ''
-    ${pkgs.xorg.xrandr}/bin/xrandr --output DVI-D-0 --right-of HDMI-0
-    ${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-0 --primary
+    ${pkgs.lib.getExe pkgs.xorg.xrandr} --output DVI-D-0 --right-of HDMI-0
+    ${pkgs.lib.getExe pkgs.xorg.xrandr} --output HDMI-0 --primary
   '';
 }

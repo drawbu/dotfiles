@@ -50,7 +50,7 @@
 
   services.tlp.settings = {
     PCIE_ASPM_ON_AC = "performance";
-    PCIE_ASPM_ON_BAT = "default";
+    PCIE_ASPM_ON_BAT = "performance";
   };
 
   swapDevices = [

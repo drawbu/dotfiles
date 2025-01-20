@@ -1,5 +1,10 @@
 # 'clement' user home-manager config for NixOS & generic linux
-{ pkgs, graphical, config, ... }:
+{
+  pkgs,
+  graphical,
+  config,
+  ...
+}:
 let
   username = "clement";
 in
@@ -65,16 +70,18 @@ in
         unzip
         unar
         nmap
+        temurin-bin
+        croc
+        wireguard-tools
       ])
       ++ pkgs.lib.optionals graphical (
         with pkgs;
         [
+          pods
           feh
           thunderbird-bin
           aseprite
           zathura
-          croc
-          wireguard-tools
           beeper
           unstable.vesktop
           discord
@@ -93,13 +100,13 @@ in
           slack
           tic-80
           orca-slicer
-          bambu-studio
           tor-browser
           appimage-run
           arduino-ide
           pavucontrol
           warp
           resources
+          filezilla
         ]
       );
 
@@ -150,6 +157,13 @@ in
     bat = {
       enable = true;
       config.theme = "TwoDark";
+    };
+
+    ssh = {
+      enable = true;
+      extraConfig = ''
+        SetEnv TERM=xterm-256color
+      '';
     };
   };
 }

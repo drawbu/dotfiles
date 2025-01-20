@@ -49,7 +49,16 @@ return {
       lsp.bashls.setup {}
       lsp.eslint.setup {}
       lsp.emmet_language_server.setup {}
-      lsp.tailwindcss.setup {}
+      lsp.tailwindcss.setup {
+        root_dir = function(fname)
+          local root_pattern = require("lspconfig").util.root_pattern(
+            "tailwind.config.cjs",
+            "tailwind.config.js",
+            "postcss.config.js"
+          )
+          return root_pattern(fname)
+        end,
+      }
       lsp.templ.setup {}
       lsp.htmx.setup {}
       lsp.terraformls.setup {}
@@ -63,6 +72,7 @@ return {
         }
       }
       lsp.zls.setup {}
+      lsp.harper_ls.setup {}
 
       -- ↓ Epitech C Style Checker
       if not configs.ecsls then

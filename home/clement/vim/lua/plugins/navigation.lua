@@ -68,6 +68,8 @@ return {
           '^node_modules$',
           '^dist$',
           '^.turbo$',
+          '^.expo$',
+          '^.gradle$',
           '^%.cache[_-]?%g*',
           '^%.%g+[_-]?cache',
           '^zig%-out$',
