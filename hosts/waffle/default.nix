@@ -4,6 +4,7 @@
     ./hardware.nix
     ./home-assistant.nix
     ./plex.nix
+    ./hydra.nix
   ];
 
   # Bootloader.
@@ -23,8 +24,23 @@
   system.stateVersion = "24.05";
 
   nix = {
-    settings.trusted-users = [ "@wheel" ];
-    optimise.automatic = true;
+    settings = {
+      trusted-users = [ "@wheel" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+    optimise = {
+      automatic = true;
+      dates = [ "03:45" ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+
   };
 
   time.timeZone = "Europe/Paris";

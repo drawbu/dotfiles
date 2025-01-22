@@ -1,4 +1,13 @@
-{ finputs, ... }:
+{
+  finputs,
+  pkgs,
+  config,
+  ...
+}:
+let
+  inherit (pkgs) lib;
+  inherit (finputs) self;
+in
 {
   nix = {
     gc = {
@@ -14,6 +23,13 @@
       trusted-users = [
         "root"
         "@wheel"
+      ];
+      trusted-substituters = [
+        "https://cache.nixos.org/"
+        "http://192.168.1.144:5000"
+      ];
+      trusted-public-keys = [
+        "binarycache.example.com:bFHgI8jFAA6AoHIKc244zm+HuvjPitj759k/Pr9WNvQ="
       ];
       keep-outputs = true;
       keep-derivations = true;
@@ -31,4 +47,11 @@
       "unstable=${finputs.nixpkgs_unstable}"
     ];
   };
+  # Add src/ to $out
+  system.extraSystemBuilderCmds = "ln -s ${self.sourceInfo.outPath} $out/src";
+  # Add git version to nixos label
+  system.nixos.label = lib.concatStringsSep "-" (
+    (lib.sort (x: y: x < y) config.system.nixos.tags)
+    ++ [ "${config.system.nixos.version}.${self.sourceInfo.shortRev or "dirty"}" ]
+  );
 }

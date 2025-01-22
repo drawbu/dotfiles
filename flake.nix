@@ -16,7 +16,7 @@
   };
 
   outputs =
-    { ... }@inputs:
+    { self, ... }@inputs:
     let
       cfg = {
         system = "x86_64-linux";
@@ -76,6 +76,12 @@
     in
     {
       formatter.${cfg.system} = pkgs.nixfmt-rfc-style;
+
+      hydraJobs = {
+        nixos = pkgs.lib.mapAttrs (
+          name: config: config.config.system.build.toplevel
+        ) self.nixosConfigurations;
+      };
 
       homeConfigurations = {
         "home-generic" = inputs.home-manager.lib.homeManagerConfiguration {
