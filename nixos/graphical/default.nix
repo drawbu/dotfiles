@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./polkit.nix
     ./xserver.nix
@@ -39,7 +40,19 @@
       wireplumber.enable = true;
     };
 
-    printing.enable = true;
+    printing = {
+      enable = true;
+      drivers = with pkgs; [
+        gutenprint
+        canon-cups-ufr2
+        cups-filters
+      ];
+    };
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+    };
+
     libinput.enable = true;
     flatpak.enable = true;
   };
@@ -58,7 +71,7 @@
   };
 
   environment = {
-    shells = with pkgs; [zsh];
+    shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
       modemmanager
       networkmanagerapplet

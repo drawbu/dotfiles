@@ -72,21 +72,20 @@ return {
         }
       }
       lsp.zls.setup {}
-      lsp.harper_ls.setup {}
 
       -- ↓ Epitech C Style Checker
-      if not configs.ecsls then
-        configs.ecsls = {
-          default_config = {
-            root_dir = lsp.util.root_pattern('.git', 'Makefile'),
-            cmd = { 'ecsls_run' },
-            autostart = true,
-            name = 'ecsls',
-            filetypes = { 'c', 'cpp', 'make' },
-          },
-        }
-      end
-      lsp.ecsls.setup {}
+      -- if not configs.ecsls then
+      --   configs.ecsls = {
+      --     default_config = {
+      --       root_dir = lsp.util.root_pattern('.git', 'Makefile'),
+      --       cmd = { 'ecsls_run' },
+      --       autostart = true,
+      --       name = 'ecsls',
+      --       filetypes = { 'c', 'cpp', 'make' },
+      --     },
+      --   }
+      -- end
+      -- lsp.ecsls.setup {}
 
       lsp_zero.on_attach(function(_, bufnr)
         local opts = { buffer = bufnr, remap = false }

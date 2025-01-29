@@ -60,6 +60,7 @@
         libcxx
         python312Full
         rustup
+        cargo-mommy
         nodejs
         corepack
         typescript
@@ -127,7 +128,6 @@
         yaml-language-server
         unstable.zls
         haskell-language-server
-        harper
         ijhttp
       ]
       ++ lib.optionals graphical (

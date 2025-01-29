@@ -79,6 +79,7 @@
     description = "clement";
     extraGroups = [
       "networkmanager"
+      "podman"
       "wheel"
     ];
     openssh.authorizedKeys.keys = [

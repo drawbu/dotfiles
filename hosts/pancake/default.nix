@@ -49,8 +49,8 @@
   networking.firewall.allowedTCPPorts = [ 6969 ];
 
   services.tlp.settings = {
-    PCIE_ASPM_ON_AC = "performance";
-    PCIE_ASPM_ON_BAT = "performance";
+    CPU_SCALING_GOVERNOR_ON_AC = "performance";
+    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
   };
 
   swapDevices = [
