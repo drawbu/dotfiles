@@ -31,7 +31,7 @@ in {
     enable = true;
     package = pkgs.gitFull;
     userName = "Clément";
-    userEmail = "clement2104.boillot@gmail.com";
+    userEmail = "git@drawbu.dev";
     lfs.enable = true;
     extraConfig = {
       init.defaultBranch = "main";
