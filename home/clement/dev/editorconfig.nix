@@ -18,7 +18,9 @@
       "Makefile" = {
         indent_style = "tab";
       };
-      "*.{mk,go,templ}" = settings."Makefile";
+      "*.{mk,go,templ,gd}" = {
+        indent_style = "tab";
+      };
     };
   };
 }

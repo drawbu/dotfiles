@@ -73,6 +73,7 @@ in
         temurin-bin
         croc
         wireguard-tools
+        ollama
       ])
       ++ pkgs.lib.optionals graphical (
         with pkgs;

@@ -57,6 +57,7 @@
         # tools
         (hiPrio gcc14) # note: cc from clang & gcc collides
         clang_19
+        zig
         libcxx
         python312Full
         rustup
@@ -131,8 +132,12 @@
         ijhttp
       ]
       ++ lib.optionals graphical (
-        with unstable;
         [
+          wine64Packages.waylandFull
+          msitools
+          ldtk
+        ]
+        ++ (with unstable; [
           # softs
           vscode
           jetbrains.clion
@@ -144,8 +149,8 @@
           android-studio
           # jetbrains-toolbox
           zed-editor
-          ldtk
-        ]
+          godot_4
+        ])
       );
   };
 }
