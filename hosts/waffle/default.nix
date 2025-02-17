@@ -87,7 +87,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJmBhcZtmRfwnZJSQ9vxBecGlXDzQbWeCcvfRAcEK9FO"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICieMi8TQag5eoIJXFQbXic8YCeRMdpIw/8d8KeuxSD7"
     ];
-    createHome = false;
+    createHome = true; # errors in ssh because can't chdir lmao
   };
 
   environment.systemPackages = with pkgs; [
@@ -104,4 +104,6 @@
     enable = true;
     openFirewall = true;
   };
+
+  services.tailscale.enable = true;
 }

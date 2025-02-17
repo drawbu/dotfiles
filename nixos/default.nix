@@ -5,7 +5,13 @@
   ...
 }:
 {
-  imports = (pkgs.lib.optionals graphical [ ./graphical ]) ++ [ ./nix.nix ];
+  imports =
+    [
+      ./nix.nix
+    ]
+    ++ (pkgs.lib.optionals graphical [
+      ./graphical
+    ]);
 
   system.copySystemConfiguration = false;
 
@@ -33,6 +39,8 @@
     enable = true;
     settings.PermitRootLogin = "no";
   };
+
+  services.tailscale.enable = true;
 
   virtualisation = {
     libvirtd.enable = true;

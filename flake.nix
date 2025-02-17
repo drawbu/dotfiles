@@ -123,6 +123,12 @@
           args.graphical = false;
           override = cfg: { modules = cfg.modules ++ [ ./hosts/waffle ]; };
         });
+
+        # Headscale server
+        "pineapple" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
+          args.graphical = false;
+          override = cfg: { modules = cfg.modules ++ [ ./hosts/pineapple ]; };
+        });
       };
     };
 }
