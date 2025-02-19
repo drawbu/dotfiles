@@ -5,6 +5,7 @@
     ./home-assistant.nix
     ./plex.nix
     ./hydra.nix
+    ./caddy.nix
   ];
 
   # Bootloader.

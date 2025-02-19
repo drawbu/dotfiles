@@ -9,7 +9,12 @@
     minimumDiskFreeEvaluator = 50;
   };
 
-  networking.firewall.allowedTCPPorts = [ config.services.hydra.port ];
+  services.caddy.virtualHosts."hydra.drawbu.dev" = {
+    extraConfig = ''
+      reverse_proxy 127.0.0.1:${toString config.services.hydra.port}
+      import cloudflare
+    '';
+  };
 
   users.users.hydra.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMEIMRXQMnaP08FgRGXEpgX9oDADom5h+xjAnEgLNCXF"

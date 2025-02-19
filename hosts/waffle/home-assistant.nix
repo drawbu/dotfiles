@@ -1,8 +1,7 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   services.home-assistant = {
     enable = true;
-    openFirewall = true;
     extraComponents = [
       "isal"
       "mobile_app"
@@ -65,8 +64,19 @@
       recorder = { };
       logbook = { };
       analytics = { };
+      http = {
+        use_x_forwarded_for = true;
+        trusted_proxies = [ "127.0.0.1" ];
+      };
     };
   };
 
   networking.firewall.allowedTCPPorts = [ 21064 ]; # homekit
+
+  services.caddy.virtualHosts."home-assistant.drawbu.dev" = {
+    extraConfig = ''
+      reverse_proxy 127.0.0.1:${toString config.services.home-assistant.config.http.server_port}
+      import cloudflare
+    '';
+  };
 }
