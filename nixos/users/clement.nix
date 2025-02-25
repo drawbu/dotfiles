@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home-manager.users.clement = import ../../home/clement;
 
   users.users.clement = {
@@ -10,6 +11,7 @@
       "docker"
       "networkmanager"
       "libvirtd"
+      "openrazer"
 
       # ↓ kanata
       "input"

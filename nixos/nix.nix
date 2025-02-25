@@ -10,11 +10,7 @@ let
 in
 {
   nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
+    gc.automatic = false;
     settings = {
       experimental-features = [
         "nix-command"
@@ -47,6 +43,16 @@ in
       "unstable=${finputs.nixpkgs_unstable}"
     ];
   };
+
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      dates = "weekly";
+      extraArgs = "--keep-since 7d";
+    };
+  };
+
   # Add src/ to $out
   system.extraSystemBuilderCmds = "ln -s ${self.sourceInfo.outPath} $out/src";
   # Add git version to nixos label

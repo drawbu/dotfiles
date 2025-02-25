@@ -13,20 +13,11 @@ in
     };
   };
 
-  services.caddy = {
-    enable = true;
-    email = "letsencrypt@drawbu.dev";
-    virtualHosts = {
-      "${tailnet_url}" = {
-        extraConfig = ''
-          reverse_proxy localhost:${toString config.services.headscale.port}
-        '';
-      };
+  services.caddy.virtualHosts = {
+    "${tailnet_url}" = {
+      extraConfig = ''
+        reverse_proxy localhost:${toString config.services.headscale.port}
+      '';
     };
   };
-
-  networking.firewall.allowedTCPPorts = [
-    80
-    443
-  ];
 }

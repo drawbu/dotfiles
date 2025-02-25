@@ -1,6 +1,12 @@
-{...}: {
+{ pkgs, ... }:
+{
   programs.firefox = {
     enable = true;
+    package = pkgs.unstable.firefox;
+    languagePacks = [
+      "en-US"
+      "fr-FR"
+    ];
 
     profiles."clement" = {
       settings = {

@@ -29,7 +29,6 @@
         // {
           overlays = [
             (final: prev: {
-              # Other nixpkgs
               unstable = import inputs.nixpkgs_unstable cfg;
               legacy = import inputs.nixpkgs_legacy cfg;
 

@@ -48,4 +48,14 @@
     wget
     tmux
   ];
+
+  services.caddy = {
+    enable = true;
+    email = "letsencrypt@drawbu.dev";
+  };
+
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 }

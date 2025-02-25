@@ -74,6 +74,9 @@ in
         croc
         wireguard-tools
         ollama
+        ncdu
+        zip
+        gitoxide
       ])
       ++ pkgs.lib.optionals graphical (
         with pkgs;
@@ -81,7 +84,7 @@ in
           pods
           feh
           thunderbird-bin
-          aseprite
+          libresprite
           zathura
           beeper
           unstable.vesktop
@@ -93,7 +96,6 @@ in
           obsidian
           vlc
           obs-studio
-          filelight
           gnome-font-viewer
           file-roller
           nautilus
@@ -101,6 +103,7 @@ in
           slack
           tic-80
           orca-slicer
+          bambu-studio
           tor-browser
           appimage-run
           arduino-ide
@@ -108,6 +111,11 @@ in
           warp
           resources
           filezilla
+          figma-linux
+          legacy.figma-agent
+          hexchat
+          polychromatic
+          superTuxKart
         ]
       );
 

@@ -251,7 +251,8 @@ in {
           tooltip-format-disconnected = "No connection";
         };
         battery = {
-          format = "{icon}";
+          interval = 5;
+          format = "{icon} {power:4.2f} W";
           format-charging = "󰂄";
           format-icons = [
             "󰂎"

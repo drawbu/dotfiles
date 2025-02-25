@@ -13,13 +13,16 @@ let
           pname = "iosevka-mayukai-${lib.toLower name}-${lib.toLower type}";
           version = "6.2.0";
 
-          src = pkgs.fetchzip (let
-            v = lib.versions;
-            file = "IosevkaMayukai${name}${type}-v${v.major version}${v.minor version}${v.patch version}.zip";
-          in {
-            url = "https://github.com/Iosevka-Mayukai/Iosevka-Mayukai/releases/download/v${version}/${file}";
-            inherit hash;
-          });
+          src = pkgs.fetchzip (
+            let
+              v = lib.versions;
+              file = "IosevkaMayukai${name}${type}-v${v.major version}${v.minor version}${v.patch version}.zip";
+            in
+            {
+              url = "https://github.com/Iosevka-Mayukai/Iosevka-Mayukai/releases/download/v${version}/${file}";
+              inherit hash;
+            }
+          );
 
           dontPatch = true;
           dontConfigure = true;
@@ -41,6 +44,31 @@ let
       };
     };
 
+  fetchFontShare =
+    { name, hash }:
+    pkgs.stdenvNoCC.mkDerivation rec {
+      pname = name;
+      version = "v2";
+
+      src = pkgs.fetchurl {
+        url = "https://api.fontshare.com/${version}/fonts/download/${name}";
+        inherit hash;
+      };
+
+      buildInputs = with pkgs; [ unzip ];
+
+      preUnpack = ''
+        cp $src{,.zip}
+        src=''${src}.zip
+      '';
+
+      installPhase = ''
+        runHook preInstall
+        install -Dm644 -t $out/share/fonts/truetype/ Fonts/TTF/*.ttf
+        runHook postInstall
+      '';
+    };
+
 in
 {
   fonts.fontconfig = {
@@ -54,7 +82,13 @@ in
 
   };
   home.packages =
-    [ iosevka-mayukai.monolite ]
+    [
+      iosevka-mayukai.monolite
+      (fetchFontShare {
+        name = "clash-grotesk";
+        hash = "sha256-vYkEzvVeTP7+sZpiWlmZMVQurnRKnFNwErSTFOGzipo=";
+      })
+    ]
     ++ (with pkgs; [
       monaspace
       iosevka-bin
