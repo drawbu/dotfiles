@@ -87,4 +87,5 @@
   '';
 
   fonts.enableDefaultPackages = true;
+  hardware.openrazer.enable = true;
 }

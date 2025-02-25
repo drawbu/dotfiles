@@ -12,7 +12,7 @@
         tab_width = 4;
         trim_trailing_whitespace = true;
       };
-      "*.{nix,yml,yaml,asm,s,S,lua,js,ts,jsx,tsx}" = {
+      "*.{nix,yml,yaml,asm,s,S,lua,js,ts,jsx,tsx,svelte,vue}" = {
         indent_size = 2;
       };
       "Makefile" = {

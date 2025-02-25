@@ -81,7 +81,7 @@ in
           pods
           feh
           thunderbird-bin
-          aseprite
+          libresprite
           zathura
           beeper
           unstable.vesktop
@@ -108,6 +108,11 @@ in
           warp
           resources
           filezilla
+          figma-linux
+          legacy.figma-agent
+          hexchat
+          polychromatic
+          superTuxKart
         ]
       );
 

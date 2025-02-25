@@ -48,11 +48,12 @@
       sessionVariables = {
         ZSH_DISABLE_COMPFIX = true;
         ZSH_WAKATIME_PROJECT_DETECTION = true;
+        GIT_AUTO_FETCH_INTERVAL=300; # in seconds
       };
 
       history = {
         extended = true;
-        share = false;
+        share = true;
         append = true; # TODO: New in 24.11
         size = 100000; # Don't save too much in memory
         save = 100000000;
@@ -100,7 +101,6 @@
 
       oh-my-zsh = {
         enable = true;
-        package = pkgs.oh-my-zsh;
         plugins = [
           "copyfile"
           "direnv"
@@ -110,6 +110,7 @@
           "podman"
           "rust"
           "kubectl"
+          "git-auto-fetch"
         ];
       };
     };

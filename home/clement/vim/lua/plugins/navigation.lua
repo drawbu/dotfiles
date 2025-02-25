@@ -79,6 +79,7 @@ return {
           '^%.?venv$',
           '%.egg%-info$',
           '^__pycache__$',
+          '%.svelte%-kit$',
         }
 
         -- return next(string.match(name, table.unpack(ignored))) ~= nil

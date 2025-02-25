@@ -52,6 +52,7 @@
     CPU_SCALING_GOVERNOR_ON_AC = "performance";
     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
   };
+  powerManagement.powertop.enable = true;
 
   swapDevices = [
     {
