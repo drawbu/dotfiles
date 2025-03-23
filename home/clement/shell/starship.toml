@@ -1,6 +1,6 @@
 add_newline = false
-format = "$username @ $directory$git_branch$git_metrics(- ($cmd_duration )($status))\n$os$character"
-right_format = "$c$cmake$go$haskell$java$lua$nodejs$python$rust$package"
+format = "$username @ $directory$git_branch$git_status$git_metrics$git_commit(- ($cmd_duration )($status))\n$os$character"
+right_format = "$c$cmake$go$haskell$java$lua$nodejs$python$rust$zig$package"
 
 [aws]
 symbol = "  "
@@ -186,3 +186,20 @@ format = "[$duration]($style)"
 [git_metrics]
 disabled = false
 format = "(\\[( [+$added]($added_style)) ([-$deleted]($deleted_style) )\\] )"
+
+[git_commit]
+disabled = false
+tag_disabled = false
+tag_symbol = ' '
+
+[git_status]
+disabled = false
+format = '([$all_status$ahead_behind]($style) )'
+style = 'bold yellow'
+stashed = ''
+modified = ''
+deleted = ''
+renamed = ''
+
+[direnv]
+disabled = false
