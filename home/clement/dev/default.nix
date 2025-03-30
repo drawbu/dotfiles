@@ -150,14 +150,11 @@
         ++ (with unstable; [
           # softs
           vscode
-          jetbrains.clion
           jetbrains.pycharm-professional
           jetbrains.webstorm
           jetbrains.datagrip
-          jetbrains.goland
           jetbrains.rust-rover
-          android-studio
-          # jetbrains-toolbox
+          jetbrains-toolbox
           zed-editor
           godot_4
         ])

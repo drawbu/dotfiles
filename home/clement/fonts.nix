@@ -94,6 +94,7 @@ in
       iosevka-bin
       iosevka-comfy.comfy
       jetbrains-mono
+      # TODO: switch to new way to use nerdfonts: nerd-font.jetbrains-mono, etc
       (nerdfonts.override {
         fonts = [
           "0xProto"

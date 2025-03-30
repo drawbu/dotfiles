@@ -77,6 +77,7 @@ in
         ncdu
         zip
         gitoxide
+        ventoy-full
       ])
       ++ pkgs.lib.optionals graphical (
         with pkgs;
@@ -90,6 +91,7 @@ in
           unstable.vesktop
           discord
           ungoogled-chromium
+          brave
           libreoffice-qt6-fresh
           teams-for-linux
           spotify
@@ -108,6 +110,7 @@ in
           appimage-run
           arduino-ide
           pavucontrol
+          pwvucontrol
           warp
           resources
           filezilla
