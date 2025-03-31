@@ -48,7 +48,7 @@
       sessionVariables = {
         ZSH_DISABLE_COMPFIX = true;
         ZSH_WAKATIME_PROJECT_DETECTION = true;
-        GIT_AUTO_FETCH_INTERVAL=300; # in seconds
+        GIT_AUTO_FETCH_INTERVAL = 300; # in seconds
       };
 
       history = {
@@ -95,24 +95,26 @@
         }
       ];
 
-      loginExtra = ''
-        systemctl --user import-environment PATH
-      '';
-
-      oh-my-zsh = {
-        enable = true;
-        plugins = [
-          "copyfile"
-          "direnv"
-          "history"
-          "sudo"
-          "zoxide"
-          "podman"
-          "rust"
-          "kubectl"
-          "git-auto-fetch"
-        ];
-      };
+      oh-my-zsh =
+        {
+          enable = true;
+          plugins = [
+            "copyfile"
+            "direnv"
+            "history"
+            "sudo"
+            "zoxide"
+            "podman"
+            "rust"
+            "kubectl"
+            "git-auto-fetch"
+          ];
+        }
+        // (pkgs.lib.optionalAttrs (!pkgs.stdenv.isDarwin) {
+          loginExtra = ''
+            systemctl --user import-environment PATH
+          '';
+        });
     };
   };
 }

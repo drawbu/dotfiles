@@ -39,29 +39,28 @@
       "$ANDROID_HOME/platform-tools"
     ];
 
-    sessionVariables =
-      {
-        # Rust
-        CARGO_NET_GIT_FETCH_WITH_CLI = "true";
-        # RUSTUP_TOOLCHAIN = "stable";
-        CARGO_HOME = "${config.home.homeDirectory}/.cargo";
-        RUSTUP_HOME = "${config.home.homeDirectory}/.rustup";
-        NPM_PREFIX = "${config.home.homeDirectory}/.npm";
-        PNPM_HOME = "${config.home.homeDirectory}/.pnpm";
-        NODE_OPTIONS = "--max-old-space-size=8192";
-        ANDROID_HOME = "${config.home.homeDirectory}/.local/share/Android/Sdk";
+    sessionVariables = {
+      # Rust
+      CARGO_NET_GIT_FETCH_WITH_CLI = "true";
+      # RUSTUP_TOOLCHAIN = "stable";
+      CARGO_HOME = "${config.home.homeDirectory}/.cargo";
+      RUSTUP_HOME = "${config.home.homeDirectory}/.rustup";
+      NPM_PREFIX = "${config.home.homeDirectory}/.npm";
+      PNPM_HOME = "${config.home.homeDirectory}/.pnpm";
+      NODE_OPTIONS = "--max-old-space-size=8192";
+      ANDROID_HOME = "${config.home.homeDirectory}/.local/share/Android/Sdk";
 
-        # Drop when version 31 drops.
-        # https://github.com/nodejs/corepack/issues/612#issuecomment-2631462297
-        COREPACK_INTEGRITY_KEYS = 0;
-      };
+      # Drop when version 31 drops.
+      # https://github.com/nodejs/corepack/issues/612#issuecomment-2631462297
+      COREPACK_INTEGRITY_KEYS = 0;
+    };
 
     packages =
       with pkgs;
       [
         # tools
-        (hiPrio gcc14) # note: cc from clang & gcc collides
-        clang_19
+        gcc14
+        (hiPrio clang_19) # note: cc from clang & gcc collides
         zig
         libcxx
         python312Full
@@ -82,7 +81,7 @@
         # random tools
         hyperfine
         tldr
-        linux-manual
+        # linux-manual
         file
         ripgrep
         fd
@@ -93,8 +92,8 @@
         nixpkgs-review
         entr
         ffmpeg
-        valgrind
-        gdb
+        # valgrind
+        # gdb
         cmake
         gnumake
         gcovr

@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-darwin = {
+      url = "github:lnl7/nix-darwin/nix-darwin-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-alien.url = "github:thiagokokada/nix-alien";
     # ecsls.url = "github:Sigmapitech/ecsls";
@@ -18,47 +23,52 @@
   outputs =
     { self, ... }@inputs:
     let
-      cfg = {
-        system = "x86_64-linux";
-        config.allowUnfree = true;
-        config.android_sdk.accept_license = true;
-      };
 
-      pkgs = import inputs.nixpkgs (
-        cfg
-        // {
-          overlays = [
-            (final: prev: {
-              unstable = import inputs.nixpkgs_unstable cfg;
-              legacy = import inputs.nixpkgs_legacy cfg;
+      nixpkgsFor =
+        system:
+        import inputs.nixpkgs (
+          let
+            cfg = {
+              inherit system;
+              config.allowUnfree = true;
+              config.android_sdk.accept_license = true;
+            };
+          in
+          cfg
+          // {
+            overlays = [
+              (final: prev: {
+                unstable = import inputs.nixpkgs_unstable cfg;
+                legacy = import inputs.nixpkgs_legacy cfg;
 
-              # Softwares
-              # inherit (inputs.ecsls.packages.${cfg.system}) ecsls;
-              inherit (inputs.nix-alien.packages.${cfg.system}) nix-alien;
-              inherit (inputs.hyprqtile.packages.${cfg.system}) hyprqtile;
-              nix-direnv = prev.nix-direnv.override { enableFlakes = true; };
-            })
-          ];
-        }
-      );
+                # Softwares
+                # inherit (inputs.ecsls.packages.${system}) ecsls;
+                inherit (inputs.nix-alien.packages.${system}) nix-alien;
+                inherit (inputs.hyprqtile.packages.${system}) hyprqtile;
+                nix-direnv = prev.nix-direnv.override { enableFlakes = true; };
+              })
+            ];
+          }
+        );
 
       hardware = inputs.nixos-hardware.nixosModules;
 
-      specialArgs = {
-        inherit pkgs;
+      specialArgs = config: {
+        pkgs = nixpkgsFor config;
         finputs = inputs;
         graphical = false;
       };
 
       defaultNixOS =
         {
+          system,
           args ? { },
           override ? (_: { }),
         }:
         let
           completeArgs = specialArgs // args;
-          system = {
-            inherit (cfg) system;
+          systemCfg = {
+            inherit system;
             specialArgs = completeArgs;
             modules = [
               inputs.home-manager.nixosModules.home-manager
@@ -71,23 +81,66 @@
             ];
           };
         in
-        system // (override system);
+        systemCfg // (override systemCfg);
     in
     {
-      formatter.${cfg.system} = pkgs.nixfmt-rfc-style;
+      formatter.x86_64-linux = (nixpkgsFor "x86_64-linux").nixfmt-rfc-style;
+      formatter.aarch64-darwin = (nixpkgsFor "aarch64-darwin").nixfmt-rfc-style;
 
       hydraJobs = {
-        nixos = pkgs.lib.mapAttrs (
+        nixos = (nixpkgsFor "x86_64-linux").lib.mapAttrs (
           name: config: config.config.system.build.toplevel
         ) self.nixosConfigurations;
       };
 
       homeConfigurations = {
         "home-generic" = inputs.home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+          pkgs = nixpkgsFor "x86_64-linux";
           extraSpecialArgs = specialArgs;
           backupFileExtension = "backup";
           modules = [ ./home/clement ];
+        };
+      };
+
+      darwinConfigurations = {
+        macos = inputs.nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = specialArgs "aarch64-darwin";
+          modules = [
+            ./hosts/macos
+            inputs.home-manager.darwinModules.home-manager
+            {
+              home-manager.extraSpecialArgs = specialArgs "aarch64-darwin";
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.verbose = true;
+              home-manager.users.clementboillot =
+                { ... }:
+                {
+
+                  programs.git = {
+                    signing = {
+                      key = "~/.ssh/id_ed25519_signing.pub";
+                      signByDefault = true;
+                    };
+                    extraConfig.gpg.format = "ssh";
+                  };
+
+                  home.stateVersion = "24.11";
+                  programs.home-manager.enable = true;
+
+                  imports = [
+                    ./home/clement/vim
+                    ./home/clement/shell
+                    ./home/clement/git.nix
+                    ./home/clement/dev
+                    ./home/clement/tmux.nix
+                    ./home/clement/btop.nix
+                    ./home/clement/gh.nix
+                  ];
+                };
+            }
+          ];
         };
       };
 
@@ -108,6 +161,7 @@
 
         # Laptop
         "pancake" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
+          system = "x86_64-linux";
           args.graphical = true;
           override = cfg: {
             modules = cfg.modules ++ [
@@ -119,12 +173,14 @@
 
         # Home server
         "waffle" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
+          system = "x86_64-linux";
           args.graphical = false;
           override = cfg: { modules = cfg.modules ++ [ ./hosts/waffle ]; };
         });
 
         # Headscale server
         "pineapple" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
+          system = "x86_64-linux";
           args.graphical = false;
           override = cfg: { modules = cfg.modules ++ [ ./hosts/pineapple ]; };
         });
