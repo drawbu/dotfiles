@@ -66,7 +66,7 @@
           override ? (_: { }),
         }:
         let
-          completeArgs = specialArgs // args;
+          completeArgs = (specialArgs system) // args;
           systemCfg = {
             inherit system;
             specialArgs = completeArgs;
@@ -147,6 +147,7 @@
       nixosConfigurations = {
         # Home PC
         "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
+          system = "x86_64-linux";
           args.graphical = true;
           override = cfg: {
             modules = cfg.modules ++ [
