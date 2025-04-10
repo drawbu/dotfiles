@@ -66,6 +66,7 @@ in
         mnemonicPrefix = true;
         renames = "true";
       };
+      alias.l = "log --oneline --decorate --graph";
       "url \"ssh://git@github.com/\"".insteadOf = "https://github.com/";
       "url \"ssh://git@gitlab.com/\"".insteadOf = "https://gitlab.com/";
     };
