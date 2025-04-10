@@ -76,7 +76,7 @@ in
         ollama
         ncdu
         zip
-        gitoxide
+        unstable.gitoxide
         ventoy-full
       ])
       ++ pkgs.lib.optionals graphical (
