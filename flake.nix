@@ -23,7 +23,6 @@
   outputs =
     { self, ... }@inputs:
     let
-
       nixpkgsFor =
         system:
         import inputs.nixpkgs (
@@ -53,7 +52,7 @@
 
       hardware = inputs.nixos-hardware.nixosModules;
 
-      specialArgs = config: {
+      specialArgs' = config: {
         pkgs = nixpkgsFor config;
         finputs = inputs;
         graphical = false;
@@ -66,16 +65,16 @@
           override ? (_: { }),
         }:
         let
-          completeArgs = (specialArgs system) // args;
-          systemCfg = {
+          systemCfg = rec {
             inherit system;
-            specialArgs = completeArgs;
+            specialArgs = (specialArgs' system) // args;
             modules = [
               inputs.home-manager.nixosModules.home-manager
               {
                 home-manager = {
-                  extraSpecialArgs = completeArgs;
+                  extraSpecialArgs = specialArgs;
                   backupFileExtension = "backup";
+                  verbose = true;
                 };
               }
             ];
@@ -84,40 +83,41 @@
         systemCfg // (override systemCfg);
     in
     {
-      formatter.x86_64-linux = (nixpkgsFor "x86_64-linux").nixfmt-rfc-style;
-      formatter.aarch64-darwin = (nixpkgsFor "aarch64-darwin").nixfmt-rfc-style;
+      formatter = inputs.nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ] (system: nixpkgsFor system).nixfmt-rfc-style;
 
       hydraJobs = {
-        nixos = (nixpkgsFor "x86_64-linux").lib.mapAttrs (
+        nixos = inputs.nixpkgs.lib.mapAttrs (
           name: config: config.config.system.build.toplevel
         ) self.nixosConfigurations;
       };
 
       homeConfigurations = {
-        "home-generic" = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgsFor "x86_64-linux";
-          extraSpecialArgs = specialArgs;
+        "home-generic" = inputs.home-manager.lib.homeManagerConfiguration rec {
+          extraSpecialArgs = specialArgs' "x86_64-linux";
+          inherit (extraSpecialArgs) pkgs;
           backupFileExtension = "backup";
           modules = [ ./home/clement ];
         };
       };
 
       darwinConfigurations = {
-        macos = inputs.nix-darwin.lib.darwinSystem {
+        macos = inputs.nix-darwin.lib.darwinSystem rec {
           system = "aarch64-darwin";
-          specialArgs = specialArgs "aarch64-darwin";
+          specialArgs = specialArgs' system;
           modules = [
             ./hosts/macos
             inputs.home-manager.darwinModules.home-manager
             {
-              home-manager.extraSpecialArgs = specialArgs "aarch64-darwin";
+              home-manager.extraSpecialArgs = specialArgs;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.verbose = true;
               home-manager.users.clementboillot =
                 { ... }:
                 {
-
                   programs.git = {
                     signing = {
                       key = "~/.ssh/id_ed25519_signing.pub";

@@ -22,7 +22,7 @@
 
   system.defaults.finder.ShowPathbar = true;
 
-  home-manager.users.clement.home.shellAliases = {
+  home-manager.users.clementboillot.home.shellAliases = {
     x86 = "env /usr/bin/arch -x86_64 /bin/zsh --login";
     arm = "env /usr/bin/arch -arm64 /bin/zsh --login";
   };

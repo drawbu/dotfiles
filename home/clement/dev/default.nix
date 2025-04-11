@@ -81,7 +81,6 @@
         # random tools
         hyperfine
         tldr
-        # linux-manual
         file
         ripgrep
         fd
@@ -92,8 +91,6 @@
         nixpkgs-review
         entr
         ffmpeg
-        # valgrind
-        # gdb
         cmake
         gnumake
         gcovr
@@ -139,6 +136,13 @@
         unstable.zls
         haskell-language-server
         ijhttp
+        act
+        dive
+      ]
+      ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
+        linux-manual
+        valgrind
+        gdb
       ]
       ++ lib.optionals graphical (
         [

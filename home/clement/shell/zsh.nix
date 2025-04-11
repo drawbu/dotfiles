@@ -108,6 +108,7 @@
             "rust"
             "kubectl"
             "git-auto-fetch"
+            "yarn"
           ];
         };
       }
