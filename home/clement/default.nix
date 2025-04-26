@@ -49,10 +49,9 @@ in
     stateVersion = "23.05";
 
     packages =
-      (with pkgs; [
+      with pkgs;
+      [
         # ↓ cli & tui
-        direnv
-        wakatime
         btop
         neofetch
         ookla-speedtest
@@ -78,10 +77,12 @@ in
         zip
         unstable.gitoxide
         ventoy-full
-      ])
-      ++ pkgs.lib.optionals graphical (
-        with pkgs;
+      ]
+      ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux (
         [
+          yubikey-manager-qt
+        ]
+        ++ pkgs.lib.optionals graphical [
           pods
           feh
           thunderbird-bin
@@ -147,26 +148,5 @@ in
     blueman-applet.enable = true;
 
     swaync.enable = true;
-  };
-
-  programs = {
-    eza = {
-      enable = true;
-      git = true;
-      icons = "auto";
-      extraOptions = [ "--group-directories-first" ];
-    };
-
-    bat = {
-      enable = true;
-      config.theme = "TwoDark";
-    };
-
-    ssh = {
-      enable = true;
-      extraConfig = ''
-        SetEnv TERM=xterm-256color
-      '';
-    };
   };
 }

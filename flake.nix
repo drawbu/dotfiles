@@ -115,30 +115,6 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.verbose = true;
-              home-manager.users.clementboillot =
-                { ... }:
-                {
-                  programs.git = {
-                    signing = {
-                      key = "~/.ssh/id_ed25519_signing.pub";
-                      signByDefault = true;
-                    };
-                    extraConfig.gpg.format = "ssh";
-                  };
-
-                  home.stateVersion = "24.11";
-                  programs.home-manager.enable = true;
-
-                  imports = [
-                    ./home/clement/vim
-                    ./home/clement/shell
-                    ./home/clement/git.nix
-                    ./home/clement/dev
-                    ./home/clement/tmux.nix
-                    ./home/clement/btop.nix
-                    ./home/clement/gh.nix
-                  ];
-                };
             }
           ];
         };

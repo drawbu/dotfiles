@@ -22,8 +22,28 @@
 
   system.defaults.finder.ShowPathbar = true;
 
-  home-manager.users.clementboillot.home.shellAliases = {
-    x86 = "env /usr/bin/arch -x86_64 /bin/zsh --login";
-    arm = "env /usr/bin/arch -arm64 /bin/zsh --login";
-  };
+  home-manager.users.clementboillot =
+    { ... }:
+    {
+      programs.git = {
+        signing = {
+          key = "~/.ssh/id_ed25519.pub";
+          signByDefault = true;
+        };
+        extraConfig.gpg.format = "ssh";
+      };
+
+      home.stateVersion = "24.11";
+      programs.home-manager.enable = true;
+
+      imports = [
+        ../../home/clement/vim
+        ../../home/clement/shell
+        ../../home/clement/git.nix
+        ../../home/clement/dev
+        ../../home/clement/tmux.nix
+        ../../home/clement/btop.nix
+        ../../home/clement/gh.nix
+      ];
+    };
 }
