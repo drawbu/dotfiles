@@ -107,6 +107,8 @@
         postgresql_17
         gum
         uiua
+        direnv
+        wakatime
 
         # language servers
         lua-language-server
@@ -137,7 +139,7 @@
         haskell-language-server
         ijhttp
         act
-        dive
+        unstable.dive
       ]
       ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
         linux-manual

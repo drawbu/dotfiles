@@ -81,6 +81,8 @@ return {
           '^__pycache__$',
           '%.svelte%-kit$',
           '%.react%-router$',
+          '%.yarn$',
+          '%.next$',
         }
 
         -- return next(string.match(name, table.unpack(ignored))) ~= nil
