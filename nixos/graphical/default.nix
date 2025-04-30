@@ -7,10 +7,7 @@
     ./xdg.nix
   ];
 
-  console = {
-    font = "Lat2-Terminus16";
-    useXkbConfig = true;
-  };
+  console.useXkbConfig = true;
 
   hardware = {
     pulseaudio.enable = false;

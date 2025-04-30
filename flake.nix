@@ -147,6 +147,16 @@
             ];
           };
         });
+        "framework" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
+          system = "x86_64-linux";
+          args.graphical = true;
+          override = cfg: {
+            modules = cfg.modules ++ [
+              ./hosts/framework
+              hardware.framework-amd-ai-300-series
+            ];
+          };
+        });
 
         # Home server
         "waffle" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {

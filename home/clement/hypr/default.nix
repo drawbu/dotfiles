@@ -94,11 +94,6 @@ in
           ))
         );
 
-      env = [
-        "XCURSOR_SIZE,16"
-        "ELECTRON_OZONE_PLATFORM_HINT,wayland"
-      ];
-
       input = {
         kb_layout = "fr";
         follow_mouse = 1;

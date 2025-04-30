@@ -48,6 +48,11 @@ in
 
     stateVersion = "23.05";
 
+    sessionVariables = {
+      XCURSOR_SIZE = 16;
+      ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    };
+
     packages =
       with pkgs;
       [
@@ -79,10 +84,9 @@ in
         ventoy-full
       ]
       ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux (
-        [
-          yubikey-manager-qt
-        ]
+        [ ]
         ++ pkgs.lib.optionals graphical [
+          # yubikey-manager-qt
           pods
           feh
           thunderbird-bin
@@ -104,7 +108,7 @@ in
           nautilus
           eog
           slack
-          tic-80
+          # tic-80
           orca-slicer
           bambu-studio
           tor-browser
