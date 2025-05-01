@@ -24,7 +24,7 @@
     };
   };
 
-
+  hardware.framework.laptop13.audioEnhancement.enable = true;
 
   boot.loader.grub.useOSProber = true;
 

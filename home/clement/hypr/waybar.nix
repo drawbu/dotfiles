@@ -1,5 +1,6 @@
-{pkgs, ...}: let
-  colors = import ./colors.nix {theme = "dark";};
+{ pkgs, ... }:
+let
+  colors = import ./colors.nix { theme = "dark"; };
   theme = pkgs.fetchFromGitHub {
     owner = "catppuccin";
     repo = "waybar";
@@ -13,7 +14,8 @@
     file = "theme.css";
     default = "dark.css";
   };
-in {
+in
+{
   xdg.configFile = {
     "waybar/dark.css".source = "${theme}/themes/mocha.css";
     "waybar/light.css".source = "${theme}/themes/latte.css";
@@ -22,11 +24,8 @@ in {
 
   programs.waybar = with colors; {
     enable = true;
-    systemd = {
-      enable = false;
-      target = "graphical-session.target";
-    };
-    style = /*css*/ ''
+    systemd.enable = false;
+    style = ''
       @import "./theme.css";
 
       window#waybar {
@@ -79,7 +78,8 @@ in {
 
       #clock,
       #privacy,
-      #mpris {
+      #mpris,
+      #power-profiles-daemon {
         margin-left: 4px;
       }
 
@@ -159,11 +159,11 @@ in {
             active = "";
           };
           persistent-workspaces = {
-            "1" = [];
-            "2" = [];
-            "3" = [];
-            "4" = [];
-            "5" = [];
+            "1" = [ ];
+            "2" = [ ];
+            "3" = [ ];
+            "4" = [ ];
+            "5" = [ ];
           };
         };
 
@@ -173,6 +173,7 @@ in {
           "clock"
           "privacy"
           "mpris"
+          "power-profiles-daemon"
         ];
         "custom/dark-switch" = {
           format = "󱎖 ";
@@ -203,6 +204,17 @@ in {
           };
           status-icons = {
             paused = " ";
+          };
+        };
+        power-profiles-daemon = {
+          format = "{icon}";
+          tooltip-format = "Power profile: {profile}\nDriver: {driver}";
+          tooltip = true;
+          format-icons = {
+            default = "";
+            performance = "";
+            balanced = "";
+            power-saver = "";
           };
         };
 
