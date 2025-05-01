@@ -10,7 +10,6 @@
   console.useXkbConfig = true;
 
   hardware = {
-    pulseaudio.enable = false;
     bluetooth.enable = true;
 
     logitech.wireless = {
@@ -20,6 +19,7 @@
   };
 
   services = {
+    pulseaudio.enable = false;
     upower.enable = true;
     # For the file manager
     gvfs.enable = true;

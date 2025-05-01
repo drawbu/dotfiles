@@ -1,11 +1,12 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.11";
-    nixpkgs_legacy.url = "nixpkgs/nixos-24.05";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs_legacy.url = "nixpkgs/nixos-24.11";
+    nixpkgs_legacy'.url = "nixpkgs/nixos-24.05";
     nixpkgs_unstable.url = "nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -39,8 +40,8 @@
               (final: prev: {
                 unstable = import inputs.nixpkgs_unstable cfg;
                 legacy = import inputs.nixpkgs_legacy cfg;
+                legacy' = import inputs.nixpkgs_legacy' cfg;
 
-                # Softwares
                 # inherit (inputs.ecsls.packages.${system}) ecsls;
                 inherit (inputs.nix-alien.packages.${system}) nix-alien;
                 inherit (inputs.hyprqtile.packages.${system}) hyprqtile;

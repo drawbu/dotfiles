@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ lib, ... }:
 {
   imports = [
     ./hardware.nix
@@ -9,13 +9,12 @@
   networking.hostName = "framework";
   system.stateVersion = "24.11";
 
-  boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
-
   home-manager.users.clement = {
     wayland.windowManager.hyprland.settings = {
       monitor = lib.mkForce ",highres,auto-up,1.5";
       xwayland.force_zero_scaling = true;
     };
+
     home = {
       pointerCursor.size = lib.mkForce 24;
       sessionVariables = {

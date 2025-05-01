@@ -87,7 +87,6 @@
         vgrep
         jq
         bear
-        unstable.lazygit
         nixpkgs-review
         entr
         ffmpeg
@@ -112,13 +111,13 @@
 
         # language servers
         lua-language-server
-        unstable.nixd
+        nixd
         clang-analyzer
         clang-tools_19
         pyright
         vscode-langservers-extracted
-        unstable.emmet-language-server
-        unstable.tailwindcss-language-server
+        emmet-language-server
+        tailwindcss-language-server
         nodePackages.typescript-language-server
         nodePackages.svelte-language-server
         nodePackages.bash-language-server
@@ -139,8 +138,8 @@
         haskell-language-server
         ijhttp
         act
-        unstable.dive
-        unstable.yubikey-manager
+        dive
+        yubikey-manager
       ]
       ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
         linux-manual

@@ -44,7 +44,7 @@
       });
     };
 
-    theme.name = "Catppuccin-Mocha-Compact-Peach-Dark";
+    theme.name = "catppuccin-mocha-peach-compact+rimless";
   };
 
   qt = {

@@ -78,5 +78,27 @@ in
     };
   };
 
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      gui = {
+        nerdFontsVersion = "3";
+        showNumstatInFilesView = true;
+        showDivergenceFromBaseBranch = "arrowAndNumber";
+      };
+      git = {
+        overrideGpg = true;
+        disableForcePushing = true;
+        mainBranches = [
+          "master"
+          "main"
+          "develop"
+        ];
+      };
+      update.method = "never";
+      notARepository = "quit";
+    };
+  };
+
   home.packages = with pkgs; [ git-open ];
 }

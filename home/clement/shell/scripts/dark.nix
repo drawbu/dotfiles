@@ -30,9 +30,9 @@ in
 
         # Update gtk theme
         if ${shBool config.gtk.enable}; then
-          gtk_theme="Catppuccin-Mocha-Compact-Peach-Dark";
+          gtk_theme="catppuccin-mocha-peach-compact+rimless";
           if [ "$theme" = "light" ]; then
-            gtk_theme="Catppuccin-Latte-Compact-Peach-Light";
+            gtk_theme="catppuccin-latte-peach-compact+rimless";
           fi
 
           echo "[org/gnome/desktop/interface]

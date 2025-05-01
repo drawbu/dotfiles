@@ -5,7 +5,7 @@
       prismlauncher
       heroic
       lutris
-      unstable.r2modman
+      r2modman
     ];
 
     sessionVariables = {

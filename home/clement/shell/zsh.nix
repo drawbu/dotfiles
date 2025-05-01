@@ -27,7 +27,7 @@
     zsh =
       {
         enable = true;
-        initExtra = ''
+        initContent = ''
           code() {
             if [ "$#" -eq 0 ]; then
               /usr/bin/env code .
@@ -107,7 +107,6 @@
             "podman"
             "rust"
             "kubectl"
-            "git-auto-fetch"
             "yarn"
           ];
         };

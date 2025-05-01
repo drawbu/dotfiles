@@ -94,14 +94,9 @@ in
       iosevka-bin
       iosevka-comfy.comfy
       jetbrains-mono
-      # TODO: switch to new way to use nerdfonts: nerd-font.jetbrains-mono, etc
-      (nerdfonts.override {
-        fonts = [
-          "0xProto"
-          "JetBrainsMono"
-          "Iosevka"
-        ];
-      })
+      nerd-fonts.jetbrains-mono
+      nerd-fonts._0xproto
+      nerd-fonts.iosevka
       liberation_ttf
       mplus-outline-fonts.githubRelease
       ubuntu_font_family

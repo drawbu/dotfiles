@@ -20,7 +20,7 @@ in
     packages = with pkgs; [
       hyprqtile
       swww
-      xwaylandvideobridge
+      kdePackages.xwaylandvideobridge
       pyprland
       nwg-displays
       gnome-keyring
@@ -147,26 +147,26 @@ in
 
       windowrule =
         (map (e: "float, ${e}") [
-          "^kitty$"
-          "^com.mitchellh.ghostty$"
-          "class:^(jetbrains-).*, title:^(Welcome to).*$"
-          "^satty$"
+          "class:kitty"
+          "class:com.mitchellh.ghostty"
+          "class:jetbrains-.*, title:Welcome to.*$"
+          "class:satty"
         ])
         ++ (map (e: "noblur, ${e}") [
-          "^kitty$"
-          "^com.mitchellh.ghostty$"
+          "class:kitty"
+          "class:com.mitchellh.ghostty"
         ])
         ++ (map (e: "opacity 0.9, ${e}") [
-          "^discord$"
-          "^vesktop$"
-          "^obsidian$"
-          "^waybar$"
-          "^Rofi$"
-          "^jetbrains-.*"
-          "^code$"
+          "class:discord"
+          "class:vesktop"
+          "class:obsidian"
+          "class:waybar"
+          "class:Rofi"
+          "class:jetbrains-.*"
+          "class:code"
         ])
         ++ (map (e: "opacity 0, ${e}") [
-          "xwaylandvideobridge"
+          "class:xwaylandvideobridge"
         ]);
 
       dwindle = {

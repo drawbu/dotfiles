@@ -82,6 +82,7 @@ in
         zip
         unstable.gitoxide
         ventoy-full
+        libnotify
       ]
       ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux (
         [ ]
@@ -120,7 +121,7 @@ in
           resources
           filezilla
           figma-linux
-          legacy.figma-agent
+          legacy'.figma-agent
           hexchat
           polychromatic
           superTuxKart
