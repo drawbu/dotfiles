@@ -35,7 +35,12 @@ in
     userName = "Clément";
     userEmail = "git@drawbu.dev";
     lfs.enable = true;
+    signing = {
+      key = "~/.ssh/id_ed25519_sk.pub"; # ssh-keygen -K
+      signByDefault = true;
+    };
     extraConfig = {
+      gpg.format = "ssh";
       init.defaultBranch = "main";
       core.excludesFile = toString globalgitignore;
       push = {

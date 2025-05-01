@@ -140,6 +140,7 @@
         ijhttp
         act
         unstable.dive
+        unstable.yubikey-manager
       ]
       ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
         linux-manual

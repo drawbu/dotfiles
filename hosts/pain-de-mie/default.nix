@@ -13,12 +13,6 @@
   # Yeah I have Windows
   boot.loader.grub.useOSProber = true;
 
-  # Git signing
-  home-manager.users.clement.programs.git.signing = {
-    key = "CFAE6BC61FF97205";
-    signByDefault = true;
-  };
-
   # nvidia, fuck you
   hardware = {
     graphics.enable = true;

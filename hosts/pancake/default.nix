@@ -14,15 +14,6 @@
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # Git signing
-  home-manager.users.clement.programs.git = {
-    signing = {
-      key = "~/.ssh/id_ed25519.pub";
-      signByDefault = true;
-    };
-    extraConfig.gpg.format = "ssh";
-  };
-
   services = {
     power-profiles-daemon.enable = false; # disable power thing from Gnome
     xserver.videoDrivers = [ "modesettings" ];

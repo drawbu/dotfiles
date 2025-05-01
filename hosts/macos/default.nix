@@ -22,17 +22,14 @@
 
   system.defaults.finder.ShowPathbar = true;
 
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
   home-manager.users.clementboillot =
     { ... }:
     {
-      programs.git = {
-        signing = {
-          key = "~/.ssh/id_ed25519.pub";
-          signByDefault = true;
-        };
-        extraConfig.gpg.format = "ssh";
-      };
-
       home.stateVersion = "24.11";
       programs.home-manager.enable = true;
 

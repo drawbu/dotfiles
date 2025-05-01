@@ -23,7 +23,6 @@
         # XCURSOR_SIZE = lib.mkForce 24;
       };
     };
-    programs.git = {};
   };
 
 
