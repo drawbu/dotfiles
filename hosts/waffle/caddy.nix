@@ -3,8 +3,8 @@
   services.caddy = {
     enable = true;
     package = pkgs.caddy.withPlugins {
-      plugins = [ "github.com/caddy-dns/cloudflare@v0.0.0-20250214163716-188b4850c0f2" ];
-      hash = "sha256-wi0Q6BkSymf6buKW/AI1JsDkwCG/KH4n/gq9na5qInk=";
+      plugins = [ "github.com/caddy-dns/cloudflare@v0.2.1" ];
+      hash = "sha256-saKJatiBZ4775IV2C5JLOmZ4BwHKFtRZan94aS5pO90=";
     };
     email = "letsencrypt@drawbu.dev";
     extraConfig = ''
