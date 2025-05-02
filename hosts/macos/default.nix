@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  services.nix-daemon.enable = true;
   nix.settings.experimental-features = "nix-command flakes";
 
   # Create /etc/zshrc that loads the nix-darwin environment.
@@ -26,6 +25,8 @@
     enable = true;
     enableSSHSupport = true;
   };
+
+  services.openssh.enable = false;
 
   home-manager.users.clementboillot =
     { ... }:
