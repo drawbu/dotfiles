@@ -16,11 +16,8 @@
     '';
   };
 
-  users.users.hydra.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMEIMRXQMnaP08FgRGXEpgX9oDADom5h+xjAnEgLNCXF"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJmBhcZtmRfwnZJSQ9vxBecGlXDzQbWeCcvfRAcEK9FO"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICieMi8TQag5eoIJXFQbXic8YCeRMdpIw/8d8KeuxSD7"
-  ];
+  users.users.hydra.openssh.authorizedKeys.keys =
+    config.users.users.clement.openssh.authorizedKeys.keys;
 
   nix.buildMachines = [
     {
