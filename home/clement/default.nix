@@ -1,39 +1,41 @@
-# 'clement' user home-manager config for NixOS & generic linux
 {
   pkgs,
+  lib,
   graphical,
   config,
   ...
 }:
-let
-  username = "clement";
-in
 {
   imports =
     [
       ./vim
       ./shell
-      ./dev
       ./git.nix
+      ./dev
       ./tmux.nix
       ./btop.nix
       ./gh.nix
-      ./distrobox.nix
     ]
-    ++ pkgs.lib.optionals graphical [
-      ./rofi
-      ./hypr
-      ./kanata
-      ./fonts.nix
-      ./gtk.nix
-      ./firefox.nix
-      ./cursor.nix
-      ./kitty.nix
-      ./mimeapps.nix
-      ./login.nix
-      ./gaming.nix
-      ./ghostty.nix
-    ];
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [ ]
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux (
+      [
+        ./distrobox.nix
+      ]
+      ++ lib.optionals graphical [
+        ./rofi
+        ./hypr
+        ./kanata
+        ./fonts.nix
+        ./gtk.nix
+        ./firefox.nix
+        ./cursor.nix
+        ./kitty.nix
+        ./mimeapps.nix
+        ./login.nix
+        ./gaming.nix
+        ./ghostty.nix
+      ]
+    );
 
   programs.home-manager.enable = true;
 
@@ -43,9 +45,6 @@ in
   ];
 
   home = {
-    inherit username;
-    homeDirectory = "/home/${username}";
-
     stateVersion = "23.05";
 
     sessionVariables = {
@@ -57,14 +56,9 @@ in
       with pkgs;
       [
         # ↓ cli & tui
-        btop
         neofetch
         ookla-speedtest
         wget
-        xsel
-        xclip
-
-        wl-clipboard
         #wl-clipboard-x11
         todo
         comma
@@ -81,12 +75,15 @@ in
         ncdu
         zip
         unstable.gitoxide
-        ventoy-full
-        libnotify
       ]
       ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux (
         [ ]
-        ++ pkgs.lib.optionals graphical [
+        ++ lib.optionals graphical [
+          ventoy-full
+          xsel
+          xclip
+          libnotify
+          wl-clipboard
           # yubikey-manager-qt
           pods
           feh
@@ -133,12 +130,13 @@ in
       ".config/nixpkgs/config.nix".text = "{ allowUnfree = true; allowUnsupportedSystem = true; }";
     };
   };
-
+}
+// lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
   services = {
     flameshot = {
       enable = true;
       settings.General = {
-        savePath = "/home/${username}/Downloads";
+        savePath = "/home/clement/Downloads";
         showStartupLaunchMessage = false;
       };
     };

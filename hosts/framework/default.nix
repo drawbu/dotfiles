@@ -23,6 +23,7 @@
       };
     };
   };
+  programs.nh.clean.enable = lib.mkForce false;
 
   hardware.framework.laptop13.audioEnhancement.enable = true;
 

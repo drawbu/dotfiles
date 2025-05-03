@@ -28,20 +28,5 @@
 
   services.openssh.enable = false;
 
-  home-manager.users.clementboillot =
-    { ... }:
-    {
-      home.stateVersion = "24.11";
-      programs.home-manager.enable = true;
-
-      imports = [
-        ../../home/clement/vim
-        ../../home/clement/shell
-        ../../home/clement/git.nix
-        ../../home/clement/dev
-        ../../home/clement/tmux.nix
-        ../../home/clement/btop.nix
-        ../../home/clement/gh.nix
-      ];
-    };
+  home-manager.users.clementboillot = import ../../home/clement;
 }
