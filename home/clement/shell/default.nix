@@ -62,6 +62,12 @@
     ssh = {
       enable = true;
       extraConfig = ''
+        IdentityAgent "${
+          if pkgs.stdenv.isDarwin then
+            "~/Library/Group Containers/2BUA8C4S2C.com.1password/t"
+          else
+            "~/.1password"
+        }/agent.sock"
         SetEnv TERM=xterm-256color
       '';
     };

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   globalgitignore = pkgs.writeText "globalgitignore" ''
     ## MacOS Files
@@ -36,11 +36,17 @@ in
     userEmail = "git@drawbu.dev";
     lfs.enable = true;
     signing = {
-      key = "~/.ssh/id_ed25519_sk.pub"; # ssh-keygen -K
+      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILu5dP9F77dUgxHpu7drGx/cMpYPRXw0SjsTOr3sLPBZ"; # op
       signByDefault = true;
     };
     extraConfig = {
       gpg.format = "ssh";
+      "gpg \"ssh\"".program =
+        if pkgs.stdenv.isDarwin then
+          "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+        else
+          lib.getExe' pkgs._1password-gui "op-ssh-sign";
+
       init.defaultBranch = "main";
       core.excludesFile = toString globalgitignore;
       push = {

@@ -16,7 +16,7 @@
       ./btop.nix
       ./gh.nix
     ]
-    ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [ ]
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [ ]
     ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux (
       [
         ./distrobox.nix
@@ -39,18 +39,8 @@
 
   programs.home-manager.enable = true;
 
-  xdg.systemDirs.data = [
-    "${config.home.homeDirectory}/.local/share/flatpak/exports/share"
-    "/var/lib/flatpak/exports/share"
-  ];
-
   home = {
     stateVersion = "23.05";
-
-    sessionVariables = {
-      XCURSOR_SIZE = 16;
-      ELECTRON_OZONE_PLATFORM_HINT = "wayland";
-    };
 
     packages =
       with pkgs;
@@ -132,6 +122,16 @@
   };
 }
 // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
+  home.sessionVariables = {
+    XCURSOR_SIZE = 16;
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+  };
+
+  xdg.systemDirs.data = [
+    "${config.home.homeDirectory}/.local/share/flatpak/exports/share"
+    "/var/lib/flatpak/exports/share"
+  ];
+
   services = {
     flameshot = {
       enable = true;
