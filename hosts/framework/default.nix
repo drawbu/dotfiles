@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./hardware.nix
@@ -9,20 +9,27 @@
   networking.hostName = "framework";
   system.stateVersion = "24.11";
 
-  home-manager.users.clement = {
-    wayland.windowManager.hyprland.settings = {
-      monitor = lib.mkForce ",highres,auto-up,1.5";
-      xwayland.force_zero_scaling = true;
-    };
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
-    home = {
-      pointerCursor.size = lib.mkForce 24;
-      sessionVariables = {
-        GDK_SCALE = 1.5;
-        # XCURSOR_SIZE = lib.mkForce 24;
+  home-manager.users.clement =
+    { pkgs, ... }:
+    {
+      wayland.windowManager.hyprland.settings = {
+        monitor = lib.mkForce ",highres,auto-up,1.5";
+        xwayland.force_zero_scaling = true;
+      };
+
+      home = {
+        stateVersion = "24.11";
+        # pointerCursor.size = lib.mkForce 16;
+        packages = with pkgs; [ framework-tool ];
+        sessionVariables = {
+          GDK_SCALE = 1; # GDK 3 does not support fractional scaling; really should be 1.5
+          QT_AUTO_SCREEN_SCALE_FACTOR = 1;
+          QT_ENABLE_HIGHDPI_SCALING = 1;
+        };
       };
     };
-  };
   programs.nh.clean.enable = lib.mkForce false;
 
   hardware.framework.laptop13.audioEnhancement.enable = true;

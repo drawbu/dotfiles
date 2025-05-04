@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   colors = import ./colors.nix { theme = "dark"; };
   theme = pkgs.fetchFromGitHub {
@@ -10,7 +10,7 @@ let
 
   activation = import ./symlink.nix {
     inherit pkgs;
-    path = "/home/clement/.config/waybar";
+    path = "${config.home.homeDirectory}/.config/waybar";
     file = "theme.css";
     default = "dark.css";
   };

@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   hyprpaperActivation = import ./symlink.nix {
     inherit pkgs;
-    path = "/home/clement/.config/hypr/paper";
+    path = "${config.home.homeDirectory}/.config/hypr/paper";
     file = "current";
     default = "dark";
   };

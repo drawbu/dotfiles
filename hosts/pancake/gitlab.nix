@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   services.gitlab-runner = {
     enable = true;
@@ -18,7 +18,7 @@
       executor = "docker";
       dockerImage = "alpine:latest";
       # dockerVolumes = [ "/var/cache/gitlab-runner" ];
-      authenticationTokenConfigFile = "/home/clement/.env.gitlab-runner";
+      authenticationTokenConfigFile = "${config.home.homeDirectory}/.env.gitlab-runner";
       # cacheDir = "/var/cache/gitlab-runner";
     };
   };

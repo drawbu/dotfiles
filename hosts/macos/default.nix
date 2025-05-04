@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, ... }:
 {
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -28,5 +28,13 @@
 
   services.openssh.enable = false;
 
-  home-manager.users.clementboillot = import ../../home/clement;
+  home-manager.users.clementboillot =
+    { ... }:
+    {
+      imports = [ ../../home/clement ];
+      home = {
+        username = lib.mkForce "clementboillot";
+        stateVersion = "24.11";
+      };
+    };
 }
