@@ -65,6 +65,7 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
+    systemd.enableXdgAutostart = true;
     settings = {
       monitor = ",highres,auto-up,1";
 

@@ -80,10 +80,19 @@
       ];
   };
 
-  xdg.systemDirs.data = [
-    "${config.home.homeDirectory}/.local/share/flatpak/exports/share"
-    "/var/lib/flatpak/exports/share"
-  ];
+  xdg = {
+    systemDirs.data = [
+      "${config.home.homeDirectory}/.local/share/flatpak/exports/share"
+      "/var/lib/flatpak/exports/share"
+    ];
+    autostart = {
+      enable = true;
+      readOnly = true;
+      entries = [
+        "${pkgs._1password-gui}/share/applications/1password.desktop" # add flag silent
+      ];
+    };
+  };
 
   services = {
     gpg-agent = {
