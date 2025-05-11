@@ -29,6 +29,7 @@
     sessionVariables = {
       XCURSOR_SIZE = 16;
       ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+      NIXOS_OZONE_WL = "1";
     };
     packages =
       with pkgs;

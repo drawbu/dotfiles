@@ -51,6 +51,7 @@
       ncdu
       zip
       unstable.gitoxide
+      genact
     ];
 
     file = {
