@@ -87,7 +87,7 @@
       formatter = inputs.nixpkgs.lib.genAttrs [
         "x86_64-linux"
         "aarch64-darwin"
-      ] (system: nixpkgsFor system).nixfmt-rfc-style;
+      ] (system: (nixpkgsFor system).nixfmt-tree);
 
       hydraJobs = {
         nixos = inputs.nixpkgs.lib.mapAttrs (

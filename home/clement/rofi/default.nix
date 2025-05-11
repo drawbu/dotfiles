@@ -1,13 +1,15 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   adi1090x_rofi = pkgs.fetchFromGitHub {
     owner = "adi1090x";
     repo = "rofi";
     rev = "d6906d91b591066783eb5b7b8fcc1e12cba48356";
     hash = "sha256-PGK4/+HY1nWHin5N5s2HNBT4bBkUjKXvMRTfocfprCE=";
   };
-in {
+in
+{
   home = {
-    packages = with pkgs; [rofi];
+    packages = with pkgs; [ rofi ];
     file = {
       ".config/rofi/config.rasi".source = ./config.rasi;
       ".config/rofi/applets".source = "${adi1090x_rofi}/files/applets";

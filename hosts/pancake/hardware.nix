@@ -7,8 +7,9 @@
   pkgs,
   modulesPath,
   ...
-}: {
-  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
+}:
+{
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules = [
     "xhci_pci"
@@ -18,23 +19,24 @@
     "usb_storage"
     "sd_mod"
   ];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"];
-  boot.extraModulePackages = [];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/cf7e1917-00a7-4b5b-81fb-d174c6070236";
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."luks-8c75561b-fdbd-4a16-8940-89873be6a607".device = "/dev/disk/by-uuid/8c75561b-fdbd-4a16-8940-89873be6a607";
+  boot.initrd.luks.devices."luks-8c75561b-fdbd-4a16-8940-89873be6a607".device =
+    "/dev/disk/by-uuid/8c75561b-fdbd-4a16-8940-89873be6a607";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/BAB7-A47C";
     fsType = "vfat";
   };
 
-  swapDevices = [];
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

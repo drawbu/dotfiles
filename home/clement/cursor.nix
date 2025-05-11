@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [xcb-util-cursor];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ xcb-util-cursor ];
 
   home.pointerCursor = {
     gtk.enable = true;

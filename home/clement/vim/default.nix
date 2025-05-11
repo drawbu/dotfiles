@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  imports = [./vim.nix];
+{ pkgs, ... }:
+{
+  imports = [ ./vim.nix ];
   home.file = {
     ".config/nvim/lua".source = ./lua;
     ".config/nvim/ftplugin".source = ./ftplugin;
@@ -13,7 +14,8 @@
 
     extraConfig =
       builtins.readFile ./.vimrc
-      + /*lua*/ ''
+      # lua
+      + ''
         lua require('dark-switch')
         lua require('settings')
         lua require('lazy').setup('plugins')
@@ -28,6 +30,6 @@
       nvim-treesitter.withAllGrammars
     ];
 
-    extraPackages = with pkgs; [tree-sitter];
+    extraPackages = with pkgs; [ tree-sitter ];
   };
 }

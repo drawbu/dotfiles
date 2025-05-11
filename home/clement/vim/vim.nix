@@ -1,7 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home = {
     file.".vimrc".text =
-      /*vim*/ ''
+      # vim
+      ''
         source ${pkgs.vimPlugins.vim-plug}/plug.vim
 
         call plug#begin()
@@ -26,6 +28,6 @@
       ''
       + builtins.readFile ./.vimrc;
 
-    packages = with pkgs; [vim];
+    packages = with pkgs; [ vim ];
   };
 }

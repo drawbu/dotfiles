@@ -1,4 +1,5 @@
-{theme}: let
+{ theme }:
+let
   # Catppuccin Mocha
   dark = {
     rosewater = "f5e0dc";
@@ -68,11 +69,13 @@
     css = "--raw-${name}";
     gtk = "@${name}";
   };
-in rec {
+in
+rec {
   raw =
-    if attrs ? "${theme}"
-    then builtins.mapAttrs transformColor attrs."${theme}"
-    else (abort "Theme `${theme}` not found");
+    if attrs ? "${theme}" then
+      builtins.mapAttrs transformColor attrs."${theme}"
+    else
+      (abort "Theme `${theme}` not found");
 
   foreground = raw.text;
   background = raw.base;

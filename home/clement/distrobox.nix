@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.distrobox];
+{ pkgs, ... }:
+{
+  home.packages = [ pkgs.distrobox ];
 
   xdg.configFile = {
     "distrobox/distrobox.conf".text = ''
@@ -9,7 +10,7 @@
     '';
 
     "distrobox/distrobox.ini" = {
-      text = pkgs.lib.generators.toINI {} {
+      text = pkgs.lib.generators.toINI { } {
         arch = {
           image = "archlinux:latest";
           pull = true;
@@ -24,9 +25,10 @@
           replace = false;
         };
       };
-      onChange = /*bash*/ ''
-        distrobox assemble create --file "$out"
-      '';
+      onChange = # bash
+        ''
+          distrobox assemble create --file "$out"
+        '';
     };
   };
 }

@@ -1,16 +1,22 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   btop_catppuccin = pkgs.fetchFromGitHub {
     owner = "catppuccin";
     repo = "btop";
     rev = "89ff712eb62747491a76a7902c475007244ff202";
     sha256 = "sha256-J3UezOQMDdxpflGax0rGBF/XMiKqdqZXuX4KMVGTxFk=";
   };
-in {
+in
+{
   home.file = {
-    ".config/btop/themes/catppuccin_latte.theme".source = "${btop_catppuccin}/themes/catppuccin_latte.theme";
-    ".config/btop/themes/catppuccin_frappe.theme".source = "${btop_catppuccin}/themes/catppuccin_frappe.theme";
-    ".config/btop/themes/catppuccin_macchiato.theme".source = "${btop_catppuccin}/themes/catppuccin_macchiato.theme";
-    ".config/btop/themes/catppuccin_mocha.theme".source = "${btop_catppuccin}/themes/catppuccin_mocha.theme";
+    ".config/btop/themes/catppuccin_latte.theme".source =
+      "${btop_catppuccin}/themes/catppuccin_latte.theme";
+    ".config/btop/themes/catppuccin_frappe.theme".source =
+      "${btop_catppuccin}/themes/catppuccin_frappe.theme";
+    ".config/btop/themes/catppuccin_macchiato.theme".source =
+      "${btop_catppuccin}/themes/catppuccin_macchiato.theme";
+    ".config/btop/themes/catppuccin_mocha.theme".source =
+      "${btop_catppuccin}/themes/catppuccin_mocha.theme";
   };
   programs.btop = {
     enable = true;
