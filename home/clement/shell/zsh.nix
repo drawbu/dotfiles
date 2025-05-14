@@ -43,6 +43,8 @@
               /usr/bin/env nvim "$@"
             fi
           }
+
+          [ -f "$HOME/.config/op/plugins.sh" ] && . "$HOME/.config/op/plugins.sh"
         '';
         enableCompletion = false;
 
@@ -108,6 +110,7 @@
             "rust"
             "kubectl"
             "yarn"
+            "1password"
           ];
         };
       }

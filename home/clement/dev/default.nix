@@ -71,6 +71,7 @@
         corepack
         typescript
         opentofu
+        terraform
         lua
 
         # cool man pages
@@ -84,6 +85,7 @@
         file
         ripgrep
         fd
+        sd
         vgrep
         jq
         bear
