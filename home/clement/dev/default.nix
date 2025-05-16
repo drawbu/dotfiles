@@ -60,7 +60,7 @@
       [
         # tools
         gcc14
-        (hiPrio clang_19) # note: cc from clang & gcc collides
+        (hiPrio llvmPackages_latest.clang) # note: cc from clang & gcc collides
         zig
         libcxx
         python312Full
@@ -115,7 +115,8 @@
         lua-language-server
         nixd
         clang-analyzer
-        clang-tools_19
+        llvmPackages_latest.clang-tools
+        llvmPackages_latest.lldb
         pyright
         vscode-langservers-extracted
         emmet-language-server
