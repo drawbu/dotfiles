@@ -135,8 +135,6 @@ return {
 
   'sakhnik/nvim-gdb',
 
-  'tjdevries/templ.nvim',
-
   {
     "OlegGulevskyy/better-ts-errors.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
