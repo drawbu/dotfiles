@@ -67,6 +67,7 @@ in
     enable = true;
     systemd.enableXdgAutostart = true;
     settings = {
+      ecosystem.no_update_news = true;
       monitor = ",highres,auto-up,1";
 
       source = [
