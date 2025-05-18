@@ -17,7 +17,6 @@
       ${builtins.readFile ./.vimrc}
       ]]
 
-      require('dark-switch')
       require('lazy').setup {
         spec = { { import = "plugins" } },
         performance = {
@@ -25,6 +24,8 @@
           rtp = { reset = false }
         },
       }
+      require('lsp')
+      require('dark-switch')
 
       -- ↓ Indent
       vim.g.python_indent = {
