@@ -1,12 +1,12 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixos-25.05";
     nixpkgs_legacy.url = "nixpkgs/nixos-24.11";
     nixpkgs_legacy'.url = "nixpkgs/nixos-24.05";
     nixpkgs_unstable.url = "nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -30,8 +30,11 @@
           let
             cfg = {
               inherit system;
-              config.allowUnfree = true;
-              config.android_sdk.accept_license = true;
+              config = {
+                allowUnfree = true;
+                android_sdk.accept_license = true;
+                permittedInsecurePackages = [ "ventoy-1.1.05" ];
+              };
             };
           in
           cfg
