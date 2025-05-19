@@ -9,6 +9,7 @@
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
+  system.primaryUser = "clementboillot";
   users.users.clementboillot = {
     name = "clementboillot";
     home = "/Users/clementboillot";
