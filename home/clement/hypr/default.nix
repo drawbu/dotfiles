@@ -192,7 +192,7 @@ in
           "$mod, return, exec, ghostty"
           "$mod, W, killactive,"
           "$mod, F, togglefloating,"
-          "$mod, R, exec, ${lib.getExe pkgs.rofi-wayland} -show drun"
+          "$mod, R, exec, rofi -show drun"
           "$mod, J, togglesplit,"
           "$mod, K, fullscreen,"
           "$mod, O, exec, pkill -SIGUSR1 waybar # Waybar toggle"
