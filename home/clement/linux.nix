@@ -23,6 +23,7 @@
       ./login.nix
       ./gaming.nix
       ./ghostty.nix
+      ./fuzzel.nix
     ];
 
   home = {
