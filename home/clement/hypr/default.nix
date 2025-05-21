@@ -273,8 +273,8 @@ in
   };
 
   xdg.configFile = {
-    "hypr/paper/dark".source = ../../../assets/wallpapers/cat-mocha_girl.jpg;
-    "hypr/paper/light".source = ../../../assets/wallpapers/rocket-girl.png;
+    "hypr/paper/dark".source = ../wallpapers/downloaded/cat-mocha_girl.jpg;
+    "hypr/paper/light".source = ../wallpapers/downloaded/rocket-girl.png;
 
     "hypr/pyprland.toml".text = ''
       [pyprland]

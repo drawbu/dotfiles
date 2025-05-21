@@ -14,6 +14,7 @@
       ./tmux.nix
       ./btop.nix
       ./gh.nix
+      ./wallpapers
     ]
     ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [ ]
     ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [ ./linux.nix ];
@@ -53,10 +54,6 @@
       unstable.gitoxide
       genact
     ];
-
-    file = {
-      "assets".source = ../../assets;
-      ".config/nixpkgs/config.nix".text = "{ allowUnfree = true; allowUnsupportedSystem = true; }";
-    };
   };
-}
+
+  xdg.configFile."nixpkgs/config.nix".text = "{ allowUnfree = true; allowUnsupportedSystem = true; }";}
