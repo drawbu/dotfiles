@@ -35,9 +35,8 @@ in
             gtk_theme="catppuccin-latte-peach-compact+rimless";
           fi
 
-          echo "[org/gnome/desktop/interface]
-          color-scheme='prefer-$theme'
-          gtk-theme='$gtk_theme'" | dconf load /
+          gsettings set org.gnome.desktop.interface color-scheme "prefer-$theme"
+          gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme"
         fi
 
         # Update wallpaper
