@@ -24,6 +24,7 @@
       ./gaming.nix
       ./ghostty.nix
       ./fuzzel.nix
+      ./xdg.nix
     ];
 
   home = {
@@ -36,6 +37,7 @@
       with pkgs;
       [ ]
       ++ lib.optionals graphical [
+        door-knocker
         ventoy-full
         xsel
         xclip

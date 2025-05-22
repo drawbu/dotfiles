@@ -2,19 +2,7 @@
 {
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-shana
-    ];
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
     xdgOpenUsePortal = true;
-
-    config = {
-      common = {
-        default = "gtk";
-        "org.freedesktop.impl.portal.FileChooser" = "shana";
-      };
-    };
   };
 }
