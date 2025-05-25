@@ -27,6 +27,10 @@ let
     result
     result-*
   '';
+
+  attributesFile = pkgs.runCommand "mergiraf-gitattributes" { buildInputs = [ pkgs.mergiraf ]; } ''
+    mergiraf languages --gitattributes > $out
+  '';
 in
 {
   programs.git = {
@@ -39,6 +43,7 @@ in
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILu5dP9F77dUgxHpu7drGx/cMpYPRXw0SjsTOr3sLPBZ"; # op
       signByDefault = true;
     };
+    attributes = [ (builtins.readFile attributesFile) ];
     extraConfig = {
       gpg.format = "ssh";
       "gpg \"ssh\"".program =
@@ -71,11 +76,16 @@ in
         autoStash = true;
         updateRefs = true;
       };
-      merge.conflictStyle = "zdiff3";
+      merge.conflictStyle = "diff3";
+      merge.mergiraf = {
+        name = "mergiraf";
+        driver = "mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L";
+      };
       diff = {
         algorithm = "histogram";
         mnemonicPrefix = true;
         renames = "true";
+        external = "difft";
       };
       alias.l = "log --oneline --decorate --graph";
       gitbutler.signCommits = true;

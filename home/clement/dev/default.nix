@@ -145,6 +145,8 @@
         yubikey-manager
         temurin-bin
         unstable.gitoxide
+        difftastic
+        mergiraf
       ]
       ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
         linux-manual
