@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home.packages = [ pkgs.distrobox ];
 
@@ -10,7 +10,7 @@
     '';
 
     "distrobox/distrobox.ini" = {
-      text = pkgs.lib.generators.toINI { } {
+      text = lib.generators.toINI { } {
         arch = {
           image = "archlinux:latest";
           pull = true;

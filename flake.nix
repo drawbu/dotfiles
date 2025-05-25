@@ -23,54 +23,23 @@
   outputs =
     { self, ... }@inputs:
     let
-      nixpkgsFor =
-        system:
-        import inputs.nixpkgs (
-          let
-            cfg = {
-              inherit system;
-              config = {
-                allowUnfree = true;
-                android_sdk.accept_license = true;
-                permittedInsecurePackages = [ "ventoy-1.1.05" ];
-              };
-            };
-          in
-          cfg
-          // {
-            overlays = [
-              (final: prev: {
-                unstable = import inputs.nixpkgs_unstable cfg;
-                legacy = import inputs.nixpkgs_legacy cfg;
-                legacy' = import inputs.nixpkgs_legacy' cfg;
-
-                inherit (inputs.nix-alien.packages.${system}) nix-alien;
-                inherit (inputs.hyprqtile.packages.${system}) hyprqtile;
-                nix-direnv = prev.nix-direnv.override { enableFlakes = true; };
-              })
-            ];
-          }
-        );
-
       hardware = inputs.nixos-hardware.nixosModules;
 
-      specialArgs' = config: {
-        pkgs = nixpkgsFor config;
+      specialArgs' = {
         finputs = inputs;
         graphical = false;
       };
 
       defaultNixOS =
         {
-          system,
           args ? { },
           override ? (_: { }),
         }:
         let
           systemCfg = rec {
-            inherit system;
-            specialArgs = (specialArgs' system) // args;
+            specialArgs = specialArgs' // args;
             modules = [
+              ./nixos/overlay.nix
               inputs.home-manager.nixosModules.home-manager
               {
                 home-manager = {
@@ -83,12 +52,17 @@
           };
         in
         systemCfg // (override systemCfg);
-    in
-    {
-      formatter = inputs.nixpkgs.lib.genAttrs [
+
+      systems = [
         "x86_64-linux"
         "aarch64-darwin"
-      ] (system: (nixpkgsFor system).nixfmt-tree);
+      ];
+      forAllSystems = inputs.nixpkgs.lib.genAttrs systems;
+      nixpkgsFor = system: import inputs.nixpkgs { inherit system; };
+      nixpkgsAll = fn: forAllSystems (system: fn (nixpkgsFor system));
+    in
+    {
+      formatter = nixpkgsAll (pkgs: pkgs.nixfmt-tree);
 
       hydraJobs = {
         nixos = inputs.nixpkgs.lib.mapAttrs (
@@ -107,8 +81,7 @@
 
       darwinConfigurations = {
         macos = inputs.nix-darwin.lib.darwinSystem rec {
-          system = "aarch64-darwin";
-          specialArgs = specialArgs' system;
+          specialArgs = specialArgs';
           modules = [
             ./hosts/macos
             inputs.home-manager.darwinModules.home-manager
@@ -125,7 +98,6 @@
       nixosConfigurations = {
         # Home PC
         "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          system = "x86_64-linux";
           args.graphical = true;
           override = cfg: {
             modules = cfg.modules ++ [
@@ -140,7 +112,6 @@
 
         # Laptop
         "pancake" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          system = "x86_64-linux";
           args.graphical = true;
           override = cfg: {
             modules = cfg.modules ++ [
@@ -150,7 +121,6 @@
           };
         });
         "framework" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          system = "x86_64-linux";
           args.graphical = true;
           override = cfg: {
             modules = cfg.modules ++ [
@@ -162,14 +132,12 @@
 
         # Home server
         "waffle" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          system = "x86_64-linux";
           args.graphical = false;
           override = cfg: { modules = cfg.modules ++ [ ./hosts/waffle ]; };
         });
 
         # Headscale server
         "pineapple" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          system = "x86_64-linux";
           args.graphical = false;
           override = cfg: { modules = cfg.modules ++ [ ./hosts/pineapple ]; };
         });

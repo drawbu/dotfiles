@@ -14,6 +14,7 @@
   home-manager.users.clement =
     { pkgs, ... }:
     {
+      imports = [ ../../home/clement/linux.nix ];
       wayland.windowManager.hyprland.settings = {
         monitor = lib.mkForce ",highres,auto-up,1.5";
         xwayland.force_zero_scaling = true;

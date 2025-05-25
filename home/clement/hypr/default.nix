@@ -1,7 +1,4 @@
-{ pkgs, ... }:
-let
-  inherit (pkgs) lib;
-in
+{ pkgs, lib, ... }:
 {
   imports = [
     ./waybar.nix

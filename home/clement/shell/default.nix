@@ -34,12 +34,12 @@
         ufda = "test -z \"$(grep 'use flake' .envrc)\" && (echo 'use flake' >> .envrc); direnv allow";
         tree = "ls --tree";
       }
-      // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
+      // lib.optionalAttrs pkgs.stdenv.isLinux {
         arch = "distrobox enter arch";
         fedora = "distrobox enter fedora";
         macos = "nix run github:matthewcroughan/NixThePlanet#macos-ventura";
       }
-      // lib.optionalAttrs pkgs.stdenv.hostPlatform.isMacOS {
+      // lib.optionalAttrs pkgs.stdenv.isDarwin {
         x86 = "env /usr/bin/arch -x86_64 /bin/zsh --login";
         arm = "env /usr/bin/arch -arm64 /bin/zsh --login";
       };

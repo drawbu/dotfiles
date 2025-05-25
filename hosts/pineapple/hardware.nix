@@ -1,4 +1,4 @@
-{ modulesPath, ... }:
+{ modulesPath, lib, ... }:
 {
   imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
   boot.loader.grub.device = "/dev/sda";
@@ -13,4 +13,5 @@
     device = "/dev/sda3";
     fsType = "ext4";
   };
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

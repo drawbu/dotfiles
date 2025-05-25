@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   xdg.configFile."starship.toml".source = ./starship.toml;
 
@@ -115,7 +115,7 @@
         };
       }
 
-      // (pkgs.lib.optionalAttrs (!pkgs.stdenv.isDarwin) {
+      // (lib.optionalAttrs (!pkgs.stdenv.isDarwin) {
         loginExtra = ''
           systemctl --user import-environment PATH
         '';

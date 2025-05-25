@@ -1,32 +1,29 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }:
 {
-  imports =
-    [
-      ./vim
-      ./shell
-      ./git.nix
-      ./dev
-      ./tmux.nix
-      ./btop.nix
-      ./gh.nix
-      ./wallpapers
-    ]
-    ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [ ]
-    ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [ ./linux.nix ];
+  imports = [
+    ../../nixos/overlay.nix
+    ./vim
+    ./shell
+    ./git.nix
+    ./dev
+    ./tmux.nix
+    ./btop.nix
+    ./gh.nix
+    ./wallpapers
+  ];
 
   programs.home-manager.enable = true;
 
   home = {
     username = "clement";
     homeDirectory =
-      if pkgs.stdenv.hostPlatform.isLinux then
+      if pkgs.stdenv.isLinux then
         "/home/${config.home.username}"
-      else if pkgs.stdenv.hostPlatform.isDarwin then
+      else if pkgs.stdenv.isDarwin then
         "/Users/${config.home.username}"
       else
         "";
@@ -55,4 +52,5 @@
     ];
   };
 
-  xdg.configFile."nixpkgs/config.nix".text = "{ allowUnfree = true; allowUnsupportedSystem = true; }";}
+  xdg.configFile."nixpkgs/config.nix".text = "{ allowUnfree = true; allowUnsupportedSystem = true; }";
+}

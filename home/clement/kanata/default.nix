@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   systemd.user.services.kanata = {
     Unit = {
@@ -12,7 +12,7 @@
     };
 
     Service = {
-      ExecStart = "${pkgs.lib.getExe pkgs.kanata} -c ${./config.kbd}";
+      ExecStart = "${lib.getExe pkgs.kanata} -c ${./config.kbd}";
       Restart = "on-failure";
       RestartSec = 3;
     };

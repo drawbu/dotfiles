@@ -1,11 +1,10 @@
 {
   finputs,
-  pkgs,
   config,
+  lib,
   ...
 }:
 let
-  inherit (pkgs) lib;
   inherit (finputs) self;
 in
 {

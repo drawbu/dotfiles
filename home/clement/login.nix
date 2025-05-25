@@ -1,6 +1,6 @@
 {
-  config,
   pkgs,
+  lib,
   ...
 }:
 let
@@ -46,7 +46,7 @@ let
     name = "login.sh";
     text = # bash
       ''
-        choice=$(${pkgs.lib.getExe choiceSelectorPy})
+        choice=$(${lib.getExe choiceSelectorPy})
         exec $choice
       '';
   };

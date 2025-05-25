@@ -3,10 +3,11 @@
   path,
   file,
   default,
+  lib,
   ...
 }:
 {
-  script = pkgs.lib.getExe (
+  script = lib.getExe (
     pkgs.writeShellApplication {
       name = "activation";
       text = ''

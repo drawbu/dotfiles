@@ -21,7 +21,6 @@
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
   system.stateVersion = "24.05";
 
   nix = {

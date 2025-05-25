@@ -1,5 +1,3 @@
-# My config for NixOS on my laptop
-# The name: pancake
 { config, pkgs, ... }:
 {
   imports = [
@@ -10,7 +8,13 @@
 
   networking.hostName = "pancake";
   system.stateVersion = "23.05";
-  home-manager.users.clement.home.stateVersion = config.system.stateVersion;
+
+  home-manager.users.clement =
+    { ... }:
+    {
+      imports = [ ../../home/clement/linux.nix ];
+      home.stateVersion = config.system.stateVersion;
+    };
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 

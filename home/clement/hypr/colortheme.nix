@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   createCSS =
     theme:
@@ -28,7 +28,7 @@ let
     '';
 
   activation = import ./symlink.nix {
-    inherit pkgs;
+    inherit pkgs lib;
     path = "$HOME";
     file = "theme.css";
     default = "dark.css";

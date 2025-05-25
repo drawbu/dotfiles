@@ -2,6 +2,7 @@
   pkgs,
   graphical,
   config,
+  lib,
   ...
 }:
 {
@@ -9,7 +10,7 @@
     [
       ./nix.nix
     ]
-    ++ (pkgs.lib.optionals graphical [
+    ++ (lib.optionals graphical [
       ./graphical
     ]);
 
@@ -60,7 +61,7 @@
   systemd.services.NetworkManager-wait-online = {
     serviceConfig.ExecStart = [
       ""
-      "${pkgs.lib.getExe' pkgs.networkmanager "nm-online"} -q"
+      "${lib.getExe' pkgs.networkmanager "nm-online"} -q"
     ];
   };
 

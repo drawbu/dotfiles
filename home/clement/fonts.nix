@@ -1,6 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
-  inherit (pkgs) lib;
   iosevka-mayukai =
     let
       builder =

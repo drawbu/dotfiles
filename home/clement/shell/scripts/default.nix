@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
-  imports = [ ./dark.nix ] ++ (pkgs.lib.optionals pkgs.stdenv.hostPlatform.isLinux [ ./fixwifi.nix ]);
+  imports = [
+    ./dark.nix
+    ./fixwifi.nix
+  ];
 }
