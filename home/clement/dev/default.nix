@@ -143,6 +143,8 @@
         act
         dive
         yubikey-manager
+        temurin-bin
+        unstable.gitoxide
       ]
       ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
         linux-manual

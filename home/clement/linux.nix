@@ -81,6 +81,7 @@
         hexchat
         polychromatic
         superTuxKart
+        calibre
       ];
   };
 

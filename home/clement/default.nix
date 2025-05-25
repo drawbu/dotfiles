@@ -45,14 +45,13 @@
       unzip
       unar
       nmap
-      temurin-bin
       croc
       wireguard-tools
       ollama
       ncdu
       zip
-      unstable.gitoxide
       genact
+      dust
     ];
   };
 
