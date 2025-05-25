@@ -39,12 +39,6 @@ in
           gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme"
         fi
 
-        # Update wallpaper
-        if test -n "$(pidof swww-daemon)"; then
-          ln -fs "$XDG_CONFIG_HOME/hypr/paper/$theme" "$XDG_CONFIG_HOME/hypr/paper/current"
-          swww img "$(realpath "$XDG_CONFIG_HOME/hypr/paper/current")" --transition-type wipe
-        fi
-
         # Update waybar theme
         # Note: this is the last step of the script because waybar takes the
         #       whole script into death with it

@@ -1,11 +1,5 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
-  hyprpaperActivation = import ./symlink.nix {
-    inherit pkgs;
-    path = "${config.home.homeDirectory}/.config/hypr/paper";
-    file = "current";
-    default = "dark";
-  };
   inherit (pkgs) lib;
 in
 {
@@ -16,10 +10,9 @@ in
   ];
 
   home = {
-    activation.createHyprpaper = "sh ${hyprpaperActivation.script}";
     packages = with pkgs; [
       hyprqtile
-      swww
+      hyprpaper
       kdePackages.xwaylandvideobridge
       pyprland
       nwg-displays
@@ -77,8 +70,7 @@ in
 
       exec-once =
         [
-          "swww-daemon"
-          "swww img \"$(realpath \"$XDG_CONFIG_HOME/hypr/paper/current\")\" --transition-type wipe"
+          "hyprpaper"
           "waybar"
           "xwaylandvideobridge"
           "pypr"
@@ -273,8 +265,11 @@ in
   };
 
   xdg.configFile = {
-    "hypr/paper/dark".source = ../wallpapers/downloaded/cat-mocha_girl.jpg;
-    "hypr/paper/light".source = ../wallpapers/downloaded/rocket-girl.png;
+    "hypr/hyprpaper.conf".text = ''
+      preload = ~/assets/wallpapers/sylvain-sarrailh-danghostisland.jpg
+      wallpaper = , ~/assets/wallpapers/sylvain-sarrailh-danghostisland.jpg
+      splash = false
+    '';
 
     "hypr/pyprland.toml".text = ''
       [pyprland]
