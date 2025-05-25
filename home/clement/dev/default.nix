@@ -126,7 +126,6 @@
         nodePackages.bash-language-server
         shellcheck
         shfmt
-        # ecsls
         gdtoolkit_4
         asm-lsp
         dockerfile-language-server-nodejs

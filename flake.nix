@@ -17,7 +17,6 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-alien.url = "github:thiagokokada/nix-alien";
-    # ecsls.url = "github:Sigmapitech/ecsls";
     hyprqtile.url = "github:drawbu/hyprqtile";
   };
 
@@ -45,7 +44,6 @@
                 legacy = import inputs.nixpkgs_legacy cfg;
                 legacy' = import inputs.nixpkgs_legacy' cfg;
 
-                # inherit (inputs.ecsls.packages.${system}) ecsls;
                 inherit (inputs.nix-alien.packages.${system}) nix-alien;
                 inherit (inputs.hyprqtile.packages.${system}) hyprqtile;
                 nix-direnv = prev.nix-direnv.override { enableFlakes = true; };
