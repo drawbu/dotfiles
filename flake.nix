@@ -23,11 +23,14 @@
   outputs =
     { self, ... }@inputs:
     let
+      inherit (inputs.nixpkgs) lib;
+
       hardware = inputs.nixos-hardware.nixosModules;
 
       specialArgs' = {
         finputs = inputs;
         graphical = false;
+        home-manager = false;
       };
 
       defaultNixOS =
@@ -38,17 +41,20 @@
         let
           systemCfg = rec {
             specialArgs = specialArgs' // args;
-            modules = [
-              ./nixos/overlay.nix
-              inputs.home-manager.nixosModules.home-manager
-              {
-                home-manager = {
-                  extraSpecialArgs = specialArgs;
-                  backupFileExtension = "backup";
-                  verbose = true;
-                };
-              }
-            ];
+            modules =
+              [
+                ./nixos/overlay.nix
+              ]
+              ++ (lib.optionals specialArgs.home-manager [
+                inputs.home-manager.nixosModules.home-manager
+                {
+                  home-manager = {
+                    extraSpecialArgs = specialArgs;
+                    backupFileExtension = "backup";
+                    verbose = true;
+                  };
+                }
+              ]);
           };
         in
         systemCfg // (override systemCfg);
@@ -57,7 +63,7 @@
         "x86_64-linux"
         "aarch64-darwin"
       ];
-      forAllSystems = inputs.nixpkgs.lib.genAttrs systems;
+      forAllSystems = lib.genAttrs systems;
       nixpkgsFor = system: import inputs.nixpkgs { inherit system; };
       nixpkgsAll = fn: forAllSystems (system: fn (nixpkgsFor system));
     in
@@ -65,9 +71,7 @@
       formatter = nixpkgsAll (pkgs: pkgs.nixfmt-tree);
 
       hydraJobs = {
-        nixos = inputs.nixpkgs.lib.mapAttrs (
-          name: config: config.config.system.build.toplevel
-        ) self.nixosConfigurations;
+        nixos = lib.mapAttrs (name: config: config.config.system.build.toplevel) self.nixosConfigurations;
       };
 
       homeConfigurations = {
@@ -98,7 +102,10 @@
       nixosConfigurations = {
         # Home PC
         "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          args.graphical = true;
+          args = {
+            graphical = true;
+            home-manager = true;
+          };
           override = cfg: {
             modules = cfg.modules ++ [
               ./hosts/pain-de-mie
@@ -112,7 +119,10 @@
 
         # Laptop
         "pancake" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          args.graphical = true;
+          args = {
+            graphical = true;
+            home-manager = true;
+          };
           override = cfg: {
             modules = cfg.modules ++ [
               ./hosts/pancake
@@ -121,7 +131,10 @@
           };
         });
         "framework" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          args.graphical = true;
+          args = {
+            graphical = true;
+            home-manager = true;
+          };
           override = cfg: {
             modules = cfg.modules ++ [
               ./hosts/framework
@@ -132,13 +145,11 @@
 
         # Home server
         "waffle" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          args.graphical = false;
           override = cfg: { modules = cfg.modules ++ [ ./hosts/waffle ]; };
         });
 
         # Headscale server
         "pineapple" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          args.graphical = false;
           override = cfg: { modules = cfg.modules ++ [ ./hosts/pineapple ]; };
         });
       };
