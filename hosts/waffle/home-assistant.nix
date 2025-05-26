@@ -39,7 +39,7 @@
         owner = "Amateur-God";
         domain = "technitiumdns";
         version = "2.3.0";
-        propagatedBuildInputs = with pkgs.python313Packages; [ aiohttp ];
+        propagatedBuildInputs = with pkgs.python312Packages; [ aiohttp ];
         src = pkgs.fetchFromGitHub {
           owner = "Amateur-God";
           repo = "home-assistant-technitiumdns";

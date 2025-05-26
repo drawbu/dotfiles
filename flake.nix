@@ -144,7 +144,7 @@
         });
 
         # Home server
-        "waffle" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
+        "waffle" = inputs.nixpkgs_legacy.lib.nixosSystem (defaultNixOS {
           override = cfg: { modules = cfg.modules ++ [ ./hosts/waffle ]; };
         });
 
