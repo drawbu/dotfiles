@@ -133,6 +133,8 @@
         yaml-language-server
         unstable.zls
         haskell-language-server
+        graphql-language-service-cli
+
         ijhttp
         act
         dive
