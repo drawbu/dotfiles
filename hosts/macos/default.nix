@@ -30,12 +30,13 @@
   services.openssh.enable = false;
 
   home-manager.users.clementboillot =
-    { ... }:
+    { pkgs, ... }:
     {
       imports = [ ../../home/clement ];
       home = {
         username = lib.mkForce "clementboillot";
         stateVersion = "24.11";
+        packages = with pkgs; [ gnugrep gnused ];
       };
     };
 }
