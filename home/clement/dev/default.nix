@@ -138,6 +138,8 @@
         haskell-language-server
         graphql-language-service-cli
 
+        asciinema
+        asciinema-agg
         ijhttp
         act
         dive
