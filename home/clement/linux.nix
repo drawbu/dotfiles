@@ -82,6 +82,8 @@
         polychromatic
         superTuxKart
         calibre
+        foot
+        gitbutler
       ];
   };
 

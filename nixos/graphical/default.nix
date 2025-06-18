@@ -84,7 +84,7 @@
   '';
 
   fonts.enableDefaultPackages = true;
-  hardware.openrazer.enable = true;
+  # hardware.openrazer.enable = true;
 
   programs._1password.enable = true;
   programs._1password-gui = {
