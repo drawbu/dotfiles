@@ -27,10 +27,6 @@ let
     result
     result-*
   '';
-
-  attributesFile = pkgs.runCommand "mergiraf-gitattributes" { buildInputs = [ pkgs.mergiraf ]; } ''
-    mergiraf languages --gitattributes > $out
-  '';
 in
 {
   programs.git = {
@@ -43,7 +39,7 @@ in
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILu5dP9F77dUgxHpu7drGx/cMpYPRXw0SjsTOr3sLPBZ"; # op
       signByDefault = true;
     };
-    attributes = [ (builtins.readFile attributesFile) ];
+    attributes = [ "* merge=mergiraf" ];
     extraConfig = {
       gpg.format = "ssh";
       "gpg \"ssh\"".program =
