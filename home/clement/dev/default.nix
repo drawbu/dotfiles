@@ -64,6 +64,7 @@
         cargo-mommy
         nodejs
         corepack
+        bun
         typescript
         opentofu
         terraform
@@ -167,6 +168,7 @@
           jetbrains.webstorm
           jetbrains.datagrip
           jetbrains.rust-rover
+          jetbrains.goland
           jetbrains-toolbox
           zed-editor
           godot_4
