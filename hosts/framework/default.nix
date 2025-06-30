@@ -16,7 +16,10 @@
     {
       imports = [ ../../home/clement/linux.nix ];
       wayland.windowManager.hyprland.settings = {
-        monitor = lib.mkForce ",highres,auto-up,1.5";
+        monitor = lib.mkForce [
+          "eDP-1, highres, 0x0,     1.5, cm, hdr"
+          "      ,highres, auto-up, 1"
+        ];
         xwayland.force_zero_scaling = true;
       };
 

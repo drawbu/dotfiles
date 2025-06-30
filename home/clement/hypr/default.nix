@@ -158,7 +158,12 @@
         ])
         ++ (map (e: "opacity 0, ${e}") [
           "class:xwaylandvideobridge"
-        ]);
+        ])
+        ++ [
+          "float, title:^(Picture-in-Picture)$"
+          "pin, title:^(Picture-in-Picture)$"
+          "size 600 400, title:^(Picture-in-Picture)$"
+        ];
 
       dwindle = {
         preserve_split = "yes";
