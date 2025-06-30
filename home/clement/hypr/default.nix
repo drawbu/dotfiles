@@ -263,8 +263,8 @@
 
   xdg.configFile = {
     "hypr/hyprpaper.conf".text = ''
-      preload = ~/assets/wallpapers/sylvain-sarrailh-danghostisland.jpg
-      wallpaper = , ~/assets/wallpapers/sylvain-sarrailh-danghostisland.jpg
+      preload = ~/assets/wallpapers/jonathan-lebrec-car-ride-3.jpg
+      wallpaper = , ~/assets/wallpapers/jonathan-lebrec-car-ride-3.jpg
       splash = false
     '';
 
