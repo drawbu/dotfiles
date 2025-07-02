@@ -14,7 +14,6 @@
       ./rofi
       ./hypr
       ./kanata
-      ./fonts.nix
       ./gtk.nix
       ./firefox.nix
       ./cursor.nix

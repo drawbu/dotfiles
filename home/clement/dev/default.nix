@@ -109,6 +109,7 @@
         uiua
         direnv
         wakatime
+        jless
 
         # language servers
         lua-language-server

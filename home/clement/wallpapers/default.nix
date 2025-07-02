@@ -19,7 +19,7 @@
     };
     "assets/wallpapers/space-gooose-spacehawks-as-1.jpg".source = pkgs.fetchurl {
       url = "https://cdna.artstation.com/p/assets/images/images/088/441/324/large/space-gooose-spacehawks-as-1.jpg";
-      hash = "sha256-7betoO2W1jn2NBxrq4cJt76cS0F0jqT3LZ4ZXk/zXXA=";
+      hash = "sha256-yIRzwJ0zpsT0dUcuHWAD23ryNJf9wyFcjk52F8uJdcU=";
     };
   };
 }

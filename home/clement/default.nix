@@ -14,6 +14,7 @@
     ./btop.nix
     ./gh.nix
     ./wallpapers
+    ./fonts.nix
   ];
 
   programs.home-manager.enable = true;
