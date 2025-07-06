@@ -28,21 +28,20 @@
       {
         enable = true;
         initContent = ''
-          code() {
+          _run_here() {
+            cmd="$1"
+            shift
+
             if [ "$#" -eq 0 ]; then
-              /usr/bin/env code .
+              /usr/bin/env "$cmd" .
             else
-              /usr/bin/env code "$@"
+              /usr/bin/env "$cmd" "$@"
             fi
           }
 
-          v() {
-            if [ "$#" -eq 0 ]; then
-              /usr/bin/env nvim .
-            else
-              /usr/bin/env nvim "$@"
-            fi
-          }
+          code() { _run_here code "$@" }
+          v()    { _run_here nvim "$@" }
+          hx()   { _run_here hx "$@" }
 
           [ -f "$HOME/.config/op/plugins.sh" ] && . "$HOME/.config/op/plugins.sh"
         '';

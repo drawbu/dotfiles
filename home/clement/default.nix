@@ -12,6 +12,7 @@
     ./dev
     ./tmux.nix
     ./btop.nix
+    ./helix.nix
     ./gh.nix
     ./wallpapers
     ./fonts.nix
