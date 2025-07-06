@@ -83,6 +83,7 @@ return {
           '%.react%-router$',
           '%.yarn$',
           '%.next$',
+          '%.bin$',
         }
 
         -- return next(string.match(name, table.unpack(ignored))) ~= nil

@@ -17,6 +17,7 @@ let
     .direnv/
     .envrc
     .cache
+    .bin/
     compile_commands.json
 
     ## Executables files
