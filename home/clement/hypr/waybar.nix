@@ -170,6 +170,7 @@
           critical-threshold = 82;
           format-critical = "{icon} {temperatureC}°C";
           format = "󰈸 {temperatureC}°C";
+          hwmon-path = "/sys/class/thermal/thermal_zone0/hwmon3/temp4_input";
         };
 
         tray = {
