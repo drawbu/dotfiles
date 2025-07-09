@@ -83,6 +83,8 @@
         calibre
         foot
         gitbutler
+        gnome-disk-utility
+        kdePackages.filelight
       ];
   };
 
