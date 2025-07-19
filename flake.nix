@@ -91,8 +91,8 @@
             inputs.home-manager.darwinModules.home-manager
             {
               home-manager.extraSpecialArgs = specialArgs;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
+              # home-manager.useGlobalPkgs = true;
+              # home-manager.useUserPackages = true;
               home-manager.verbose = true;
             }
           ];

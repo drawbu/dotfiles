@@ -32,11 +32,17 @@
   home-manager.users.clementboillot =
     { pkgs, ... }:
     {
-      imports = [ ../../home/clement ];
+      imports = [
+        ../../home/clement
+        ../../home/clement/macos.nix
+      ];
       home = {
         username = lib.mkForce "clementboillot";
         stateVersion = "24.11";
-        packages = with pkgs; [ gnugrep gnused ];
+        packages = with pkgs; [
+          gnugrep
+          gnused
+        ];
       };
     };
 }
