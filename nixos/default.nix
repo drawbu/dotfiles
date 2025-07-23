@@ -91,7 +91,12 @@
   security = {
     polkit.enable = true;
     rtkit.enable = true;
-    # sudo.enable = false;
+    sudo = {
+      # enable = false;
+      extraConfig = ''
+        Defaults insults
+      '';
+    };
     pam.services.systemd-run0 = {
       setEnvironment = true;
       pamMount = false;
