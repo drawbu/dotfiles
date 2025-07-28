@@ -150,6 +150,11 @@
         unstable.gitoxide
         difftastic
         mergiraf
+
+        # ai bullshit
+        unstable.opencode
+        unstable.amp-cli
+        unstable.gemini-cli
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
         linux-manual
