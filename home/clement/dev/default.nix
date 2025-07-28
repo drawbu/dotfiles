@@ -48,7 +48,6 @@
       PNPM_HOME = "${config.home.homeDirectory}/.pnpm";
       NODE_OPTIONS = "--max-old-space-size=8192";
       ANDROID_HOME = "${config.home.homeDirectory}/.local/share/Android/Sdk";
-      DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
     };
 
     packages =
