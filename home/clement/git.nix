@@ -28,6 +28,11 @@ let
     result
     result-*
   '';
+  ssh1password =
+    if pkgs.stdenv.isDarwin then
+      "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+    else
+      lib.getExe' pkgs._1password-gui "op-ssh-sign";
 in
 {
   programs.git = {
@@ -43,12 +48,7 @@ in
     attributes = [ "* merge=mergiraf" ];
     extraConfig = {
       gpg.format = "ssh";
-      "gpg \"ssh\"".program =
-        if pkgs.stdenv.isDarwin then
-          "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-        else
-          lib.getExe' pkgs._1password-gui "op-ssh-sign";
-
+      "gpg \"ssh\"".program = ssh1password;
       init.defaultBranch = "main";
       core.excludesFile = toString globalgitignore;
       push = {
@@ -88,6 +88,66 @@ in
       gitbutler.signCommits = true;
       "url \"ssh://git@github.com/\"".insteadOf = "https://github.com/";
       "url \"ssh://git@gitlab.com/\"".insteadOf = "https://gitlab.com/";
+    };
+  };
+
+  programs.jujutsu = {
+    enable = true;
+    package = pkgs.unstable.jujutsu;
+    settings = {
+      "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json";
+      user = {
+        name = "Clément";
+        email = "git@drawbu.dev";
+      };
+      signing = {
+        behavior = "drop";
+        backend = "ssh";
+        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILu5dP9F77dUgxHpu7drGx/cMpYPRXw0SjsTOr3sLPBZ";
+        backends.ssh.program = ssh1password;
+      };
+      git.sign-on-push = true;
+      ui.default-command = [
+        "log"
+        "-r"
+        "(main..@):: | (main..@)-"
+        "--no-pager"
+      ];
+      aliases = {
+        l = [ "log" ];
+        ll = [
+          "log"
+          "-r"
+          ".."
+        ];
+        ls = [
+          "log"
+          "--summary"
+        ];
+        main = [
+          "log"
+          "-r"
+          "::main"
+        ];
+        s = [
+          "st"
+          "--no-pager"
+        ];
+      };
+      template-aliases = {
+        "format_timestamp(timestamp)" = ''
+          if(timestamp.before("1 week ago"),
+            timestamp.ago() ++ timestamp.format(" (%Y-%m-%d at %H:%M)"),
+            timestamp.ago()
+          )
+        '';
+        "format_short_signature(signature)" = ''
+          if(signature.email().domain().ends_with("users.noreply.github.com"),
+            signature.name() ++ ' (GitHub)',
+            signature.email(),
+          )
+        '';
+      };
     };
   };
 

@@ -57,6 +57,7 @@ return {
         local ignored = {
           '^%.%.$',
           '^%.git$',
+          '^%.jj$',
           '^%.direnv$',
           '^%.build$',
           '^%.idea$',
@@ -67,9 +68,9 @@ return {
           '^target$',
           '^node_modules$',
           '^dist$',
-          '^.turbo$',
-          '^.expo$',
-          '^.gradle$',
+          '^%.turbo$',
+          '^%.expo$',
+          '^%.gradle$',
           '^%.cache[_-]?%g*',
           '^%.%g+[_-]?cache',
           '^zig%-out$',
@@ -79,11 +80,12 @@ return {
           '^%.?venv$',
           '%.egg%-info$',
           '^__pycache__$',
-          '%.svelte%-kit$',
-          '%.react%-router$',
-          '%.yarn$',
-          '%.next$',
-          '%.bin$',
+          '^%.svelte%-kit$',
+          '^%.react%-router$',
+          '^%.yarn$',
+          '^%.next$',
+          '^%.bin$',
+          '^vendor$',
         }
 
         -- return next(string.match(name, table.unpack(ignored))) ~= nil

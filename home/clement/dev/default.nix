@@ -103,7 +103,6 @@
         tokei
         nix-output-monitor
         lucky-commit
-        unstable.jujutsu
         postgresql_17
         gum
         uiua
