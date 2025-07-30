@@ -21,5 +21,9 @@
       url = "https://cdna.artstation.com/p/assets/images/images/088/441/324/large/space-gooose-spacehawks-as-1.jpg";
       hash = "sha256-yIRzwJ0zpsT0dUcuHWAD23ryNJf9wyFcjk52F8uJdcU=";
     };
+    "assets/wallpapers/wavy-milad-fakurian.jpg".source = pkgs.fetchurl {
+      url = "https://images.unsplash.com/photo-1698429894841-64b7d0396aa7";
+      hash = "sha256-PkB05HPFAvJNWwhlsTWdIx5DSgNd5jo3P9vC4PuJivE=";
+    };
   };
 }
