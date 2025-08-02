@@ -132,7 +132,7 @@
           "border, 1, 10, default"
           "borderangle, 1, 8, default"
           "fade, 1, 7, default"
-          "workspaces, 1, 6, default"
+          "workspaces, 0, 2, default"
         ];
       };
 
@@ -268,8 +268,8 @@
 
   xdg.configFile = {
     "hypr/hyprpaper.conf".text = ''
-      preload = ~/assets/wallpapers/jonathan-lebrec-car-ride-3.jpg
-      wallpaper = , ~/assets/wallpapers/jonathan-lebrec-car-ride-3.jpg
+      preload = ~/assets/wallpapers/wavy-milad-fakurian.jpg
+      wallpaper = , ~/assets/wallpapers/wavy-milad-fakurian.jpg
       splash = false
     '';
 

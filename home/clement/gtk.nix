@@ -49,6 +49,12 @@
 
   qt = {
     enable = true;
-    platformTheme.name = "gtk";
+    platformTheme.name = "gtk3";
+
+    # platformTheme.name = "gnome";
+    # style = {
+    #   package = pkgs.adwaita-qt;
+    #   name = "adwaita";
+    # };
   };
 }
