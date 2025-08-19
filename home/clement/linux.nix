@@ -6,25 +6,24 @@
   ...
 }:
 {
-  imports =
-    [
-      ./distrobox.nix
-    ]
-    ++ lib.optionals graphical [
-      ./rofi
-      ./hypr
-      ./kanata
-      ./gtk.nix
-      ./firefox.nix
-      ./cursor.nix
-      ./kitty.nix
-      ./mimeapps.nix
-      ./login.nix
-      ./gaming.nix
-      ./ghostty.nix
-      ./fuzzel.nix
-      ./xdg.nix
-    ];
+  imports = [
+    ./distrobox.nix
+  ]
+  ++ lib.optionals graphical [
+    ./rofi
+    ./hypr
+    ./kanata
+    ./gtk.nix
+    ./firefox.nix
+    ./cursor.nix
+    ./kitty.nix
+    ./mimeapps.nix
+    ./login.nix
+    ./gaming.nix
+    ./ghostty.nix
+    ./fuzzel.nix
+    ./xdg.nix
+  ];
 
   home = {
     sessionVariables = {
@@ -76,7 +75,6 @@
         warp
         resources
         filezilla
-        figma-linux
         legacy'.figma-agent
         hexchat
         polychromatic
@@ -86,6 +84,8 @@
         gitbutler
         gnome-disk-utility
         kdePackages.filelight
+        rpi-imager
+        gcr
       ];
   };
 
@@ -114,5 +114,7 @@
     blueman-applet.enable = true;
 
     swaync.enable = true;
+
+    gnome-keyring.enable = true;
   };
 }

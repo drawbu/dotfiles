@@ -13,7 +13,6 @@
       kdePackages.xwaylandvideobridge
       pyprland
       nwg-displays
-      gnome-keyring
       cliphist
       wl-clipboard
       kooha
@@ -71,7 +70,6 @@
           "waybar"
           "xwaylandvideobridge"
           "pypr"
-          "gnome-keyring gnome-keyring-daemon --daemonize --components=ssh,secrets"
         ]
         ++ (
           let
