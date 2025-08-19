@@ -11,7 +11,6 @@
       "docker"
       "networkmanager"
       "libvirtd"
-      "openrazer"
 
       # ↓ kanata
       "input"

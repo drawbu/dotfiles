@@ -77,7 +77,6 @@
         filezilla
         legacy'.figma-agent
         hexchat
-        polychromatic
         superTuxKart
         calibre
         foot
