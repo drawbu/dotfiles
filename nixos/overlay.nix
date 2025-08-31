@@ -22,9 +22,14 @@
         }
       )
       (final: prev: {
-        inherit (finputs.nix-alien.packages.${final.system}) nix-alien;
-        inherit (finputs.hyprqtile.packages.${final.system}) hyprqtile;
         nix-direnv = prev.nix-direnv.override { enableFlakes = true; };
+
+        extra = {
+          inherit (finputs.nix-alien.packages.${final.system}) nix-alien;
+          inherit (finputs.hyprqtile.packages.${final.system}) hyprqtile;
+          inherit (finputs.ghostty.packages.${final.system}) ghostty;
+          jj = finputs.jj.packages.${final.system}.jujutsu;
+        };
       })
     ];
   };

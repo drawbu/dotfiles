@@ -18,6 +18,8 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-alien.url = "github:thiagokokada/nix-alien";
     hyprqtile.url = "github:drawbu/hyprqtile";
+    jj.url = "github:jj-vcs/jj/v0.32.0";
+    ghostty.url = "github:ghostty-org/ghostty/v1.1.3";
   };
 
   outputs =

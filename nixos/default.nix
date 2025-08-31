@@ -71,7 +71,7 @@
       vim
       wget
       virt-manager
-      nix-alien
+      extra.nix-alien
       podman-compose
     ];
     pathsToLink = [ "/share/nix-direnv" ];

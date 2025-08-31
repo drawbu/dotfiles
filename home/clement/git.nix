@@ -93,7 +93,7 @@ in
 
   programs.jujutsu = {
     enable = true;
-    package = pkgs.unstable.jujutsu;
+    package = pkgs.extra.jj;
     settings = {
       "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json";
       user = {
