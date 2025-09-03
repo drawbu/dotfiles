@@ -43,20 +43,19 @@
         let
           systemCfg = rec {
             specialArgs = specialArgs' // args;
-            modules =
-              [
-                ./nixos/overlay.nix
-              ]
-              ++ (lib.optionals specialArgs.home-manager [
-                inputs.home-manager.nixosModules.home-manager
-                {
-                  home-manager = {
-                    extraSpecialArgs = specialArgs;
-                    backupFileExtension = "backup";
-                    verbose = true;
-                  };
-                }
-              ]);
+            modules = [
+              ./nixos/overlay.nix
+            ]
+            ++ (lib.optionals specialArgs.home-manager [
+              inputs.home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  extraSpecialArgs = specialArgs;
+                  backupFileExtension = "backup";
+                  verbose = true;
+                };
+              }
+            ]);
           };
         in
         systemCfg // (override systemCfg);

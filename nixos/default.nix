@@ -6,13 +6,12 @@
   ...
 }:
 {
-  imports =
-    [
-      ./nix.nix
-    ]
-    ++ (lib.optionals graphical [
-      ./graphical
-    ]);
+  imports = [
+    ./nix.nix
+  ]
+  ++ (lib.optionals graphical [
+    ./graphical
+  ]);
 
   system.copySystemConfiguration = false;
 

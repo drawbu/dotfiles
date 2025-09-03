@@ -64,24 +64,23 @@
         "~/.config/hypr/workspaces.conf"
       ];
 
-      exec-once =
-        [
-          "hyprpaper"
-          "waybar"
-          "xwaylandvideobridge"
-          "pypr"
-        ]
-        ++ (
-          let
-            targets = [
-              "text"
-              "image"
-            ];
-          in
-          (builtins.genList (i: "wl-paste --type ${builtins.elemAt targets i} --watch cliphist store") (
-            builtins.length targets
-          ))
-        );
+      exec-once = [
+        "hyprpaper"
+        "waybar"
+        "xwaylandvideobridge"
+        "pypr"
+      ]
+      ++ (
+        let
+          targets = [
+            "text"
+            "image"
+          ];
+        in
+        (builtins.genList (i: "wl-paste --type ${builtins.elemAt targets i} --watch cliphist store") (
+          builtins.length targets
+        ))
+      );
 
       input = {
         kb_layout = "fr";
@@ -178,61 +177,60 @@
 
       "$mod" = "SUPER";
 
-      bind =
-        [
-          # General Keybinds
-          "$mod, return, exec, ghostty"
-          "$mod, W, killactive,"
-          "$mod, F, togglefloating,"
-          "$mod, R, exec, rofi -show drun"
-          "$mod, J, togglesplit,"
-          "$mod, K, fullscreen,"
-          "$mod, O, exec, pkill -SIGUSR1 waybar # Waybar toggle"
-          "$mod, L, exec, loginctl lock-session"
+      bind = [
+        # General Keybinds
+        "$mod, return, exec, ghostty"
+        "$mod, W, killactive,"
+        "$mod, F, togglefloating,"
+        "$mod, R, exec, rofi -show drun"
+        "$mod, J, togglesplit,"
+        "$mod, K, fullscreen,"
+        "$mod, O, exec, pkill -SIGUSR1 waybar # Waybar toggle"
+        "$mod, L, exec, loginctl lock-session"
 
-          "$mod, Z, exec, pypr zoom ++0.5"
-          "$mod ctrl, Z, exec, pypr zoom"
+        "$mod, Z, exec, pypr zoom ++0.5"
+        "$mod ctrl, Z, exec, pypr zoom"
 
-          # Move focus
-          "$mod, left, movefocus, l"
-          "$mod, right, movefocus, r"
-          "$mod, up, movefocus, u"
-          "$mod, down, movefocus, d"
-          "$mod shift, N, exec, swaync-client -t -sw"
+        # Move focus
+        "$mod, left, movefocus, l"
+        "$mod, right, movefocus, r"
+        "$mod, up, movefocus, u"
+        "$mod, down, movefocus, d"
+        "$mod shift, N, exec, swaync-client -t -sw"
 
-          "$mod, V, exec, cliphist list | ${lib.getExe pkgs.wofi} --dmenu | cliphist decode | wl-copy"
-        ]
-        ++ (
-          let
-            letters = [
-              "A"
-              "Z"
-              "E"
-              "R"
-              "T"
-              "Y"
-              "U"
-              "I"
-              "O"
-              "P"
-            ];
-            workspaceKeybinds = id: key: [
-              "$mod shift, ${key}, exec, hyprqtile move ${id}"
-              "$mod alt,   ${key}, movetoworkspace, ${id}"
-            ];
-          in
-          with builtins;
-          concatLists (genList (x: workspaceKeybinds (toString (x + 1)) (elemAt letters x)) (length letters))
-        )
-        ++ [
-          # Scroll through existing workspaces
-          "$mod, mouse_down, workspace, e+1"
-          "$mod, mouse_up, workspace, e-1"
+        "$mod, V, exec, cliphist list | ${lib.getExe pkgs.wofi} --dmenu | cliphist decode | wl-copy"
+      ]
+      ++ (
+        let
+          letters = [
+            "A"
+            "Z"
+            "E"
+            "R"
+            "T"
+            "Y"
+            "U"
+            "I"
+            "O"
+            "P"
+          ];
+          workspaceKeybinds = id: key: [
+            "$mod shift, ${key}, exec, hyprqtile move ${id}"
+            "$mod alt,   ${key}, movetoworkspace, ${id}"
+          ];
+        in
+        with builtins;
+        concatLists (genList (x: workspaceKeybinds (toString (x + 1)) (elemAt letters x)) (length letters))
+      )
+      ++ [
+        # Scroll through existing workspaces
+        "$mod, mouse_down, workspace, e+1"
+        "$mod, mouse_up, workspace, e-1"
 
-          # Screenshot Keybinds
-          ", Print, exec, ${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | ${lib.getExe pkgs.satty} -f -"
-          "$mod, Print, exec, kooha -f -"
-        ];
+        # Screenshot Keybinds
+        ", Print, exec, ${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | ${lib.getExe pkgs.satty} -f -"
+        "$mod, Print, exec, kooha -f -"
+      ];
 
       binde = [
         # Brightness

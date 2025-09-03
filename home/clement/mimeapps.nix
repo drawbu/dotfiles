@@ -29,7 +29,8 @@ in
         "text/*" = "nvim.desktop";
         "video/*" = "vlc.desktop";
         "x-scheme-handler/msteams" = "teams-for-linux.desktop";
-      } // browser.settings;
+      }
+      // browser.settings;
 
       associations.added = {
         "text/html" = "firefox.desktop";
@@ -44,7 +45,8 @@ in
         "x-scheme-handler/webcal" = mailApp;
         "x-scheme-handler/webcals" = mailApp;
         "x-scheme-handler/msteams" = "teams-for-linux.desktop";
-      } // browser.settings;
+      }
+      // browser.settings;
     };
   };
 }

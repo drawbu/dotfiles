@@ -80,28 +80,27 @@ in
     };
 
   };
-  home.packages =
-    [
-      iosevka-mayukai.monolite
-      # (fetchFontShare {
-      #   name = "clash-grotesk";
-      #   hash = "sha256-vYkEzvVeTP7+sZpiWlmZMVQurnRKnFNwErSTFOGzipo=";
-      # })
-    ]
-    ++ (with pkgs; [
-      monaspace
-      iosevka-bin
-      iosevka-comfy.comfy
-      jetbrains-mono
-      nerd-fonts.jetbrains-mono
-      nerd-fonts._0xproto
-      nerd-fonts.iosevka
-      liberation_ttf
-      mplus-outline-fonts.githubRelease
-      ubuntu_font_family
-      noto-fonts
-      noto-fonts-color-emoji
-      inter
-      helvetica-neue-lt-std
-    ]);
+  home.packages = [
+    iosevka-mayukai.monolite
+    # (fetchFontShare {
+    #   name = "clash-grotesk";
+    #   hash = "sha256-vYkEzvVeTP7+sZpiWlmZMVQurnRKnFNwErSTFOGzipo=";
+    # })
+  ]
+  ++ (with pkgs; [
+    monaspace
+    iosevka-bin
+    iosevka-comfy.comfy
+    jetbrains-mono
+    nerd-fonts.jetbrains-mono
+    nerd-fonts._0xproto
+    nerd-fonts.iosevka
+    liberation_ttf
+    mplus-outline-fonts.githubRelease
+    ubuntu_font_family
+    noto-fonts
+    noto-fonts-color-emoji
+    inter
+    helvetica-neue-lt-std
+  ]);
 }

@@ -19,7 +19,10 @@ in
       editor = {
         line-number = "relative";
         cursorline = true;
-        rulers = [80 120];
+        rulers = [
+          80
+          120
+        ];
 
         file-picker.hidden = true;
 
