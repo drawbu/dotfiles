@@ -51,6 +51,7 @@
       zip
       genact
       dust
+      dig
     ];
   };
 

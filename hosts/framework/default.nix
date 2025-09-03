@@ -43,4 +43,6 @@
   zramSwap.enable = true;
 
   services.fwupd.enable = true;
+
+  networking.nameservers = [ "1.1.1.1" ];
 }

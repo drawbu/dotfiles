@@ -42,7 +42,7 @@
         xclip
         libnotify
         wl-clipboard
-        # yubikey-manager-qt
+        yubioath-flutter
         pods
         feh
         thunderbird-bin
