@@ -115,6 +115,7 @@ in
         "--no-pager"
       ];
       aliases = {
+        drop = [ "abandon" ];
         l = [ "log" ];
         ll = [
           "log"
