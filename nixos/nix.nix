@@ -21,10 +21,8 @@ in
       ];
       trusted-substituters = [
         "https://cache.nixos.org/"
-        "http://192.168.1.144:5000"
       ];
       trusted-public-keys = [
-        "binarycache.example.com:bFHgI8jFAA6AoHIKc244zm+HuvjPitj759k/Pr9WNvQ="
       ];
       keep-outputs = true;
       keep-derivations = true;
