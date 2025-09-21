@@ -108,12 +108,15 @@ in
         backends.ssh.program = ssh1password;
       };
       git.sign-on-push = true;
-      ui.default-command = [
-        "log"
-        "-r"
-        "(main..@):: | (main..@)-"
-        "--no-pager"
-      ];
+      ui = {
+        default-command = [
+          "log"
+          "-r"
+          "(trunk()..@):: | (trunk()..@)-"
+          "--no-pager"
+        ];
+        conflict-marker-style = "git";
+      };
       aliases = {
         drop = [ "abandon" ];
         l = [ "log" ];
@@ -136,6 +139,7 @@ in
           "--no-pager"
         ];
       };
+      templates.git_push_bookmark = "\"clement/push-\" ++ change_id.short()";
       template-aliases = {
         "format_timestamp(timestamp)" = ''
           if(timestamp.before("1 week ago"),
