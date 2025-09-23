@@ -23,6 +23,9 @@
       ".clang-tidy".source = ./.clang-tidy;
       ".clang-format".source = ./.clang-format;
       ".clangd".source = ./.clangd;
+      ".npmrc".text = ''
+        update-notifier = false
+      '';
     };
 
     activation = {
