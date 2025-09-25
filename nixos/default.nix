@@ -16,6 +16,7 @@
   system.copySystemConfiguration = false;
 
   time.timeZone = "US/Pacific";
+  time.hardwareClockInLocalTime = true;
   i18n.defaultLocale = "en_US.UTF-8";
 
   programs = {
