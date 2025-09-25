@@ -20,7 +20,6 @@
           "cpu"
           "temperature"
           "memory"
-          "backlight"
         ];
 
         modules-center = [
@@ -37,23 +36,6 @@
           "pulseaudio"
           "battery"
         ];
-
-        backlight = {
-          interval = 2;
-          align = 0;
-          rotate = 0;
-          format = "{icon} {percent}%";
-          format-icons = [
-            "󰃞"
-            "󰃟"
-            "󰃝"
-            "󰃠"
-          ];
-          icon-size = 10;
-          on-scroll-up = "brightnessctl set +5%";
-          on-scroll-down = "brightnessctl set 5%-";
-          smooth-scrolling-threshold = 1;
-        };
 
         battery = {
           interval = 60;
@@ -291,7 +273,6 @@
         border-radius: 3px;
       }
 
-      #backlight,
       #battery,
       #bluetooth,
       #clock,
