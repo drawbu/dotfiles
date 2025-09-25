@@ -16,11 +16,15 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-alien.inputs.nixpkgs.follows = "nixpkgs";
 
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
+
     hyprqtile.url = "github:drawbu/hyprqtile";
     hyprqtile.inputs.nixpkgs.follows = "nixpkgs";
 
     jj.url = "github:jj-vcs/jj/v0.40.0";
     jj.inputs.nixpkgs.follows = "nixpkgs";
+    jj.inputs.rust-overlay.follows = "rust-overlay";
 
     ghostty.url = "github:ghostty-org/ghostty/v1.3.1";
     ghostty.inputs.nixpkgs.follows = "nixpkgs_unstable";
