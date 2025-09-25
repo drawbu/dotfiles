@@ -19,6 +19,7 @@ let
     .cache
     .bin/
     compile_commands.json
+    .jj
 
     ## Executables files
     *.out
@@ -107,7 +108,10 @@ in
         key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILu5dP9F77dUgxHpu7drGx/cMpYPRXw0SjsTOr3sLPBZ";
         backends.ssh.program = ssh1password;
       };
-      git.sign-on-push = true;
+      git = {
+        sign-on-push = true;
+        private-commits = "description(glob:'wip:*') | description(glob:'WIP:*') | description(glob:'wip(*):*') | description(glob:'WIP(*):*')";
+      };
       ui = {
         default-command = [
           "log"
@@ -139,7 +143,18 @@ in
           "--no-pager"
         ];
       };
-      templates.git_push_bookmark = "\"clement/push-\" ++ change_id.short()";
+      templates = {
+        git_push_bookmark = "\"clement/push-\" ++ change_id.short()";
+        draft_commit_description = ''
+          concat(
+            coalesce(description, default_commit_description, "\n"),
+            surround(
+              "\nJJ: This commit contains the following changes:\n", "",
+              indent("JJ:     ", diff.stat(72)),
+            ),
+          )
+        '';
+      };
       template-aliases = {
         "format_timestamp(timestamp)" = ''
           if(timestamp.before("1 week ago"),
