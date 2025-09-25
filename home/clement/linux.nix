@@ -97,9 +97,16 @@
     autostart = {
       enable = true;
       readOnly = true;
-      entries = [
-        "${pkgs._1password-gui}/share/applications/1password.desktop" # add flag silent
-      ];
+      entries =
+        let
+          onepassword-silent = pkgs.runCommand "1password-silent-autostart" { } ''
+            mkdir -p $out/share/applications
+            sed 's|^Exec=1password |Exec=1password --silent |' \
+              ${pkgs._1password-gui}/share/applications/1password.desktop \
+              > $out/share/applications/1password.desktop
+          '';
+        in
+        [ "${onepassword-silent}/share/applications/1password.desktop" ];
     };
   };
 
