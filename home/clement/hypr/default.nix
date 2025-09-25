@@ -11,16 +11,7 @@
       hyprpaper
       legacy.kdePackages.xwaylandvideobridge
       nwg-displays
-      wl-clipboard
-      kooha
-      unstable.librepods
     ];
-  };
-
-  programs.vicinae = {
-    package = pkgs.unstable.vicinae;
-    enable = true;
-    systemd.enable = true;
   };
 
   services = {

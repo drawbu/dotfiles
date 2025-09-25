@@ -85,6 +85,10 @@
         unstable.lmstudio
         freecad
 
+        wl-clipboard
+        kooha
+        unstable.librepods
+
         (callPackage ./helium.nix { })
       ];
   };
@@ -119,9 +123,14 @@
     };
 
     blueman-applet.enable = true;
-
     swaync.enable = true;
-
     gnome-keyring.enable = true;
+    swayosd.enable = true;
+  };
+
+  programs.vicinae = {
+    package = pkgs.unstable.vicinae;
+    enable = true;
+    systemd.enable = true;
   };
 }
