@@ -15,7 +15,7 @@
 ![image](https://github.com/user-attachments/assets/61fc6544-057e-407a-b114-263d37015e6a)
 ![image](https://github.com/user-attachments/assets/caf26026-c74a-465d-bdcb-7d0f4c85611f)
 
-Simple and clean, using Hyprland. Previously qtile.
+Simple and clean, using Niri. prev. Hyprland, prev. qtile.
 
 
 ## :snowflake: Installation

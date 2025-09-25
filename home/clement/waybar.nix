@@ -1,7 +1,16 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.waybar = {
     enable = true;
+    package = pkgs.unstable.waybar.overrideAttrs (old: {
+      patches = [
+        # niri/workspaces: feature - add "hide-empty" config option
+        (pkgs.fetchpatch {
+          url = "https://patch-diff.githubusercontent.com/raw/Alexays/Waybar/pull/4966.diff";
+          hash = "sha256-MXZzC2sBs8gVO/s8fytW94KrwY67INgJiUEiOkru7x0=";
+        })
+      ];
+    });
     settings = {
       mainBar = {
         layer = "top";
@@ -15,7 +24,7 @@
         margin-right = 4;
 
         modules-left = [
-          "hyprland/workspaces"
+          "niri/workspaces"
           "power-profiles-daemon"
           "cpu"
           "temperature"
@@ -97,16 +106,8 @@
           interval = 5;
         };
 
-        "hyprland/language" = {
-          format = "{short}";
-        };
-
-        "hyprland/workspaces" = {
-          all-outputs = true;
-          format = "{name}";
-          on-click = "activate";
-          show-special = false;
-          sort-by-number = true;
+        "niri/workspaces" = {
+          hide-empty = true;
         };
 
         memory = {

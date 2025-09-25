@@ -10,18 +10,17 @@
     ./distrobox.nix
   ]
   ++ lib.optionals graphical [
-    ./hypr
     ./kanata
     ./gtk.nix
     ./firefox.nix
     ./cursor.nix
     ./kitty.nix
     ./mimeapps.nix
-    ./login.nix
     ./gaming.nix
     ./ghostty.nix
     ./fuzzel.nix
-    ./xdg.nix
+    ./waybar.nix
+    ./niri
   ];
 
   home = {
@@ -87,6 +86,7 @@
         wl-clipboard
         kooha
         unstable.librepods
+        unstable.awww
 
         (callPackage ./helium.nix { })
       ];

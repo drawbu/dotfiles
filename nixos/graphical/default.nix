@@ -105,17 +105,6 @@
     XCURSOR_SIZE = 16;
   };
 
-  # Propagate the above into the systemd --user manager so units (e.g. vicinae)
-  # and apps they spawn inherit them. environment.sessionVariables alone only
-  # reaches login shells. XDG_SESSION_TYPE=wayland is required so Chromium's
-  # --ozone-platform-hint=auto resolves to wayland (else it falls back to x11).
-  environment.etc."environment.d/10-session.conf".text = ''
-    NIXOS_OZONE_WL=1
-    ELECTRON_OZONE_PLATFORM_HINT=wayland
-    XCURSOR_SIZE=16
-    XDG_SESSION_TYPE=wayland
-  '';
-
   networking = {
     timeServers = [
       "0.fr.pool.ntp.org"

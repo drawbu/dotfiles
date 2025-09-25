@@ -1,0 +1,228 @@
+input {
+    keyboard {
+        numlock
+        xkb { layout "us_qwerty-fr"; }
+    }
+
+    mouse { }
+    trackpoint { }
+    touchpad {
+        tap
+        natural-scroll
+        // disabled-on-external-mouse
+    }
+
+    warp-mouse-to-focus
+
+    // Focus windows and outputs automatically when moving the mouse into them.
+    // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
+    focus-follows-mouse max-scroll-amount="100%"
+}
+
+output "eDP-1" {
+    mode "2880x1920@120.000"
+    scale 1.5
+    transform "normal"
+    position x=1280 y=0
+}
+
+layout {
+    gaps 4
+    center-focused-column "on-overflow"
+
+    // Widths that "switch-preset-column-width" (Mod+R) toggles between
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    preset-window-heights { }
+    default-column-width {}
+
+    focus-ring {
+        width 2
+        active-color "#cdd6f4ee"
+        inactive-color "#1e1e2eaa"
+        urgent-color "#9b0000"
+    }
+
+    border { off; }
+    shadow { off; }
+
+    // Struts shrink the area occupied by windows, similarly to layer-shell panels.
+    // You can think of them as a kind of outer gaps. They are set in logical pixels.
+    // Left and right struts will cause the next window to the side to always be visible.
+    // Top and bottom struts will simply add outer gaps in addition to the area occupied by
+    // layer-shell panels and regular gaps.
+    struts {
+        left 24
+        right 24
+    }
+}
+
+spawn-at-startup "waybar"
+spawn-at-startup "awww-daemon"
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+prefer-no-csd
+hotkey-overlay { skip-at-startup; }
+animations {
+    on
+    workspace-switch { duration-ms 150; }
+}
+window-rule { draw-border-with-background false; }
+
+// Open the picture-in-picture players as floating by default
+window-rule {
+    match title="(?i)^Picture[ -]in[ -]Picture$"
+    open-floating true
+    default-floating-position x=32 y=32 relative-to="bottom-right"
+}
+
+// Turn on shadows for floating windows.
+window-rule {
+    match is-floating=true
+    shadow { on; }
+}
+
+// Block out password managers from screen capture
+window-rule {
+    match app-id=r#"1password"#
+    block-out-from "screencast"
+}
+
+// Enable rounded corners for all windows
+window-rule {
+    geometry-corner-radius 3
+    clip-to-geometry true
+}
+
+// Open these as floating
+window-rule {
+    match app-id=r#"^me\.kavishdevar\.librepods$"#
+    match app-id=r#"^jetbrains-"# title=r#"^Welcome to"#
+    open-floating true
+}
+
+// Slightly translucent windows
+window-rule {
+    match app-id=r#"^discord$"#
+    match app-id=r#"^vesktop$"#
+    match app-id=r#"^obsidian$"#
+    match app-id=r#"^jetbrains-"#
+    match app-id=r#"^code$"#
+    background-effect { blur true; }
+    opacity 0.9
+}
+
+workspace "q"
+workspace "w"
+workspace "e"
+workspace "r"
+workspace "t"
+workspace "y"
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // Apps
+    Mod+Return  hotkey-overlay-title="Open a terminal"   { spawn "ghostty"; }
+    Mod+R       hotkey-overlay-title="Apps launcher"     { spawn "vicinae" "toggle"; }
+    Mod+V       hotkey-overlay-title="Clipboard history" { spawn "vicinae" "vicinae://launch/clipboard/history"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen"   { spawn "swaylock"; }
+
+    // IO Controls
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
+    XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
+
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
+
+    // Windows manipulation
+    Mod+O repeat=false { toggle-overview; }
+    Mod+X repeat=false { close-window; }
+
+    Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-workspace-down; }
+    Mod+Up    { focus-workspace-up; }
+    Mod+Right { focus-column-right; }
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-workspace-down; }
+    Mod+K     { focus-workspace-up; }
+    Mod+L     { focus-column-right; }
+
+    Mod+Ctrl+Left  { move-column-left; }
+    Mod+Ctrl+Down  { move-column-to-workspace-down; }
+    Mod+Ctrl+Up    { move-column-to-workspace-up; }
+    Mod+Ctrl+Right { move-column-right; }
+    Mod+Ctrl+H     { move-column-left; }
+    Mod+Ctrl+J     { move-column-to-workspace-down; }
+    Mod+Ctrl+K     { move-column-to-workspace-up; }
+    Mod+Ctrl+L     { move-column-right; }
+
+    // Move to monitors
+    Mod+Shift+Left  { focus-monitor-left; }
+    Mod+Shift+Down  { focus-monitor-down; }
+    Mod+Shift+Up    { focus-monitor-up; }
+    Mod+Shift+Right { focus-monitor-right; }
+    Mod+Shift+H     { focus-monitor-left; }
+    Mod+Shift+J     { focus-monitor-down; }
+    Mod+Shift+K     { focus-monitor-up; }
+    Mod+Shift+L     { focus-monitor-right; }
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+    Mod+WheelScrollDown  cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp    cooldown-ms=150 { focus-workspace-up; }
+    Mod+WheelScrollRight                 { focus-column-right; }
+    Mod+WheelScrollLeft                  { focus-column-left; }
+
+    Mod+Shift+Q { focus-workspace 1; }
+    Mod+Shift+W { focus-workspace 2; }
+    Mod+Shift+E { focus-workspace 3; }
+    Mod+Shift+R { focus-workspace 4; }
+    Mod+Shift+T { focus-workspace 5; }
+    Mod+Shift+Y { focus-workspace 6; }
+    Mod+Ctrl+Q { move-column-to-workspace 1; }
+    Mod+Ctrl+W { move-column-to-workspace 2; }
+    Mod+Ctrl+E { move-column-to-workspace 3; }
+    Mod+Ctrl+R { move-column-to-workspace 4; }
+    Mod+Ctrl+T { move-column-to-workspace 5; }
+    Mod+Ctrl+Y { move-column-to-workspace 6; }
+
+    Mod+Tab { focus-workspace-previous; }
+
+    Mod+F       { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+Ctrl+F  { expand-column-to-available-width; }
+
+    Mod+M { maximize-window-to-edges; }
+    Mod+C { center-column; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    Mod+S { toggle-window-floating; }
+    Mod+D { switch-preset-column-width; }
+
+    Print      { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print  { screenshot-window; }
+
+    Mod+Shift+P { power-off-monitors; }
+}
