@@ -2,7 +2,7 @@
 {
   services.xserver = {
     enable = true;
-    xkb.layout = "fr";
+    xkb.layout = "us_qwerty-fr";
     displayManager.startx.enable = true;
   };
 }
