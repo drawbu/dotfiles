@@ -23,9 +23,11 @@ Simple and clean, using Hyprland. Previously qtile.
 sudo nixos-rebuild switch --flake github:drawbu/dotfiles#the-machine
 ```
 Replace `the-machine` with one of the following:
- - `pain-de-mie`: Home PC
- - `pancake`: Work/School Laptop
- - `waffle`: Home Server
+ - `framework`: work/school laptop
+ - `macos`: previously used macOS config
+ - `pain-de-mie`: home PC
+ - `waffle`: home server running on mini pc
+ - `pineapple`: distant headscale tailnet host
 
 And **tada** the pc is up and running, users are created, everything is
 installed, and symlinks are linked!
