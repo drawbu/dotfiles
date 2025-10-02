@@ -26,6 +26,7 @@ in
           "org.gnome.eog.desktop"
           "feh.desktop"
         ];
+        "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
         "text/*" = "nvim.desktop";
         "video/*" = "vlc.desktop";
         "x-scheme-handler/msteams" = "teams-for-linux.desktop";
@@ -36,6 +37,7 @@ in
         "text/html" = "firefox.desktop";
         "text/xml" = "firefox.desktop";
         "application/zip" = "org.gnome.FileRoller.desktop";
+        "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
         "x-scheme-handler/jetbrains" = "jetbrains-toolbox.desktop";
 
         # ↓ Mails
