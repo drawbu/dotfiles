@@ -3,7 +3,7 @@
   home.packages = [ pkgs.extra.ghostty ];
   xdg.configFile = {
     "ghostty/config".text = ''
-      theme = dark:catppuccin-mocha,light:catppuccin-latte
+      theme = dark:Catppuccin Mocha,light:Catppuccin Latte
       font-family = Iosevka Mayukai Monolite
 
       background-opacity = 0.95
