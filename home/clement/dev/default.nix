@@ -65,6 +65,7 @@
         rustup
         go
         cargo-mommy
+        cargo-nextest
         nodejs
         corepack
         bun
@@ -142,6 +143,7 @@
         haskell-language-server
         graphql-language-service-cli
 
+        typst
         asciinema
         asciinema-agg
         ijhttp
@@ -152,6 +154,7 @@
         unstable.gitoxide
         difftastic
         mergiraf
+        uv
 
         # ai bullshit
         unstable.opencode
