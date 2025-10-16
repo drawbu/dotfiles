@@ -110,7 +110,7 @@ in
       };
       git = {
         sign-on-push = true;
-        private-commits = "description(glob:'wip:*') | description(glob:'WIP:*') | description(glob:'wip(*):*') | description(glob:'WIP(*):*')";
+        private-commits = "private()";
       };
       ui = {
         default-command = [
@@ -120,6 +120,11 @@ in
           "--no-pager"
         ];
         conflict-marker-style = "git";
+      };
+      revset-aliases = {
+        "wip()" = "description(regex:'^(?:wip|WIP).*')";
+        "wip_self()" = "wip() & author(glob:'git@drawbu.dev')";
+        "private()" = "wip_self() | description(regex:'^(?:private|priv:).*')";
       };
       aliases = {
         drop = [ "abandon" ];
@@ -140,6 +145,12 @@ in
         ];
         s = [
           "st"
+          "--no-pager"
+        ];
+        wip = [
+          "log"
+          "-r"
+          "wip_self()"
           "--no-pager"
         ];
       };
