@@ -21,12 +21,13 @@
           legacy' = import finputs.nixpkgs_legacy' cfg;
         }
       )
+
+      finputs.hyprqtile.overlays.default
       (final: prev: {
         nix-direnv = prev.nix-direnv.override { enableFlakes = true; };
 
         extra = {
           inherit (finputs.nix-alien.packages.${final.system}) nix-alien;
-          inherit (finputs.hyprqtile.packages.${final.system}) hyprqtile;
           inherit (finputs.ghostty.packages.${final.system}) ghostty;
           jj = finputs.jj.packages.${final.system}.jujutsu;
         };

@@ -7,7 +7,7 @@
 
   home = {
     packages = with pkgs; [
-      extra.hyprqtile
+      hyprqtile
       hyprpaper
       kdePackages.xwaylandvideobridge
       pyprland
