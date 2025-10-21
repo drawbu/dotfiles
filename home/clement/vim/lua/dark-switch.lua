@@ -1,18 +1,14 @@
-function dark()
-  local themepath = os.getenv('THEMEFILE')
-  if themepath then
-    local themefile = io.open(themepath, 'r')
-    if themefile then
-      local theme = themefile:read()
-      vim.o.background = (theme == 'light') and 'light' or 'dark'
-      themefile:close()
-    end
-  end
+local function sync_system_theme()
+  local handle = io.popen("gsettings get org.gnome.desktop.interface color-scheme")
+  if handle == nil then return end
+  local theme = handle:read("*a")
+  handle:close()
+  vim.o.background = (theme == "'prefer-light'\n" ) and 'light' or 'dark'
 end
 
-dark()
+sync_system_theme()
 
 vim.keymap.set('n', '<C-t>', function()
   vim.cmd(':silent exec "!dark 2>/dev/null"')
-  dark()
+  sync_system_theme()
 end)

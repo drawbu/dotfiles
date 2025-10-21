@@ -3,7 +3,6 @@
   imports = [
     ./waybar.nix
     ./hyprlock.nix
-    ./colortheme.nix
   ];
 
   home = {

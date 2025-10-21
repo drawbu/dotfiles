@@ -1,36 +1,26 @@
-{ config, pkgs, ... }:
-let
-  shBool = x: if x then "true" else "false";
-in
+{ pkgs, ... }:
 {
   home.packages = [
     (pkgs.writeShellApplication {
       name = "dark";
+      runtimeInputs = with pkgs; [ libnotify ];
       text = ''
-        set +e errexit # Don't exit on error
-
-        theme=$(cat "$THEMEFILE")
-        if [ "$theme" = "light" ]; then
-          theme="dark"
-        else
+        theme=$(gsettings get org.gnome.desktop.interface color-scheme)
+        if [ "$theme" = "'prefer-dark'" ]; then
           theme="light"
+        else
+          theme="dark"
         fi
         echo "$theme" > "$THEMEFILE"
         notify-send "Switching to $theme theme" -t 1000
 
-        # Update css theme
-        ln -fs "$HOME/$theme.css" "$HOME/theme.css"
-
-        # Update gtk theme
-        if ${shBool config.gtk.enable}; then
-          gtk_theme="catppuccin-mocha-peach-compact+rimless";
-          if [ "$theme" = "light" ]; then
-            gtk_theme="catppuccin-latte-peach-compact+rimless";
-          fi
-
-          gsettings set org.gnome.desktop.interface color-scheme "prefer-$theme"
-          gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme"
+        gtk_theme="catppuccin-mocha-peach-compact+rimless";
+        if [ "$theme" = "light" ]; then
+          gtk_theme="catppuccin-latte-peach-compact+rimless";
         fi
+
+        gsettings set org.gnome.desktop.interface color-scheme "prefer-$theme"
+        gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme"
       '';
     })
   ];
