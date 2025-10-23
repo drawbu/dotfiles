@@ -66,6 +66,7 @@
         go
         cargo-mommy
         cargo-nextest
+        cargo-watch
         nodejs
         corepack
         bun
@@ -113,6 +114,7 @@
         direnv
         wakatime
         jless
+        hydra-check
 
         # language servers
         lua-language-server
