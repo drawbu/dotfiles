@@ -86,6 +86,7 @@
         rpi-imager
         gcr
         stremio
+        loupe
       ];
   };
 
