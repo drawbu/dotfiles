@@ -45,4 +45,11 @@
   services.fwupd.enable = true;
 
   networking.nameservers = [ "1.1.1.1" ];
+
+  systemd.oomd = {
+    enable = true;
+    extraConfig = {
+      DefaultMemoryPressureDurationSec = "10s";
+    };
+  };
 }
