@@ -52,4 +52,6 @@
       DefaultMemoryPressureDurationSec = "10s";
     };
   };
+
+  services.tailscale.package = pkgs.unstable.tailscale;
 }

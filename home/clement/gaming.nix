@@ -1,9 +1,10 @@
 { pkgs, ... }:
 {
   home = {
-    packages = with pkgs; [
-      protonup
+    packages = with pkgs.unstable; [
+      protonup-ng
       prismlauncher
+      lunar-client
       heroic
       lutris
       r2modman
