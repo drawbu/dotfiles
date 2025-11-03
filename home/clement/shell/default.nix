@@ -31,7 +31,7 @@
       please = "sudo";
       senpai = "sudo";
       ufda = "test -z \"$(grep 'use flake' .envrc)\" && (echo 'use flake' >> .envrc); direnv allow";
-      tree = "ls --tree";
+      tree = "ls --tree -a";
       zed = "zeditor";
     }
     // lib.optionalAttrs pkgs.stdenv.isLinux {
