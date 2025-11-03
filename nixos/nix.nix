@@ -2,6 +2,7 @@
   finputs,
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -9,6 +10,7 @@ let
 in
 {
   nix = {
+    package = pkgs.lixPackageSets.stable.lix;
     gc.automatic = false;
     settings = {
       experimental-features = [
