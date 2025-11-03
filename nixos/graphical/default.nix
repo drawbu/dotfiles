@@ -91,6 +91,7 @@
     enable = true;
     polkitPolicyOwners = [ "clement" ];
   };
+  environment.sessionVariables.OP_BIOMETRIC_UNLOCK_ENABLED = "true";
 
   networking = {
     timeServers = [
