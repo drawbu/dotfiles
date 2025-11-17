@@ -28,13 +28,6 @@
       '';
     };
 
-    activation = {
-      "npm_prefix" = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        run ${lib.getExe' pkgs.nodejs "npm"} config set \
-            prefix="${config.home.sessionVariables.NPM_PREFIX}/bin"
-      '';
-    };
-
     sessionPath = [
       "$NPM_PREFIX/bin"
       "$PNPM_HOME"
@@ -65,7 +58,7 @@
         rustup
         go
         cargo-mommy
-        cargo-nextest
+        unstable.cargo-nextest
         cargo-watch
         nodejs
         corepack
@@ -162,6 +155,7 @@
         unstable.opencode
         unstable.amp-cli
         unstable.gemini-cli
+        unstable.claude-code
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
         linux-manual
