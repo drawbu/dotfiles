@@ -51,10 +51,10 @@
       [
         # tools
         gcc14
-        (hiPrio llvmPackages_latest.clang) # note: cc from clang & gcc collides
+        (lib.hiPrio llvmPackages_latest.clang) # note: cc from clang & gcc collides
         zig
         libcxx
-        python312Full
+        python314
         rustup
         go
         cargo-mommy
@@ -105,7 +105,7 @@
         gum
         uiua
         direnv
-        wakatime
+        wakatime-cli
         jless
         hydra-check
 
@@ -126,7 +126,7 @@
         shfmt
         gdtoolkit_4
         asm-lsp
-        dockerfile-language-server-nodejs
+        dockerfile-language-server
         docker-compose-language-service
         gopls
         cmake-language-server

@@ -9,7 +9,7 @@ let
 in
 {
   home = {
-    packages = with pkgs; [ rofi-wayland ];
+    packages = with pkgs; [ rofi ];
     file = {
       ".config/rofi/config.rasi".source = ./config.rasi;
       ".config/rofi/applets".source = "${adi1090x_rofi}/files/applets";

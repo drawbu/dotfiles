@@ -55,7 +55,7 @@ in
   };
 
   # Add src/ to $out
-  system.extraSystemBuilderCmds = "ln -s ${self.sourceInfo.outPath} $out/src";
+  system.systemBuilderCommands = "ln -s ${self.sourceInfo.outPath} $out/src";
   # Add git version to nixos label
   system.nixos.label = lib.concatStringsSep "-" (
     (lib.sort (x: y: x < y) config.system.nixos.tags)

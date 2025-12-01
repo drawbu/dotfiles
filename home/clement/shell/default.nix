@@ -61,22 +61,25 @@
 
     ssh = {
       enable = true;
-      extraConfig = ''
-          IdentityAgent "${
+      enableDefaultConfig = false;
+      matchBlocks = {
+        "*" = {
+          identityAgent = "${
             if pkgs.stdenv.isDarwin then
               "~/Library/Group Containers/2BUA8C4S2C.com.1password/t"
             else
               "~/.1password"
-          }/agent.sock"
-          SetEnv TERM=xterm-256color
+          }/agent.sock";
+          setEnv.TERM = "xterm-256color";
+        };
 
-        Host perlmutter*.nersc.gov saul*.nersc.gov dtn*.nersc.gov
-          User cboillot
-          IdentityFile ${config.home.homeDirectory}/.ssh/nersc
-          IdentitiesOnly yes
-          ForwardAgent yes
-
-      '';
+        "perlmutter*.nersc.gov saul*.nersc.gov dtn*.nersc.gov" = {
+          user = "cboillot";
+          identityFile = "${config.home.homeDirectory}/.ssh/nersc";
+          identitiesOnly = true;
+          forwardAgent = true;
+        };
+      };
     };
   };
 }

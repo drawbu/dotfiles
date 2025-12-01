@@ -9,7 +9,7 @@
     packages = with pkgs; [
       hyprqtile
       hyprpaper
-      kdePackages.xwaylandvideobridge
+      legacy.kdePackages.xwaylandvideobridge
       pyprland
       nwg-displays
       cliphist
@@ -168,7 +168,7 @@
       };
 
       gestures = {
-        workspace_swipe = "on";
+        gesture = "3, horizontal, workspace";
         workspace_swipe_invert = false;
       };
 

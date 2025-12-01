@@ -32,7 +32,7 @@
 
     iconTheme = {
       name = "MoreWaita";
-      package = pkgs.morewaita-icon-theme.overrideAttrs (old: {
+      package = pkgs.legacy.morewaita-icon-theme.overrideAttrs (old: {
         version = "unstable-2024-10-02";
         src = pkgs.fetchFromGitHub {
           owner = "NeoWaita";

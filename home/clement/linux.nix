@@ -85,7 +85,7 @@
         kdePackages.filelight
         rpi-imager
         gcr
-        stremio
+        legacy.stremio
         loupe
       ];
   };

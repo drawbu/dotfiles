@@ -48,7 +48,7 @@
 
   systemd.oomd = {
     enable = true;
-    extraConfig = {
+    settings.OOM = {
       DefaultMemoryPressureDurationSec = "10s";
     };
   };

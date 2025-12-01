@@ -97,7 +97,7 @@ in
     nerd-fonts.iosevka
     liberation_ttf
     mplus-outline-fonts.githubRelease
-    ubuntu_font_family
+    ubuntu-classic
     noto-fonts
     noto-fonts-color-emoji
     inter

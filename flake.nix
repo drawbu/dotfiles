@@ -1,23 +1,25 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.05";
-    nixpkgs_legacy.url = "nixpkgs/nixos-24.11";
+    nixpkgs.url = "nixpkgs/nixos-25.11";
+    nixpkgs_legacy.url = "nixpkgs/nixos-25.05";
     nixpkgs_legacy'.url = "nixpkgs/nixos-24.05";
     nixpkgs_unstable.url = "nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-alien.url = "github:thiagokokada/nix-alien";
 
     hyprqtile.url = "github:drawbu/hyprqtile";
     jj.url = "github:jj-vcs/jj/v0.35.0";
+
     ghostty.url = "github:ghostty-org/ghostty/v1.2.3";
+    ghostty.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

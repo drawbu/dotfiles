@@ -39,15 +39,17 @@ in
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
-    userName = "Clément";
-    userEmail = "git@drawbu.dev";
     lfs.enable = true;
     signing = {
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILu5dP9F77dUgxHpu7drGx/cMpYPRXw0SjsTOr3sLPBZ"; # op
       signByDefault = true;
     };
     attributes = [ "* merge=mergiraf" ];
-    extraConfig = {
+    settings = {
+      user = {
+        email = "git@drawbu.dev";
+        name = "Clément";
+      };
       gpg.format = "ssh";
       "gpg \"ssh\"".program = ssh1password;
       init.defaultBranch = "main";

@@ -4,7 +4,7 @@
     config = {
       allowUnfree = true;
       android_sdk.accept_license = true;
-      permittedInsecurePackages = [ "ventoy-1.1.05" ];
+      permittedInsecurePackages = [ "ventoy-1.1.07" ];
     };
     overlays = [
       (
@@ -27,9 +27,9 @@
         nix-direnv = prev.nix-direnv.override { enableFlakes = true; };
 
         extra = {
-          inherit (finputs.nix-alien.packages.${final.system}) nix-alien;
-          inherit (finputs.ghostty.packages.${final.system}) ghostty;
-          jj = finputs.jj.packages.${final.system}.jujutsu;
+          inherit (finputs.nix-alien.packages.${final.stdenv.hostPlatform.system}) nix-alien;
+          inherit (finputs.ghostty.packages.${final.stdenv.hostPlatform.system}) ghostty;
+          jj = finputs.jj.packages.${final.stdenv.hostPlatform.system}.jujutsu;
         };
       })
     ];
