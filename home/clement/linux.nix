@@ -75,7 +75,7 @@
         warp
         resources
         filezilla
-        legacy'.figma-agent
+        figma-agent
         hexchat
         superTuxKart
         calibre

@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-25.11";
     nixpkgs_legacy.url = "nixpkgs/nixos-25.05";
-    nixpkgs_legacy'.url = "nixpkgs/nixos-24.05";
     nixpkgs_unstable.url = "nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -16,7 +15,7 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
 
     hyprqtile.url = "github:drawbu/hyprqtile";
-    jj.url = "github:jj-vcs/jj/v0.35.0";
+    jj.url = "github:jj-vcs/jj/v0.36.0";
 
     ghostty.url = "github:ghostty-org/ghostty/v1.2.3";
     ghostty.inputs.nixpkgs.follows = "nixpkgs";
