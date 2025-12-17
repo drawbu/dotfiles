@@ -51,8 +51,7 @@
         beeper
         unstable.vesktop
         discord
-        ungoogled-chromium
-        brave
+        google-chrome
         libreoffice-qt6-fresh
         teams-for-linux
         spotify

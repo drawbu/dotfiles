@@ -85,10 +85,9 @@
         bear
         nixpkgs-review
         entr
-        (ffmpeg-full.override {
-          withUnfree = true;
-          withOpengl = true;
-        })
+        ((ffmpeg-full.override { withUnfree = true; }).overrideAttrs (_: {
+          doCheck = false;
+        }))
         cmake
         gnumake
         gcovr

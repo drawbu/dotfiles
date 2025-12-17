@@ -20,7 +20,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   programs = {
-    command-not-found.enable = true;
+    command-not-found.enable = false;
     dconf.enable = true;
 
     gnupg.agent = {
