@@ -36,12 +36,6 @@
       pulse.enable = true;
       wireplumber.enable = true;
       raopOpenFirewall = true;
-
-      extraConfig.pipewire = {
-        "10-airplay"."context.modules" = [
-          { name = "libpipewire-module-raop-discover"; }
-        ];
-      };
     };
 
     printing = {
