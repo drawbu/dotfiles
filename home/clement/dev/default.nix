@@ -170,7 +170,7 @@
         ++ (with unstable; [
           # softs
           vscode
-          jetbrains.pycharm-professional
+          jetbrains.pycharm
           jetbrains.webstorm
           jetbrains.datagrip
           jetbrains.rust-rover

@@ -15,10 +15,9 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
 
     hyprqtile.url = "github:drawbu/hyprqtile";
-    jj.url = "github:jj-vcs/jj/v0.36.0";
+    jj.url = "github:jj-vcs/jj/v0.37.0";
 
-    ghostty.url = "github:ghostty-org/ghostty/v1.2.3";
-    ghostty.inputs.nixpkgs.follows = "nixpkgs";
+    ghostty.url = "github:ghostty-org/ghostty/tip";
   };
 
   outputs =
