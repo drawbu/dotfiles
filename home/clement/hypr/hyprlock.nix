@@ -6,7 +6,7 @@
       # https://github.com/justinmdickey/publicdots/blob/c217f7571635d26302b89ce8529427da1b5c4b1b/.config/hypr/hyprlock.conf
       background = {
         monitor = "";
-        path = "~/assets/wallpapers/wavy-milad-fakurian.jpg";
+        path = "~/assets/wallpapers/to-the-moon.jpg";
         blur_passes = 2;
         contrast = 1;
         brightness = 0.5;
