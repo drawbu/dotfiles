@@ -8,6 +8,7 @@
       heroic
       lutris
       r2modman
+      dwarf-fortress
     ];
 
     sessionVariables = {

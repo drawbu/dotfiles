@@ -54,7 +54,13 @@
         (lib.hiPrio llvmPackages_latest.clang) # note: cc from clang & gcc collides
         zig
         libcxx
-        python314
+        (unstable.python314.withPackages (
+          ps: with ps; [
+            requests
+            pytest
+            black
+          ]
+        ))
         rustup
         go
         cargo-mommy
@@ -107,6 +113,7 @@
         wakatime-cli
         jless
         hydra-check
+        patchutils
 
         # language servers
         lua-language-server
