@@ -13,11 +13,17 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-alien.inputs.nixpkgs.follows = "nixpkgs";
 
     hyprqtile.url = "github:drawbu/hyprqtile";
+    hyprqtile.inputs.nixpkgs.follows = "nixpkgs";
+
     jj.url = "github:jj-vcs/jj/v0.37.0";
+    jj.inputs.nixpkgs.follows = "nixpkgs";
 
     ghostty.url = "github:ghostty-org/ghostty/tip";
+    ghostty.inputs.nixpkgs.follows = "nixpkgs_unstable";
+    ghostty.inputs.home-manager.follows = "home-manager";
   };
 
   outputs =

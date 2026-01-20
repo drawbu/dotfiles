@@ -82,10 +82,10 @@ in
   };
   home.packages = [
     iosevka-mayukai.monolite
-    # (fetchFontShare {
-    #   name = "clash-grotesk";
-    #   hash = "sha256-vYkEzvVeTP7+sZpiWlmZMVQurnRKnFNwErSTFOGzipo=";
-    # })
+    (fetchFontShare {
+      name = "clash-grotesk";
+      hash = "sha256-NJPuG4jhJw54SKNV/jlIqJbIU0pfyvVn39Iotkfj7A0=";
+    })
   ]
   ++ (with pkgs; [
     monaspace
