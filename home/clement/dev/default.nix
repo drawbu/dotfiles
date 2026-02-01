@@ -156,6 +156,8 @@
         difftastic
         mergiraf
         uv
+        unstable.ruff
+        unstable.ty
 
         # ai bullshit
         unstable.opencode
