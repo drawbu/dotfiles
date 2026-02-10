@@ -10,7 +10,6 @@
       hyprqtile
       hyprpaper
       legacy.kdePackages.xwaylandvideobridge
-      pyprland
       nwg-displays
       cliphist
       wl-clipboard
@@ -67,7 +66,6 @@
         "hyprpaper"
         "waybar"
         "xwaylandvideobridge"
-        "pypr"
       ]
       ++ (
         let
@@ -126,7 +124,7 @@
           "windows, 1, 7, myBezier"
           "windowsOut, 1, 7, default, popin 80%"
           "border, 1, 10, default"
-          "borderangle, 1, 8, default"
+          # "borderangle, 1, 8, default"
           "fade, 1, 7, default"
           "workspaces, 0, 2, default"
         ];
@@ -179,16 +177,13 @@
       bind = [
         # General Keybinds
         "$mod, return, exec, ghostty"
-        "$mod, W, killactive,"
+        "$mod, X, killactive,"
         "$mod, F, togglefloating,"
         "$mod, R, exec, rofi -show drun"
         "$mod, J, togglesplit,"
         "$mod, K, fullscreen,"
         "$mod, O, exec, pkill -SIGUSR1 waybar # Waybar toggle"
         "$mod, L, exec, loginctl lock-session"
-
-        "$mod, Z, exec, pypr zoom ++0.5"
-        "$mod ctrl, Z, exec, pypr zoom"
 
         # Move focus
         "$mod, left, movefocus, l"
@@ -202,8 +197,8 @@
       ++ (
         let
           letters = [
-            "A"
-            "Z"
+            "Q"
+            "W"
             "E"
             "R"
             "T"
@@ -261,21 +256,9 @@
     };
   };
 
-  xdg.configFile = {
-    "hypr/hyprpaper.conf".text = ''
-      preload = ~/assets/wallpapers/wavy-milad-fakurian.jpg
-      wallpaper = , ~/assets/wallpapers/wavy-milad-fakurian.jpg
-      splash = false
-    '';
-
-    "hypr/pyprland.toml".text = ''
-      [pyprland]
-      plugins = [
-        "magnify",
-      ]
-
-      [magnify]
-      factor = 4
-    '';
-  };
+  xdg.configFile."hypr/hyprpaper.conf".text = ''
+    preload = ~/assets/wallpapers/wavy-milad-fakurian.jpg
+    wallpaper = , ~/assets/wallpapers/wavy-milad-fakurian.jpg
+    splash = false
+  '';
 }
