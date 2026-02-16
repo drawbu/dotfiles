@@ -163,7 +163,10 @@
         unstable.opencode
         unstable.amp-cli
         unstable.gemini-cli
-        unstable.claude-code
+        unstable.claude-code-bin
+        unstable.github-copilot-cli
+        unstable.mistral-vibe
+        unstable.codex
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
         linux-manual

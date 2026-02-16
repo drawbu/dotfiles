@@ -28,6 +28,7 @@ let
     ## Nix
     result
     result-*
+    .claude/
   '';
   ssh1password =
     if pkgs.stdenv.isDarwin then
