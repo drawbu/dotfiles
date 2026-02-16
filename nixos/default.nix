@@ -55,7 +55,12 @@
     };
   };
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    wifi.scanRandMacAddress = true;
+    wifi.macAddress = "stable";
+    ethernet.macAddress = "stable";
+  };
 
   # this service sucks
   systemd.services.NetworkManager-wait-online = {
