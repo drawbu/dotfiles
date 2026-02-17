@@ -86,6 +86,7 @@
         gcr
         legacy.stremio
         loupe
+        mullvad-browser
       ];
   };
 
