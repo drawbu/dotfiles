@@ -103,4 +103,13 @@
     ];
     stevenblack.enable = true;
   };
+
+  services.xserver.xkb.extraLayouts.us_qwerty-fr = {
+    description = pkgs.qwerty-fr.meta.description;
+    languages = [
+      "eng"
+      "fra"
+    ];
+    symbolsFile = "${pkgs.qwerty-fr}/share/X11/xkb/symbols/us_qwerty-fr";
+  };
 }

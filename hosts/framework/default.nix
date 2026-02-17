@@ -20,15 +20,8 @@
           "eDP-1, highres, 0x0,     1.5, cm, hdr"
           "      ,highres, auto-up, 1"
         ];
-        input.kb_options = "compose:ralt";
-        input.kb_layout = lib.mkForce "us";
+        input.kb_layout = lib.mkForce "us_qwerty-fr";
         xwayland.force_zero_scaling = true;
-      };
-
-      dconf.settings = {
-        "org/gnome/desktop/input-sources" = {
-          xkb-options = [ "compose:ralt" ];
-        };
       };
 
       home = {
@@ -61,12 +54,7 @@
     };
   };
 
-  # qwerty
-  services.xserver.xkb = lib.mkForce {
-    layout = "us";
-    variant = "";
-    options = "compose:ralt";
-  };
+  services.xserver.xkb.layout = lib.mkForce "us_qwerty-fr";
 
   services.tailscale.package = pkgs.unstable.tailscale;
 
