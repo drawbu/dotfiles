@@ -18,6 +18,7 @@
         {
           unstable = import finputs.nixpkgs_unstable cfg;
           legacy = import finputs.nixpkgs_legacy cfg;
+          master = import finputs.nixpkgs_master cfg;
         }
       )
 

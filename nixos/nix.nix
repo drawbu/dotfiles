@@ -40,6 +40,7 @@ in
       "nixpkgs=${finputs.nixpkgs}"
       "legacy=${finputs.nixpkgs_legacy}"
       "unstable=${finputs.nixpkgs_unstable}"
+      "master=${finputs.nixpkgs_master}"
     ];
   };
 
