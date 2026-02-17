@@ -79,6 +79,8 @@
           identitiesOnly = true;
           forwardAgent = true;
         };
+
+        "pi raspberrypi28.local".user = "pi28";
       };
     };
   };
