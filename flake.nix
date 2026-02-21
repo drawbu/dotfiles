@@ -19,7 +19,7 @@
     hyprqtile.url = "github:drawbu/hyprqtile";
     hyprqtile.inputs.nixpkgs.follows = "nixpkgs";
 
-    jj.url = "github:jj-vcs/jj/v0.38.0";
+    jj.url = "github:jj-vcs/jj/v0.39.0";
     jj.inputs.nixpkgs.follows = "nixpkgs";
 
     ghostty.url = "github:ghostty-org/ghostty/tip";

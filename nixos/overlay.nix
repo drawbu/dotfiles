@@ -4,7 +4,7 @@
     config = {
       allowUnfree = true;
       android_sdk.accept_license = true;
-      permittedInsecurePackages = [ "ventoy-1.1.07" ];
+      permittedInsecurePackages = [ "ventoy-1.1.10" ];
     };
     overlays = [
       (
