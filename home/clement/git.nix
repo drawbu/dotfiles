@@ -119,15 +119,17 @@ in
         default-command = [
           "log"
           "-r"
-          "(trunk()..@):: | (trunk()..@)-"
+          "branch_log(@)"
           "--no-pager"
         ];
         conflict-marker-style = "git";
       };
       revset-aliases = {
         "wip()" = "description(regex:'^(?:wip|WIP).*')";
-        "wip_self()" = "wip() & author(glob:'git@drawbu.dev')";
+        "mine()" = "author(exact:'git@drawbu.dev')";
+        "wip_self()" = "wip() & mine()";
         "private()" = "wip_self() | description(regex:'^(?:private|priv:).*')";
+        "branch_log(rev)" = "(trunk()..rev):: | (trunk()..rev)-";
       };
       aliases = {
         drop = [ "abandon" ];
@@ -155,6 +157,21 @@ in
           "-r"
           "wip_self()"
           "--no-pager"
+        ];
+        fetch-pr = [
+          "util"
+          "exec"
+          "--"
+          (lib.getExe (
+            pkgs.writeShellApplication {
+              name = "fetch-pr-jj";
+              text = ''
+                echo "Fetching pull request #$1"
+                git fetch origin pull/"$1"/head:pr-"$1"
+                jj git import
+              '';
+            }
+          ))
         ];
       };
       templates = {
