@@ -7,8 +7,6 @@
       font-family = Iosevka Mayukai Monolite
 
       background-opacity = 0.95
-      window-height = 20
-      window-width = 96
 
       cursor-click-to-move = true
       mouse-hide-while-typing = true
@@ -17,6 +15,10 @@
       window-theme = ghostty
 
       auto-update = check
+
+      notify-on-command-finish = unfocused
+      notify-on-command-finish-action = no-bell,notify
+      notify-on-command-finish-after = 30s
     '';
   };
 }

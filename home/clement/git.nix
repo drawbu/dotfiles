@@ -100,7 +100,7 @@ in
     enable = true;
     package = pkgs.extra.jj;
     settings = {
-      "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json";
+      "$schema" = "https://docs.jj-vcs.dev/latest/config-schema.json";
       user = {
         name = "Clément";
         email = "git@drawbu.dev";
@@ -136,7 +136,7 @@ in
         l = [ "log" ];
         ll = [
           "log"
-          "-r"
+          "--revisions"
           ".."
         ];
         ls = [
@@ -145,7 +145,7 @@ in
         ];
         main = [
           "log"
-          "-r"
+          "--revisions"
           "::main"
         ];
         s = [
@@ -154,9 +154,20 @@ in
         ];
         wip = [
           "log"
-          "-r"
+          "--revisions"
           "wip_self()"
           "--no-pager"
+        ];
+        trunk = [
+          "rebase"
+          "--destination"
+          "trunk()"
+        ];
+        advance = [
+          "bookmark"
+          "advance"
+          "--to"
+          "@-"
         ];
         fetch-pr = [
           "util"
