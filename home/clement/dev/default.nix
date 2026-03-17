@@ -114,6 +114,7 @@
         jless
         hydra-check
         patchutils
+        poppler-utils
 
         # language servers
         lua-language-server
