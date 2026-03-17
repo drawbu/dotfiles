@@ -84,7 +84,7 @@
         kdePackages.filelight
         rpi-imager
         gcr
-        legacy.stremio
+        stremio-linux-shell
         loupe
         mullvad-browser
       ];
