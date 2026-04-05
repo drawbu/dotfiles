@@ -14,6 +14,7 @@
       cliphist
       wl-clipboard
       kooha
+      unstable.librepods
     ];
   };
 
@@ -66,6 +67,7 @@
         "hyprpaper"
         "waybar"
         "xwaylandvideobridge"
+        "librepods"
       ]
       ++ (
         let
@@ -136,6 +138,7 @@
           "class:com.mitchellh.ghostty"
           "class:jetbrains-.*, title:Welcome to.*$"
           "class:satty"
+          "class:me.kavishdevar.librepods"
         ])
         ++ (map (e: "noblur, ${e}") [
           "class:kitty"
