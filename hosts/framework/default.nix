@@ -10,6 +10,7 @@
   system.stateVersion = "24.11";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   home-manager.users.clement =
     { pkgs, ... }:

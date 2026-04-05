@@ -87,6 +87,8 @@
         stremio-linux-shell
         loupe
         mullvad-browser
+        unstable.openscreen
+        unstable.chiri
       ];
   };
 
