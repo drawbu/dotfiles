@@ -22,7 +22,7 @@
     jj.url = "github:jj-vcs/jj/v0.40.0";
     jj.inputs.nixpkgs.follows = "nixpkgs";
 
-    ghostty.url = "github:ghostty-org/ghostty/v1.3.0";
+    ghostty.url = "github:ghostty-org/ghostty/v1.3.1";
     ghostty.inputs.nixpkgs.follows = "nixpkgs_unstable";
     ghostty.inputs.home-manager.follows = "home-manager";
   };
