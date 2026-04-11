@@ -256,6 +256,8 @@
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
       ];
+
+      misc.enable_anr_dialog = true;
     };
   };
 
