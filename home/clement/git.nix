@@ -1,18 +1,16 @@
 { pkgs, lib, ... }:
 let
   globalgitignore = pkgs.writeText "globalgitignore" ''
-    ## MacOS Files
-    .DS_Store
-
-    ## Editors
+    # Config
     .vscode/
     .idea/
+    .claude/
+    .codex
 
-    ## Python
+    # Cache & env
     __pycache__/
     .?venv/
-
-    ## Environment files
+    .DS_Store
     .env
     .direnv/
     .envrc
@@ -23,12 +21,10 @@ let
 
     ## Executables files
     *.out
-    main
 
     ## Nix
     result
     result-*
-    .claude/
   '';
   ssh1password =
     if pkgs.stdenv.isDarwin then

@@ -46,7 +46,7 @@
       nmap
       croc
       wireguard-tools
-      ollama-rocm
+      unstable.ollama-rocm
       ncdu
       zip
       genact
