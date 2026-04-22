@@ -165,6 +165,12 @@ in
           "--to"
           "@-"
         ];
+        jj = [
+          "util"
+          "exec"
+          "--"
+          "jj"
+        ];
         fetch-pr = [
           "util"
           "exec"
@@ -208,6 +214,16 @@ in
             signature.email(),
           )
         '';
+      };
+      fix.tools = {
+        nixfmt = {
+          command = [ "nixfmt" ];
+          patterns = [ "glob:'**/*.nix'" ];
+        };
+        rustfmt = {
+          command = [ "rustfmt" ];
+          patterns = [ "glob:'**/*.rs'" ];
+        };
       };
     };
   };
