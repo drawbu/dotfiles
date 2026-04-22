@@ -5,8 +5,13 @@
       (with pkgs; [
         prismlauncher
         lunar-client
-        heroic
-        lutris
+        (heroic.override {
+          extraPkgs =
+            pkgs': with pkgs'; [
+              gamescope
+              gamemode
+            ];
+        })
         dwarf-fortress
         r2modman
       ])
