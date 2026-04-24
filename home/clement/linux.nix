@@ -89,6 +89,8 @@
         mullvad-browser
         unstable.openscreen
         unstable.chiri
+        unstable.lmstudio
+        freecad
       ];
   };
 
