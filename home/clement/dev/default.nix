@@ -13,9 +13,12 @@
     html.enable = true;
   };
 
-  programs.man = {
-    enable = true;
-    # generateCaches = true;
+  programs = {
+    man.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
   };
 
   home = {

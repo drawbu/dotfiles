@@ -24,8 +24,6 @@
 
       finputs.hyprqtile.overlays.default
       (final: prev: {
-        nix-direnv = prev.nix-direnv.override { enableFlakes = true; };
-
         extra = {
           inherit (finputs.nix-alien.packages.${final.stdenv.hostPlatform.system}) nix-alien;
           inherit (finputs.ghostty.packages.${final.stdenv.hostPlatform.system}) ghostty;
