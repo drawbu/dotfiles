@@ -10,7 +10,6 @@
     ./distrobox.nix
   ]
   ++ lib.optionals graphical [
-    ./rofi
     ./hypr
     ./kanata
     ./gtk.nix

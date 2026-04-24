@@ -11,11 +11,16 @@
       hyprpaper
       legacy.kdePackages.xwaylandvideobridge
       nwg-displays
-      cliphist
       wl-clipboard
       kooha
       unstable.librepods
     ];
+  };
+
+  programs.vicinae = {
+    package = pkgs.unstable.vicinae;
+    enable = true;
+    systemd.enable = true;
   };
 
   services = {
@@ -68,18 +73,7 @@
         "waybar"
         "xwaylandvideobridge"
         "librepods"
-      ]
-      ++ (
-        let
-          targets = [
-            "text"
-            "image"
-          ];
-        in
-        (builtins.genList (i: "wl-paste --type ${builtins.elemAt targets i} --watch cliphist store") (
-          builtins.length targets
-        ))
-      );
+      ];
 
       input = {
         kb_layout = "fr";
@@ -182,7 +176,7 @@
         "$mod, return, exec, ghostty"
         "$mod, X, killactive,"
         "$mod, F, togglefloating,"
-        "$mod, R, exec, rofi -show drun"
+        "$mod, R, exec, vicinae toggle"
         "$mod, J, togglesplit,"
         "$mod, K, fullscreen,"
         "$mod, O, exec, pkill -SIGUSR1 waybar # Waybar toggle"
@@ -195,7 +189,7 @@
         "$mod, down, movefocus, d"
         "$mod shift, N, exec, swaync-client -t -sw"
 
-        "$mod, V, exec, cliphist list | ${lib.getExe pkgs.wofi} --dmenu | cliphist decode | wl-copy"
+        "$mod, V, exec,  vicinae vicinae://launch/clipboard/history"
       ]
       ++ (
         let
