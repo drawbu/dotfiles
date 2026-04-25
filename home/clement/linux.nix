@@ -25,12 +25,7 @@
   ];
 
   home = {
-    sessionVariables = {
-      XCURSOR_SIZE = 16;
-      ELECTRON_OZONE_PLATFORM_HINT = "wayland";
-      NIXOS_OZONE_WL = "1";
-      DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
-    };
+    sessionVariables.DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
     packages =
       with pkgs;
       [ ]

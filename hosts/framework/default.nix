@@ -29,13 +29,21 @@
         stateVersion = "24.11";
         # pointerCursor.size = lib.mkForce 16;
         packages = with pkgs; [ framework-tool ];
-        sessionVariables = {
-          GDK_SCALE = 1; # GDK 3 does not support fractional scaling; really should be 1.5
-          QT_AUTO_SCREEN_SCALE_FACTOR = 1;
-          QT_ENABLE_HIGHDPI_SCALING = 1;
-        };
       };
     };
+
+  environment.sessionVariables = {
+    GDK_SCALE = "1"; # GDK 3 does not support fractional scaling; really should be 1.5
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    QT_ENABLE_HIGHDPI_SCALING = "1";
+  };
+
+  # Same as in nixos/graphical: ensure systemd --user units inherit these.
+  environment.etc."environment.d/20-hidpi.conf".text = ''
+    GDK_SCALE=1
+    QT_AUTO_SCREEN_SCALE_FACTOR=1
+    QT_ENABLE_HIGHDPI_SCALING=1
+  '';
 
   services.xserver.xkb.layout = lib.mkForce "us_qwerty-fr";
   hardware.framework.laptop13.audioEnhancement.enable = true;
