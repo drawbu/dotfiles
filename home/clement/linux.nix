@@ -50,7 +50,6 @@
         beeper
         unstable.vesktop
         discord
-        google-chrome
         libreoffice-qt6-fresh
         teams-for-linux
         spotify
@@ -90,6 +89,8 @@
         unstable.chiri
         unstable.lmstudio
         freecad
+
+        (callPackage ./helium.nix { })
       ];
   };
 
