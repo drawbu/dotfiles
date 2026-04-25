@@ -118,4 +118,13 @@
     ];
     symbolsFile = "${pkgs.qwerty-fr}/share/X11/xkb/symbols/us_qwerty-fr";
   };
+
+  networking.nameservers = [ "1.1.1.1" ];
+
+  systemd.oomd = {
+    enable = true;
+    settings.OOM = {
+      DefaultMemoryPressureDurationSec = "10s";
+    };
+  };
 }

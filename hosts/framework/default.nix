@@ -36,28 +36,14 @@
         };
       };
     };
-  programs.nh.clean.enable = lib.mkForce false;
 
+  services.xserver.xkb.layout = lib.mkForce "us_qwerty-fr";
   hardware.framework.laptop13.audioEnhancement.enable = true;
-
   boot.loader.grub.useOSProber = true;
 
   zramSwap.enable = true;
-
   services.fwupd.enable = true;
-
-  networking.nameservers = [ "1.1.1.1" ];
-
-  systemd.oomd = {
-    enable = true;
-    settings.OOM = {
-      DefaultMemoryPressureDurationSec = "10s";
-    };
-  };
-
-  services.xserver.xkb.layout = lib.mkForce "us_qwerty-fr";
-
-  services.tailscale.package = pkgs.unstable.tailscale;
+  programs.nh.clean.enable = lib.mkForce false;
 
   services.mullvad-vpn.enable = true;
   services.mullvad-vpn.package = pkgs.mullvad-vpn;
