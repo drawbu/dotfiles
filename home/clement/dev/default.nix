@@ -162,6 +162,7 @@
         uv
         unstable.ruff
         unstable.ty
+        unstable.cloudflared
 
         # ai bullshit
         unstable.opencode

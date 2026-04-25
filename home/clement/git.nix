@@ -18,6 +18,8 @@ let
     .bin/
     compile_commands.json
     .jj
+    node_modules/
+    target
 
     ## Executables files
     *.out
