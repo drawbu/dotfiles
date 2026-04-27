@@ -129,6 +129,9 @@ in
         "private()" = "wip_self() | description(regex:'^(?:private|priv:).*')";
         "branch_log(rev)" = "(trunk()..rev):: | (trunk()..rev)-";
       };
+      revsets = {
+        "bookmark-advance-to" = "heads(::@ & ~private() & ~description(''))";
+      };
       aliases = {
         drop = [ "abandon" ];
         l = [ "log" ];
@@ -164,8 +167,6 @@ in
         advance = [
           "bookmark"
           "advance"
-          "--to"
-          "@-"
         ];
         jj = [
           "util"
