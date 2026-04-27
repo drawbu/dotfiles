@@ -195,6 +195,10 @@ in
           concat(
             coalesce(description, default_commit_description, "\n"),
             surround(
+              "\nJJ: Parent commit description:\n", "",
+              indent("JJ:     ", self.parents().map(|p| p.description()).join("JJ: ---\n")),
+            ),
+            surround(
               "\nJJ: This commit contains the following changes:\n", "",
               indent("JJ:     ", diff.stat(72)),
             ),
