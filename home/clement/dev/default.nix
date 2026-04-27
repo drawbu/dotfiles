@@ -168,7 +168,7 @@
         unstable.opencode
         unstable.amp-cli
         unstable.gemini-cli
-        unstable.claude-code-bin
+        unstable.claude-code
         unstable.github-copilot-cli
         unstable.mistral-vibe
         unstable.codex
