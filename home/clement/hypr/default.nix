@@ -1,7 +1,6 @@
 { pkgs, lib, ... }:
 {
   imports = [
-    ./waybar.nix
     ./hyprlock.nix
   ];
 

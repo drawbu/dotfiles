@@ -16,6 +16,7 @@
     ./gh.nix
     ./wallpapers
     ./fonts.nix
+    ./waybar.nix
   ];
 
   programs.home-manager.enable = true;
