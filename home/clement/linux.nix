@@ -43,8 +43,7 @@
         libresprite
         zathura
         beeper
-        unstable.vesktop
-        discord
+        unstable.discord
         libreoffice-qt6-fresh
         teams-for-linux
         spotify
