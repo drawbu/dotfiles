@@ -129,7 +129,7 @@ binds {
     Mod+Return  hotkey-overlay-title="Open a terminal"   { spawn "ghostty"; }
     Mod+R       hotkey-overlay-title="Apps launcher"     { spawn "vicinae" "toggle"; }
     Mod+V       hotkey-overlay-title="Clipboard history" { spawn "vicinae" "vicinae://launch/clipboard/history"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen"   { spawn "swaylock"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen"   { spawn "loginctl" "lock-session"; }
 
     // IO Controls
     XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }

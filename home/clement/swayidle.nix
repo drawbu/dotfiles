@@ -1,22 +1,22 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   services.swayidle = {
     enable = true;
     events = [
       {
         event = "before-sleep";
-        command = "${pkgs.systemd}/bin/loginctl lock-session";
+        command = "loginctl lock-session";
       }
       {
         event = "lock";
-        command = "${pkgs.swaylock}/bin/swaylock -f";
+        command = "${lib.getExe config.programs.swaylock.package} -f --screenshots --effect-blur 12x7 --ring-color ffffff --key-hl-color 222222";
       }
     ];
     timeouts = [
       {
         timeout = 150;
-        command = "${pkgs.brightnessctl}/bin/brightnessctl -s set 10";
-        resumeCommand = "${pkgs.brightnessctl}/bin/brightnessctl -r";
+        command = "${lib.getExe pkgs.brightnessctl} -s set 10";
+        resumeCommand = "${lib.getExe pkgs.brightnessctl} -r";
       }
       {
         timeout = 600;

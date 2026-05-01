@@ -87,6 +87,7 @@
         kooha
         unstable.librepods
         unstable.awww
+        playerctl
 
         (callPackage ./helium.nix { })
       ];
@@ -127,9 +128,15 @@
     swayosd.enable = true;
   };
 
-  programs.vicinae = {
-    package = pkgs.unstable.vicinae;
-    enable = true;
-    systemd.enable = true;
+  programs = {
+    vicinae = {
+      package = pkgs.unstable.vicinae;
+      enable = true;
+      systemd.enable = true;
+    };
+    swaylock = {
+      enable = true;
+      package = pkgs.swaylock-effects;
+    };
   };
 }
