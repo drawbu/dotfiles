@@ -12,15 +12,7 @@
 
   programs.niri = {
     enable = true;
-    package = pkgs.unstable.niri.overrideAttrs (old: {
-      patches = [
-        # PR #1791 - Support shm sharing
-        (pkgs.fetchpatch {
-          url = "https://github.com/niri-wm/niri/pull/1791.patch";
-          hash = "sha256-mfX0CVJWSFb/Hr1lDvlggphpXc2PI6C5CBa+aGwkVIM=";
-        })
-      ];
-    });
+    package = pkgs.unstable.niri;
   };
 
   # NixOS otherwise injects a stripped PATH via Environment= on the niri.service
