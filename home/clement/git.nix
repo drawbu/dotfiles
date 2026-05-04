@@ -2,23 +2,23 @@
 let
   globalgitignore = pkgs.writeText "globalgitignore" ''
     # Config
-    .vscode/
-    .idea/
-    .claude/
+    .vscode
+    .idea
+    .claude
     .codex
 
     # Cache & env
-    __pycache__/
-    .?venv/
+    __pycache__
+    .?venv
     .DS_Store
     .env
-    .direnv/
+    .direnv
     .envrc
     .cache
-    .bin/
+    .bin
     compile_commands.json
     .jj
-    node_modules/
+    node_modules
     target
 
     ## Executables files
