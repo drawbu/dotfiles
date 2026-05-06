@@ -5,7 +5,7 @@
     events = [
       {
         event = "before-sleep";
-        command = "loginctl lock-session";
+        command = "${lib.getExe' pkgs.systemd "loginctl"} lock-session";
       }
       {
         event = "lock";
@@ -20,11 +20,11 @@
       }
       {
         timeout = 600;
-        command = "loginctl lock-session";
+        command = "${lib.getExe' pkgs.systemd "loginctl"} lock-session";
       }
       {
         timeout = 630;
-        command = "systemctl suspend";
+        command = "${lib.getExe' pkgs.systemd "systemctl"} suspend";
       }
     ];
   };
