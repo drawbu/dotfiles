@@ -129,6 +129,8 @@ binds {
     Mod+Return  hotkey-overlay-title="Open a terminal"   { spawn "ghostty"; }
     Mod+R       hotkey-overlay-title="Apps launcher"     { spawn "vicinae" "toggle"; }
     Mod+V       hotkey-overlay-title="Clipboard history" { spawn "vicinae" "vicinae://launch/clipboard/history"; }
+    Mod+E       hotkey-overlay-title="Search emojis" { spawn "vicinae" "vicinae://launch/core/search-emojis"; }
+    Mod+T       hotkey-overlay-title="Open 1password" { spawn "1password" "--quick-access"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen"   { spawn "loginctl" "lock-session"; }
 
     // IO Controls
