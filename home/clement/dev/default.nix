@@ -175,6 +175,7 @@
         unstable.github-copilot-cli
         unstable.mistral-vibe
         unstable.codex
+        unstable.pi-coding-agent
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
         linux-manual
