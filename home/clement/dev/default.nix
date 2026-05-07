@@ -62,6 +62,7 @@
             requests
             pytest
             black
+            pillow
           ]
         ))
         rustup
@@ -69,6 +70,8 @@
         cargo-mommy
         unstable.cargo-nextest
         cargo-watch
+        cargo-audit
+        cargo-auditable
         nodejs
         corepack
         bun
