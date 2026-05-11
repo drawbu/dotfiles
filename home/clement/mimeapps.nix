@@ -143,7 +143,7 @@ in
         "x-scheme-handler/webcal"
         "x-scheme-handler/webcals"
       ])
-      // (fn "firefox.desktop" [
+      // (fn "helium.desktop" [
         "text/html"
         "text/xml"
         "x-scheme-handler/http"

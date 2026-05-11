@@ -15,7 +15,7 @@
     sessionVariables = {
       # Defaults
       EDITOR = "nvim";
-      BROWSER = "firefox";
+      BROWSER = "helium-browser";
       TERMINAL = "ghostty";
 
       THEMEFILE = "${config.home.homeDirectory}/.currenttheme";
