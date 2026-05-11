@@ -1,5 +1,8 @@
 let mapleader = " "
 
+" Use system clipboard for yanks
+set clipboard+=unnamedplus
+
 " File format
 set fileformat=unix
 
