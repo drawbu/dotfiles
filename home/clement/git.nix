@@ -231,6 +231,16 @@ in
           command = [ "rustfmt" ];
           patterns = [ "glob:'**/*.rs'" ];
         };
+        jupyter = {
+          command = [
+            "jq"
+            "--indent"
+            "1"
+            "-S"
+            "(.cells[].metadata) = {} | (.metadata) = {} | (.cells[] | select(.cell_type == \"code\")) |= (.execution_count = null | .outputs = [])"
+          ];
+          patterns = [ "glob:'**/*.ipynb'" ];
+        };
       };
     };
   };
