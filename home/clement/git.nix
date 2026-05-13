@@ -125,6 +125,7 @@ in
           "--no-pager"
         ];
         conflict-marker-style = "git";
+        diff-formatter = ["difft" "--color=always" "$left" "$right"];
       };
       revset-aliases = {
         "wip()" = "description(regex:'^(?:wip|WIP).*')";
