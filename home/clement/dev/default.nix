@@ -6,7 +6,10 @@
   ...
 }:
 {
-  imports = [ ./editorconfig.nix ];
+  imports = [
+    ./editorconfig.nix
+    ./agents
+  ];
 
   manual = {
     manpages.enable = true;
@@ -167,16 +170,6 @@
         unstable.ruff
         unstable.ty
         unstable.cloudflared
-
-        # ai bullshit
-        unstable.opencode
-        unstable.amp-cli
-        unstable.gemini-cli
-        unstable.claude-code
-        unstable.github-copilot-cli
-        unstable.mistral-vibe
-        unstable.codex
-        unstable.pi-coding-agent
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
         linux-manual
