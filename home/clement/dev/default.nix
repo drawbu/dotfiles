@@ -75,6 +75,7 @@
         nodejs
         corepack
         bun
+        deno
         typescript
         opentofu
         terraform

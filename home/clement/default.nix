@@ -30,10 +30,10 @@
       else if pkgs.stdenv.isDarwin then
         "/Users/${config.home.username}"
       else
-        "";
+        throw "mmmh no home directory";
 
     packages = with pkgs; [
-      # ↓ cli & tui
+      cowsay
       neofetch
       ookla-speedtest
       wget
