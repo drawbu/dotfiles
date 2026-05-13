@@ -27,6 +27,10 @@ let
     ## Nix
     result
     result-*
+
+    ## for my stuff
+    /local/
+    /notes.md
   '';
   ssh1password =
     if pkgs.stdenv.isDarwin then
