@@ -54,6 +54,7 @@
       genact
       dust
       dig
+      sox
     ];
   };
 

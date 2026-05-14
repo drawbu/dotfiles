@@ -201,6 +201,8 @@ const candidates = [
   version,
   `${pkg}@${version}`,
   `${base}@${version}`,
+  `${base}_v${version}`,
+  `${base}_${version}`,
   `${base}-v${version}`,
   `${base}-${version}`,
   `release-${version}`,
