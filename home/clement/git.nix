@@ -125,7 +125,12 @@ in
           "--no-pager"
         ];
         conflict-marker-style = "git";
-        diff-formatter = ["difft" "--color=always" "$left" "$right"];
+        diff-formatter = [
+          "difft"
+          "--color=always"
+          "$left"
+          "$right"
+        ];
       };
       revset-aliases = {
         "wip()" = "description(regex:'^(?:wip|WIP).*')";
@@ -235,6 +240,10 @@ in
         rustfmt = {
           command = [ "rustfmt" ];
           patterns = [ "glob:'**/*.rs'" ];
+        };
+        clang-format = {
+          command = [ "clang-format" ];
+          patterns = [ "glob:'**/*.{c,h,cpp,hpp}'" ];
         };
         jupyter = {
           command = [
