@@ -89,7 +89,6 @@ in
         algorithm = "histogram";
         mnemonicPrefix = true;
         renames = "true";
-        external = "difft";
       };
       alias.l = "log --oneline --decorate --graph";
       gitbutler.signCommits = true;
@@ -125,12 +124,6 @@ in
           "--no-pager"
         ];
         conflict-marker-style = "git";
-        diff-formatter = [
-          "difft"
-          "--color=always"
-          "$left"
-          "$right"
-        ];
       };
       revset-aliases = {
         "wip()" = "description(regex:'^(?:wip|WIP).*')";
@@ -143,6 +136,11 @@ in
         "bookmark-advance-to" = "heads(::@ & ~private() & ~description(''))";
       };
       aliases = {
+        difft = [
+          "show"
+          "--tool"
+          "difft"
+        ];
         drop = [ "abandon" ];
         l = [ "log" ];
         ll = [
