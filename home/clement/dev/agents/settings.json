@@ -15,6 +15,15 @@
     "enabled": true,
     "mode": "tap"
   },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "~/.claude/session-context.sh" }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "Bash(GIT_CONFIG_GLOBAL=/dev/null git clone *)",

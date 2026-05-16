@@ -12,6 +12,7 @@
       ".pi/agent/AGENTS.md".source = ./AGENTS.md;
 
       ".claude/settings.json".source = ./settings.json;
+      ".claude/session-context.sh".source = ./session-context.sh;
       ".config/opencode/opencode.json".text = builtins.toJSON {
         autoupdate = false;
         formatter = true;

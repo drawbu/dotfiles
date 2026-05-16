@@ -35,8 +35,6 @@ and interact with him like a professional.
   would alter the state of the repository. Prefer `jj` over `git`.
 - The changes made by ther user are clearly split into commits to keep the
   history readable. Use that at your advantage to understand intent
-- When starting working in a new thread, read the jj history to understand where
-  we are and what we are working on. Use `jj log -r 'ancestors(@, 10)'`
 - Never prepend cd <current-directory> to a git/jj command, the compound
   triggers a permission prompt; just run the command where you are
 - I use bookmarks to organise my MR/branches. Mine always start with `clement/*`
@@ -49,8 +47,8 @@ and interact with him like a professional.
   globally gitignore. It is used to store files and documents that we don't want
   to push upstream.
 - You can store temporary files in `local/claude/`
-- You can also feely git clone project to look at the code there. This is really
-  useful to understand codebase and dependencies. Use
+- You can also feely git clone project to look at the code in `local/repos/`.
+  This is really useful to understand codebase and dependencies. Use
   `GIT_CONFIG_GLOBAL=/dev/null git clone` so it doesn't need me to authenticate
 
 
