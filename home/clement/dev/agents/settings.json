@@ -22,6 +22,14 @@
           { "type": "command", "command": "~/.claude/session-context.sh" }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          { "type": "command", "command": "jj root >/dev/null 2>&1 && jj util snapshot --quiet" }
+        ]
+      }
     ]
   },
   "permissions": {
@@ -44,6 +52,8 @@
       "Bash(jj diff *)",
       "Bash(jj file list *)",
       "Bash(jj file show *)",
+      "Bash(jj file track *)",
+      "Bash(jj file untrack *)",
       "Bash(jj help *)",
       "Bash(jj log *)",
       "Bash(jj op log *)",
@@ -64,22 +74,22 @@
       "Bash(pnpm --version)",
       "Bash(pnpm add *)",
       "Bash(pnpm audit *)",
-      "Bash(pnpm build *)",
-      "Bash(pnpm check *)",
       "Bash(pnpm exec eslint *)",
       "Bash(pnpm exec prettier *)",
       "Bash(pnpm exec slidev *)",
       "Bash(pnpm exec tsc *)",
-      "Bash(pnpm format *)",
-      "Bash(pnpm format:check *)",
       "Bash(pnpm info *)",
       "Bash(pnpm install)",
       "Bash(pnpm link *)",
-      "Bash(pnpm lint *)",
-      "Bash(pnpm lint:check *)",
       "Bash(pnpm list *)",
-      "Bash(pnpm postinstall)",
       "Bash(pnpm remove *)",
+      "Bash(pnpm run build *)",
+      "Bash(pnpm run check *)",
+      "Bash(pnpm run format *)",
+      "Bash(pnpm run format:check *)",
+      "Bash(pnpm run lint *)",
+      "Bash(pnpm run lint:check *)",
+      "Bash(pnpm run postinstall)",
       "Bash(pnpm unlink *)",
       "Bash(pnpm view *)",
       "Bash(pnpm why *)",
@@ -101,6 +111,7 @@
       "Read(//tmp/**)",
       "Read(//tmp/claude-deps/**)",
       "Read(~/.config/AGENTS.md)",
+      "Skill(node-dep-source)",
       "WebFetch(domain:api.anthropic.com)",
       "WebFetch(domain:api.github.com)",
       "WebFetch(domain:aur.archlinux.org)",

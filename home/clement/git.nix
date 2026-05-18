@@ -29,7 +29,7 @@ let
     result-*
 
     ## for my stuff
-    /local/
+    /local
     /notes.md
   '';
   ssh1password =

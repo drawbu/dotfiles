@@ -48,6 +48,7 @@
 
         cleanup() {
           local exit_code=$?
+          trap \'\' INT
           set +e
 
           local top_change_id has_changes
@@ -55,6 +56,8 @@
             --no-graph --template "change_id" 2>/dev/null)
 
           if [[ -n "$top_change_id" && -n "$BASE_COMMIT" ]]; then
+            jj util snapshot --quiet --repository "$WORKTREE"
+
             has_changes=$(jj diff --repository "$WORKTREE" --from "$BASE_COMMIT" \
               --summary 2>/dev/null)
 
