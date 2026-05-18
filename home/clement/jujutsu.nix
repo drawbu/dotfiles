@@ -95,6 +95,12 @@
           "--"
           "jj"
         ];
+        exec = [
+          "util"
+          "exec"
+          "--"
+          "jj-exec"
+        ];
         fetch-pr = [
           "util"
           "exec"
