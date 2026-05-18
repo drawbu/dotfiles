@@ -14,6 +14,7 @@
     ./btop.nix
     ./helix.nix
     ./gh.nix
+    ./jujutsu.nix
     ./wallpapers
     ./fonts.nix
     ./waybar.nix
