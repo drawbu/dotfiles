@@ -34,7 +34,10 @@
       modesetting.enable = true;
     };
   };
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver = {
+    videoDrivers = [ "nvidia" ];
+    xkb.layout = "us_qwerty-fr";
+  };
   services.xserver.displayManager.setupCommands = ''
     ${lib.getExe pkgs.xorg.xrandr} --output DVI-D-0 --right-of HDMI-0
     ${lib.getExe pkgs.xorg.xrandr} --output HDMI-0 --primary
