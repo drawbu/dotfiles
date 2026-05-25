@@ -21,7 +21,10 @@
       home.stateVersion = config.system.stateVersion;
     };
 
-  boot.loader.grub.useOSProber = true;
+  boot.loader.grub = {
+    useOSProber = true;
+    timeout = -1;
+  };
 
   hardware = {
     graphics.enable = true;
