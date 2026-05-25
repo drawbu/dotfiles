@@ -84,7 +84,7 @@ in
     iosevka-mayukai.monolite
     (fetchFontShare {
       name = "clash-grotesk";
-      hash = "sha256-NJPuG4jhJw54SKNV/jlIqJbIU0pfyvVn39Iotkfj7A0=";
+      hash = "sha256-T6XmNnNmGT91kqRia2/0UPahmU7W5btmMOyyEjT2Al8=";
     })
   ]
   ++ (with pkgs; [
