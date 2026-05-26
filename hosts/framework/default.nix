@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./hardware.nix
@@ -16,17 +21,8 @@
     { pkgs, ... }:
     {
       imports = [ ../../home/clement/linux.nix ];
-      wayland.windowManager.hyprland.settings = {
-        monitor = lib.mkForce [
-          "eDP-1, highres, 0x0,     1.5, cm, hdr"
-          "      ,highres, auto-up, 1"
-        ];
-        input.kb_layout = lib.mkForce "us_qwerty-fr";
-        xwayland.force_zero_scaling = true;
-      };
-
       home = {
-        stateVersion = "24.11";
+        stateVersion = config.system.stateVersion;
         # pointerCursor.size = lib.mkForce 16;
         packages = with pkgs; [ framework-tool ];
       };
