@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }:
@@ -27,21 +26,21 @@
       nvidiaSettings = true;
       open = false;
       modesetting.enable = true;
+      powerManagement.enable = true;
     };
   };
 
   services.xserver = {
     videoDrivers = [ "nvidia" ];
     xkb.layout = lib.mkForce "us_qwerty-fr";
-    displayManager.setupCommands = ''
-      ${lib.getExe pkgs.xorg.xrandr} --output DVI-D-0 --right-of HDMI-0
-      ${lib.getExe pkgs.xorg.xrandr} --output HDMI-0 --primary
-    '';
   };
 
-  boot.loader.grub = {
-    useOSProber = true;
-    timeout = -1;
+  boot = {
+    loader = {
+      timeout = -1;
+      grub.useOSProber = true;
+    };
+    kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
   };
 
   zramSwap.enable = true;
