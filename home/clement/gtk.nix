@@ -29,7 +29,7 @@
 
   gtk = {
     enable = true;
-
+    theme.name = "catppuccin-mocha-peach-compact+rimless";
     iconTheme = {
       name = "MoreWaita";
       package = pkgs.legacy.morewaita-icon-theme.overrideAttrs (old: {
@@ -43,18 +43,10 @@
         buildInputs = [ pkgs.adwaita-icon-theme ];
       });
     };
-
-    theme.name = "catppuccin-mocha-peach-compact+rimless";
   };
 
   qt = {
     enable = true;
     platformTheme.name = "gtk3";
-
-    # platformTheme.name = "gnome";
-    # style = {
-    #   package = pkgs.adwaita-qt;
-    #   name = "adwaita";
-    # };
   };
 }

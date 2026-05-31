@@ -1,5 +1,4 @@
 {
-  # source,
   stdenv,
   lib,
   writeShellScript,
@@ -125,8 +124,6 @@ stdenv.mkDerivation (finalAttrs: {
     xdg-utils
     libxscrnsaver
   ];
-
-  #  dontStrip = true;
 
   autoPatchelfIgnoreMissingDeps = [
     "libQt5Core.so.5"
