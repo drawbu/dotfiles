@@ -89,9 +89,9 @@
     };
   };
   users.motdFile = "/etc/motd";
-  boot.initrd.preDeviceCommands = ''
-    cat ${./issue.txt}
-  '';
+  # boot.initrd.preDeviceCommands = ''
+  #   cat ${./issue.txt}
+  # '';
 
   security = {
     polkit.enable = true;

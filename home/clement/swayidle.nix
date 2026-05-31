@@ -7,16 +7,11 @@
 {
   services.swayidle = {
     enable = true;
-    events = [
-      {
-        event = "before-sleep";
-        command = "${lib.getExe' pkgs.systemd "loginctl"} lock-session";
-      }
-      {
-        event = "lock";
-        command = "${lib.getExe config.programs.swaylock.package} -f --screenshots --effect-blur 12x7 --ring-color ffffff --key-hl-color 222222";
-      }
-    ];
+    events = {
+      "before-sleep" = "${lib.getExe' pkgs.systemd "loginctl"} lock-session";
+      "lock" =
+        "${lib.getExe config.programs.swaylock.package} -f --screenshots --effect-blur 12x7 --ring-color ffffff --key-hl-color 222222";
+    };
     timeouts = [
       {
         timeout = 150;

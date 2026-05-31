@@ -1,16 +1,17 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.11";
-    nixpkgs_legacy.url = "nixpkgs/nixos-25.05";
+    nixpkgs.url = "nixpkgs/nixos-26.05";
+    nixpkgs_legacy.url = "nixpkgs/nixos-25.11";
     nixpkgs_unstable.url = "nixpkgs/nixos-unstable";
     nixpkgs_master.url = "nixpkgs/master";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-alien.url = "github:thiagokokada/nix-alien";
@@ -150,7 +151,7 @@
         });
 
         # Home server
-        "waffle" = inputs.nixpkgs_legacy.lib.nixosSystem (defaultNixOS {
+        "waffle" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
           override = cfg: { modules = cfg.modules ++ [ ./hosts/waffle ]; };
         });
 

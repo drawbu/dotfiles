@@ -10,10 +10,7 @@
     settings.default_session.command = "${config.programs.niri.package}/bin/niri-session";
   };
 
-  programs.niri = {
-    enable = true;
-    package = pkgs.unstable.niri;
-  };
+  programs.niri.enable = true;
 
   # NixOS otherwise injects a stripped PATH via Environment= on the niri.service
   # unit which shadows the imported user-manager PATH. Disabling the default

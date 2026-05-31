@@ -94,7 +94,7 @@
     git
     lazygit
     wget
-    neofetch
+    fastfetch
     tmux
   ];
   environment.shellAliases.lz = "lazygit";

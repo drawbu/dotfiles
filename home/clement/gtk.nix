@@ -32,16 +32,7 @@
     theme.name = "catppuccin-mocha-peach-compact+rimless";
     iconTheme = {
       name = "MoreWaita";
-      package = pkgs.legacy.morewaita-icon-theme.overrideAttrs (old: {
-        version = "unstable-2024-10-02";
-        src = pkgs.fetchFromGitHub {
-          owner = "NeoWaita";
-          repo = "NeoWaita";
-          rev = "5b986c9e823e2453b90de81683b8e04cd74f82fd";
-          hash = "sha256-W/gKs7RKdB5ZJoxs2kF/z7eojOedJP7dWqqOQLAZsCo=";
-        };
-        buildInputs = [ pkgs.adwaita-icon-theme ];
-      });
+      package = pkgs.morewaita-icon-theme;
     };
   };
 

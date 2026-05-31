@@ -12,7 +12,7 @@
     vimAlias = true;
     vimdiffAlias = true;
 
-    extraLuaConfig = ''
+    initLua = ''
       vim.cmd [[
       ${builtins.readFile ./.vimrc}
       ]]

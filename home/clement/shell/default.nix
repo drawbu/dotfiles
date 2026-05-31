@@ -62,25 +62,16 @@
     ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks = {
-        "*" = {
-          identityAgent = "${
+      settings = {
+        "Host *" = {
+          IdentityAgent = "${
             if pkgs.stdenv.isDarwin then
               "~/Library/Group Containers/2BUA8C4S2C.com.1password/t"
             else
               "~/.1password"
           }/agent.sock";
-          setEnv.TERM = "xterm-256color";
+          SetEnv.TERM = "xterm-256color";
         };
-
-        "perlmutter*.nersc.gov saul*.nersc.gov dtn*.nersc.gov" = {
-          user = "cboillot";
-          identityFile = "${config.home.homeDirectory}/.ssh/nersc";
-          identitiesOnly = true;
-          forwardAgent = true;
-        };
-
-        "pi raspberrypi28.local".user = "pi28";
       };
     };
   };

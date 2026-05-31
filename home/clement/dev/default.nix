@@ -60,7 +60,7 @@
         (lib.hiPrio llvmPackages_latest.clang) # note: cc from clang & gcc collides
         zig
         libcxx
-        (unstable.python314.withPackages (
+        (python314.withPackages (
           ps: with ps; [
             requests
             pytest
@@ -71,11 +71,11 @@
         rustup
         go
         cargo-mommy
-        unstable.cargo-nextest
+        cargo-nextest
         cargo-watch
         cargo-audit
         cargo-auditable
-        nodejs
+        nodejs_latest
         corepack
         bun
         deno
@@ -107,7 +107,7 @@
         cmake
         gnumake
         gcovr
-        nixfmt-rfc-style
+        nixfmt
         alejandra
         pkg-config
         just
@@ -136,9 +136,9 @@
         vscode-langservers-extracted
         emmet-language-server
         tailwindcss-language-server
-        nodePackages.typescript-language-server
-        nodePackages.svelte-language-server
-        nodePackages.bash-language-server
+        typescript-language-server
+        svelte-language-server
+        bash-language-server
         shellcheck
         shfmt
         gdtoolkit_4
@@ -151,7 +151,7 @@
         htmx-lsp
         terraform-ls
         yaml-language-server
-        unstable.zls
+        zls
         haskell-language-server
         graphql-language-service-cli
 
@@ -163,13 +163,13 @@
         dive
         yubikey-manager
         temurin-bin
-        unstable.gitoxide
+        gitoxide
         difftastic
         mergiraf
         uv
-        unstable.ruff
-        unstable.ty
-        unstable.cloudflared
+        ruff
+        ty
+        cloudflared
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
         linux-manual

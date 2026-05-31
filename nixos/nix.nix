@@ -10,7 +10,6 @@ let
 in
 {
   nix = {
-    package = pkgs.unstable.nix;
     gc.automatic = false;
     settings = {
       experimental-features = [

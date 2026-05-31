@@ -35,7 +35,7 @@
 
     packages = with pkgs; [
       cowsay
-      neofetch
+      fastfetch
       ookla-speedtest
       wget
       #wl-clipboard-x11

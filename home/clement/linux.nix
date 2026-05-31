@@ -38,11 +38,11 @@
         yubioath-flutter
         pods
         feh
-        thunderbird-bin
+        thunderbird
         libresprite
         zathura
         beeper
-        unstable.discord
+        discord
         libreoffice-qt6-fresh
         teams-for-linux
         spotify
@@ -67,7 +67,7 @@
         filezilla
         figma-agent
         hexchat
-        superTuxKart
+        supertuxkart
         calibre
         foot
         gitbutler
@@ -78,15 +78,15 @@
         stremio-linux-shell
         loupe
         mullvad-browser
-        unstable.openscreen
-        unstable.chiri
-        unstable.lmstudio
+        openscreen
+        chiri
+        lmstudio
         freecad
 
         wl-clipboard
         kooha
-        unstable.librepods
-        unstable.awww
+        librepods
+        awww
         playerctl
 
         (callPackage ./helium.nix { })
@@ -130,7 +130,6 @@
 
   programs = {
     vicinae = {
-      package = pkgs.unstable.vicinae;
       enable = true;
       systemd.enable = true;
     };
