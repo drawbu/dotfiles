@@ -5,10 +5,11 @@
     xkb.layout = "us_qwerty-fr";
   };
 
-  services.displayManager.gdm = {
+  services.greetd = {
     enable = true;
-    settings.default_session.command = "${config.programs.niri.package}/bin/niri-session";
+    settings.default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd ${config.programs.niri.package}/bin/niri-session";
   };
+  services.displayManager.gdm.enable = false;
 
   programs.niri.enable = true;
 
