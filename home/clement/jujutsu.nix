@@ -36,6 +36,8 @@
         conflict-marker-style = "git";
       };
 
+      remotes.origin.auto-track-bookmarks = "glob:'clement/*' | 'main' | 'master'";
+
       revset-aliases = {
         "wip()" = "description(regex:'^(?:wip|WIP).*')";
         "mine()" = "author(exact:'git@drawbu.dev')";
