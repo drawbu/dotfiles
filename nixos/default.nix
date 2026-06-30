@@ -70,6 +70,10 @@
     ];
   };
 
+  systemd.tmpfiles.rules = [
+    "L+ /bin/bash - - - - ${pkgs.bash}/bin/bash"
+  ];
+
   environment = {
     shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
