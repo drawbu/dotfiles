@@ -56,6 +56,7 @@
       dust
       dig
       sox
+      unstable.zmx
     ];
   };
 

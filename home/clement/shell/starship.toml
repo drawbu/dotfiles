@@ -1,5 +1,5 @@
 add_newline = false
-format = "$username @ $directory$git_branch$git_status$git_metrics$git_commit(- ($cmd_duration )($status))\n$os$character"
+format = "$username @ ${custom.zmx}$directory$git_branch$git_status$git_metrics$git_commit(- ($cmd_duration )($status))\n$os$character"
 right_format = "$c$cmake$go$haskell$java$lua$nodejs$python$rust$zig$package"
 
 [aws]
@@ -203,3 +203,10 @@ renamed = ''
 
 [direnv]
 disabled = false
+
+[custom.zmx]
+command = "echo $ZMX_SESSION"
+when = '[ -n "$ZMX_SESSION" ]'
+symbol = "󱂬 "
+style = "cyan bold"
+format = "[$symbol$output ]($style)"
