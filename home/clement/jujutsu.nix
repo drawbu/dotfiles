@@ -40,7 +40,7 @@
 
       revset-aliases = {
         "wip()" = "description(regex:'^(?:wip|WIP).*')";
-        "mine()" = "author(exact:'git@drawbu.dev')";
+        "mine()" = "author(regex:'@drawbu\\.dev$')";
         "wip_self()" = "wip() & mine()";
         "private()" = "wip_self() | description(regex:'^(?:private|priv:).*')";
         "branch_log(rev)" = "(trunk()..rev):: | (trunk()..rev)-";
