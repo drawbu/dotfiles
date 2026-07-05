@@ -170,6 +170,7 @@
         ruff
         ty
         cloudflared
+        agent-browser
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
         linux-manual

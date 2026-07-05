@@ -35,6 +35,7 @@
   "permissions": {
     "allow": [
       "Bash(GIT_CONFIG_GLOBAL=/dev/null git clone *)",
+      "Bash(agent-browser *)",
       "Bash(cargo +nightly fmt *)",
       "Bash(cargo add *)",
       "Bash(cargo build *)",

@@ -22,11 +22,13 @@ and interact with him like a professional.
   Avoid using the shorthand syntax: use `pnpm run *` and `pnpm exec *`
 - Always default to `uv` for managing Python environment.
 - NEVER delete a kube or a container without user's explicit approval
-- The machine runs NixOS. Never try to install anything or alter the
-  environment, unless explicitly asked.
+- The machine runs NixOS. Never try to install anything permanently or alter
+  the environment, unless explicitly asked.
 - Reach out to the `node-dep-source` skill every time you have to inspect a dep
   in node modules or understand a dependency
 - Use `jq` everytime you need to filter-out, or display json
+- Use `agent-browser` to start a real web browser.
+  See `agent-browser skills get core --full` for instructions.
 
 
 ## vcs
