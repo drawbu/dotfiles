@@ -44,6 +44,33 @@
       mistral-vibe
       codex
       pi-coding-agent
+
+      (stdenv.mkDerivation (finalAttrs: {
+        pname = "umans";
+        version = "0.1.42";
+        src = fetchurl {
+          url = "https://api.code.umans.ai/cli/umans";
+          hash = "sha256-wfC8c+NjTa8GdEre4e1Je9A7fSfLzeoDIXBQoI91S5k=";
+        };
+        dontUnpack = true;
+
+        installPhase = ''
+          runHook preInstall
+          mkdir -p $out/bin
+          install -m 755 $src $out/bin/umans
+          substituteInPlace $out/bin/umans \
+            --replace-fail "#!/usr/bin/env python3" "#!${python3.interpreter}"
+          runHook postInstall
+        '';
+
+        nativeInstallCheckInputs = [
+          versionCheckHook
+          writableTmpDirAsHomeHook
+        ];
+        versionCheckProgramArg = "version";
+        versionCheckKeepEnvironment = "HOME";
+        doInstallCheck = true;
+      }))
     ];
   };
 
