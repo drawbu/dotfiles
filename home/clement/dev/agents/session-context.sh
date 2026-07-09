@@ -3,6 +3,8 @@
 if jj root &>/dev/null; then
     jj_root=$(jj root)
 
+    jj workspace update-stale &>/dev/null
+
     if [ -d "$jj_root/local/repos" ]; then
         echo "== Local repos (./local/repos)"
         ls "$jj_root/local/repos"
