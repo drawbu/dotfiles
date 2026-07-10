@@ -10,7 +10,7 @@
     ../../nixos/users/clement.nix
   ];
 
-  networking.hostName = "pain-de-mie";
+  networking.hostName = "maine";
   system.stateVersion = "22.11";
 
   home-manager.users.clement =

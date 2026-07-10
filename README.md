@@ -23,10 +23,10 @@ Simple and clean, using Niri. prev. Hyprland, prev. qtile.
 sudo nixos-rebuild switch --flake github:drawbu/dotfiles#the-machine
 ```
 Replace `the-machine` with one of the following:
- - `framework`: work/school laptop
- - `macos`: previously used macOS config
- - `pain-de-mie`: home PC
- - `waffle`: home server running on mini pc
+ - `lucy`: work/school laptop
+ - `kiwi`: previously used macOS config
+ - `maine`: home PC
+ - `rebecca`: home server running on mini pc
 
 And **tada** the pc is up and running, users are created, everything is
 installed, and symlinks are linked!

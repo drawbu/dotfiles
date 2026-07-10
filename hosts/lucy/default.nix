@@ -11,7 +11,7 @@
     ../../nixos/users/clement.nix
   ];
 
-  networking.hostName = "framework";
+  networking.hostName = "lucy";
   system.stateVersion = "24.11";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;

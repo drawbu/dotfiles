@@ -10,7 +10,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "waffle";
+  networking.hostName = "rebecca";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

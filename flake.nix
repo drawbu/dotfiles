@@ -87,10 +87,10 @@
       };
 
       darwinConfigurations = {
-        macos = inputs.nix-darwin.lib.darwinSystem rec {
+        kiwi = inputs.nix-darwin.lib.darwinSystem rec {
           specialArgs = specialArgs';
           modules = [
-            ./hosts/macos
+            ./hosts/kiwi
             inputs.home-manager.darwinModules.home-manager
             {
               home-manager.extraSpecialArgs = specialArgs;
@@ -104,14 +104,14 @@
 
       nixosConfigurations = {
         # Home PC
-        "pain-de-mie" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
+        "maine" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
           args = {
             graphical = true;
             home-manager = true;
           };
           override = cfg: {
             modules = cfg.modules ++ [
-              ./hosts/pain-de-mie
+              ./hosts/maine
               # hardware.common-gpu-nvidia
               hardware.common-cpu-intel
               hardware.common-pc
@@ -121,22 +121,22 @@
         });
 
         # Laptop
-        "framework" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
+        "lucy" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
           args = {
             graphical = true;
             home-manager = true;
           };
           override = cfg: {
             modules = cfg.modules ++ [
-              ./hosts/framework
+              ./hosts/lucy
               hardware.framework-amd-ai-300-series
             ];
           };
         });
 
         # Home server
-        "waffle" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          override = cfg: { modules = cfg.modules ++ [ ./hosts/waffle ]; };
+        "rebecca" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
+          override = cfg: { modules = cfg.modules ++ [ ./hosts/rebecca ]; };
         });
       };
     };
