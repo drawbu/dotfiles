@@ -136,7 +136,14 @@
 
         # Home server
         "rebecca" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          override = cfg: { modules = cfg.modules ++ [ ./hosts/rebecca ]; };
+          override = cfg: {
+            modules = cfg.modules ++ [
+              ./hosts/rebecca
+              hardware.common-cpu-intel
+              hardware.common-pc
+              hardware.common-pc-ssd
+            ];
+          };
         });
       };
     };
