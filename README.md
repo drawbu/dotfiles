@@ -27,7 +27,6 @@ Replace `the-machine` with one of the following:
  - `macos`: previously used macOS config
  - `pain-de-mie`: home PC
  - `waffle`: home server running on mini pc
- - `pineapple`: distant headscale tailnet host
 
 And **tada** the pc is up and running, users are created, everything is
 installed, and symlinks are linked!

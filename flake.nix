@@ -121,18 +121,6 @@
         });
 
         # Laptop
-        "pancake" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          args = {
-            graphical = true;
-            home-manager = true;
-          };
-          override = cfg: {
-            modules = cfg.modules ++ [
-              ./hosts/pancake
-              hardware.dell-xps-13-9315
-            ];
-          };
-        });
         "framework" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
           args = {
             graphical = true;
@@ -149,11 +137,6 @@
         # Home server
         "waffle" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
           override = cfg: { modules = cfg.modules ++ [ ./hosts/waffle ]; };
-        });
-
-        # Headscale server
-        "pineapple" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          override = cfg: { modules = cfg.modules ++ [ ./hosts/pineapple ]; };
         });
       };
     };
