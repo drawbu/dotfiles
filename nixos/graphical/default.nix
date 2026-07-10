@@ -98,6 +98,14 @@
     enable = true;
     polkitPolicyOwners = [ "clement" ];
   };
+  environment.etc = {
+    "1password/custom_allowed_browsers" = {
+      text = ''
+        .helium-wrapped
+      '';
+      mode = "0755";
+    };
+  };
   environment.sessionVariables = {
     OP_BIOMETRIC_UNLOCK_ENABLED = "true";
     NIXOS_OZONE_WL = "1";
