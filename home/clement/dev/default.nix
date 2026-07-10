@@ -22,6 +22,14 @@
       enable = true;
       nix-direnv.enable = true;
     };
+    cargo = {
+      enable = true;
+      package = null; # cargo is provided by rustup, not Nix
+      settings = {
+        build.rustc-wrapper = lib.getExe pkgs.sccache;
+        net.git-fetch-with-cli = true;
+      };
+    };
   };
 
   home = {
@@ -43,7 +51,6 @@
 
     sessionVariables = {
       # Rust
-      CARGO_NET_GIT_FETCH_WITH_CLI = "true";
       CARGO_HOME = "${config.home.homeDirectory}/.cargo";
       RUSTUP_HOME = "${config.home.homeDirectory}/.rustup";
       NPM_PREFIX = "${config.home.homeDirectory}/.npm";
@@ -126,6 +133,7 @@
         hydra-check
         patchutils
         poppler-utils
+        sccache
 
         # language servers
         lua-language-server
