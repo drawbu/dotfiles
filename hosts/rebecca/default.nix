@@ -97,10 +97,5 @@
   ];
   environment.shellAliases.lz = "lazygit";
 
-  services.technitium-dns-server = {
-    enable = true;
-    openFirewall = true;
-  };
-
   services.tailscale.enable = true;
 }
