@@ -163,6 +163,8 @@
         zls
         haskell-language-server
         graphql-language-service-cli
+        typos-lsp
+        harper
 
         typst
         asciinema

@@ -10,6 +10,8 @@ set fileformat=unix
 set number
 set relativenumber
 
+set signcolumn=yes
+
 " 80 columns
 set colorcolumn=80
 set cursorline
@@ -26,11 +28,6 @@ set noswapfile
 
 " Custom settings
 filetype plugin on
-
-" Switch between buffers
-nnoremap <leader>pv :Ex<CR>
-nnoremap <leader>l :bnext<cr>
-nnoremap <leader>h :bprevious<cr>
 
 " Smooth scroll
 map <C-u> <C-u>zz<cr>

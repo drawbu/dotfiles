@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [ ./vim.nix ];
+
   xdg.configFile = {
     "nvim/lua".source = ./lua;
     "nvim/ftplugin".source = ./ftplugin;
@@ -13,52 +14,21 @@
     vimdiffAlias = true;
 
     initLua = ''
-      vim.cmd [[
-      ${builtins.readFile ./.vimrc}
-      ]]
+      vim.cmd.source('${./common.vim}')
 
-      require('lazy').setup {
-        spec = { { import = "plugins" } },
-        performance = {
-          reset_packpath = false,
-          rtp = { reset = false }
-        },
-      }
-      require('lsp')
-      require('dark-switch')
-
-      -- ↓ Indent
-      vim.g.python_indent = {
-        open_paren = 'shiftwidth()',
-        closed_paren_align_last_line = true,
-      }
-
-      -- ↓ Search
-      vim.opt.incsearch = true
-
-      -- ↓ Curor never touching borders
-      vim.opt.foldlevel = 99
-      vim.opt.foldlevelstart = 99 -- Minimum number of screen line below and above the cursor
-      vim.opt.foldenable = true
       vim.opt.scrolloff = 99
 
-      vim.cmd([[
-        " Infinite undo
-        if has('persistent_undo')
-            set undodir=$HOME/.nvim/undo
-            set undofile
-        endif
+      vim.opt.undodir = vim.fn.expand('$HOME/.nvim/undo')
+      vim.opt.undofile = true
 
-        augroup FileTypeOverride
-          autocmd!
-          autocmd BufRead,BufNewFile *.asm set filetype=nasm
-        augroup END
-      ]])
+      require('config.treesitter')
+      require('config.lazy')
+      require('config.lsp')
     '';
 
-    withNodeJs = true;
-    withPython3 = true;
-    withRuby = true;
+    withNodeJs = false;
+    withPython3 = false;
+    withRuby = false;
 
     plugins = with pkgs.vimPlugins; [
       lazy-nvim
