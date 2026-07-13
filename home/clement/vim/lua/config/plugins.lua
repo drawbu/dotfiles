@@ -61,15 +61,34 @@ hipatterns.setup {
 -- Navigation ------------------------------------------------------------------
 local telescope = require('telescope')
 telescope.setup {
+    defaults = {
+        cache_picker = { num_pickers = 10 },
+    },
     extensions = {
         ['ui-select'] = { require('telescope.themes').get_dropdown {} },
     },
 }
 telescope.load_extension('ui-select')
 
-vim.keymap.set('n', '<leader>pf', '<cmd>Telescope find_files<cr>', { desc = 'Find file' })
-vim.keymap.set('n', '<leader>ps', '<cmd>Telescope live_grep<cr>', { desc = 'Grep search' })
-vim.keymap.set('n', '<C-p>', '<cmd>Telescope git_files<cr>', { desc = 'Find git file' })
+local builtin = require('telescope.builtin')
+
+local function sticky(picker, title)
+    return function()
+        local cached = require('telescope.state').get_global_key('cached_pickers')
+        if cached then
+            for index, p in ipairs(cached) do
+                if p.prompt_title == title then
+                    return builtin.resume { cache_index = index }
+                end
+            end
+        end
+        picker()
+    end
+end
+
+vim.keymap.set('n', '<leader>pf', sticky(builtin.find_files, 'Find Files'), { desc = 'Find file' })
+vim.keymap.set('n', '<leader>ps', sticky(builtin.live_grep, 'Live Grep'), { desc = 'Grep search' })
+vim.keymap.set('n', '<C-p>', sticky(builtin.git_files, 'Git Files'), { desc = 'Find git file' })
 
 local harpoon = require('harpoon')
 harpoon.setup {
