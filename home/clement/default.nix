@@ -17,8 +17,6 @@
     ./jujutsu.nix
     ./wallpapers
     ./fonts.nix
-    ./waybar.nix
-    ./swayidle.nix
   ];
 
   programs.home-manager.enable = true;

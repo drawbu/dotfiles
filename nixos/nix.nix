@@ -29,7 +29,6 @@ in
       ];
       keep-outputs = true;
       keep-derivations = true;
-      auto-optimise-store = true;
       warn-dirty = false;
     };
     optimise.automatic = true;

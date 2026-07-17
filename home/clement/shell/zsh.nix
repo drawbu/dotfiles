@@ -49,7 +49,6 @@
       sessionVariables = {
         ZSH_DISABLE_COMPFIX = true;
         ZSH_WAKATIME_PROJECT_DETECTION = true;
-        GIT_AUTO_FETCH_INTERVAL = 300; # in seconds
       };
 
       history = {
@@ -100,10 +99,8 @@
         enable = true;
         plugins = [
           "copyfile"
-          "direnv"
           "history"
           "sudo"
-          "zoxide"
           "podman"
           "rust"
           "kubectl"

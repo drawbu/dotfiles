@@ -41,7 +41,6 @@
       gemini-cli
       claude-code
       github-copilot-cli
-      mistral-vibe
       codex
       pi-coding-agent
 

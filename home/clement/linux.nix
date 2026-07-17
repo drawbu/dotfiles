@@ -20,6 +20,7 @@
     ./ghostty.nix
     ./fuzzel.nix
     ./waybar.nix
+    ./swayidle.nix
     ./niri
   ];
 

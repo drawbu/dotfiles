@@ -77,15 +77,6 @@
         nixos = lib.mapAttrs (name: config: config.config.system.build.toplevel) self.nixosConfigurations;
       };
 
-      homeConfigurations = {
-        "home-generic" = inputs.home-manager.lib.homeManagerConfiguration rec {
-          extraSpecialArgs = specialArgs' "x86_64-linux";
-          inherit (extraSpecialArgs) pkgs;
-          backupFileExtension = "backup";
-          modules = [ ./home/clement ];
-        };
-      };
-
       darwinConfigurations = {
         kiwi = inputs.nix-darwin.lib.darwinSystem rec {
           specialArgs = specialArgs';
