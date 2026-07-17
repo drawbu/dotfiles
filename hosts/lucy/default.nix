@@ -12,7 +12,7 @@
   ];
 
   networking.hostName = "lucy";
-  system.stateVersion = "24.11";
+  system.stateVersion = "26.05";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.kernelModules = [ "amdgpu" ];
