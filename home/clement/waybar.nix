@@ -153,7 +153,8 @@
           critical-threshold = 82;
           format-critical = "{icon} {temperatureC}°C";
           format = "󰈸 {temperatureC}°C";
-          hwmon-path = "/sys/class/thermal/thermal_zone0/hwmon3/temp4_input";
+          hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
+          input-filename = "temp1_input";
         };
 
         tray = {

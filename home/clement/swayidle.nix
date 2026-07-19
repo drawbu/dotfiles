@@ -15,7 +15,7 @@
     timeouts = [
       {
         timeout = 150;
-        command = "${lib.getExe pkgs.brightnessctl} -s set 10";
+        command = "${lib.getExe pkgs.brightnessctl} -s set 10%";
         resumeCommand = "${lib.getExe pkgs.brightnessctl} -r";
       }
       {
