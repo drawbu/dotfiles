@@ -17,6 +17,13 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.kernelModules = [ "amdgpu" ];
 
+  # Graphical boot splash + clean LUKS passphrase prompt. Plymouth's
+  # systemd-ask-password integration relies on the systemd-based initrd.
+  boot.plymouth.enable = true;
+  boot.initrd.systemd.enable = true;
+  boot.initrd.verbose = false;
+  boot.kernelParams = [ "quiet" ];
+
   home-manager.users.clement =
     { pkgs, ... }:
     {
