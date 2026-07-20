@@ -4,6 +4,7 @@
     ./hardware.nix
     ./home-assistant.nix
     ./caddy.nix
+    ./jellyfin.nix
   ];
 
   # Bootloader.
