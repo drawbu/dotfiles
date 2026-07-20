@@ -100,9 +100,21 @@
 
   services.tailscale.enable = true;
 
+  virtualisation.podman.enable = true;
+  virtualisation.oci-containers.backend = "podman";
+
   hardware.enableRedistributableFirmware = true;
   boot = {
     blacklistedKernelModules = [ "i915" ];
     kernelParams = [ "nomodeset" ];
+  };
+
+  services.onepassword-secrets = {
+    enable = true;
+
+    # sudo opnix token set
+    # sudo chmod 640 /etc/opnix-token
+    # sudo chown root:onepassword-secrets /etc/opnix-token
+    tokenFile = "/etc/opnix-token";
   };
 }
