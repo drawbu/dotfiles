@@ -25,6 +25,12 @@
     jj.url = "github:jj-vcs/jj/v0.43.0";
     jj.inputs.nixpkgs.follows = "nixpkgs";
     jj.inputs.flake-utils.inputs.systems.follows = "systems";
+
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.inputs.systems.follows = "systems";
+    agenix.inputs.home-manager.follows = "home-manager";
+    agenix.inputs.darwin.follows = "nix-darwin";
   };
 
   outputs =
@@ -59,6 +65,8 @@
             inputs.home-manager.nixosModules.home-manager
             (mkHome specialArgs')
             { mod.profiles.desktop.enable = desktop; }
+            inputs.agenix.nixosModules.default
+            { environment.systemPackages = [ inputs.agenix.packages.x86_64-linux.default ]; }
           ]
           ++ modules;
         };

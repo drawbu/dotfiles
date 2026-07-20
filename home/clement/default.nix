@@ -1,4 +1,5 @@
 {
+  finputs,
   config,
   pkgs,
   ...
@@ -19,6 +20,8 @@
     ./wallpapers
     ./fonts.nix
   ];
+
+  # modules = [ finputs.agenix.homeManagerModules.default ];
 
   programs.home-manager.enable = true;
 
