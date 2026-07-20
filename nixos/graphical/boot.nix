@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   minegrub = pkgs.fetchFromGitHub {
     owner = "Lxtharia";
@@ -8,18 +13,20 @@ let
   };
 in
 {
-  boot = {
-    loader = {
-      efi.canTouchEfiVariables = true;
-      grub = {
-        enable = true;
-        efiSupport = true;
-        device = "nodev";
-        gfxmodeEfi = "1920x1080x32";
-        theme = "${minegrub}/minegrub-world-selection";
+  config = lib.mkIf config.mod.profiles.desktop.enable {
+    boot = {
+      loader = {
+        efi.canTouchEfiVariables = true;
+        grub = {
+          enable = true;
+          efiSupport = true;
+          device = "nodev";
+          gfxmodeEfi = "1920x1080x32";
+          theme = "${minegrub}/minegrub-world-selection";
+        };
       };
-    };
 
-    consoleLogLevel = 0;
+      consoleLogLevel = 0;
+    };
   };
 }

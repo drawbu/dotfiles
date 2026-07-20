@@ -1,5 +1,7 @@
 {
   inputs = {
+    systems.url = "github:nix-systems/default";
+
     nixpkgs.url = "nixpkgs/nixos-26.05";
     nixpkgs_legacy.url = "nixpkgs/nixos-25.11";
     nixpkgs_unstable.url = "nixpkgs/nixos-unstable";
@@ -22,6 +24,7 @@
 
     jj.url = "github:jj-vcs/jj/v0.43.0";
     jj.inputs.nixpkgs.follows = "nixpkgs";
+    jj.inputs.flake-utils.inputs.systems.follows = "systems";
   };
 
   outputs =
@@ -33,45 +36,38 @@
 
       specialArgs' = {
         finputs = inputs;
-        graphical = false;
-        home-manager = false;
       };
 
-      defaultNixOS =
-        {
-          args ? { },
-          override ? (_: { }),
-        }:
-        let
-          systemCfg = rec {
-            specialArgs = specialArgs' // args;
-            modules = [
-              ./nixos/overlay.nix
-            ]
-            ++ (lib.optionals specialArgs.home-manager [
-              inputs.home-manager.nixosModules.home-manager
-              {
-                home-manager = {
-                  extraSpecialArgs = specialArgs;
-                  backupFileExtension = "backup";
-                  verbose = true;
-                };
-              }
-            ]);
-          };
-        in
-        systemCfg // (override systemCfg);
+      mkHome = extraSpecialArgs: {
+        home-manager = {
+          inherit extraSpecialArgs;
+          backupFileExtension = "backup";
+          verbose = true;
+        };
+      };
 
-      systems = [
-        "x86_64-linux"
-        "aarch64-darwin"
-      ];
-      forAllSystems = lib.genAttrs systems;
-      nixpkgsFor = system: import inputs.nixpkgs { inherit system; };
-      nixpkgsAll = fn: forAllSystems (system: fn (nixpkgsFor system));
+      mkHost =
+        {
+          modules ? [ ],
+          desktop ? false,
+        }:
+        inputs.nixpkgs.lib.nixosSystem {
+          specialArgs = specialArgs';
+          modules = [
+            ./nixos/nixpkgs.nix
+            ./nixos/profiles.nix
+            inputs.home-manager.nixosModules.home-manager
+            (mkHome specialArgs')
+            { mod.profiles.desktop.enable = desktop; }
+          ]
+          ++ modules;
+        };
+
+      eachSystem = lib.genAttrs (import inputs.systems);
+      nixpkgs' = fn: eachSystem (system: fn (import inputs.nixpkgs { inherit system; }));
     in
     {
-      formatter = nixpkgsAll (pkgs: pkgs.nixfmt-tree);
+      formatter = nixpkgs' (pkgs: pkgs.nixfmt-tree);
 
       hydraJobs = {
         nixos = lib.mapAttrs (name: config: config.config.system.build.toplevel) self.nixosConfigurations;
@@ -83,59 +79,39 @@
           modules = [
             ./hosts/kiwi
             inputs.home-manager.darwinModules.home-manager
-            {
-              home-manager.extraSpecialArgs = specialArgs;
-              # home-manager.useGlobalPkgs = true;
-              # home-manager.useUserPackages = true;
-              home-manager.verbose = true;
-            }
+            (mkHome specialArgs)
           ];
         };
       };
 
       nixosConfigurations = {
-        # Home PC
-        "maine" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          args = {
-            graphical = true;
-            home-manager = true;
-          };
-          override = cfg: {
-            modules = cfg.modules ++ [
-              ./hosts/maine
-              # hardware.common-gpu-nvidia
-              hardware.common-cpu-intel
-              hardware.common-pc
-              hardware.common-pc-ssd
-            ];
-          };
-        });
+        "maine" = mkHost {
+          desktop = true;
+          modules = [
+            ./hosts/maine
+            # hardware.common-gpu-nvidia
+            hardware.common-cpu-intel
+            hardware.common-pc
+            hardware.common-pc-ssd
+          ];
+        };
 
-        # Laptop
-        "lucy" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          args = {
-            graphical = true;
-            home-manager = true;
-          };
-          override = cfg: {
-            modules = cfg.modules ++ [
-              ./hosts/lucy
-              hardware.framework-amd-ai-300-series
-            ];
-          };
-        });
+        "lucy" = mkHost {
+          desktop = true;
+          modules = [
+            ./hosts/lucy
+            hardware.framework-amd-ai-300-series
+          ];
+        };
 
-        # Home server
-        "rebecca" = inputs.nixpkgs.lib.nixosSystem (defaultNixOS {
-          override = cfg: {
-            modules = cfg.modules ++ [
-              ./hosts/rebecca
-              hardware.common-cpu-intel
-              hardware.common-pc
-              hardware.common-pc-ssd
-            ];
-          };
-        });
+        "rebecca" = mkHost {
+          modules = [
+            ./hosts/rebecca
+            hardware.common-cpu-intel
+            hardware.common-pc
+            hardware.common-pc-ssd
+          ];
+        };
       };
     };
 }

@@ -17,7 +17,9 @@
     },
     "flake-utils": {
       "inputs": {
-        "systems": "systems"
+        "systems": [
+          "systems"
+        ]
       },
       "locked": {
         "lastModified": 1731533236,
@@ -251,7 +253,8 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs_legacy": "nixpkgs_legacy",
         "nixpkgs_master": "nixpkgs_master",
-        "nixpkgs_unstable": "nixpkgs_unstable"
+        "nixpkgs_unstable": "nixpkgs_unstable",
+        "systems": "systems"
       }
     },
     "rust-overlay": {

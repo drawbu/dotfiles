@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  graphical,
   lib,
   ...
 }:
@@ -188,7 +187,7 @@
         valgrind
         gdb
       ]
-      ++ lib.optionals graphical (
+      ++ lib.optionals config.mod.profiles.desktop.enable (
         [
           wine64Packages.waylandFull
           msitools

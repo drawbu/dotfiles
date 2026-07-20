@@ -1,15 +1,11 @@
 {
   config,
   pkgs,
-  lib,
-  graphical,
   ...
 }:
 {
   imports = [
     ./distrobox.nix
-  ]
-  ++ lib.optionals graphical [
     ./kanata
     ./gtk.nix
     ./firefox.nix
@@ -26,72 +22,69 @@
 
   home = {
     sessionVariables.DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
-    packages =
-      with pkgs;
-      [ ]
-      ++ lib.optionals graphical [
-        door-knocker
-        ventoy-full
-        xsel
-        xclip
-        libnotify
-        wl-clipboard
-        yubioath-flutter
-        pods
-        feh
-        thunderbird
-        libresprite
-        zathura
-        beeper
-        discord
-        libreoffice-qt6-fresh
-        teams-for-linux
-        spotify
-        obsidian
-        vlc
-        obs-studio
-        gnome-font-viewer
-        file-roller
-        nautilus
-        eog
-        slack
-        # tic-80
-        orca-slicer
-        bambu-studio
-        tor-browser
-        appimage-run
-        arduino-ide
-        pavucontrol
-        pwvucontrol
-        warp
-        resources
-        filezilla
-        figma-agent
-        hexchat
-        supertuxkart
-        calibre
-        foot
-        gitbutler
-        gnome-disk-utility
-        kdePackages.filelight
-        rpi-imager
-        gcr
-        stremio-linux-shell
-        loupe
-        mullvad-browser
-        openscreen
-        chiri
-        lmstudio
-        freecad
+    packages = with pkgs; [
+      door-knocker
+      ventoy-full
+      xsel
+      xclip
+      libnotify
+      wl-clipboard
+      yubioath-flutter
+      pods
+      feh
+      thunderbird
+      libresprite
+      zathura
+      beeper
+      discord
+      libreoffice-qt6-fresh
+      teams-for-linux
+      spotify
+      obsidian
+      vlc
+      obs-studio
+      gnome-font-viewer
+      file-roller
+      nautilus
+      eog
+      slack
+      # tic-80
+      orca-slicer
+      bambu-studio
+      tor-browser
+      appimage-run
+      arduino-ide
+      pavucontrol
+      pwvucontrol
+      warp
+      resources
+      filezilla
+      figma-agent
+      hexchat
+      supertuxkart
+      calibre
+      foot
+      gitbutler
+      gnome-disk-utility
+      kdePackages.filelight
+      rpi-imager
+      gcr
+      stremio-linux-shell
+      loupe
+      mullvad-browser
+      openscreen
+      chiri
+      lmstudio
+      freecad
 
-        wl-clipboard
-        kooha
-        librepods
-        awww
-        playerctl
+      wl-clipboard
+      kooha
+      librepods
+      awww
+      playerctl
 
-        (callPackage ./helium.nix { })
-      ];
+      (callPackage ./helium.nix { })
+    ];
   };
 
   xdg = {

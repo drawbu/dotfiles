@@ -1,6 +1,5 @@
 {
   pkgs,
-  graphical,
   config,
   lib,
   ...
@@ -8,10 +7,8 @@
 {
   imports = [
     ./nix.nix
-  ]
-  ++ (lib.optionals graphical [
     ./graphical
-  ]);
+  ];
 
   system.copySystemConfiguration = false;
 

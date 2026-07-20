@@ -5,7 +5,8 @@
 }:
 {
   imports = [
-    ../../nixos/overlay.nix
+    ../../nixos/nixpkgs.nix
+    ./profiles.nix
     ./vim
     ./shell
     ./git.nix

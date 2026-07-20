@@ -1,6 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
-  home-manager.users.clement = import ../../home/clement;
+  home-manager.users.clement = {
+    imports = [ ../../home/clement ];
+    mod.profiles.desktop.enable = config.mod.profiles.desktop.enable;
+  };
 
   users.users.clement = {
     isNormalUser = true;
