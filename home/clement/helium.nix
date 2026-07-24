@@ -31,11 +31,11 @@
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "helium-browser-bin";
-  version = "0.14.3.1";
+  version = "0.15.1.1";
 
   src = fetchTarball {
     url = "https://github.com/imputnet/helium-linux/releases/download/${finalAttrs.version}/helium-${finalAttrs.version}-x86_64_linux.tar.xz";
-    sha256 = "sha256:0gk4f8iflsii9vawlm2xh28zcs09zdd80fhpr2ncw2c22r3dh68r";
+    sha256 = "sha256:0i52cs4wyxapr3dmypf1crfdkwxr9cwv0iz4086j7g76xp5rbg75";
   };
 
   inherit commandLineArgs;
