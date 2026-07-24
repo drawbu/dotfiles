@@ -24,13 +24,14 @@
 
     jj.url = "github:jj-vcs/jj/v0.43.0";
     jj.inputs.nixpkgs.follows = "nixpkgs";
-    jj.inputs.flake-utils.inputs.systems.follows = "systems";
+    jj.inputs.flake-utils.follows = "flake-utils";
 
-    agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
-    agenix.inputs.systems.follows = "systems";
-    agenix.inputs.home-manager.follows = "home-manager";
-    agenix.inputs.darwin.follows = "nix-darwin";
+    flake-utils.url = "github:numtide/flake-utils";
+    flake-utils.inputs.systems.follows = "systems";
+
+    opnix.url = "github:brizzbuzz/opnix";
+    opnix.inputs.nixpkgs.follows = "nixpkgs";
+    opnix.inputs.flake-utils.follows = "flake-utils";
   };
 
   outputs =
@@ -65,8 +66,15 @@
             inputs.home-manager.nixosModules.home-manager
             (mkHome specialArgs')
             { mod.profiles.desktop.enable = desktop; }
-            inputs.agenix.nixosModules.default
-            { environment.systemPackages = [ inputs.agenix.packages.x86_64-linux.default ]; }
+            inputs.opnix.nixosModules.default
+            (
+              { pkgs, ... }:
+              {
+                environment.systemPackages = [
+                  inputs.opnix.packages.${pkgs.stdenv.hostPlatform.system}.default
+                ];
+              }
+            )
           ]
           ++ modules;
         };
