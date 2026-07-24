@@ -13,6 +13,7 @@
 
       ".claude/settings.json".source = ./settings.json;
       ".claude/session-context.sh".source = ./session-context.sh;
+      ".claude/statusline.sh".source = ./statusline.sh;
       ".config/opencode/opencode.json".text = builtins.toJSON {
         autoupdate = false;
         formatter = true;
