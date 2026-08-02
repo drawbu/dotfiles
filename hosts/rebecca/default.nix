@@ -13,6 +13,7 @@
     ./hardware.nix
     ./home-assistant
     ./jellyfin.nix
+    ./minecraft.nix
   ];
 
   # Bootloader.
