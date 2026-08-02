@@ -2,7 +2,7 @@
 {
   imports = [
     ./hardware.nix
-    ./home-assistant.nix
+    ./home-assistant
     ./caddy.nix
     ./jellyfin.nix
   ];
