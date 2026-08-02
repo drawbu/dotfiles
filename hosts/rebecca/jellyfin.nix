@@ -6,6 +6,21 @@
 }:
 let
   library = "/mnt/library";
+
+  # riven searches jackett with item.log_string verbatim, and no indexer here
+  # normalises apostrophes: "Clarkson's Farm S04" returns nothing where
+  # "Clarksons Farm S04" returns 25. this strips them back out in transit.
+  jackettShim = pkgs.writeText "jackett-shim-Caddyfile" ''
+    {
+      admin off
+      auto_https off
+    }
+    :9118 {
+      uri replace "%27" ""
+      uri replace "'" ""
+      reverse_proxy jackett:9117
+    }
+  '';
 in
 {
   # multiline 1password field, consumed verbatim as an env file:
@@ -14,6 +29,7 @@ in
   #   RIVEN_DOWNLOADERS_REAL_DEBRID_API_KEY
   #   RIVEN_DOWNLOADERS_ALL_DEBRID_API_KEY
   #   RIVEN_UPDATERS_JELLYFIN_API_KEY
+  #   RIVEN_SCRAPING_JACKETT_API_KEY  (from jackett's web ui)
   services.onepassword-secrets.secrets.rivenEnv = {
     reference = "op://deploy/riven/env";
     services = [
@@ -30,10 +46,30 @@ in
     "d /var/lib/riven          0750 1000 ${toString config.users.groups.media.gid} - -"
     "d /var/lib/riven/data     0750 1000 ${toString config.users.groups.media.gid} - -"
     "d /var/lib/riven-frontend 0700 root root - -"
+    "d /var/lib/jackett        0750 1000 ${toString config.users.groups.media.gid} - -"
     "d ${library}              0775 root media - -"
   ];
 
   virtualisation.oci-containers.containers = {
+    jackett = {
+      image = "lscr.io/linuxserver/jackett:v0.24.2307-ls480";
+      environment = {
+        TZ = config.time.timeZone;
+        PUID = "1000";
+        PGID = toString config.users.groups.media.gid;
+      };
+      volumes = [ "/var/lib/jackett:/config" ];
+      ports = [ "9117:9117" ];
+      networks = [ "jellyfin" ];
+    };
+
+    jackett-shim = {
+      image = "docker.io/library/caddy:2.11.4-alpine";
+      dependsOn = [ "jackett" ];
+      volumes = [ "${jackettShim}:/etc/caddy/Caddyfile:ro" ];
+      networks = [ "jellyfin" ];
+    };
+
     riven-db = {
       image = "postgres:16-alpine";
       environment = {
@@ -63,6 +99,8 @@ in
 
         RIVEN_SCRAPING_TORRENTIO_ENABLED = "true";
         RIVEN_SCRAPING_RARBG_ENABLED = "true";
+        RIVEN_SCRAPING_JACKETT_ENABLED = "true";
+        RIVEN_SCRAPING_JACKETT_URL = "http://jackett-shim:9118";
 
         RIVEN_UPDATERS_LIBRARY_PATH = library;
         RIVEN_UPDATERS_JELLYFIN_ENABLED = "true";
