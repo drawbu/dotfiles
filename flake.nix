@@ -63,6 +63,7 @@
           modules = [
             ./nixos/nixpkgs.nix
             ./nixos/profiles.nix
+            ./nixos/podman.nix
             inputs.home-manager.nixosModules.home-manager
             (mkHome specialArgs')
             { mod.profiles.desktop.enable = desktop; }

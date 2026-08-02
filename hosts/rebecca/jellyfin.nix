@@ -101,32 +101,9 @@ in
     };
   };
 
-  systemd.services = {
-    # oci-containers can attach to a network but never creates one
-    "podman-network-jellyfin" =
-      network:
-      (
-        let
-          consumers = map (c: "${c.serviceName}.service") (
-            lib.filter (c: lib.elem network c.networks) (
-              lib.attrValues config.virtualisation.oci-containers.containers
-            )
-          );
-        in
-        {
-          wantedBy = [ "multi-user.target" ];
-          before = consumers;
-          requiredBy = consumers;
-          serviceConfig = {
-            Type = "oneshot";
-            RemainAfterExit = true;
-          };
-          path = [ config.virtualisation.podman.package ];
-          script = "podman network exists ${network} || podman network create ${network}";
-        }
-      )
-        "jellyfin";
+  mod.podman.networks = [ "jellyfin" ];
 
+  systemd.services = {
     jellyfin = {
       after = [ "podman-riven.service" ];
       wants = [ "podman-riven.service" ];
