@@ -77,6 +77,7 @@ in
         "/var/lib/riven/data:/riven/data"
         "${library}:/mount:rshared"
       ];
+      ports = [ "8080:8080" ]; # needed by home-assistant
       networks = [ "jellyfin" ];
       extraOptions = [
         "--cap-add=SYS_ADMIN"

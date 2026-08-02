@@ -1,5 +1,10 @@
 { config, ... }:
 {
+  imports = [
+    ./monitoring.nix
+    ./dashboard.nix
+  ];
+
   services.home-assistant = {
     enable = true;
     extraComponents = [
@@ -15,6 +20,8 @@
       "recorder"
       "analytics"
       "analytics_insights"
+
+      "rest"
 
       "met"
 
