@@ -5,6 +5,7 @@
     ./home-assistant
     ./caddy.nix
     ./jellyfin.nix
+    ./minecraft.nix
   ];
 
   # Bootloader.
