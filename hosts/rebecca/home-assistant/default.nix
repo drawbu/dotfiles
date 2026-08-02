@@ -14,6 +14,7 @@
 
       "ffmpeg"
       "sensor"
+      "binary_sensor"
       "history"
       "history_stats"
       "logbook"
@@ -21,8 +22,12 @@
       "analytics"
       "analytics_insights"
 
+      "command_line"
       "rest"
+      "template"
 
+      # config-flow only, entries are created in the UI
+      "systemmonitor"
       "met"
 
       "esphome"
@@ -63,9 +68,12 @@
       ffmpeg = { };
       sensor = { };
       history = { };
-      recorder = { };
       logbook = { };
       analytics = { };
+
+      # sensors carrying a state_class survive this in long-term statistics
+      recorder.purge_keep_days = 30;
+
       http = {
         use_x_forwarded_for = true;
         trusted_proxies = [ "127.0.0.1" ];
