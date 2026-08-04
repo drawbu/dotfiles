@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   home-manager.users.clement = {
     imports = [ ../../home/clement ];
@@ -13,6 +18,8 @@
       "wheel"
       "docker"
       "networkmanager"
+    ]
+    ++ lib.optionals config.mod.profiles.desktop.enable [
       "libvirtd"
 
       # ↓ kanata

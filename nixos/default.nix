@@ -41,7 +41,7 @@
   services.tailscale.enable = true;
 
   virtualisation = {
-    libvirtd.enable = true;
+    libvirtd.enable = config.mod.profiles.desktop.enable;
 
     docker.enable = false;
     oci-containers.backend = "podman";
@@ -73,13 +73,15 @@
 
   environment = {
     shells = with pkgs; [ zsh ];
-    systemPackages = with pkgs; [
-      vim
-      wget
-      virt-manager
-      extra.nix-alien
-      podman-compose
-    ];
+    systemPackages =
+      with pkgs;
+      [
+        vim
+        wget
+        extra.nix-alien
+        podman-compose
+      ]
+      ++ lib.optionals config.mod.profiles.desktop.enable [ virt-manager ];
     pathsToLink = [ "/share/nix-direnv" ];
 
     etc = {
