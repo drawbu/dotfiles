@@ -24,14 +24,14 @@
 
     jj.url = "github:jj-vcs/jj/v0.43.0";
     jj.inputs.nixpkgs.follows = "nixpkgs";
-    jj.inputs.flake-utils.follows = "flake-utils";
+    jj.inputs.flake-utils.inputs.systems.follows = "systems";
 
-    flake-utils.url = "github:numtide/flake-utils";
-    flake-utils.inputs.systems.follows = "systems";
+    jj-mesh.url = "github:baptiste0928/jj-mesh";
+    jj-mesh.inputs.nixpkgs.follows = "nixpkgs";
 
     opnix.url = "github:brizzbuzz/opnix";
     opnix.inputs.nixpkgs.follows = "nixpkgs";
-    opnix.inputs.flake-utils.follows = "flake-utils";
+    opnix.inputs.flake-utils.follows = "jj/flake-utils";
   };
 
   outputs =

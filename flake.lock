@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "crane": {
+      "locked": {
+        "lastModified": 1784564969,
+        "narHash": "sha256-TkTWNhJV/8Wk3czlbz4bwHZkFCaCHPsOy+oJe4PUiXg=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "7930f6c291de6f83c257839d434592aa085f290a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "locked": {
         "lastModified": 1767039857,
@@ -78,9 +93,7 @@
     },
     "jj": {
       "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
+        "flake-utils": "flake-utils",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -98,6 +111,28 @@
         "owner": "jj-vcs",
         "ref": "v0.43.0",
         "repo": "jj",
+        "type": "github"
+      }
+    },
+    "jj-mesh": {
+      "inputs": {
+        "crane": "crane",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay_2"
+      },
+      "locked": {
+        "lastModified": 1785846661,
+        "narHash": "sha256-/pfV22Cn0U1Vzh8YKq5NCBfO0S1QxrItSHlEnL1HsbM=",
+        "owner": "baptiste0928",
+        "repo": "jj-mesh",
+        "rev": "72b213ff5d941d56337741907f27275f3947322e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "baptiste0928",
+        "repo": "jj-mesh",
         "type": "github"
       }
     },
@@ -247,6 +282,7 @@
     "opnix": {
       "inputs": {
         "flake-utils": [
+          "jj",
           "flake-utils"
         ],
         "nixpkgs": [
@@ -269,10 +305,10 @@
     },
     "root": {
       "inputs": {
-        "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "hyprqtile": "hyprqtile",
         "jj": "jj",
+        "jj-mesh": "jj-mesh",
         "nix-alien": "nix-alien",
         "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",
@@ -297,6 +333,27 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "rev": "5b929d8c854149d926d05ea0cd6469bf4e54db27",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
+      "inputs": {
+        "nixpkgs": [
+          "jj-mesh",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784870759,
+        "narHash": "sha256-ZaS89rj5u6pygXKDRfCzPMGm7isJxLsSeIAR5EaSyu8=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "471286a5fadc690e2408ad854eb32325f5e74da7",
         "type": "github"
       },
       "original": {

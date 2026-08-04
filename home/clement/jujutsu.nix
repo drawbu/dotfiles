@@ -1,10 +1,15 @@
 {
+  finputs,
   config,
   pkgs,
   lib,
   ...
 }:
 {
+  imports = [ finputs.jj-mesh.homeModules.default ];
+
+  services.jj-mesh.enable = true;
+
   programs.jujutsu = {
     enable = true;
     package = pkgs.extra.jj;
