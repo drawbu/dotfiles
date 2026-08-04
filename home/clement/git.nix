@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   globalgitignore = pkgs.writeText "globalgitignore" ''
     # Config
@@ -32,18 +37,13 @@ let
     /local
     /notes.md
   '';
-  ssh1password =
-    if pkgs.stdenv.isDarwin then
-      "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-    else
-      lib.getExe' pkgs._1password-gui "op-ssh-sign";
 in
 {
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
     lfs.enable = true;
-    signing = {
+    signing = lib.mkIf config.mod.onepassword.enable {
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILu5dP9F77dUgxHpu7drGx/cMpYPRXw0SjsTOr3sLPBZ"; # op
       signByDefault = true;
     };
@@ -52,10 +52,6 @@ in
       user = {
         email = "git@drawbu.dev";
         name = "Clément";
-      };
-      gpg = {
-        format = "ssh";
-        ssh.program = ssh1password;
       };
       init.defaultBranch = "main";
       core.excludesFile = toString globalgitignore;
@@ -96,6 +92,12 @@ in
       gitbutler.signCommits = true;
       "url \"ssh://git@github.com/\"".insteadOf = "https://github.com/";
       "url \"ssh://git@gitlab.com/\"".insteadOf = "https://gitlab.com:";
+    }
+    // lib.optionalAttrs config.mod.onepassword.enable {
+      gpg = {
+        format = "ssh";
+        ssh.program = config.mod.onepassword.signer;
+      };
     };
   };
 

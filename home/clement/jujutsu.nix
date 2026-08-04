@@ -14,13 +14,6 @@
         email = "git@drawbu.dev";
       };
 
-      signing = {
-        behavior = "drop";
-        backend = "ssh";
-        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILu5dP9F77dUgxHpu7drGx/cMpYPRXw0SjsTOr3sLPBZ";
-        backends.ssh.program = config.programs.git.settings.gpg.ssh.program;
-      };
-
       git = {
         sign-on-push = true;
         private-commits = "private()";
@@ -177,6 +170,14 @@
           ];
           patterns = [ "glob:'**/*.ipynb'" ];
         };
+      };
+    }
+    // lib.optionalAttrs config.mod.onepassword.enable {
+      signing = {
+        behavior = "drop";
+        backend = "ssh";
+        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILu5dP9F77dUgxHpu7drGx/cMpYPRXw0SjsTOr3sLPBZ";
+        backends.ssh.program = config.mod.onepassword.signer;
       };
     };
   };

@@ -36,6 +36,9 @@
         ../../home/clement
         ../../home/clement/macos.nix
       ];
+
+      mod.onepassword.enable = true;
+
       home = {
         username = lib.mkForce "clementboillot";
         stateVersion = "24.11";
