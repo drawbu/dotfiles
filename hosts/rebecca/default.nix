@@ -1,10 +1,17 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./hardware.nix
     ./home-assistant
     ./caddy.nix
     ./jellyfin.nix
+    ../../nixos
+    ../../nixos/users/clement.nix
   ];
 
   # Bootloader.
@@ -17,33 +24,15 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
 
   system.stateVersion = "24.05";
+  home-manager.users.clement.home.stateVersion = config.system.stateVersion;
 
-  nix = {
-    settings = {
-      trusted-users = [ "@wheel" ];
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-    };
-    optimise = {
-      automatic = true;
-      dates = [ "03:45" ];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
-    };
+  # Containers here are long-lived, so keep more than the shared week of roots.
+  programs.nh.clean.extraArgs = lib.mkForce "--keep-since 30d";
+  nix.optimise.dates = [ "03:45" ];
 
-  };
-
-  time.timeZone = "Europe/Paris";
-  i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "fr_FR.UTF-8";
     LC_IDENTIFICATION = "fr_FR.UTF-8";
@@ -62,46 +51,19 @@
   };
   console.keyMap = "fr";
 
-  # SSH server
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-      PermitRootLogin = "no";
-    };
+  services.openssh.settings = {
+    PasswordAuthentication = false;
+    KbdInteractiveAuthentication = false;
   };
 
-  # Don't forget to set a password with ‘passwd’.
-  users.users.clement = {
-    isNormalUser = true;
-    description = "clement";
-    extraGroups = [
-      "networkmanager"
-      "podman"
-      "wheel"
-    ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILu5dP9F77dUgxHpu7drGx/cMpYPRXw0SjsTOr3sLPBZ" # 1password
-      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIHm0udbjVeJed9Bll/gVvOaiHTQdwAp63sbolXXJSLTMAAAABHNzaDo=" # yubikey
-    ];
-    createHome = true; # errors in ssh because can't chdir lmao
-  };
+  users.users.clement.extraGroups = [ "podman" ];
 
+  # Kept out of home-manager so root has them too.
   environment.systemPackages = with pkgs; [
-    vim
     git
     lazygit
-    wget
-    fastfetch
-    tmux
   ];
   environment.shellAliases.lz = "lazygit";
-
-  services.tailscale.enable = true;
-
-  virtualisation.podman.enable = true;
-  virtualisation.oci-containers.backend = "podman";
 
   hardware.enableRedistributableFirmware = true;
   boot = {
