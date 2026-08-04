@@ -18,6 +18,21 @@ and interact with him like a professional.
   validating it by running automated or manual testing.
 
 
+## comments
+
+- Only write a comment if deleting it could cause a bug: without it, a future
+  reader would plausibly make a change that breaks something. If the worst case
+  of deleting it is that someone is mildly curious, do not write it.
+- Comments are for the next reader of the file, never for me reading the diff.
+  If a comment only makes sense to someone who saw the change being made, or who
+  knows which alternative was rejected, say it in your response instead.
+- Never restate what the code says, never justify your own decision, never
+  document a default value or the absence of something.
+- API docs the language expects (nix `description`, rustdoc, docstrings) are not
+  comments and are exempt from this.
+- When in doubt, write no comment. I will ask if I want the reasoning.
+
+
 ## tools
 
 - Always default to `pnpm` and `pnpx` for interacting with JavaScript
