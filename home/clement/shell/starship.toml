@@ -1,5 +1,5 @@
 add_newline = false
-format = "$username @ ${custom.zmx}$directory$git_branch$git_status$git_metrics$git_commit(- ($cmd_duration )($status))\n$os$character"
+format = "$username @ $hostname${custom.zmx}$directory$git_branch$git_status$git_metrics$git_commit(- ($cmd_duration )($status))\n$os$character"
 right_format = "$c$cmake$go$haskell$java$lua$nodejs$python$rust$zig$package"
 
 [aws]
@@ -58,6 +58,7 @@ symbol = " "
 symbol = " "
 
 [hostname]
+format = "[$ssh_symbol$hostname ]($style)"
 ssh_symbol = " "
 
 [java]
