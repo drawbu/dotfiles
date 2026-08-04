@@ -16,7 +16,6 @@
     shell = pkgs.zsh;
     extraGroups = [
       "wheel"
-      "docker"
       "networkmanager"
     ]
     ++ lib.optionals config.mod.profiles.desktop.enable [
