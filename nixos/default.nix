@@ -72,6 +72,7 @@
   ];
 
   environment = {
+    enableAllTerminfo = true;
     shells = with pkgs; [ zsh ];
     systemPackages =
       with pkgs;
