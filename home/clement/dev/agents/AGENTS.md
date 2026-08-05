@@ -63,6 +63,13 @@ and interact with him like a professional.
 - Unless asked to just edit the current change, name your changes and split them
   into small units if necessary. The goal is to make the review for both the
   operator and the reviewer easier.
+- Describe a change as `scope(sub): summary`, where the sub-scope is optional
+  and only used when it helps narrow down the change. Keep the summary short
+  (under 72 characters), lowercase, imperative mood, no trailing period.
+- Default to no body. Only add one, wrapped at 80 characters, when the summary
+  leaves a reader actually confused, and make it a why: never restate the
+  summary, list files, narrate the implementation or justify the change.
+- Follow the repository's own commit guidelines when it has some.
 
 
 ## local directory
