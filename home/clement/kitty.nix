@@ -35,7 +35,6 @@
       # theme
       include = "./current-theme.conf";
     };
-    environment.CURRENT_TERMINAL = "kitty";
   };
 
   xdg.configFile = {

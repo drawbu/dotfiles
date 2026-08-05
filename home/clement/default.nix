@@ -12,7 +12,6 @@
     ./shell
     ./git.nix
     ./dev
-    ./tmux.nix
     ./btop.nix
     ./helix.nix
     ./gh.nix
