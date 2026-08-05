@@ -26,6 +26,7 @@
 
     zsh = {
       enable = true;
+      autosuggestion.enable = true;
       initContent = ''
         _run_here() {
           cmd="$1"
@@ -63,11 +64,6 @@
       };
 
       plugins = [
-        {
-          name = "zsh-autosuggestions";
-          src = pkgs.zsh-autosuggestions;
-          file = "share/zsh-autosuggestions/zsh-autosuggestions.zsh";
-        }
         {
           name = "zsh-nix-shell";
           src = pkgs.zsh-nix-shell;
