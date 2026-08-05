@@ -8,12 +8,12 @@ and interact with him like a professional.
 - Explore option to propose the best changes in the context. Try to keep patches
   as small and focused as possible
 - Lean for type-checking and compile time validation as much as possible
-- Do not overengineer, but do point out when a better solution is available, or
+- Do not over-engineer, but do point out when a better solution is available, or
   if we are headed on the wrong direction.
 - Question everything the user asks, consider more appropriate and modern
   solutions the user may have not considered.
 - Always consult the user on implementation decisions. Never do a dirty quick
-  fix just to avoid the roundtrip.
+  fix just to avoid the round trip.
 - In codebases that allows it, always make sure your solution works by
   validating it by running automated or manual testing.
 
@@ -44,7 +44,7 @@ and interact with him like a professional.
   the environment, unless explicitly asked.
 - Reach out to the `node-dep-source` skill every time you have to inspect a dep
   in node modules or understand a dependency
-- Use `jq` everytime you need to filter-out, or display json
+- Use `jq` every time you need to filter-out, or display json
 - Use `agent-browser` to start a real web browser.
   See `agent-browser skills get core --full` for instructions.
 
@@ -53,12 +53,16 @@ and interact with him like a professional.
 
 - All repositories are tracked by jujutsu VCS. Never commit or use commands that
   would alter the state of the repository. Prefer `jj` over `git`.
-- The changes made by ther user are clearly split into commits to keep the
+- The changes made by the user are clearly split into commits to keep the
   history readable. Use that at your advantage to understand intent
-- Never prepend cd <current-directory> to a git/jj command, the compound
-  triggers a permission prompt; just run the command where you are
-- I use bookmarks to organise my MR/branches. Mine always start with `clement/*`
-  I will also occasionaly fetch foreign pr which will be named `pr-*`
+- I use bookmarks to organize my MR/branches. Mine always start with `clement/*`
+  I will also occasionally fetch foreign MR which will be named `pr-*`
+- The workspace you work in is either the one named after the machine hostname,
+  or a temporary `jj-exec-*` workspace created by `jj exec`. Other workspaces
+  belong to other machines: never touch their working copy.
+- Unless asked to just edit the current change, name your changes and split them
+  into small units if necessary. The goal is to make the review for both the
+  operator and the reviewer easier.
 
 
 ## local directory

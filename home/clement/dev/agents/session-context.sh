@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "== Host (hostname)"
+hostname
+
 if jj root &>/dev/null; then
     jj_root=$(jj root)
 
