@@ -62,10 +62,7 @@
       enable = true;
       enableDefaultConfig = false;
       settings = {
-        "Host *" = {
-          SetEnv.TERM = "xterm-256color";
-        }
-        // lib.optionalAttrs config.mod.onepassword.enable {
+        "Host *" = lib.optionalAttrs config.mod.onepassword.enable {
           IdentityAgent = config.mod.onepassword.agent;
         };
       };

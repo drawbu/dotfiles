@@ -7,6 +7,8 @@
       theme = "dark:Catppuccin Mocha,light:Catppuccin Latte";
       font-family = "Iosevka Mayukai Monolite";
 
+      shell-integration-features = "ssh-env,ssh-terminfo";
+
       background-opacity = 0.95;
 
       cursor-click-to-move = true;
