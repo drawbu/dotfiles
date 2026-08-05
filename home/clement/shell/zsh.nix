@@ -48,7 +48,6 @@
 
       sessionVariables = {
         ZSH_DISABLE_COMPFIX = true;
-        ZSH_WAKATIME_PROJECT_DETECTION = true;
       };
 
       history = {
@@ -64,15 +63,6 @@
       };
 
       plugins = [
-        {
-          name = "wakatime";
-          src = pkgs.fetchFromGitHub {
-            owner = "sobolevn";
-            repo = "wakatime-zsh-plugin";
-            rev = "69c6028b0c8f72e2afcfa5135b1af29afb49764a";
-            hash = "sha256-pA1VOkzbHQjmcI2skzB/OP5pXn8CFUz5Ok/GLC6KKXQ=";
-          };
-        }
         {
           name = "zsh-autosuggestions";
           src = pkgs.zsh-autosuggestions;
