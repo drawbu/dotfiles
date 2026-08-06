@@ -141,16 +141,16 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1782954446,
-        "narHash": "sha256-XgBq2ZN34iWlwKVgW7Syr46KUdt7pJuSDd/J6QWJwwQ=",
+        "lastModified": 1785975249,
+        "narHash": "sha256-ojhsg083nb/GWzNIaLzCg0/9hdCHkb3xdrvGqxhNDmY=",
         "owner": "jj-vcs",
         "repo": "jj",
-        "rev": "89f62ede8c1c611eaf134c0c49252efd65c7945d",
+        "rev": "af45d57de7163cc5f17f3df178a31577e4951ea3",
         "type": "github"
       },
       "original": {
         "owner": "jj-vcs",
-        "ref": "v0.43.0",
+        "ref": "v0.44.0",
         "repo": "jj",
         "type": "github"
       }

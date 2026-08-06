@@ -25,7 +25,7 @@
     ghostty.url = "github:ghostty-org/ghostty";
     ghostty.inputs.home-manager.follows = "home-manager";
 
-    jj.url = "github:jj-vcs/jj/v0.43.0";
+    jj.url = "github:jj-vcs/jj/v0.44.0";
     jj.inputs.nixpkgs.follows = "nixpkgs";
     jj.inputs.flake-utils.inputs.systems.follows = "systems";
 
