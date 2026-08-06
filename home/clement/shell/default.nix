@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ./atuin.nix
     ./bash.nix
     ./zsh.nix
     ./scripts

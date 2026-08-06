@@ -8,6 +8,7 @@
   imports = [
     ./hardware.nix
     ./home-assistant
+    ./atuin.nix
     ./caddy.nix
     ./jellyfin.nix
     ../../nixos
