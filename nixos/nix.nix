@@ -24,10 +24,12 @@ in
         "https://cache.nixos.org/"
         "https://nix-community.cachix.org"
         "https://cache.flox.dev"
+        "https://ghostty.cachix.org"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs="
+        "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
       ];
       keep-outputs = true;
       keep-derivations = true;

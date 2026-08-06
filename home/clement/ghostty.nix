@@ -1,8 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.ghostty = {
     enable = true;
     systemd.enable = true;
+    package = pkgs.extra.ghostty;
     settings = {
       theme = "dark:Catppuccin Mocha,light:Catppuccin Latte";
       font-family = "Iosevka Mayukai Monolite";
