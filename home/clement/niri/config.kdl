@@ -24,6 +24,7 @@ output "eDP-1" {
     scale 1.5
     transform "normal"
     position x=1280 y=0
+    variable-refresh-rate on-demand=true
 }
 
 layout {
@@ -84,6 +85,13 @@ window-rule {
 window-rule {
     match is-floating=true
     shadow { on; }
+}
+
+// on-demand VRR only kicks in for windows opting into it
+window-rule {
+    match app-id=r#"^gamescope$"#
+    match app-id=r#"^steam_app_\d+$"#
+    variable-refresh-rate true
 }
 
 // Block out password managers from screen capture
