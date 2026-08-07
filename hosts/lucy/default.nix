@@ -43,6 +43,14 @@
 
   services.xserver.xkb.layout = lib.mkForce "us_qwerty-fr";
   hardware.framework.laptop13.audioEnhancement.enable = true;
+
+  # simpledrm claims card0 before amdgpu binds, so the iGPU is card1.
+  programs.gamemode.settings.gpu = {
+    apply_gpu_optimisations = "accept-responsibility";
+    gpu_device = 1;
+    amd_performance_level = "high";
+  };
+
   boot.loader.grub.useOSProber = true;
 
   zramSwap.enable = true;
