@@ -7,6 +7,7 @@
 {
   imports = [
     ./nix.nix
+    ./gaming.nix
     ./graphical
   ];
 

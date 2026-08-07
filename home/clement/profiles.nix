@@ -6,7 +6,10 @@
 }:
 {
   options.mod = {
-    profiles.desktop.enable = lib.mkEnableOption "desktop workstation profile";
+    profiles = {
+      desktop.enable = lib.mkEnableOption "desktop workstation profile";
+      gaming.enable = lib.mkEnableOption "gaming profile";
+    };
 
     onepassword = {
       enable = lib.mkOption {

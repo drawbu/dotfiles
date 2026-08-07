@@ -8,6 +8,7 @@
   home-manager.users.clement = {
     imports = [ ../../home/clement ];
     mod.profiles.desktop.enable = config.mod.profiles.desktop.enable;
+    mod.profiles.gaming.enable = config.mod.profiles.gaming.enable;
   };
 
   users.users.clement = {

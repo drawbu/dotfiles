@@ -66,21 +66,7 @@
 
     programs = {
       xwayland.enable = true;
-      steam = {
-        enable = true;
-        remotePlay.openFirewall = true;
-        dedicatedServer.openFirewall = true;
-        gamescopeSession.enable = true;
-      };
-
       kdeconnect.enable = true;
-      gamemode = {
-        enable = true;
-        settings.custom = {
-          start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
-          end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
-        };
-      };
     };
 
     environment = {

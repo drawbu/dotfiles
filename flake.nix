@@ -60,6 +60,7 @@
         {
           modules ? [ ],
           desktop ? false,
+          gaming ? false,
         }:
         inputs.nixpkgs.lib.nixosSystem {
           specialArgs = specialArgs';
@@ -69,7 +70,10 @@
             ./nixos/podman.nix
             inputs.home-manager.nixosModules.home-manager
             (mkHome specialArgs')
-            { mod.profiles.desktop.enable = desktop; }
+            {
+              mod.profiles.desktop.enable = desktop;
+              mod.profiles.gaming.enable = gaming;
+            }
             inputs.opnix.nixosModules.default
             (
               { pkgs, ... }:
@@ -107,6 +111,7 @@
       nixosConfigurations = {
         "maine" = mkHost {
           desktop = true;
+          gaming = true;
           modules = [
             ./hosts/maine
             # hardware.common-gpu-nvidia
@@ -118,6 +123,7 @@
 
         "lucy" = mkHost {
           desktop = true;
+          gaming = true;
           modules = [
             ./hosts/lucy
             hardware.framework-amd-ai-300-series

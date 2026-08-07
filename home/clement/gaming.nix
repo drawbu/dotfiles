@@ -1,7 +1,12 @@
-{ pkgs, ... }:
 {
-  home = {
-    packages =
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  config = lib.mkIf config.mod.profiles.gaming.enable {
+    home.packages =
       (with pkgs; [
         prismlauncher
         lunar-client
@@ -19,7 +24,7 @@
         protonup-ng
       ]);
 
-    sessionVariables = {
+    home.sessionVariables = {
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
     };
   };
