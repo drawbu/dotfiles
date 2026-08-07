@@ -82,16 +82,7 @@
 
       oh-my-zsh = {
         enable = true;
-        plugins = [
-          "copyfile"
-          "history"
-          "sudo"
-          "podman"
-          "rust"
-          "kubectl"
-          "yarn"
-          "1password"
-        ];
+        plugins = [ "sudo" ];
       };
     }
 
