@@ -128,8 +128,10 @@
 
     networking.nameservers = [ "1.1.1.1" ];
 
+    # Without a managed slice oomd runs but supervises nothing.
     systemd.oomd = {
-      enable = true;
+      enableRootSlice = true;
+      enableUserSlices = true;
       settings.OOM = {
         DefaultMemoryPressureDurationSec = "10s";
       };
