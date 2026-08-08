@@ -114,7 +114,6 @@
           gaming = true;
           modules = [
             ./hosts/maine
-            # hardware.common-gpu-nvidia
             hardware.common-cpu-intel
             hardware.common-pc
             hardware.common-pc-ssd
