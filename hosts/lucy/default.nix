@@ -15,7 +15,6 @@
   system.stateVersion = "26.05";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.initrd.kernelModules = [ "amdgpu" ];
 
   # Graphical boot splash + clean LUKS passphrase prompt. Plymouth's
   # systemd-ask-password integration relies on the systemd-based initrd.
@@ -25,13 +24,12 @@
   boot.kernelParams = [ "quiet" ];
 
   home-manager.users.clement =
-    { pkgs, ... }:
+    { ... }:
     {
       imports = [ ../../home/clement/linux.nix ];
       home = {
         stateVersion = config.system.stateVersion;
         # pointerCursor.size = lib.mkForce 16;
-        packages = with pkgs; [ framework-tool ];
       };
     };
 
@@ -54,7 +52,6 @@
   boot.loader.grub.useOSProber = true;
 
   zramSwap.enable = true;
-  services.fwupd.enable = true;
   programs.nh.clean.enable = lib.mkForce false;
 
   services.mullvad-vpn.enable = true;
