@@ -42,6 +42,17 @@
   services.xserver.xkb.layout = lib.mkForce "us_qwerty-fr";
   hardware.framework.laptop13.audioEnhancement.enable = true;
 
+  programs.gamescope.args = [
+    "-W"
+    "2880"
+    "-H"
+    "1920"
+    "-r"
+    "120"
+    "-F"
+    "fsr"
+  ];
+
   # simpledrm claims card0 before amdgpu binds, so the iGPU is card1.
   programs.gamemode.settings.gpu = {
     apply_gpu_optimisations = "accept-responsibility";

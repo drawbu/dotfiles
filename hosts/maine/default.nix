@@ -30,6 +30,13 @@
     xkb.layout = lib.mkForce "us_qwerty-fr";
   };
 
+  programs.gamescope.args = [
+    "-W"
+    "1920"
+    "-H"
+    "1080"
+  ];
+
   boot.loader = {
     timeout = -1;
     grub.useOSProber = true;

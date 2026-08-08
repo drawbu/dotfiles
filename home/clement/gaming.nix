@@ -9,17 +9,25 @@
     home.packages = with pkgs; [
       prismlauncher
       lunar-client
-      (heroic.override {
-        extraPkgs =
-          pkgs': with pkgs'; [
-            gamescope
-            gamemode
-          ];
-      })
+      heroic
       dwarf-fortress
       r2modman
-      mangohud
       vulkan-tools
     ];
+
+    programs.mangohud = {
+      enable = true;
+      settings = {
+        fps = true;
+        frametime = true;
+        frame_timing = true;
+        cpu_stats = true;
+        cpu_temp = true;
+        gpu_stats = true;
+        gpu_temp = true;
+        vram = true;
+        ram = true;
+      };
+    };
   };
 }

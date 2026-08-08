@@ -6,6 +6,8 @@
 }:
 {
   config = lib.mkIf config.mod.profiles.gaming.enable {
+    environment.systemPackages = [ pkgs.mangohud ];
+
     programs = {
       steam = {
         enable = true;
@@ -15,6 +17,8 @@
         protontricks.enable = true;
         extraCompatPackages = [ pkgs.proton-ge-bin ];
       };
+
+      gamescope.args = [ "--mangoapp" ];
 
       gamemode = {
         enable = true;
