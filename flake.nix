@@ -24,13 +24,15 @@
 
     ghostty.url = "github:ghostty-org/ghostty";
     ghostty.inputs.home-manager.follows = "home-manager";
+    ghostty.inputs.flake-compat.follows = "nix-alien/flake-compat";
+    ghostty.inputs.systems.follows = "systems";
 
     jj.url = "github:jj-vcs/jj/v0.44.0";
     jj.inputs.nixpkgs.follows = "nixpkgs";
     jj.inputs.flake-utils.inputs.systems.follows = "systems";
 
     jj-mesh.url = "github:baptiste0928/jj-mesh";
-    jj-mesh.inputs.nixpkgs.follows = "nixpkgs";
+    jj-mesh.inputs.nixpkgs.follows = "nixpkgs_unstable";
 
     opnix.url = "github:brizzbuzz/opnix";
     opnix.inputs.nixpkgs.follows = "nixpkgs";
