@@ -63,6 +63,23 @@ in
 
         RIVEN_SCRAPING_TORRENTIO_ENABLED = "true";
         RIVEN_SCRAPING_RARBG_ENABLED = "true";
+        RIVEN_SCRAPING_JACKETT_ENABLED = "false";
+        RIVEN_SCRAPING_BUCKET_LIMIT = "20";
+
+        RIVEN_RANKING_LANGUAGES_EXCLUDE = builtins.toJSON [ ];
+        RIVEN_RANKING_LANGUAGES_REQUIRED = builtins.toJSON [ ];
+        RIVEN_RANKING_LANGUAGES_PREFERRED = builtins.toJSON [
+          "en"
+          "fr"
+          "ja"
+        ];
+
+        RIVEN_POST_PROCESSING_SUBTITLE_ENABLED = "true";
+        RIVEN_POST_PROCESSING_SUBTITLE_PROVIDERS_OPENSUBTITLES_ENABLED = "true";
+        RIVEN_POST_PROCESSING_SUBTITLE_LANGUAGES = builtins.toJSON [
+          "en"
+          "fr"
+        ];
 
         RIVEN_UPDATERS_LIBRARY_PATH = library;
         RIVEN_UPDATERS_JELLYFIN_ENABLED = "true";
