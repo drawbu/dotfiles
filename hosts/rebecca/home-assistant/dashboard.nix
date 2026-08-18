@@ -10,16 +10,6 @@
         cards = [
           {
             type = "entities";
-            title = "Riven";
-            entities = [
-              "sensor.riven_items"
-              "sensor.riven_movies"
-              "sensor.riven_episodes"
-              "sensor.riven_incomplete"
-            ];
-          }
-          {
-            type = "entities";
             title = "Jellyfin";
             entities = [
               "sensor.jellyfin_movies"
@@ -35,7 +25,6 @@
             stat_types = [ "max" ];
             chart_type = "line";
             entities = [
-              "sensor.riven_items"
               "sensor.jellyfin_episodes"
               "sensor.jellyfin_movies"
             ];
