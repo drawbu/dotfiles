@@ -16,6 +16,22 @@ and interact with him like a professional.
   fix just to avoid the round trip.
 - In codebases that allows it, always make sure your solution works by
   validating it by running automated or manual testing.
+- When every caller lives in the repo, change the signature and fix the callers.
+  Keep a compatibility shim only for something you cannot reach and edit.
+
+
+## review
+
+- Review a large change yourself before you call it done using `/code-review`.
+- Hand a reviewer the goal and the files, nothing else. A reviewer told what to
+  look for finds that and stops.
+- A finding needs a file, a line, and the input that breaks it. No repro, no
+  finding.
+- Check each finding yourself before you act on it. Most will not survive.
+- A fix that belongs to a shared abstraction, or to a promise the callers ought
+  to keep, is not part of this change. Say so and leave it.
+- Reviewing your own work, fix what you find. Reviewing because I asked, report
+  and touch nothing.
 
 
 ## comments
@@ -29,8 +45,23 @@ and interact with him like a professional.
 - Never restate what the code says, never justify your own decision, never
   document a default value or the absence of something.
 - API docs the language expects (nix `description`, rustdoc, docstrings) are not
-  comments and are exempt from this.
+  comments: they follow the documentation rules below.
 - When in doubt, write no comment. I will ask if I want the reasoning.
+
+
+## documentation
+
+- Write for someone who knows what the project is for and has never opened this
+  file.
+- A README says what the thing is, what constrains it and where to start
+  reading. Correct it when a change makes it wrong. Ask me before growing it.
+- A module header names the concepts it owns and where its edges sit. Draw the
+  flow when it is hard to hold in the head.
+- A function doc is one line, then only what the signature cannot say:
+  invariants, preconditions, panics, failure modes.
+- Never explain the same concept at two levels. The narrower one assumes the
+  wider one was read.
+- Call things by the names the project already gives them.
 
 
 ## tools
@@ -86,3 +117,10 @@ and interact with him like a professional.
 ## redacting
 
 - When redacting, never put em-dashes
+- Apply Orwell's rules to every piece of prose you write, in documentation,
+  commit messages and your answers alike:
+  - Never use a metaphor, simile or other figure of speech which you are used
+    to seeing in print.
+  - Never use a long word where a short one will do.
+  - If it is possible to cut a word out, always cut it out.
+  - Never use the passive where you can use the active.
