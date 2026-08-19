@@ -34,7 +34,7 @@
     jj-mesh.url = "github:baptiste0928/jj-mesh";
     jj-mesh.inputs.nixpkgs.follows = "nixpkgs_unstable";
 
-    opnix.url = "github:brizzbuzz/opnix";
+    opnix.url = "github:brizzbuzz/opnix/v0.11.0";
     opnix.inputs.nixpkgs.follows = "nixpkgs";
     opnix.inputs.flake-utils.follows = "jj/flake-utils";
   };

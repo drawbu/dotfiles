@@ -14,7 +14,7 @@
         let
           cfg = {
             inherit (config.nixpkgs) config;
-            inherit (final) system;
+            inherit (final.stdenv.hostPlatform) system;
           };
         in
         {

@@ -39,7 +39,7 @@
       # clankers
       opencode
       amp-cli
-      gemini-cli
+      antigravity-cli
       claude-code
       github-copilot-cli
       codex
