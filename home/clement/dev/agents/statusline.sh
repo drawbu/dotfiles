@@ -7,7 +7,7 @@ input=$(cat)
 # until the first API response of the session, hence the "--" fallbacks.
 # resets_at is a unix timestamp, taken from the anthropic-ratelimit-*-reset
 # response headers.
-IFS=$'\t' read -r model ctx in_tok out_tok five_pct five_left week_pct week_left < <(
+IFS=$'\t' read -r model ctx in_tok out_tok five_pct five_left week_pct week_left session < <(
     jq -r '
         def pct: if type == "number" then "\(floor)" else "--" end;
         def compact:
@@ -33,7 +33,8 @@ IFS=$'\t' read -r model ctx in_tok out_tok five_pct five_left week_pct week_left
             (.rate_limits.five_hour.used_percentage | pct),
             (.rate_limits.five_hour.resets_at | remaining),
             (.rate_limits.seven_day.used_percentage | pct),
-            (.rate_limits.seven_day.resets_at | remaining)
+            (.rate_limits.seven_day.resets_at | remaining),
+            (.session_name // "")
         ] | @tsv' <<<"$input"
 )
 
@@ -62,8 +63,10 @@ limits=""
 
 [ "$ctx" != "--" ] && ctx+="%"
 
-line="${orange}${model}${reset} ${green}$(uname -n)${reset}"
+line="${orange}${model}${reset}"
 [ -n "$limits" ] && line+="${sep}${limits}"
 line+="${sep}${dim}ctx ${ctx} ↑${in_tok} ↓${out_tok}${reset}"
+line+=$'\n'"${green}$(uname -n)${reset}"
+[ -n "$session" ] && line+="${sep}${dim}${session}${reset}"
 
 printf '%s' "$line"
