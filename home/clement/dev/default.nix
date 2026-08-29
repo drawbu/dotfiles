@@ -7,6 +7,7 @@
 {
   imports = [
     ./editorconfig.nix
+    ./zed.nix
     ./agents
   ];
 
@@ -202,7 +203,6 @@
           jetbrains.rust-rover
           jetbrains.goland
           jetbrains-toolbox
-          zed-editor
           godot_4
         ])
       );
