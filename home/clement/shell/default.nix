@@ -35,6 +35,7 @@
       zed = "zeditor";
     }
     // lib.optionalAttrs pkgs.stdenv.isLinux {
+      open = "xdg-open";
       arch = "distrobox enter arch";
       fedora = "distrobox enter fedora";
       macos = "nix run github:matthewcroughan/NixThePlanet#macos-ventura";
