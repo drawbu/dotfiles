@@ -43,27 +43,24 @@ let
       };
     };
 
+  #   curl -s 'https://api.fontshare.com/v2/fonts?limit=200' | jq -r \
+  #     '.fonts[] | select(.slug=="NAME").styles[] | select(.is_variable).file
+  #      | ltrimstr("//cdn.fontshare.com/wf/")'
   fetchFontShare =
-    { name, hash }:
-    pkgs.stdenvNoCC.mkDerivation rec {
-      pname = name;
-      version = "v2";
+    { name, file, hash }:
+    pkgs.stdenvNoCC.mkDerivation {
+      inherit name;
 
       src = pkgs.fetchurl {
-        url = "https://api.fontshare.com/${version}/fonts/download/${name}";
+        url = "https://cdn.fontshare.com/wf/${file}.ttf";
         inherit hash;
       };
 
-      buildInputs = with pkgs; [ unzip ];
-
-      preUnpack = ''
-        cp $src{,.zip}
-        src=''${src}.zip
-      '';
+      dontUnpack = true;
 
       installPhase = ''
         runHook preInstall
-        install -Dm644 -t $out/share/fonts/truetype/ Fonts/TTF/*.ttf
+        install -Dm644 $src $out/share/fonts/truetype/${name}.ttf
         runHook postInstall
       '';
     };
@@ -84,7 +81,8 @@ in
     iosevka-mayukai.monolite
     (fetchFontShare {
       name = "clash-grotesk";
-      hash = "sha256-Ql8ZM6JEFay8lXdd7Qoxws25lAs3qa/JXJXDvkhDFpk=";
+      file = "5TRO2J3HJNIQODLQ4CTSMGSLAWSE5YUY/GHXENXHZCDIOE5E73364PNNASRNO3JVW/GLZTRU2GIKPV5HYT3E6HDLWOXAWPNZDV";
+      hash = "sha256-WIeh383/KlTNtH7wFlZW5zXmDVDmGCplXxKXjS8N0S0=";
     })
   ]
   ++ (with pkgs; [
