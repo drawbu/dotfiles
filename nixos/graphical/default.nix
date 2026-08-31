@@ -1,15 +1,15 @@
 {
   config,
-  pkgs,
   lib,
+  pkgs,
   ...
 }:
 {
   imports = [
-    ./polkit.nix
-    ./xserver.nix
     ./boot.nix
+    ./polkit.nix
     ./xdg.nix
+    ./xserver.nix
   ];
 
   config = lib.mkIf config.mod.profiles.desktop.enable {

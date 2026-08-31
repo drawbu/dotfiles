@@ -1,26 +1,19 @@
-{
-  finputs,
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 {
   imports = [
     ../../nixos/nixpkgs.nix
-    ./profiles.nix
-    ./vim
-    ./shell
-    ./git.nix
-    ./dev
     ./btop.nix
-    ./helix.nix
-    ./gh.nix
-    ./jujutsu.nix
-    ./wallpapers
+    ./dev
     ./fonts.nix
+    ./gh.nix
+    ./git.nix
+    ./helix.nix
+    ./jujutsu.nix
+    ./profiles.nix
+    ./shell
+    ./vim
+    ./wallpapers
   ];
-
-  # modules = [ finputs.agenix.homeManagerModules.default ];
 
   programs.home-manager.enable = true;
 

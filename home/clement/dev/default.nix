@@ -1,14 +1,14 @@
 {
-  pkgs,
   config,
   lib,
+  pkgs,
   ...
 }:
 {
   imports = [
+    ./agents
     ./editorconfig.nix
     ./zed.nix
-    ./agents
   ];
 
   manual = {

@@ -1,14 +1,14 @@
 {
-  pkgs,
   config,
   lib,
+  pkgs,
   ...
 }:
 {
   imports = [
-    ./nix.nix
     ./gaming.nix
     ./graphical
+    ./nix.nix
   ];
 
   system.copySystemConfiguration = false;

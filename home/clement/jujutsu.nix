@@ -1,8 +1,8 @@
 {
-  finputs,
   config,
-  pkgs,
+  finputs,
   lib,
+  pkgs,
   ...
 }:
 {

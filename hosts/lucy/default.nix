@@ -6,9 +6,9 @@
 }:
 {
   imports = [
-    ./hardware.nix
     ../../nixos
     ../../nixos/users/clement.nix
+    ./hardware.nix
   ];
 
   networking.hostName = "lucy";
@@ -23,15 +23,13 @@
   boot.initrd.verbose = false;
   boot.kernelParams = [ "quiet" ];
 
-  home-manager.users.clement =
-    { ... }:
-    {
-      imports = [ ../../home/clement/linux.nix ];
-      home = {
-        stateVersion = config.system.stateVersion;
-        # pointerCursor.size = lib.mkForce 16;
-      };
+  home-manager.users.clement = {
+    imports = [ ../../home/clement/linux.nix ];
+    home = {
+      stateVersion = config.system.stateVersion;
+      # pointerCursor.size = lib.mkForce 16;
     };
+  };
 
   environment.sessionVariables = {
     GDK_SCALE = "1"; # GDK 3 does not support fractional scaling; really should be 1.5

@@ -1,8 +1,7 @@
 {
-  finputs,
   config,
+  finputs,
   lib,
-  pkgs,
   ...
 }:
 let

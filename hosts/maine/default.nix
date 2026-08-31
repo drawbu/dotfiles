@@ -1,24 +1,18 @@
-{
-  config,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
 {
   imports = [
-    ./hardware.nix
     ../../nixos
     ../../nixos/users/clement.nix
+    ./hardware.nix
   ];
 
   networking.hostName = "maine";
   system.stateVersion = "22.11";
 
-  home-manager.users.clement =
-    { ... }:
-    {
-      imports = [ ../../home/clement/linux.nix ];
-      home.stateVersion = config.system.stateVersion;
-    };
+  home-manager.users.clement = {
+    imports = [ ../../home/clement/linux.nix ];
+    home.stateVersion = config.system.stateVersion;
+  };
 
   hardware.nvidia = {
     open = true;

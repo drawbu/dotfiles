@@ -6,13 +6,13 @@
 }:
 {
   imports = [
-    ./hardware.nix
-    ./home-assistant
-    ./atuin.nix
-    ./caddy.nix
-    ./jellyfin.nix
     ../../nixos
     ../../nixos/users/clement.nix
+    ./atuin.nix
+    ./caddy.nix
+    ./hardware.nix
+    ./home-assistant
+    ./jellyfin.nix
   ];
 
   # Bootloader.

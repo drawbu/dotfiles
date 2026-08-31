@@ -1,4 +1,3 @@
-{ ... }:
 let
   fn =
     name: schemes:

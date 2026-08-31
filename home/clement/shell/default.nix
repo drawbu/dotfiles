@@ -1,15 +1,15 @@
 {
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
   ...
 }:
 {
   imports = [
     ./atuin.nix
     ./bash.nix
-    ./zsh.nix
     ./scripts
+    ./zsh.nix
   ];
 
   home = {

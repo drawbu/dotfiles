@@ -1,4 +1,3 @@
-{ ... }:
 {
   editorconfig = rec {
     enable = true;

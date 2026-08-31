@@ -1,23 +1,19 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 {
   imports = [
-    ./distrobox.nix
-    ./kanata
-    ./gtk.nix
-    ./firefox.nix
     ./cursor.nix
-    ./kitty.nix
-    ./mimeapps.nix
+    ./distrobox.nix
+    ./firefox.nix
+    ./fuzzel.nix
     ./gaming.nix
     ./ghostty.nix
-    ./fuzzel.nix
-    ./waybar.nix
-    ./swayidle.nix
+    ./gtk.nix
+    ./kanata
+    ./kitty.nix
+    ./mimeapps.nix
     ./niri
+    ./swayidle.nix
+    ./waybar.nix
   ];
 
   home = {

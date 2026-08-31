@@ -1,8 +1,8 @@
 { config, ... }:
 {
   imports = [
-    ./monitoring.nix
     ./dashboard.nix
+    ./monitoring.nix
   ];
 
   services.home-assistant = {

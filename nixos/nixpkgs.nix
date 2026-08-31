@@ -1,4 +1,4 @@
-{ finputs, config, ... }:
+{ config, finputs, ... }:
 {
   nixpkgs = {
     config = {

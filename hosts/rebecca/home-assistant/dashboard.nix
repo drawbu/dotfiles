@@ -1,4 +1,3 @@
-{ ... }:
 {
   services.home-assistant.lovelaceConfig = {
     title = "rebecca";
