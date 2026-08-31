@@ -13,8 +13,13 @@
     settings = {
       model = "opus";
       effortLevel = "high";
+      outputStyle = "Concise";
+      theme = "auto";
       tui = "fullscreen";
 
+      autoMemoryEnabled = false;
+      awaySummaryEnabled = false;
+      skipAutoPermissionPrompt = true;
       disableClaudeAiConnectors = true;
       disableArtifact = true;
 

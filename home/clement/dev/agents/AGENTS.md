@@ -75,7 +75,7 @@ and interact with him like a professional.
   the environment, unless explicitly asked.
 - Reach out to the `node-dep-source` skill every time you have to inspect a dep
   in node modules or understand a dependency
-- Use `jq` every time you need to filter-out, or display json
+- `rg`, `fd` and `jq` are installed, use them for more complex operations.
 - Use `agent-browser` to start a real web browser.
   See `agent-browser skills get core --full` for instructions.
 
