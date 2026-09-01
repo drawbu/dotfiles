@@ -37,6 +37,9 @@
     opnix.url = "github:brizzbuzz/opnix/v0.11.0";
     opnix.inputs.nixpkgs.follows = "nixpkgs";
     opnix.inputs.flake-utils.follows = "jj/flake-utils";
+
+    yank.url = "git+https://tangled.org/drawbu.dev/yank";
+    yank.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

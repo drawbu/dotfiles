@@ -15,6 +15,27 @@
         "type": "github"
       }
     },
+    "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "yank",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787559586,
+        "narHash": "sha256-onL0VLf9vPllmT0H/OlURIU5r5t5WIEl7t4tVNKT0Nw=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "9d0d87172c374f89da73c1cfe6d81ae62feac1f1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": [
@@ -346,7 +367,8 @@
         "nixpkgs_master": "nixpkgs_master",
         "nixpkgs_unstable": "nixpkgs_unstable",
         "opnix": "opnix",
-        "systems": "systems"
+        "systems": "systems",
+        "yank": "yank"
       }
     },
     "rust-overlay": {
@@ -383,6 +405,27 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
+      }
+    },
+    "yank": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788631295,
+        "narHash": "sha256-Dy+6iMkC2e4M0J34tDP+J2pZpoKDQWCRJqBk8kLRV1I=",
+        "ref": "refs/heads/main",
+        "rev": "0b98b127e14421ba6d8711653c11d17ca8cea194",
+        "revCount": 31,
+        "type": "git",
+        "url": "https://tangled.org/drawbu.dev/yank"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://tangled.org/drawbu.dev/yank"
       }
     },
     "zig": {
