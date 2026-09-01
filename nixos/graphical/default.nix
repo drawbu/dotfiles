@@ -36,6 +36,18 @@
 
       resolved.enable = true; # wireguard
 
+      blocky = {
+        enable = true;
+        settings = {
+          ports.dns = "127.0.0.1:53";
+          upstreams.groups.default = [ "1.1.1.1" ];
+          blocking = {
+            denylists.ads = [ "${pkgs.stevenblack-blocklist.ads}/hosts" ];
+            clientGroupsBlock.default = [ "ads" ];
+          };
+        };
+      };
+
       # Sounds
       pipewire = {
         enable = true;
@@ -114,7 +126,6 @@
         "2.fr.pool.ntp.org"
         "3.fr.pool.ntp.org"
       ];
-      stevenblack.enable = true;
     };
 
     services.xserver.xkb.extraLayouts.us_qwerty-fr = {
@@ -126,7 +137,7 @@
       symbolsFile = "${pkgs.qwerty-fr}/share/X11/xkb/symbols/us_qwerty-fr";
     };
 
-    networking.nameservers = [ "1.1.1.1" ];
+    networking.nameservers = [ "127.0.0.1" ];
 
     # Without a managed slice oomd runs but supervises nothing.
     systemd.oomd = {
