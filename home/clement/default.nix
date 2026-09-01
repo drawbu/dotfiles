@@ -13,6 +13,7 @@
     ./shell
     ./vim
     ./wallpapers
+    ./yank.nix
   ];
 
   programs.home-manager.enable = true;
