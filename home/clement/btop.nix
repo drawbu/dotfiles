@@ -3,21 +3,11 @@ let
   btop_catppuccin = pkgs.fetchFromGitHub {
     owner = "catppuccin";
     repo = "btop";
-    rev = "89ff712eb62747491a76a7902c475007244ff202";
-    sha256 = "sha256-J3UezOQMDdxpflGax0rGBF/XMiKqdqZXuX4KMVGTxFk=";
+    rev = "f437574b600f1c6d932627050b15ff5153b58fa3";
+    sha256 = "sha256-mEGZwScVPWGu+Vbtddc/sJ+mNdD2kKienGZVUcTSl+c=";
   };
 in
 {
-  home.file = {
-    ".config/btop/themes/catppuccin_latte.theme".source =
-      "${btop_catppuccin}/themes/catppuccin_latte.theme";
-    ".config/btop/themes/catppuccin_frappe.theme".source =
-      "${btop_catppuccin}/themes/catppuccin_frappe.theme";
-    ".config/btop/themes/catppuccin_macchiato.theme".source =
-      "${btop_catppuccin}/themes/catppuccin_macchiato.theme";
-    ".config/btop/themes/catppuccin_mocha.theme".source =
-      "${btop_catppuccin}/themes/catppuccin_mocha.theme";
-  };
   programs.btop = {
     enable = true;
     settings = {
@@ -229,6 +219,13 @@ in
       #* Set loglevel for "~/.config/btop/btop.log" levels are: "ERROR" "WARNING" "INFO" "DEBUG".
       #* The level set includes all lower levels, i.e. "DEBUG" will show all logging info.
       log_level = "WARNING";
+    };
+
+    themes = {
+      catppuccin_latte = builtins.readFile "${btop_catppuccin}/themes/catppuccin_latte.theme";
+      catppuccin_frappe = builtins.readFile "${btop_catppuccin}/themes/catppuccin_frappe.theme";
+      catppuccin_macchiato = builtins.readFile "${btop_catppuccin}/themes/catppuccin_macchiato.theme";
+      catppuccin_mocha = builtins.readFile "${btop_catppuccin}/themes/catppuccin_mocha.theme";
     };
   };
 }

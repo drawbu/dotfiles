@@ -3,8 +3,8 @@ let
   catppuccin = pkgs.fetchFromGitHub {
     owner = "catppuccin";
     repo = "helix";
-    rev = "a388c963213fbf2be0f1e793353e2b81f8e2068c";
-    hash = "sha256-MS1oDn+nMlPL5EJb/lXBVXMzku7vmuMWneMAXdTB1nU=";
+    rev = "91e071bf9b9b2b8ae176a5581fcb61c789c55cab";
+    hash = "sha256-F05ohJp7c9Pdnjq8+srfhAt1ogHjjBz50k1ftHOHGVg=";
   };
 in
 {

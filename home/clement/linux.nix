@@ -4,7 +4,6 @@
     ./cursor.nix
     ./distrobox.nix
     ./firefox.nix
-    ./fuzzel.nix
     ./gaming.nix
     ./ghostty.nix
     ./gtk.nix

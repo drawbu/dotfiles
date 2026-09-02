@@ -8,8 +8,8 @@ let
   minegrub = pkgs.fetchFromGitHub {
     owner = "Lxtharia";
     repo = "minegrub-world-sel-theme";
-    rev = "4fd49ce76c6ed5077676326aeb99d69db480575e";
-    hash = "sha256-59fehgaYd4zz2A0A90qMtnKtPBGqW4Njk8niYPL2E0o=";
+    rev = "29bfe180a086454e8cd7a690ed0a0d0ed10446c1";
+    hash = "sha256-Hlp081T6HUd4n6CaTf3aousZwBuBly6+0T+Y2d5y+SE=";
   };
 in
 {
