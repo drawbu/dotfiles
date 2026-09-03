@@ -82,8 +82,10 @@ and interact with him like a professional.
 
 ## vcs
 
-- All repositories are tracked by jujutsu VCS. Never commit or use commands that
-  would alter the state of the repository. Prefer `jj` over `git`.
+- All repositories are tracked by jujutsu VCS. Prefer `jj` over `git`.
+- You can edit the history, and make commits as part of your change where it
+  makes sense (unless asked not to). Tho, NEVER publish to upstream. I always
+  have the last word before pushing work.
 - The changes made by the user are clearly split into commits to keep the
   history readable. Use that at your advantage to understand intent
 - I use bookmarks to organize my MR/branches. Mine always start with `clement/*`
@@ -110,8 +112,7 @@ and interact with him like a professional.
   to push upstream.
 - You can store temporary files in `local/claude/`
 - You can also feely git clone project to look at the code in `local/repos/`.
-  This is really useful to understand codebase and dependencies. Use
-  `GIT_CONFIG_GLOBAL=/dev/null git clone` so it doesn't need me to authenticate
+  This is really useful to understand codebase and dependencies.
 
 
 ## redacting

@@ -23,7 +23,10 @@
       disableClaudeAiConnectors = true;
       disableArtifact = true;
 
-      env._ZO_DOCTOR = "0";
+      env = {
+        _ZO_DOCTOR = "0";
+        GIT_SSH_COMMAND = "${lib.getExe pkgs.openssh} -o IdentityAgent=none";
+      };
 
       voice = {
         enabled = true;
