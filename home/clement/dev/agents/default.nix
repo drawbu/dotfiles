@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  imports = [ ./claude.nix ];
+  imports = [
+    ./claude.nix
+    ./opencode.nix
+  ];
 
   home = {
     file = {
