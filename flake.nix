@@ -27,7 +27,7 @@
     ghostty.inputs.flake-compat.follows = "nix-alien/flake-compat";
     ghostty.inputs.systems.follows = "systems";
 
-    jj.url = "github:jj-vcs/jj/v0.44.0";
+    jj.url = "github:jj-vcs/jj/v0.45.1";
     jj.inputs.nixpkgs.follows = "nixpkgs";
     jj.inputs.flake-utils.inputs.systems.follows = "systems";
 
