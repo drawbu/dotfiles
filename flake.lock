@@ -136,16 +136,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1786385601,
-        "narHash": "sha256-CL+dW8SsHd6hkqrth1jqdobAZ9puiFljc6peTSHEP3E=",
+        "lastModified": 1788440245,
+        "narHash": "sha256-o2fPHcIk1mzZhyHHJuyIT48Bfu29ZlvirmsGlOny/kw=",
         "owner": "baptiste0928",
         "repo": "jj-mesh",
-        "rev": "66b16d418a97ebff956edfd39753f8125020744f",
+        "rev": "5b7cdd6be040c9b97bedba52f36a3398f0c07a14",
         "type": "github"
       },
       "original": {
         "owner": "baptiste0928",
-        "ref": "v0.1.1",
+        "ref": "next",
         "repo": "jj-mesh",
         "type": "github"
       }

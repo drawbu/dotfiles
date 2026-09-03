@@ -31,7 +31,7 @@
     jj.inputs.nixpkgs.follows = "nixpkgs";
     jj.inputs.flake-utils.inputs.systems.follows = "systems";
 
-    jj-mesh.url = "github:baptiste0928/jj-mesh/v0.1.1";
+    jj-mesh.url = "github:baptiste0928/jj-mesh/next";
     jj-mesh.inputs.nixpkgs.follows = "nixpkgs_unstable";
 
     opnix.url = "github:brizzbuzz/opnix/v0.11.0";
