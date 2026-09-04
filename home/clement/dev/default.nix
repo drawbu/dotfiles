@@ -162,7 +162,7 @@
         yaml-language-server
         zls
         haskell-language-server
-        graphql-language-service-cli
+        # graphql-language-service-cli
         typos-lsp
         harper
 
@@ -182,6 +182,7 @@
         ty
         cloudflared
         agent-browser
+        unstable.wrangler
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
         linux-manual
