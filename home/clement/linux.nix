@@ -44,7 +44,7 @@
       eog
       slack
       # tic-80
-      orca-slicer
+      unstable.orca-slicer
       tor-browser
       appimage-run
       arduino-ide
