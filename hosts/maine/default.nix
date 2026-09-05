@@ -12,6 +12,7 @@
   home-manager.users.clement = {
     imports = [ ../../home/clement/linux.nix ];
     home.stateVersion = config.system.stateVersion;
+    mod.idle.enable = false;
   };
 
   hardware.nvidia = {
