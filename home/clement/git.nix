@@ -46,6 +46,8 @@ in
     signing = lib.mkIf config.mod.onepassword.enable {
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILu5dP9F77dUgxHpu7drGx/cMpYPRXw0SjsTOr3sLPBZ"; # op
       signByDefault = true;
+      format = "ssh";
+      signer = config.mod.onepassword.signer;
     };
     attributes = [ "* merge=mergiraf" ];
     settings = {
@@ -92,12 +94,6 @@ in
       gitbutler.signCommits = true;
       "url \"ssh://git@github.com/\"".insteadOf = "https://github.com/";
       "url \"ssh://git@gitlab.com/\"".insteadOf = "https://gitlab.com:";
-    }
-    // lib.optionalAttrs config.mod.onepassword.enable {
-      gpg = {
-        format = "ssh";
-        ssh.program = config.mod.onepassword.signer;
-      };
     };
   };
 

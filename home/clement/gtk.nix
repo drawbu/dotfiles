@@ -1,21 +1,19 @@
 { pkgs, ... }:
+let
+  catppuccin =
+    variant:
+    pkgs.catppuccin-gtk.override {
+      accents = [ "peach" ];
+      size = "compact";
+      tweaks = [ "rimless" ];
+      inherit variant;
+    };
+in
 {
-  home.packages = with pkgs; [
-    (catppuccin-gtk.override {
-      accents = [ "peach" ];
-      size = "compact";
-      tweaks = [ "rimless" ];
-      variant = "mocha";
-    })
+  home.packages = [
+    (catppuccin "latte")
 
-    (catppuccin-gtk.override {
-      accents = [ "peach" ];
-      size = "compact";
-      tweaks = [ "rimless" ];
-      variant = "latte";
-    })
-
-    glib # gsettings
+    pkgs.glib # gsettings
   ];
 
   dconf = {
@@ -29,7 +27,10 @@
 
   gtk = {
     enable = true;
-    theme.name = "catppuccin-mocha-peach-compact+rimless";
+    theme = {
+      name = "catppuccin-mocha-peach-compact+rimless";
+      package = catppuccin "mocha";
+    };
     iconTheme = {
       name = "MoreWaita";
       package = pkgs.morewaita-icon-theme;
