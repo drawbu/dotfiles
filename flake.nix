@@ -30,9 +30,10 @@
     jj.url = "github:jj-vcs/jj/v0.45.1";
     jj.inputs.nixpkgs.follows = "nixpkgs";
     jj.inputs.flake-utils.inputs.systems.follows = "systems";
+    jj.inputs.rust-overlay.follows = "jj-mesh/rust-overlay";
 
-    jj-mesh.url = "github:baptiste0928/jj-mesh/next";
-    jj-mesh.inputs.nixpkgs.follows = "nixpkgs_unstable";
+    jj-mesh.url = "github:baptiste0928/jj-mesh/v0.2.0";
+    jj-mesh.inputs.nixpkgs.follows = "nixpkgs";
 
     opnix.url = "github:brizzbuzz/opnix/v0.11.0";
     opnix.inputs.nixpkgs.follows = "nixpkgs";

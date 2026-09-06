@@ -133,7 +133,10 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": [
+          "jj-mesh",
+          "rust-overlay"
+        ]
       },
       "locked": {
         "lastModified": 1788450349,
@@ -153,20 +156,21 @@
     "jj-mesh": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs_unstable"
-        ]
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1788440245,
-        "narHash": "sha256-o2fPHcIk1mzZhyHHJuyIT48Bfu29ZlvirmsGlOny/kw=",
+        "lastModified": 1788728028,
+        "narHash": "sha256-nXhjUdvd1k3saEtXukoANvcfNXe+2OZJal8RJHNBsZQ=",
         "owner": "baptiste0928",
         "repo": "jj-mesh",
-        "rev": "5b7cdd6be040c9b97bedba52f36a3398f0c07a14",
+        "rev": "45a87d21a1c5492163c41834c84b06be28213d8a",
         "type": "github"
       },
       "original": {
         "owner": "baptiste0928",
-        "ref": "next",
+        "ref": "v0.2.0",
         "repo": "jj-mesh",
         "type": "github"
       }
@@ -374,16 +378,16 @@
     "rust-overlay": {
       "inputs": {
         "nixpkgs": [
-          "jj",
+          "jj-mesh",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1786420161,
-        "narHash": "sha256-PU4CY4GUCDFOoS67dGrc/fS6Y+d1cYZSh6nbgYqAAwE=",
+        "lastModified": 1788765185,
+        "narHash": "sha256-pp8lb5CrKjmscZbTK34HuCaq18zDU4Q6zlaD5dS+Hi4=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "3a646bd5daa3af78a78a1cb32329cb72d18fcae0",
+        "rev": "ca7f624be3935a5bc46d2c240515491ab8675503",
         "type": "github"
       },
       "original": {
