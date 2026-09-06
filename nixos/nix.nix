@@ -39,6 +39,11 @@ in
     # TODO
     # channel.enable = false;
 
+    registry = {
+      nixpkgs.flake = finputs.nixpkgs;
+      unstable.flake = finputs.nixpkgs_unstable;
+    };
+
     nixPath = [
       "nixpkgs=${finputs.nixpkgs}"
       "legacy=${finputs.nixpkgs_legacy}"
