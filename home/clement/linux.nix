@@ -17,6 +17,7 @@
     ./kitty.nix
     ./mimeapps.nix
     ./niri
+    ./soloist
     ./swayidle.nix
     ./waybar.nix
     ./zathura.nix
