@@ -13,6 +13,7 @@
     ./niri
     ./swayidle.nix
     ./waybar.nix
+    ./zathura.nix
   ];
 
   home = {
@@ -29,7 +30,6 @@
       feh
       thunderbird
       libresprite
-      zathura
       beeper
       discord
       libreoffice-qt6-fresh
