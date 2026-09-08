@@ -22,6 +22,7 @@
       share = "disabled";
 
       lsp = true;
+      experimental.disable_paste_summary = true;
 
       enabled_providers = [
         "openai"
