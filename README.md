@@ -2,23 +2,15 @@
 
 # My dotfiles for NixOS
 
-<div style="width: 200px; display: flex; justify-content: space-between">
-    <img alt="Nix snowflake" src="https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nix-snowflake-colours.svg" width="48">
-</div>
-
 </div>
 
 
-## :art: <samp> SCREENSHOTS </samp>
-
-
-![image](https://github.com/user-attachments/assets/61fc6544-057e-407a-b114-263d37015e6a)
-![image](https://github.com/user-attachments/assets/caf26026-c74a-465d-bdcb-7d0f4c85611f)
+![image](https://github.com/user-attachments/assets/f74f1017-7d8f-447d-89e7-c69e0aac659f)
 
 Simple and clean, using Niri. prev. Hyprland, prev. qtile.
 
 
-## :snowflake: Installation
+## Installation
 ```
 sudo nixos-rebuild switch --flake github:drawbu/dotfiles#the-machine
 ```
