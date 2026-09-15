@@ -83,6 +83,7 @@
       chiri
       lmstudio
       freecad
+      inkscape
 
       wl-clipboard
       kooha

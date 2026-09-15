@@ -13,17 +13,17 @@ let
   sources = {
     x86_64-linux = fetchurl {
       url = "https://soloist-builds.spotifycdn.com/soloist_release_x86_64.tar.gz";
-      hash = "sha256-SRFZjAa9C1gRsuXhpOSlNlDeoqFBeKyZPLxyTFe4ES8=";
+      hash = "sha256-UOeNe8bR1rNeIjEXIMDD2fWAtZE3zR3neq/INFPT/vY=";
     };
     aarch64-linux = fetchurl {
       url = "https://soloist-builds.spotifycdn.com/soloist_release_arm64.tar.gz";
-      hash = "sha256-MLiiz5qu/YoaiXV8XJ4PCoLFh8YSgyxn/hOA827/zp0=";
+      hash = "";
     };
   };
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "soloist";
-  version = "1.3.8.22";
+  version = "1.3.8.43";
 
   strictDeps = true;
   __structuredAttrs = true;
