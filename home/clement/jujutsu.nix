@@ -154,7 +154,11 @@
 
       fix.tools = {
         nixfmt = {
-          command = [ "nixfmt" ];
+          command = [
+            "nixfmt"
+            "-"
+            "--filename=$path"
+          ];
           patterns = [ "glob:'**/*.nix'" ];
         };
         rustfmt = {
