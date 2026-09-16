@@ -2,6 +2,7 @@
   config,
   finputs,
   lib,
+  osConfig,
   pkgs,
   ...
 }:
@@ -48,11 +49,13 @@
       gnome-font-viewer
       file-roller
       nautilus
-      eog
-      slack
-      # tic-80
-      unstable.orca-slicer
-      unstable.bambu-studio
+      # segfaults otherwise https://github.com/NixOS/nixpkgs/pull/557126
+      # (unstable.orca-slicer.overrideAttrs (old: {
+      #   buildInputs = lib.remove pkgs.unstable.gcc-unwrapped old.buildInputs;
+      # }))
+      (unstable.bambu-studio.override {
+        withNvidiaGLWorkaround = lib.elem "nvidia" osConfig.services.xserver.videoDrivers;
+      })
       tor-browser
       appimage-run
       arduino-ide
@@ -65,7 +68,6 @@
       hexchat
       supertuxkart
       calibre
-      foot
       gitbutler
       gnome-disk-utility
       kdePackages.filelight
@@ -74,9 +76,7 @@
       stremio-linux-shell
       loupe
       mullvad-browser
-      openscreen
       chiri
-      lmstudio
       freecad
       inkscape
       cine

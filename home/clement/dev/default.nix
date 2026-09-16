@@ -64,7 +64,7 @@
       with pkgs;
       [
         # tools
-        gcc14
+        gcc16
         (lib.hiPrio llvmPackages_latest.clang) # note: cc from clang & gcc collides
         zig
         libcxx
@@ -161,8 +161,6 @@
         terraform-ls
         yaml-language-server
         zls
-        haskell-language-server
-        # graphql-language-service-cli
         typos-lsp
         harper
 
@@ -189,20 +187,10 @@
         gdb
       ]
       ++ lib.optionals config.mod.profiles.desktop.enable (
-        [
-          wine64Packages.waylandFull
-          msitools
-          ldtk
-        ]
+        [ ]
         ++ (with unstable; [
-          # softs
           vscode
-          jetbrains.pycharm
           jetbrains.webstorm
-          jetbrains.datagrip
-          jetbrains.rust-rover
-          jetbrains.goland
-          jetbrains-toolbox
           godot_4
         ])
       );

@@ -28,7 +28,7 @@ in
         "font/otf"
         "font/woff"
       ])
-      // (fn "vlc.desktop" [
+      // (fn "io.github.diegopvlk.Cine.desktop" [
         "audio/mp2"
         "audio/flac"
         "audio/x-ms-asx"
@@ -84,13 +84,15 @@ in
         "video/vnd.mpegurl"
         "video/quicktime"
         "video/3gpp2"
+      ])
+      // (fn "vlc.desktop" [
         "x-content/video-vcd"
         "x-content/video-dvd"
         "x-content/audio-cdda"
         "x-content/video-svcd"
         "x-content/audio-player"
       ])
-      // (fn "OrcaSlicer.desktop" [
+      // (fn "BambuStudio.desktop" [
         "model/3mf"
         "model/stl"
       ])
