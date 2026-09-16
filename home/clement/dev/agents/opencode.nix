@@ -26,8 +26,8 @@
     context = ./AGENTS.md;
 
     settings = {
-      model = "openrouter/gpt-5.6-terra";
-      small_model = "openrouter/gpt-5.6-luna";
+      model = "openrouter/openai/gpt-5.6-terra";
+      small_model = "openrouter/deepseek/deepseek-v4.1-flash";
 
       shell = lib.getExe config.programs.zsh.package;
 
