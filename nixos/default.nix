@@ -112,4 +112,11 @@
       pamMount = false;
     };
   };
+
+  # TODO: Remove once repology.org domain is restored.
+  # https://github.com/repology/repology-rs/issues/560#issuecomment-5688655540
+  networking.hosts = {
+    "92.63.176.157" = [ "repology.org" ];
+    "2a03:6f01:1:2::f159" = [ "repology.org" ];
+  };
 }
