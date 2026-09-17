@@ -93,27 +93,33 @@ gauge() {
     printf '%s%s%s %s%s%%%s' "$dim" "$remaining" "$reset" "$color" "$percent" "$reset"
 }
 
-# Neither the extra usage flag nor the credit spend reaches the status line, so
-# a window reading 100 stands in for "past the plan" and the cost is the
-# client-side list price estimate, not the amount actually billed.
-extra=""
-if [ -n "$session_id" ] && { [ "$five_pct" = 100 ] || [ "$week_pct" = 100 ]; }; then
-    baseline="${XDG_RUNTIME_DIR:-/tmp}/claude-cost-$session_id"
-    [ -f "$baseline" ] || printf '%s' "$cost" >"$baseline"
-    extra=$(awk -v now="$cost" '{ if (now - $0 >= 0.005) printf "+$%.2f", now - $0 }' "$baseline")
-fi
-
 sep="  ${dim}-${reset}  "
 
 limits=""
 [ "$five_pct" != "--" ] && limits+=$(gauge "$five_left" "$five_pct")
 [ "$week_pct" != "--" ] && limits+="${limits:+ }$(gauge "$week_left" "$week_pct")"
 
+# Neither the extra usage flag nor the credit spend reaches the status line, so
+# a window reading 100 stands in for "past the plan", and no window at all for
+# a model outside it. The cost is the client-side list price estimate, not the
+# amount actually billed.
+extra=""
+if [ -z "$limits" ]; then
+    extra=$(awk -v now="$cost" 'BEGIN { if (now >= 0.005) printf "+$%.2f", now }')
+elif [ -n "$session_id" ] && { [ "$five_pct" = 100 ] || [ "$week_pct" = 100 ]; }; then
+    baseline="${XDG_RUNTIME_DIR:-/tmp}/claude-cost-$session_id"
+    [ -f "$baseline" ] || printf '%s' "$cost" >"$baseline"
+    extra=$(awk -v now="$cost" '{ if (now - $0 >= 0.005) printf "+$%.2f", now - $0 }' "$baseline")
+fi
+
 [ "$ctx" != "--" ] && ctx+="%"
 
 line="${orange}${model}${reset}"
 [ -n "$limits" ] && line+="${sep}${limits}"
-[ -n "$extra" ] && line+=" ${yellow}${extra}${reset}"
+if [ -n "$extra" ]; then
+    [ -n "$limits" ] && line+=" " || line+=$sep
+    line+="${yellow}${extra}${reset}"
+fi
 line+="${sep}${dim}ctx ${ctx} ↑${in_tok} ↓${out_tok}${reset}"
 line+=$'\n'"${host_color}${host}${reset}"
 [ -n "$session" ] && line+="${sep}${dim}${session}"
