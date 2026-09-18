@@ -4,6 +4,13 @@
   pkgs,
   ...
 }:
+let
+  statusline =
+    pkgs.writers.makePythonWriter pkgs.python314 pkgs.python314Packages pkgs.python314Packages
+      "claude-statusline"
+      { libraries = [ pkgs.python314Packages.rich ]; }
+      (builtins.readFile ./statusline.py);
+in
 {
   programs.claude-code = {
     enable = true;
@@ -48,7 +55,7 @@
 
       statusLine = {
         type = "command";
-        command = "${./statusline.sh}";
+        command = "${statusline}";
       };
 
       hooks = {
