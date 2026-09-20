@@ -42,6 +42,7 @@
         "wip_self()" = "wip() & mine()";
         "private()" = "wip_self() | description(regex:'^(?:private|priv:).*')";
         "branch_log(rev)" = "(trunk()..rev):: | (trunk()..rev)-";
+        "branch_start(to)" = "heads(::to & trunk())+ & ::to";
       };
 
       revsets = {
@@ -61,14 +62,10 @@
           "--revisions"
           ".."
         ];
-        ls = [
-          "log"
-          "--summary"
-        ];
         main = [
           "log"
           "--revisions"
-          "::main"
+          "trunk()"
         ];
         s = [
           "st"
@@ -79,11 +76,6 @@
           "--revisions"
           "wip_self()"
           "--no-pager"
-        ];
-        trunk = [
-          "rebase"
-          "--destination"
-          "trunk()"
         ];
         advance = [
           "bookmark"
@@ -101,6 +93,23 @@
           "--"
           "jj-exec"
         ];
+        # credit: https://github.com/icorbrey/dotnix/blob/main/modules%2Fhome%2Fjujutsu%2Fdefault.nix#L117
+        restack = [
+          "rebase"
+          "-o"
+          "trunk()"
+          "-s"
+          "roots(trunk()..) & mutable()" # mutable roots
+        ];
+        # credit: https://github.com/mrnugget/dotfiles/blob/8040ade4018a1c619748aabb794256b6773ff81e/jj_config.toml#L23
+        collapse = [
+          "squash"
+          "-f"
+          "branch_start(@)+::@"
+          "-t"
+          "branch_start(@)"
+        ];
+
         fetch-pr = [
           "util"
           "exec"
