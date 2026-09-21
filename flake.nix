@@ -41,6 +41,11 @@
 
     yank.url = "git+https://tangled.org/drawbu.dev/yank?ref=refs/tags/v0.1.0";
     yank.inputs.nixpkgs.follows = "nixpkgs";
+
+    llm-agents.url = "github:numtide/llm-agents.nix";
+    llm-agents.inputs.nixpkgs.follows = "nixpkgs_unstable";
+    llm-agents.inputs.flake-parts.follows = "yank/flake-parts";
+    llm-agents.inputs.systems.follows = "systems";
   };
 
   outputs =

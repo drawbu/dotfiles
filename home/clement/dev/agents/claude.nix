@@ -7,7 +7,7 @@
 {
   programs.claude-code = {
     enable = true;
-    package = pkgs.unstable.claude-code;
+    package = pkgs.llm.claude-code;
     context = ./AGENTS.md;
 
     settings = {

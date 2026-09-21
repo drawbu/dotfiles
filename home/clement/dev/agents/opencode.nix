@@ -11,17 +11,7 @@
 
   programs.opencode = {
     enable = true;
-    package = pkgs.unstable.opencode.overrideAttrs (old: {
-      patches = (old.patches or [ ]) ++ [
-        # fix(core): break filesystem cycle in compiled prompts
-        # https://github.com/NixOS/nixpkgs/issues/563241
-        (pkgs.fetchpatch {
-          url = "https://github.com/anomalyco/opencode/commit/85f7d23ff78b8127553bbc68db1f4bfe3e945a61.patch";
-          includes = [ "packages/core/src/filesystem/search.ts" ];
-          hash = "sha256-EtJubgxMkXterK9gbhGzFdFPMMPzG55lYeVaY0KkeL0=";
-        })
-      ];
-    });
+    package = pkgs.llm.opencode;
 
     context = ./AGENTS.md;
 

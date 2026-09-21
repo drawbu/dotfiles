@@ -181,7 +181,6 @@
         ruff
         ty
         cloudflared
-        agent-browser
         unstable.wrangler
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [

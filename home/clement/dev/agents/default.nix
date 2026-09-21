@@ -19,14 +19,15 @@
       };
     };
 
-    packages = with pkgs.unstable; [
-      skills
+    packages = with pkgs; [
+      llm.skills
+      llm.agent-browser
 
       # clankers
-      amp-cli
-      antigravity-cli
-      codex
-      pi-coding-agent
+      llm.amp
+      llm.antigravity-cli
+      llm.codex
+      llm.pi
     ];
   };
 }
