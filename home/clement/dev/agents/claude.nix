@@ -41,6 +41,8 @@
         "typescript-lsp"
       ]) (_: true);
 
+      pluginConfigs."agents-md@builtin".options.instructionFiles = "claude-md-and-agents-md";
+
       statusLine = {
         type = "command";
         command = "${./statusline.sh}";
