@@ -16,6 +16,7 @@
       outputStyle = "Concise";
       theme = "auto";
       tui = "fullscreen";
+      attribution = false;
 
       autoMemoryEnabled = false;
       awaySummaryEnabled = false;
