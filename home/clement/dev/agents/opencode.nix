@@ -14,6 +14,7 @@
     package = pkgs.llm.opencode;
 
     context = ./AGENTS.md;
+    enableMcpIntegration = true;
 
     settings = {
       model = "openrouter/openai/gpt-5.6-terra";

@@ -9,6 +9,7 @@
     enable = true;
     package = pkgs.llm.claude-code;
     context = ./AGENTS.md;
+    enableMcpIntegration = true;
 
     settings = {
       model = "opus";
