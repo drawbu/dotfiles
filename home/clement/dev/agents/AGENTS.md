@@ -90,9 +90,10 @@ and interact with him like a professional.
   history readable. Use that at your advantage to understand intent
 - I use bookmarks to organize my MR/branches. Mine always start with `clement/*`
   I will also occasionally fetch foreign MR which will be named `pr-*`
-- The workspace you work in is either the one named after the machine hostname,
-  or a temporary `jj-exec-*` workspace created by `jj exec`. Other workspaces
-  belong to other machines: never touch their working copy.
+- The workspace you work in is the one named after the machine hostname, a
+  temporary `jj-exec-*` workspace created by `jj exec`, or an isolated one your
+  harness created under `~/.cache/claude-worktrees`. Other workspaces belong to
+  other machines or agents: never touch their working copy.
 - Unless asked to just edit the current change, name your changes and split them
   into small units if necessary. The goal is to make the review for both the
   operator and the reviewer easier.

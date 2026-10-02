@@ -11,6 +11,18 @@ let
       { libraries = [ pkgs.python314Packages.rich ]; }
       (builtins.readFile ./statusline.py);
 
+  worktree = lib.getExe (
+    pkgs.writeShellApplication {
+      name = "worktree";
+      runtimeInputs = [
+        config.programs.jujutsu.package
+        pkgs.git
+        pkgs.jq
+      ];
+      text = builtins.readFile ./worktree.sh;
+    }
+  );
+
   snapshot = {
     type = "command";
     command = "if jj root >/dev/null 2>&1; then jj util snapshot --quiet; fi";
@@ -71,6 +83,26 @@ in
               {
                 type = "command";
                 command = "${./session-context.sh}";
+              }
+            ];
+          }
+        ];
+        WorktreeCreate = [
+          {
+            hooks = [
+              {
+                type = "command";
+                command = "${worktree} create";
+              }
+            ];
+          }
+        ];
+        WorktreeRemove = [
+          {
+            hooks = [
+              {
+                type = "command";
+                command = "${worktree} remove";
               }
             ];
           }
