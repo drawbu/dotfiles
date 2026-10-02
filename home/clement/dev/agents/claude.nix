@@ -64,7 +64,7 @@
         ];
         PostToolUse = [
           {
-            matcher = "Edit|Write|MultiEdit";
+            matcher = "Bash|Edit|Write|MultiEdit";
             hooks = [
               {
                 type = "command";
