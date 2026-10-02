@@ -6,6 +6,18 @@
     ./opencode.nix
   ];
 
+  programs.jujutsu.settings."--scope" = [
+    {
+      "--when".environments = [ "AGENT" ];
+      ui = {
+        editor = "true";
+        diff-editor = "false";
+        merge-editor = "false";
+        paginate = "never";
+      };
+    }
+  ];
+
   home = {
     file = {
       ".config/AGENTS.md".source = ./AGENTS.md;

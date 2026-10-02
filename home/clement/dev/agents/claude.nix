@@ -26,6 +26,7 @@
       disableArtifact = true;
 
       env = {
+        AGENT = "1";
         _ZO_DOCTOR = "0";
         GIT_SSH_COMMAND = "${lib.getExe pkgs.openssh} -o IdentityAgent=none";
       };
