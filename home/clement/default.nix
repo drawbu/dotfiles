@@ -1,6 +1,12 @@
-{ config, pkgs, ... }:
+{
+  config,
+  finputs,
+  pkgs,
+  ...
+}:
 {
   imports = [
+    finputs.opnix.homeManagerModules.default
     ../../nixos/nixpkgs.nix
     ./btop.nix
     ./dev
@@ -17,6 +23,11 @@
   ];
 
   programs.home-manager.enable = true;
+
+  programs.onepassword-secrets = {
+    enable = true;
+    tokenFile = "${config.xdg.configHome}/opnix/token";
+  };
 
   home = {
     username = "clement";

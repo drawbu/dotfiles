@@ -1,12 +1,12 @@
 {
   config,
   finputs,
+  lib,
   pkgs,
   ...
 }:
 {
   imports = [
-    finputs.opnix.homeManagerModules.default
     ./cursor.nix
     ./distrobox.nix
     ./firefox.nix
@@ -22,11 +22,6 @@
     ./waybar.nix
     ./zathura.nix
   ];
-
-  programs.onepassword-secrets = {
-    enable = true;
-    tokenFile = "${config.xdg.configHome}/opnix/token";
-  };
 
   home = {
     sessionVariables.DOCKER_HOST = "unix:///run/user/1000/podman/podman.sock";
