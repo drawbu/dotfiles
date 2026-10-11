@@ -79,6 +79,7 @@
       lmstudio
       freecad
       inkscape
+      cine
 
       wl-clipboard
       kooha

@@ -27,12 +27,12 @@
     ghostty.inputs.flake-compat.follows = "nix-alien/flake-compat";
     ghostty.inputs.systems.follows = "systems";
 
-    jj.url = "github:jj-vcs/jj/v0.45.1";
+    jj.url = "github:jj-vcs/jj/v0.46.0";
     jj.inputs.nixpkgs.follows = "nixpkgs";
     jj.inputs.flake-utils.inputs.systems.follows = "systems";
     jj.inputs.rust-overlay.follows = "jj-mesh/rust-overlay";
 
-    jj-mesh.url = "github:baptiste0928/jj-mesh/v0.2.0";
+    jj-mesh.url = "github:baptiste0928/jj-mesh";
     jj-mesh.inputs.nixpkgs.follows = "nixpkgs";
 
     opnix.url = "github:brizzbuzz/opnix/v0.11.0";
