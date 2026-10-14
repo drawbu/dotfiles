@@ -214,11 +214,10 @@
     };
     style = ''
       * {
-        font-family: "JetBrainsMono Nerd Font";
+        font-family: "Ioskeley Mono", "Symbols Nerd Font";
         font-weight: bold;
         min-height: 0;
         font-size: 100%;
-        font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
         padding: 0px;
         margin-top: 1px;
         margin-bottom: 1px;

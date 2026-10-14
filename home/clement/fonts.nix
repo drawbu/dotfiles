@@ -70,7 +70,7 @@ in
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      monospace = [ "JetBrains Mono" ];
+      monospace = [ "Ioskeley Mono" ];
       sansSerif = [ "Inter" ];
       serif = [ "Liberation Serif" ];
       emoji = [ "Noto Color Emoji" ];
@@ -93,6 +93,8 @@ in
     nerd-fonts.jetbrains-mono
     nerd-fonts._0xproto
     nerd-fonts.iosevka
+    nerd-fonts.symbols-only
+    ioskeley-mono.normal
     liberation_ttf
     mplus-outline-fonts.githubRelease
     ubuntu-classic

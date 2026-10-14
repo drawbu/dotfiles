@@ -3,7 +3,7 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "Iosevka Mayukai Monolite";
+      name = "Ioskeley Mono";
       size = 12;
     };
     shellIntegration = {

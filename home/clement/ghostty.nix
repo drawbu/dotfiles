@@ -6,7 +6,7 @@
     package = pkgs.extra.ghostty;
     settings = {
       theme = "dark:Catppuccin Mocha,light:Catppuccin Latte";
-      font-family = "Iosevka Mayukai Monolite";
+      font-family = "Ioskeley Mono";
 
       shell-integration-features = "ssh-env,ssh-terminfo";
 
