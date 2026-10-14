@@ -2,8 +2,10 @@
 {
   imports = [
     ./dashboard.nix
+    ./font.nix
     ./host.nix
     ./monitoring.nix
+    ./theme.nix
   ];
 
   services.home-assistant = {
