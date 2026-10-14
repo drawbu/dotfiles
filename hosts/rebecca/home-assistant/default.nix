@@ -2,6 +2,7 @@
 {
   imports = [
     ./dashboard.nix
+    ./host.nix
     ./monitoring.nix
   ];
 
@@ -9,25 +10,9 @@
     enable = true;
     extraComponents = [
       "isal"
-      "mobile_app"
       "default_config"
-
-      "ffmpeg"
-      "sensor"
-      "history"
-      "history_stats"
-      "logbook"
-      "recorder"
-      "analytics"
-      "analytics_insights"
-
       "rest"
-
       "met"
-
-      "esphome"
-      "homekit"
-      "homekit_controller"
     ];
     extraPackages =
       p: with p; [
@@ -42,20 +27,15 @@
       };
       isal = { };
       mobile_app = { };
-      ffmpeg = { };
-      sensor = { };
       history = { };
       recorder = { };
       logbook = { };
-      analytics = { };
       http = {
         use_x_forwarded_for = true;
         trusted_proxies = [ "127.0.0.1" ];
       };
     };
   };
-
-  networking.firewall.allowedTCPPorts = [ 21064 ]; # homekit
 
   services.caddy.virtualHosts."home-assistant.drawbu.dev" = {
     extraConfig = ''
