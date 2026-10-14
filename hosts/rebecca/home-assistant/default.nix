@@ -5,6 +5,7 @@
     ./font.nix
     ./host.nix
     ./monitoring.nix
+    ./notifications.nix
     ./theme.nix
   ];
 
