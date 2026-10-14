@@ -13,6 +13,7 @@
       "default_config"
       "rest"
       "met"
+      "mcp_server"
     ];
     extraPackages =
       p: with p; [
