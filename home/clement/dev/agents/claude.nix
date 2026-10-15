@@ -61,6 +61,7 @@ in
       statusLine = {
         type = "command";
         command = "${statusline}";
+        refreshInterval = 5;
       };
 
       hooks = {
