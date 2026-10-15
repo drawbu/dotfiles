@@ -10,6 +10,11 @@ let
       "claude-statusline"
       { libraries = [ pkgs.python314Packages.rich ]; }
       (builtins.readFile ./statusline.py);
+
+  snapshot = {
+    type = "command";
+    command = "if jj root >/dev/null 2>&1; then jj util snapshot --quiet; fi";
+  };
 in
 {
   programs.claude-code = {
@@ -69,15 +74,11 @@ in
             ];
           }
         ];
+        UserPromptSubmit = [ { hooks = [ snapshot ]; } ];
         PostToolUse = [
           {
-            matcher = "Bash|Edit|Write|MultiEdit";
-            hooks = [
-              {
-                type = "command";
-                command = "jj root >/dev/null 2>&1 && jj util snapshot --quiet";
-              }
-            ];
+            matcher = "Bash|Edit|Write|NotebookEdit";
+            hooks = [ snapshot ];
           }
         ];
       };
