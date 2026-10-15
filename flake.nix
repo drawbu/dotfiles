@@ -39,7 +39,7 @@
     opnix.inputs.nixpkgs.follows = "nixpkgs";
     opnix.inputs.flake-utils.follows = "jj/flake-utils";
 
-    yank.url = "git+https://tangled.org/drawbu.dev/yank?ref=refs/tags/v0.1.0";
+    yank.url = "git+https://tangled.org/drawbu.dev/yank?ref=refs/tags/v0.1.1";
     yank.inputs.nixpkgs.follows = "nixpkgs";
 
     llm-agents.url = "github:numtide/llm-agents.nix";
