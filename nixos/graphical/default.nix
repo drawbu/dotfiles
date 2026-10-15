@@ -34,8 +34,6 @@
       tumbler.enable = true;
       blueman.enable = true;
 
-      resolved.enable = true; # wireguard
-
       blocky = {
         enable = true;
         settings = {

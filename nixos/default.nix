@@ -41,6 +41,8 @@
 
   services.tailscale.enable = true;
 
+  services.resolved.enable = true;
+
   virtualisation = {
     libvirtd.enable = config.mod.profiles.desktop.enable;
 
