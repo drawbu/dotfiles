@@ -57,7 +57,7 @@
     KbdInteractiveAuthentication = false;
   };
 
-  users.users.clement.extraGroups = [ "podman" ];
+  users.users.clement.linger = true;
 
   # Kept out of home-manager so root has them too.
   environment.systemPackages = with pkgs; [
