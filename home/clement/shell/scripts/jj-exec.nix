@@ -41,6 +41,12 @@ let
             ln -s "$repo_root/$dir" "$path/$dir"
           fi
         done
+
+        if [[ -d "$repo_root/target" ]] &&
+          ! cp -a --reflink=always "$repo_root/target" "$path/target" 2>/dev/null; then
+          printf 'jj-workspace: cannot reflink target/, starting cold\n' >&2
+          rm -rf "$path/target"
+        fi
       }
 
       remove() {
