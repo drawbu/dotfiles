@@ -200,4 +200,46 @@
       };
     };
   };
+
+  programs.zsh.initContent = ''
+    jj-workspace-switch-widget() {
+      setopt localoptions pipefail no_aliases 2> /dev/null
+      local root
+      root=$(
+        jj workspace list --ignore-working-copy \
+          -T 'if(self.root(), self.name() ++ "\t" ++ self.root() ++ "\n")' 2> /dev/null \
+          | fzf --delimiter='\t' --with-nth=1 --accept-nth=2 --exit-0 --reverse \
+              --height="''${FZF_TMUX_HEIGHT:-40%}" \
+              --preview='jj log --ignore-working-copy --color=always -r {1}@-::{1}@'
+      )
+      if [[ -z "$root" ]] || ! builtin cd -- "$root"; then
+        zle redisplay
+        return 0
+      fi
+      zle reset-prompt
+    }
+
+    jj-workspace-new-widget() {
+      setopt localoptions no_aliases 2> /dev/null
+      local root dir name err
+      root=$(jj root 2> /dev/null) || return 0
+      dir=''${root}/local
+      printf -v name '%08x' $(( RANDOM << 15 | RANDOM ))
+      dir=''${dir:A}/workspaces/$name
+      if ! err=$(jj-workspace add "$dir" 2>&1) || ! builtin cd -- "$dir"; then
+        zle -M "$err"
+        return 1
+      fi
+      zle reset-prompt
+      [[ -z "$err" ]] || zle -M "$err"
+    }
+
+    zle -N jj-workspace-switch-widget
+    zle -N jj-workspace-new-widget
+    for keymap in emacs vicmd viins; do
+      bindkey -M $keymap '^W' jj-workspace-switch-widget
+      bindkey -M $keymap '^N' jj-workspace-new-widget
+    done
+    unset keymap
+  '';
 }
