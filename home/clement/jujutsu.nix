@@ -206,11 +206,12 @@
       setopt localoptions pipefail no_aliases 2> /dev/null
       local root
       root=$(
-        jj workspace list --ignore-working-copy \
-          -T 'if(self.root(), self.name() ++ "\t" ++ self.root() ++ "\n")' 2> /dev/null \
-          | fzf --delimiter='\t' --with-nth=1 --accept-nth=2 --exit-0 --reverse \
+        jj-workspace list --color 2> /dev/null \
+          | fzf --delimiter='\t' --ansi --with-nth=1,2 --accept-nth=3 --exit-0 --reverse \
               --height="''${FZF_TMUX_HEIGHT:-40%}" \
-              --preview='jj log --ignore-working-copy --color=always -r {1}@-::{1}@'
+              --footer='alt-u: update stale' \
+              --preview='jj log --ignore-working-copy --color=always -r {1}@-::{1}@' \
+              --bind="alt-u:transform-header[jj workspace update-stale --repository {3} 2>&1]"
       )
       if [[ -z "$root" ]] || ! builtin cd -- "$root"; then
         zle redisplay

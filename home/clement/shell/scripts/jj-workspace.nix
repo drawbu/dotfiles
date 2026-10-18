@@ -12,6 +12,7 @@ let
       Usage: jj w add [-r <rev>] [<name>]
              jj w remove <name|path>
              jj w exec [-r <rev>] [--] <cmd> [<args>...]
+             jj w list [--color]
 
       Manage workspaces under <repo>/local/workspaces, named <hostname>-<name>.
         add      Create workspace <name> (default: generated) on <rev>
@@ -19,6 +20,8 @@ let
         remove   Forget the workspace and delete its directory
         exec     Run <cmd> in a new exec-<generated> workspace, deleted when
                  <cmd> exits
+        list     Print <name>\t<*: main>\t<path> for each local workspace,
+                 with the current one in green
       EOF
         exit 1
       }
@@ -135,6 +138,28 @@ let
         (cd "$path" && "$@")
       }
 
+      cmd_list() {
+        local color=""
+        case "''${1:-}" in
+          --color) color=1 ;;
+          "") ;;
+          *) usage ;;
+        esac
+
+        local current name root main
+        current=$(jj root)
+        jj workspace list --ignore-working-copy \
+          -T 'if(self.root(), self.name() ++ "\t" ++ self.root() ++ "\n")' |
+          while IFS=$'\t' read -r name root; do
+            main=""
+            [[ ! -d "$root/.jj/repo" ]] || main="*"
+            if [[ -n "$color" && "$root" == "$current" ]]; then
+              name=$'\e[1;32m'$name$'\e[0m'
+            fi
+            printf '%s\t%s\t%s\n' "$name" "$main" "$root"
+          done
+      }
+
       [[ $# -ge 1 ]] || usage
       command=$1
       shift
@@ -142,6 +167,7 @@ let
         add) cmd_add "$@" ;;
         remove) cmd_remove "$@" ;;
         exec) cmd_exec "$@" ;;
+        list) cmd_list "$@" ;;
         *) usage ;;
       esac
     '';
