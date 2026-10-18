@@ -140,6 +140,7 @@ binds {
     Mod+E       hotkey-overlay-title="Search emojis" { spawn "vicinae" "vicinae://launch/core/search-emojis"; }
     Mod+T       hotkey-overlay-title="Open 1password" { spawn "1password" "--quick-access"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen"   { spawn "loginctl" "lock-session"; }
+    Super+Alt+H hotkey-overlay-title="Hibernate"         { spawn "vicinae" "vicinae://launch/power/hibernate"; }
 
     // IO Controls
     XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
