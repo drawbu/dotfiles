@@ -28,7 +28,7 @@
         default-command = [
           "log"
           "-r"
-          "branch_log(@)"
+          "branch_log(@) ~ idle_workspaces()"
           "--no-pager"
         ];
         conflict-marker-style = "git";
@@ -43,6 +43,7 @@
         "private()" = "wip_self() | description(regex:'^(?:private|priv:).*')";
         "branch_log(rev)" = "(trunk()..rev):: | (trunk()..rev)-";
         "branch_start(to)" = "heads(::to & trunk())+ & ::to";
+        "idle_workspaces()" = "visible_heads() & working_copies() & empty() & description(exact:'') ~ @";
       };
 
       revsets = {
