@@ -99,7 +99,8 @@ let
           return 1
         fi
         # Chained: the exec cleanup runs this with errexit off.
-        jj util snapshot --quiet --repository "$path" &&
+        jj workspace update-stale --quiet --repository "$path" &&
+          jj util snapshot --quiet --repository "$path" &&
           jj workspace forget --quiet --repository "$path" &&
           rm -rf "$path"
       }
