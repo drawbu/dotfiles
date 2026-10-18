@@ -16,6 +16,10 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-wsl.inputs.flake-compat.follows = "nix-alien/flake-compat";
+
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-alien.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -155,6 +159,13 @@
           modules = [
             ./hosts/lucy
             hardware.framework-amd-ai-300-series
+          ];
+        };
+
+        "faraday" = mkHost {
+          modules = [
+            ./hosts/faraday
+            inputs.nixos-wsl.nixosModules.default
           ];
         };
 
