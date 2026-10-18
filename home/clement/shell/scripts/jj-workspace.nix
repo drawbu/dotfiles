@@ -2,7 +2,10 @@
 let
   jj-workspace = pkgs.writeShellApplication {
     name = "jj-workspace";
-    runtimeInputs = [ config.programs.jujutsu.package ];
+    runtimeInputs = [
+      config.programs.jujutsu.package
+      pkgs.rust-petname
+    ];
     text = ''
       usage() {
         cat >&2 <<'EOF'
@@ -30,7 +33,10 @@ let
       }
 
       generate_name() {
-        printf '%08x\n' "$SRANDOM"
+        local prefix=''${1:-} workspaces name
+        workspaces=$(main_root)/local/workspaces
+        while name=$prefix$(petname --lists small) && [[ -e "$workspaces/$name" ]]; do :; done
+        printf '%s\n' "$name"
       }
 
       cmd_add() {
@@ -106,7 +112,7 @@ let
         [[ $# -ge 1 ]] || usage
 
         # Not local: the EXIT trap reads them after this function returns.
-        path=$(cmd_add "''${add_args[@]}" "exec-$(generate_name)")
+        path=$(cmd_add "''${add_args[@]}" "$(generate_name exec-)")
         base=$(jj log --repository "$path" -r @- --no-graph --template commit_id)
 
         cleanup() {
