@@ -1,5 +1,5 @@
 add_newline = false
-format = "$username @ $hostname${custom.zmx}$directory$git_branch$git_status$git_metrics$git_commit(- ($cmd_duration )($status))\n$os$character"
+format = "$username @ $hostname${custom.zmx}${custom.jj_workspace}$directory$git_branch${custom.jj}$git_status$git_metrics(- ($cmd_duration )($status))\n$os$character"
 right_format = "$c$cmake$go$haskell$java$lua$nodejs$python$rust$zig$package"
 
 [aws]
@@ -40,6 +40,8 @@ symbol = " "
 symbol = " "
 
 [git_branch]
+only_attached = true
+ignore_branches = ["refs/jj/root"]
 symbol = " "
 
 [golang]
@@ -188,11 +190,6 @@ format = "[$duration]($style)"
 disabled = false
 format = "(\\[( [+$added]($added_style)) ([-$deleted]($deleted_style) )\\] )"
 
-[git_commit]
-disabled = false
-tag_disabled = false
-tag_symbol = ' '
-
 [git_status]
 disabled = false
 format = '([$all_status$ahead_behind]($style) )'
@@ -211,3 +208,41 @@ when = '[ -n "$ZMX_SESSION" ]'
 symbol = "󱂬 "
 style = "cyan bold"
 format = "[$symbol$output ]($style)"
+
+[custom.jj_workspace]
+command = '''
+root=$PWD
+until [ -e "$root/.jj" ]; do
+  [ "$root" = / ] && exit
+  root=$(dirname "$root")
+done
+[ -f "$root/.jj/repo" ] || exit
+repo=$(cd "$root/.jj" && cd "$(cat repo)/../.." && pwd)
+printf '%s' "${repo##*/}"
+'''
+when = true
+shell = ["sh"]
+style = "purple"
+format = "([󰙅 $output ]($style))"
+
+[custom.jj]
+command = '''
+jj log --ignore-working-copy --no-graph --color never \
+  -r '@ | (latest(heads(::@ & bookmarks())) ~ @)' \
+  -T 'if(current_working_copy,
+    separate(" ",
+      bookmarks.join(" "),
+      if(conflict, "conflict"),
+      if(divergent, "divergent"),
+    ),
+    bookmarks.join(" "),
+  ) ++ "\n"' 2> /dev/null | {
+  read -r working_copy
+  read -r bookmark
+  printf '%s' "${bookmark:+$bookmark }$working_copy"
+}
+'''
+when = true
+shell = ["sh"]
+style = "purple"
+format = "(on [ $output ]($style))"
