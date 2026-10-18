@@ -6,6 +6,7 @@
     fzf = {
       enable = true;
       enableZshIntegration = true;
+      fileWidgetCommand = "fd --type f --type d --hidden --follow --no-require-git --exclude .git --exclude .jj";
     };
 
     starship = {
