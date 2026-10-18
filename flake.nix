@@ -108,6 +108,20 @@
         nixos = lib.mapAttrs (name: config: config.config.system.build.toplevel) self.nixosConfigurations;
       };
 
+      homeConfigurations = {
+        clement = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = specialArgs';
+          modules = [
+            ./home/clement
+            {
+              targets.genericLinux.enable = true;
+              home.stateVersion = "26.05";
+            }
+          ];
+        };
+      };
+
       darwinConfigurations = {
         kiwi = inputs.nix-darwin.lib.darwinSystem rec {
           specialArgs = specialArgs';

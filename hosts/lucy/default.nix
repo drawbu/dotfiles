@@ -37,7 +37,6 @@
     QT_ENABLE_HIGHDPI_SCALING = "1";
   };
 
-  services.xserver.xkb.layout = lib.mkForce "us_qwerty-fr";
   hardware.framework.laptop13.audioEnhancement.enable = true;
 
   programs.gamescope.args = [

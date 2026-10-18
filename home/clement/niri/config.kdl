@@ -1,7 +1,6 @@
 input {
     keyboard {
         numlock
-        xkb { layout "us_qwerty-fr"; }
     }
 
     mouse { }

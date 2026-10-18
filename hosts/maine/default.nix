@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, ... }:
 {
   imports = [
     ../../nixos
@@ -20,10 +20,7 @@
     powerManagement.enable = true;
   };
 
-  services.xserver = {
-    videoDrivers = [ "nvidia" ];
-    xkb.layout = lib.mkForce "us_qwerty-fr";
-  };
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   programs.gamescope.args = [
     "-W"

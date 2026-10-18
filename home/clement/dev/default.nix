@@ -57,7 +57,6 @@
       PNPM_HOME = "${config.home.homeDirectory}/.pnpm";
       NODE_OPTIONS = "--max-old-space-size=8192";
       ANDROID_HOME = "${config.home.homeDirectory}/.local/share/Android/Sdk";
-      AGENT_BROWSER_EXECUTABLE_PATH = lib.getExe pkgs.chromium;
     };
 
     packages =

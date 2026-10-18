@@ -3,7 +3,7 @@
   config = lib.mkIf config.mod.profiles.desktop.enable {
     services.xserver = {
       enable = false;
-      xkb.layout = "us_qwerty-fr";
+      xkb.layout = lib.mkDefault "us_qwerty-fr";
     };
 
     services.greetd.enable = true;
