@@ -8,7 +8,7 @@ let
         printf 'Usage: jj-workspace add <path> [<rev>]\n' >&2
         printf '       jj-workspace remove <path>\n' >&2
         printf '\nManage throwaway workspaces of the current repository.\n' >&2
-        printf '  add      Create a workspace named after <path> on <rev>\n' >&2
+        printf '  add      Create a workspace named <hostname>-<basename> on <rev>\n' >&2
         printf '           (default: @, or @- when @ has no changes)\n' >&2
         printf '  remove   Forget the workspace and delete <path>\n' >&2
         exit 1
@@ -32,7 +32,7 @@ let
         mkdir -p "$(dirname "$path")"
         jj workspace add --quiet \
           --repository "$repo_root" \
-          --name "$(basename "$path")" \
+          --name "$HOSTNAME-$(basename "$path")" \
           --revision "$commit" \
           "$path" >/dev/null
 
