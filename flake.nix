@@ -158,6 +158,11 @@
           ];
         };
 
+        "faraday" = mkHost {
+          desktop = true;
+          modules = [ ./hosts/faraday ];
+        };
+
         "rebecca" = mkHost {
           modules = [
             ./hosts/rebecca
