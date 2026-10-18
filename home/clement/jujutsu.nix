@@ -88,11 +88,11 @@
           "--"
           "jj"
         ];
-        exec = [
+        w = [
           "util"
           "exec"
           "--"
-          "jj-exec"
+          "jj-workspace"
         ];
         # credit: https://github.com/icorbrey/dotnix/blob/main/modules%2Fhome%2Fjujutsu%2Fdefault.nix#L117
         restack = [
@@ -221,17 +221,14 @@
 
     jj-workspace-new-widget() {
       setopt localoptions no_aliases 2> /dev/null
-      local root dir name err
-      root=$(jj root 2> /dev/null) || return 0
-      dir=''${root}/local
-      printf -v name '%08x' $(( RANDOM << 15 | RANDOM ))
-      dir=''${dir:A}/workspaces/$name
-      if ! err=$(jj-workspace add "$dir" 2>&1) || ! builtin cd -- "$dir"; then
-        zle -M "$err"
+      local out
+      jj root &> /dev/null || return 0
+      if ! out=$(jj-workspace add 2>&1) || ! builtin cd -- "''${out##*$'\n'}"; then
+        zle -M "$out"
         return 1
       fi
       zle reset-prompt
-      [[ -z "$err" ]] || zle -M "$err"
+      [[ "$out" != *$'\n'* ]] || zle -M "''${out%$'\n'*}"
     }
 
     zle -N jj-workspace-switch-widget

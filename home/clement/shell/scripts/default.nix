@@ -2,6 +2,6 @@
   imports = [
     ./dark.nix
     ./fixwifi.nix
-    ./jj-exec.nix
+    ./jj-workspace.nix
   ];
 }
