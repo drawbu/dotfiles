@@ -103,6 +103,7 @@
         sd
         vgrep
         jq
+        yq-go
         bear
         nixpkgs-review
         entr
@@ -117,6 +118,7 @@
         pkg-config
         just
         kubectl
+        glab
         whois
         tokei
         nix-output-monitor
@@ -167,6 +169,7 @@
         dive
         yubikey-manager
         temurin-bin
+        (maven.override { jdk_headless = temurin-bin; })
         gitoxide
         difftastic
         mergiraf
