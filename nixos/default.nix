@@ -7,30 +7,18 @@
 {
   imports = [
     ./gaming.nix
+    ./base.nix
     ./graphical
-    ./nix.nix
   ];
 
-  system.copySystemConfiguration = false;
-
-  time.timeZone = "Europe/Paris";
   time.hardwareClockInLocalTime = true;
-  i18n.defaultLocale = "en_US.UTF-8";
 
   programs = {
-    command-not-found.enable = false;
     dconf.enable = true;
 
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-    };
-
-    zsh.enable = true;
-
-    nix-ld = {
-      enable = true;
-      libraries = with pkgs; [ ];
     };
   };
 
@@ -70,23 +58,10 @@
     ];
   };
 
-  systemd.tmpfiles.rules = [
-    "L+ /bin/bash - - - - ${pkgs.bash}/bin/bash"
-  ];
-
   environment = {
-    enableAllTerminfo = true;
-    shells = with pkgs; [ zsh ];
     systemPackages =
       with pkgs;
-      [
-        vim
-        wget
-        extra.nix-alien
-        podman-compose
-      ]
-      ++ lib.optionals config.mod.profiles.desktop.enable [ virt-manager ];
-    pathsToLink = [ "/share/nix-direnv" ];
+      [ podman-compose ] ++ lib.optionals config.mod.profiles.desktop.enable [ virt-manager ];
 
     etc = {
       issue.source = ./issue.txt;
@@ -103,12 +78,6 @@
   security = {
     polkit.enable = true;
     rtkit.enable = true;
-    sudo = {
-      # enable = false;
-      extraConfig = ''
-        Defaults insults
-      '';
-    };
     pam.services.systemd-run0 = {
       setEnvironment = true;
       pamMount = false;
