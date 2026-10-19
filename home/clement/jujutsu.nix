@@ -14,10 +14,7 @@
     enable = true;
     package = pkgs.extra.jj;
     settings = {
-      user = {
-        name = "Clément";
-        email = "git@drawbu.dev";
-      };
+      user = { inherit (config.programs.git.settings.user) name email; };
 
       git = {
         sign-on-push = true;
@@ -195,7 +192,7 @@
       signing = {
         behavior = "drop";
         backend = "ssh";
-        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILu5dP9F77dUgxHpu7drGx/cMpYPRXw0SjsTOr3sLPBZ";
+        inherit (config.programs.git.signing) key;
         backends.ssh.program = config.mod.onepassword.signer;
       };
     };
