@@ -70,7 +70,6 @@
 
       # Misc
       undotree
-      vim-wakatime
     ];
   };
 }

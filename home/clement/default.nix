@@ -55,7 +55,6 @@
       nmap
       croc
       wireguard-tools
-      (if stdenv.isLinux then unstable.ollama-vulkan else unstable.ollama)
       ncdu
       zip
       genact

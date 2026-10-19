@@ -34,7 +34,6 @@
         "toml"
         "typst"
         "vue"
-        "wakatime"
         "zig"
       ];
 

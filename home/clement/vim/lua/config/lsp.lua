@@ -38,7 +38,6 @@ vim.lsp.enable({
     'terraformls',
     'uiua',
     'yamlls',
-    'zls',
     'typos_lsp',
     'harper_ls',
 })

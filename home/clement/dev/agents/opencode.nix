@@ -5,8 +5,6 @@
   ...
 }:
 {
-  home.packages = [ pkgs.unstable.opencode-desktop ];
-
   home.sessionVariables.NIXPKGS_OPENCODE_DISABLE_LEGACY_DB_WORKAROUND = 1;
 
   programs.opencode = {

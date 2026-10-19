@@ -65,7 +65,6 @@
         # tools
         gcc16
         (lib.hiPrio llvmPackages_latest.clang) # note: cc from clang & gcc collides
-        zig
         libcxx
         (python314.withPackages (
           ps: with ps; [
@@ -84,7 +83,6 @@
         cargo-auditable
         nodejs_latest
         corepack
-        bun
         deno
         typescript
         opentofu
@@ -127,7 +125,6 @@
         gum
         uiua
         direnv
-        wakatime-cli
         jless
         hydra-check
         patchutils
@@ -159,7 +156,6 @@
         htmx-lsp
         terraform-ls
         yaml-language-server
-        zls
         typos-lsp
         harper
 

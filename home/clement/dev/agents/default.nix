@@ -38,8 +38,6 @@
 
       # clankers
       llm.amp
-      llm.antigravity-cli
-      llm.codex
       llm.pi
     ];
   };
