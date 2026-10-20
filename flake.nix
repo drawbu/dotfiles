@@ -32,7 +32,7 @@
     jj.inputs.flake-utils.inputs.systems.follows = "systems";
     jj.inputs.rust-overlay.follows = "jj-mesh/rust-overlay";
 
-    jj-mesh.url = "github:baptiste0928/jj-mesh";
+    jj-mesh.url = "github:baptiste0928/jj-mesh/next";
     jj-mesh.inputs.nixpkgs.follows = "nixpkgs";
 
     opnix.url = "github:brizzbuzz/opnix/v0.11.0";

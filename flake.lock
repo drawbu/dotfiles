@@ -195,15 +195,16 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1791890308,
-        "narHash": "sha256-MIES3aXatXSt3kv7OaIiPHjj6RS1kqubb9x22P4dMX4=",
+        "lastModified": 1792361136,
+        "narHash": "sha256-4K/e5AD7FqsFTCRSXFmtQNpOuvO6TynFUhy6ErsPIIA=",
         "owner": "baptiste0928",
         "repo": "jj-mesh",
-        "rev": "99e53a43e683acf1b3845c696fbb4e44689fd2db",
+        "rev": "405f4f3d0009dc568af07bc90916cd142efe970b",
         "type": "github"
       },
       "original": {
         "owner": "baptiste0928",
+        "ref": "next",
         "repo": "jj-mesh",
         "type": "github"
       }
