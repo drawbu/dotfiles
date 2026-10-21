@@ -227,20 +227,13 @@ format = "([󰙅 $output ]($style))"
 
 [custom.jj]
 command = '''
-jj log --ignore-working-copy --no-graph --color never \
-  -r '@ | (latest(heads(::@ & bookmarks())) ~ @)' \
-  -T 'if(current_working_copy,
-    separate(" ",
-      bookmarks.join(" "),
-      if(conflict, "conflict"),
-      if(divergent, "divergent"),
-    ),
-    bookmarks.join(" "),
-  ) ++ "\n"' 2> /dev/null | {
-  read -r working_copy
-  read -r bookmark
-  printf '%s' "${bookmark:+$bookmark }$working_copy"
-}
+jj log --ignore-working-copy --no-graph --reversed --color never \
+  -r '@ | (latest(heads(::@ & (bookmarks() | remote_bookmarks()))) ~ @)' \
+  -T 'separate(" ",
+    bookmarks,
+    if(current_working_copy && conflict, "conflict"),
+    if(current_working_copy && divergent, "divergent"),
+  ) ++ " "' 2> /dev/null
 '''
 when = true
 shell = ["sh"]
