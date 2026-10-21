@@ -1,6 +1,7 @@
 {
   config,
   finputs,
+  lib,
   pkgs,
   ...
 }:
@@ -27,6 +28,16 @@
   programs.onepassword-secrets = {
     enable = true;
     tokenFile = "${config.xdg.configHome}/opnix/token";
+  };
+
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      dates = "weekly";
+      extraArgs = "--keep-since 7d";
+    };
+    flake = lib.mkDefault "${config.home.homeDirectory}/Developer/dotfiles";
   };
 
   home = {

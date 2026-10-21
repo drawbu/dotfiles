@@ -14,13 +14,13 @@
 
   home = {
     sessionVariables = {
-      # Defaults
+      THEMEFILE = "${config.home.homeDirectory}/.currenttheme";
+    }
+    // (lib.optionalAttrs config.mod.profiles.desktop.enable {
       EDITOR = "nvim";
       BROWSER = "helium-browser";
       TERMINAL = "ghostty";
-
-      THEMEFILE = "${config.home.homeDirectory}/.currenttheme";
-    };
+    });
 
     shellAliases = {
       lz = "lazygit";

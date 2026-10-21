@@ -54,15 +54,6 @@ in
     ];
   };
 
-  programs.nh = {
-    enable = true;
-    clean = {
-      enable = true;
-      dates = "weekly";
-      extraArgs = "--keep-since 7d";
-    };
-  };
-
   # Add src/ to $out
   system.systemBuilderCommands = "ln -s ${self.sourceInfo.outPath} $out/src";
   # Add git version to nixos label

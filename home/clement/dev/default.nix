@@ -30,6 +30,14 @@
         net.git-fetch-with-cli = true;
       };
     };
+
+    zellij = {
+      enable = true;
+      settings = {
+        theme_dark = "catppuccin-mocha";
+        theme_light = "catppuccin-latte";
+      };
+    };
   };
 
   home = {
