@@ -33,6 +33,7 @@
       gvfs.enable = true;
       tumbler.enable = true;
       blueman.enable = true;
+      speechd.enable = false;
 
       blocky = {
         enable = true;
@@ -76,7 +77,6 @@
 
     programs = {
       xwayland.enable = true;
-      kdeconnect.enable = true;
     };
 
     environment = {

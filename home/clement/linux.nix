@@ -15,7 +15,6 @@
     ./ghostty.nix
     ./gtk.nix
     ./kanata
-    ./kitty.nix
     ./mimeapps.nix
     ./niri
     ./soloist
@@ -30,7 +29,6 @@
       door-knocker
       ventoy-full
       xsel
-      xclip
       libnotify
       wl-clipboard
       yubioath-flutter
@@ -38,7 +36,6 @@
       feh
       thunderbird
       libresprite
-      beeper
       discord
       libreoffice-qt6-fresh
       teams-for-linux
@@ -56,9 +53,7 @@
       (unstable.bambu-studio.override {
         withNvidiaGLWorkaround = lib.elem "nvidia" osConfig.services.xserver.videoDrivers;
       })
-      tor-browser
       appimage-run
-      arduino-ide
       pavucontrol
       pwvucontrol
       warp
@@ -66,23 +61,15 @@
       filezilla
       figma-agent
       hexchat
-      supertuxkart
-      calibre
-      gitbutler
       gnome-disk-utility
-      kdePackages.filelight
       rpi-imager
       gcr
-      stremio-linux-shell
       loupe
-      mullvad-browser
       chiri
       freecad
-      inkscape
       cine
 
       wl-clipboard
-      kooha
       librepods
       awww
       playerctl
@@ -104,7 +91,7 @@
           onepassword-silent = pkgs.runCommand "1password-silent-autostart" { } ''
             mkdir -p $out/share/applications
             sed 's|^Exec=1password |Exec=1password --silent |' \
-              ${pkgs._1password-gui}/share/applications/1password.desktop \
+              ${osConfig.programs._1password-gui.package}/share/applications/1password.desktop \
               > $out/share/applications/1password.desktop
           '';
         in

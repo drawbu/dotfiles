@@ -29,8 +29,8 @@
           if pkgs.stdenv.isDarwin then
             "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
           else
-            lib.getExe' pkgs._1password-gui "op-ssh-sign";
-        description = "Path to the 1Password ssh signing helper.";
+            "op-ssh-sign";
+        description = "The 1Password ssh signing helper, as a path or a command on `PATH`.";
       };
 
       agent = lib.mkOption {

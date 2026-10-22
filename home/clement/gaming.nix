@@ -11,7 +11,6 @@
       lunar-client
       heroic
       dwarf-fortress
-      r2modman
       vulkan-tools
     ];
 

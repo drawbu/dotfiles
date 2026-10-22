@@ -55,10 +55,6 @@
       ookla-speedtest
       wget
       #wl-clipboard-x11
-      todo
-      comma
-      nix-index
-      spotify-player
       nurl
       unzip
       unar
@@ -70,7 +66,6 @@
       genact
       dust
       dig
-      sox
       unstable.zmx
     ];
   };

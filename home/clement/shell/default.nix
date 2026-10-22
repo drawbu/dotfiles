@@ -24,12 +24,6 @@
 
     shellAliases = {
       lz = "lazygit";
-      portainer = "docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest";
-      epidock = "docker run -it --rm -v \$(pwd):/home/project -w /home/project epitechcontent/epitest-docker:latest /bin/bash";
-      "'??'" = "gh copilot suggest -t shell";
-      "'git?'" = "gh copilot suggest -t git";
-      please = "sudo";
-      senpai = "sudo";
       ufda = "test -z \"$(grep 'use flake' .envrc)\" && (echo 'use flake' >> .envrc); direnv allow";
       tree = "ls --tree -a";
       zed = "zeditor";

@@ -88,7 +88,6 @@
         cargo-nextest
         cargo-watch
         cargo-audit
-        cargo-auditable
         nodejs_latest
         corepack
         deno
@@ -109,18 +108,14 @@
         ripgrep
         fd
         sd
-        vgrep
         jq
         yq-go
         bear
         nixpkgs-review
         entr
-        ((ffmpeg-full.override { withUnfree = true; }).overrideAttrs (_: {
-          doCheck = false;
-        }))
+        ffmpeg
         cmake
         gnumake
-        gcovr
         nixfmt
         alejandra
         pkg-config
@@ -132,9 +127,7 @@
         nix-output-monitor
         lucky-commit
         postgresql_17
-        gum
         uiua
-        direnv
         jless
         hydra-check
         patchutils
@@ -172,13 +165,11 @@
         typst
         asciinema
         asciinema-agg
-        ijhttp
         act
         dive
         yubikey-manager
         temurin-bin
         (maven.override { jdk_headless = temurin-bin; })
-        gitoxide
         difftastic
         mergiraf
         uv
@@ -192,13 +183,8 @@
         valgrind
         gdb
       ]
-      ++ lib.optionals config.mod.profiles.desktop.enable (
-        [ ]
-        ++ (with unstable; [
-          vscode
-          jetbrains.webstorm
-          godot_4
-        ])
-      );
+      ++ lib.optionals config.mod.profiles.desktop.enable [
+        unstable.vscode
+      ];
   };
 }

@@ -96,13 +96,6 @@ in
         "model/3mf"
         "model/stl"
       ])
-      // (fn "calibre-gui.desktop" [
-        "application/vnd.comicbook-rar"
-        "application/x-cb7"
-        "application/epub+zip"
-        "application/x-mobipocket-ebook"
-        "application/vnd.comicbook+zip"
-      ])
       // (fn "dev.zed.Zed.desktop" [
         "text/x-c++src"
         "text/x-pascal"

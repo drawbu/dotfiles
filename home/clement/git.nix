@@ -91,7 +91,6 @@ in
         renames = "true";
       };
       alias.l = "log --oneline --decorate --graph";
-      gitbutler.signCommits = true;
     };
   };
 
