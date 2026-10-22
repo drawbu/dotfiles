@@ -62,6 +62,8 @@
       mkHome = extraSpecialArgs: {
         home-manager = {
           inherit extraSpecialArgs;
+          useGlobalPkgs = true;
+          useUserPackages = true;
           backupFileExtension = "backup";
           verbose = true;
         };
@@ -113,6 +115,7 @@
           pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = specialArgs';
           modules = [
+            ./nixos/nixpkgs.nix
             ./home/clement
             {
               targets.genericLinux.enable = true;
@@ -126,6 +129,7 @@
         kiwi = inputs.nix-darwin.lib.darwinSystem rec {
           specialArgs = specialArgs';
           modules = [
+            ./nixos/nixpkgs.nix
             ./hosts/kiwi
             inputs.home-manager.darwinModules.home-manager
             (mkHome specialArgs)

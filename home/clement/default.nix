@@ -8,7 +8,6 @@
 {
   imports = [
     finputs.opnix.homeManagerModules.default
-    ../../nixos/nixpkgs.nix
     ./btop.nix
     ./dev
     ./fonts.nix
