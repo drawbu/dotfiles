@@ -17,6 +17,7 @@
     ./kanata
     ./mimeapps.nix
     ./niri
+    ./obsidian.nix
     ./soloist
     ./swayidle.nix
     ./waybar.nix
@@ -40,7 +41,6 @@
       libreoffice-qt6-fresh
       teams-for-linux
       spotify
-      obsidian
       vlc
       obs-studio
       gnome-font-viewer
