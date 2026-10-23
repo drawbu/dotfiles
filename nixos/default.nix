@@ -90,4 +90,11 @@
     "92.63.176.157" = [ "repology.org" ];
     "2a03:6f01:1:2::f159" = [ "repology.org" ];
   };
+
+  security.pki.caCertificateBlacklist = [
+    "emSign ECC Root CA - G3"
+    "emSign ECC Root CA - C3"
+    "emSign Root CA - C1"
+    "emSign Root CA - G1"
+  ];
 }
