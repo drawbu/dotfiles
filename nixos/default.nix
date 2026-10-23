@@ -15,6 +15,7 @@
 
   programs = {
     dconf.enable = true;
+    virt-manager.enable = config.mod.profiles.desktop.enable;
 
     gnupg.agent = {
       enable = true;
@@ -59,10 +60,6 @@
   };
 
   environment = {
-    systemPackages =
-      with pkgs;
-      [ podman-compose ] ++ lib.optionals config.mod.profiles.desktop.enable [ virt-manager ];
-
     etc = {
       issue.source = ./issue.txt;
       motd.text = ''
@@ -71,9 +68,6 @@
     };
   };
   users.motdFile = "/etc/motd";
-  # boot.initrd.preDeviceCommands = ''
-  #   cat ${./issue.txt}
-  # '';
 
   security = {
     polkit.enable = true;
@@ -84,12 +78,6 @@
     };
   };
 
-  # TODO: Remove once repology.org domain is restored.
-  # https://github.com/repology/repology-rs/issues/560#issuecomment-5688655540
-  networking.hosts = {
-    "92.63.176.157" = [ "repology.org" ];
-    "2a03:6f01:1:2::f159" = [ "repology.org" ];
-  };
 
   security.pki.caCertificateBlacklist = [
     "emSign ECC Root CA - G3"

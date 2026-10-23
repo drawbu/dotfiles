@@ -40,8 +40,16 @@
         "file-recovery"
         "global-search"
         "outline"
-        "properties"
         "switcher"
+      ];
+      hotkeys.daily-notes = [
+        {
+          modifiers = [
+            "Mod"
+            "Shift"
+          ];
+          key = "D";
+        }
       ];
       communityPlugins = [ ];
       cssSnippets = [
