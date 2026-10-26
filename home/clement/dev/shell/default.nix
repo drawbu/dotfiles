@@ -18,8 +18,6 @@
     }
     // (lib.optionalAttrs config.mod.profiles.desktop.enable {
       EDITOR = "nvim";
-      BROWSER = "helium-browser";
-      TERMINAL = "ghostty";
     });
 
     shellAliases = {

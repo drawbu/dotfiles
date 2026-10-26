@@ -1,6 +1,7 @@
+{ config, lib, ... }:
 {
   programs.firefox = {
-    enable = true;
+    enable = lib.mkDefault config.mod.profiles.desktop.enable;
     languagePacks = [
       "en-US"
       "fr-FR"

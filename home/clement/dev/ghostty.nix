@@ -1,9 +1,14 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   programs.ghostty = {
-    enable = true;
-    systemd.enable = true;
-    package = pkgs.extra.ghostty;
+    enable = lib.mkDefault config.mod.profiles.desktop.enable;
+    systemd.enable = pkgs.stdenv.isLinux;
+    package = if pkgs.stdenv.isLinux then pkgs.extra.ghostty else null;
     settings = {
       theme = "dark:Catppuccin Mocha,light:Catppuccin Latte";
       font-family = "Ioskeley Mono";

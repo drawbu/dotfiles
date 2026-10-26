@@ -7,7 +7,9 @@
 {
   options.mod = {
     profiles = {
-      desktop.enable = lib.mkEnableOption "desktop workstation profile";
+      desktop.enable = lib.mkEnableOption "desktop workstation profile" // {
+        default = pkgs.stdenv.isDarwin;
+      };
       gaming.enable = lib.mkEnableOption "gaming profile";
     };
 

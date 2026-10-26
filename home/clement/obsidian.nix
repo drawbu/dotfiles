@@ -1,9 +1,7 @@
-{ pkgs, ... }:
+{ config, lib, ... }:
 {
-  home.packages = [ pkgs.literata ];
-
   programs.obsidian = {
-    enable = true;
+    enable = lib.mkDefault config.mod.profiles.desktop.enable;
     vaults.notes.settings = {
       app = {
         vimMode = true;

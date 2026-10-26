@@ -8,16 +8,12 @@
 {
   imports = [
     finputs.opnix.homeManagerModules.default
-    ./btop.nix
+    ./browsers
+    ./desktop.nix
     ./dev
     ./fonts.nix
-    ./gh.nix
-    ./git.nix
-    ./helix.nix
-    ./jujutsu.nix
+    ./obsidian.nix
     ./profiles.nix
-    ./shell
-    ./vim
     ./wallpapers
     ./yank.nix
   ];

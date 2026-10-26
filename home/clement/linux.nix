@@ -1,6 +1,5 @@
 {
   config,
-  finputs,
   lib,
   osConfig,
   pkgs,
@@ -8,20 +7,9 @@
 }:
 {
   imports = [
-    ./cursor.nix
-    ./distrobox.nix
-    ./firefox.nix
     ./gaming.nix
-    ./ghostty.nix
-    ./gtk.nix
-    ./kanata
-    ./mimeapps.nix
-    ./niri
-    ./obsidian.nix
-    ./soloist
-    ./swayidle.nix
-    ./waybar.nix
-    ./zathura.nix
+    ./soloist.nix
+    ./wayland
   ];
 
   home = {
@@ -35,13 +23,6 @@
       yubioath-flutter
       pods
       feh
-      thunderbird
-      libresprite
-      discord
-      libreoffice-qt6-fresh
-      teams-for-linux
-      spotify
-      vlc
       obs-studio
       gnome-font-viewer
       file-roller
@@ -65,16 +46,12 @@
       rpi-imager
       gcr
       loupe
-      chiri
       freecad
       cine
 
-      wl-clipboard
       librepods
       awww
       playerctl
-
-      (callPackage ./helium.nix { })
     ];
   };
 

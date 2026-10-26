@@ -7,7 +7,16 @@
 {
   imports = [
     ./agents
+    ./btop.nix
+    ./distrobox.nix
     ./editorconfig.nix
+    ./gh.nix
+    ./ghostty.nix
+    ./git.nix
+    ./helix.nix
+    ./jujutsu.nix
+    ./shell
+    ./vim
     ./zed.nix
   ];
 
@@ -18,6 +27,10 @@
 
   programs = {
     man.enable = true;
+    vscode = {
+      enable = lib.mkDefault config.mod.profiles.desktop.enable;
+      package = pkgs.unstable.vscode;
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -182,9 +195,6 @@
         # linux-manual
         valgrind
         gdb
-      ]
-      ++ lib.optionals config.mod.profiles.desktop.enable [
-        unstable.vscode
       ];
   };
 }

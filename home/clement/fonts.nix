@@ -55,6 +55,7 @@ in
     noto-fonts
     noto-fonts-color-emoji
     inter
+    literata
     helvetica-neue-lt-std
     roboto
     roboto-flex
