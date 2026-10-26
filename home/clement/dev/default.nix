@@ -179,7 +179,7 @@
         unstable.wrangler
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
-        linux-manual
+        # linux-manual
         valgrind
         gdb
       ]

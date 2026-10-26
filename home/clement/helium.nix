@@ -10,6 +10,7 @@
   dbus,
   desktop-file-utils,
   fetchurl,
+  fetchzip,
   gtk3,
   hicolor-icon-theme,
   libffi,
@@ -31,11 +32,11 @@
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "helium-browser-bin";
-  version = "0.19.3.1";
+  version = "0.20.1.1";
 
-  src = fetchTarball {
+  src = fetchzip {
     url = "https://github.com/imputnet/helium-linux/releases/download/${finalAttrs.version}/helium-${finalAttrs.version}-x86_64_linux.tar.xz";
-    sha256 = "sha256:1j1mvycvsr4wczmbpgf65xk45d99q3y8c8mkkfvpg3bi413pr4y1";
+    hash = "sha256-xFZe/x+etTvCmU5X7wVtVjcK38O8lLlYuqPEUz0PIV8=";
   };
 
   inherit commandLineArgs;
