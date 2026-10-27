@@ -25,7 +25,7 @@
         default-command = [
           "log"
           "-r"
-          "branch_log(@) ~ idle_workspaces()"
+          "default_log()"
           "--no-pager"
         ];
         conflict-marker-style = "git";
@@ -41,6 +41,7 @@
         "branch_log(rev)" = "(trunk()..rev):: | (trunk()..rev)-";
         "branch_start(to)" = "heads(::to & trunk())+ & ::to";
         "idle_workspaces()" = "visible_heads() & working_copies() & empty() & description(exact:'') ~ @";
+        "default_log()" = "branch_log(@) ~ idle_workspaces()";
       };
 
       revsets = {
@@ -157,6 +158,30 @@
             signature.email(),
           )
         '';
+        # Mutable commits only: the diff is recomputed on each log.
+        "format_diff_stats(commit)" = ''
+          if(!commit.immutable() && !commit.empty(),
+            label("diff added", "+" ++ commit.diff().stat().total_added()) ++ " " ++
+            label("diff removed", "-" ++ commit.diff().stat().total_removed())
+          )
+        '';
+        # Built-in header, plus format_diff_stats.
+        "format_short_commit_header(commit)" = ''
+          separate(" ",
+            format_short_change_id_with_change_offset(commit),
+            format_short_signature(commit.author()),
+            format_timestamp(commit_timestamp(commit)),
+            commit.bookmarks(),
+            commit.tags(),
+            commit.working_copies(),
+            format_short_commit_id(commit.commit_id()),
+            format_commit_labels(commit),
+            format_diff_stats(commit),
+            if(config("ui.show-cryptographic-signatures").as_boolean(),
+              format_short_cryptographic_signature(commit.signature())
+            ),
+          )
+        '';
       };
 
       fix.tools = {
@@ -244,4 +269,12 @@
     done
     unset keymap
   '';
+
+  programs.jjui = {
+    enable = true;
+    settings = {
+      ui.auto_refresh_interval = 5;
+      revisions.revset = "default_log()";
+    };
+  };
 }
