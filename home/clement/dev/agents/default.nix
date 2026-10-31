@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./claude.nix
@@ -32,14 +36,19 @@
       };
     };
 
-    packages = with pkgs; [
-      llm.skills
-      llm.agent-browser
-      extra.depsrc
+    packages =
+      with pkgs;
+      [
+        llm.skills
+        llm.agent-browser
+        extra.depsrc
+        llm.herdr-core
 
-      # clankers
-      llm.amp
-      llm.pi
-    ];
+        llm.amp
+        llm.pi
+      ]
+      ++ lib.optionals config.mod.profiles.desktop.enable [
+        llm.herdr-app
+      ];
   };
 }

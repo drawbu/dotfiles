@@ -75,6 +75,7 @@ happen, that goes in your response.
 - Use `depsrc` to read the source of a package, see `depsrc --help`.
 - `rg`, `fd` and `jq` are installed.
 - `agent-browser` runs a real browser, see `agent-browser skills get core --full`.
+- Use `hc` to run long-running processes, see `hc --skill`.
 - The machine runs NixOS. Never  alter the environment unless I explicitly ask.
   For one-off tools, use `nix run nixpkgs#<pkg> -- <args>`.
 - NEVER delete a kube or a container without my explicit approval.
