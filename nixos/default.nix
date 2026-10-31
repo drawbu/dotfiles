@@ -78,6 +78,7 @@
     };
   };
 
+  boot.tmp.useTmpfs = true;
 
   security.pki.caCertificateBlacklist = [
     "emSign ECC Root CA - G3"
