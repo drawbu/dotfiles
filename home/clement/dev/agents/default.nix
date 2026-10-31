@@ -2,6 +2,7 @@
 {
   imports = [
     ./claude.nix
+    ./herdr
     ./mcp.nix
     ./opencode.nix
   ];
