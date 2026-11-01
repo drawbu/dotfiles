@@ -22,24 +22,43 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/58ef65e8-9510-45fe-a4e0-7deaaa389d8d";
-    fsType = "ext4";
-  };
-
   boot.initrd.luks.devices."luks-3314f31f-5753-4e88-af5e-c4299470260f".device =
     "/dev/disk/by-uuid/3314f31f-5753-4e88-af5e-c4299470260f";
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/B7A8-EFC4";
-    fsType = "vfat";
-    options = [
-      "fmask=0077"
-      "dmask=0077"
-    ];
-  };
+  fileSystems =
+    let
+      btrfs = subvol: {
+        device = "/dev/disk/by-label/lucy";
+        fsType = "btrfs";
+        options = [
+          "subvol=${subvol}"
+          "compress=zstd:1"
+          "noatime"
+        ];
+      };
+    in
+    {
+      "/" = btrfs "@";
+      "/home" = btrfs "@home";
+      "/nix" = btrfs "@nix";
+      "/swap" = btrfs "@swap";
 
-  swapDevices = [ ];
+      "/boot" = {
+        device = "/dev/disk/by-uuid/B7A8-EFC4";
+        fsType = "vfat";
+        options = [
+          "fmask=0077"
+          "dmask=0077"
+        ];
+      };
+    };
+
+  swapDevices = [
+    {
+      device = "/swap/swapfile";
+      size = 48 * 1024;
+    }
+  ];
 
   # networking.interfaces.enp195s0f0u2.useDHCP = lib.mkDefault true;
 
