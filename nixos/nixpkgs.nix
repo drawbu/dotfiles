@@ -30,7 +30,6 @@
       (final: prev: {
         extra = {
           inherit (finputs.nix-alien.packages.${final.stdenv.hostPlatform.system}) nix-alien;
-          inherit (finputs.ghostty.packages.${final.stdenv.hostPlatform.system}) ghostty;
           jj = finputs.jj.packages.${final.stdenv.hostPlatform.system}.jujutsu;
           depsrc = finputs.depsrc.packages.${final.stdenv.hostPlatform.system}.default;
         };
