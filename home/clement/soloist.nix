@@ -10,7 +10,7 @@ let
   sources = {
     x86_64-linux = pkgs.fetchurl {
       url = "https://soloist-builds.spotifycdn.com/soloist_release_x86_64.tar.gz";
-      hash = "sha256-UOeNe8bR1rNeIjEXIMDD2fWAtZE3zR3neq/INFPT/vY=";
+      hash = "sha256-AhbG0rEKIlcBcPI4ElLDoJlxIRE5WId/nY6dnRZ5x4Y=";
     };
     aarch64-linux = pkgs.fetchurl {
       url = "https://soloist-builds.spotifycdn.com/soloist_release_arm64.tar.gz";
@@ -19,7 +19,7 @@ let
   };
   package = pkgs.stdenv.mkDerivation (finalAttrs: {
     pname = "soloist";
-    version = "1.3.8.43";
+    version = "1.3.10.31";
 
     strictDeps = true;
     __structuredAttrs = true;

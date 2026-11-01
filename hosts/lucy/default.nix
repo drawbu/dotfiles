@@ -14,6 +14,7 @@
   networking.hostName = "lucy";
   system.stateVersion = "26.05";
 
+  # TODO: mt7925 panics on chip reset on 7.3 and 7.3.1; fixed by c182bfe944eb.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Graphical boot splash + clean LUKS passphrase prompt. Plymouth's
