@@ -46,6 +46,9 @@
     llm-agents.inputs.nixpkgs.follows = "nixpkgs_unstable";
     llm-agents.inputs.flake-parts.follows = "yank/flake-parts";
     llm-agents.inputs.systems.follows = "systems";
+
+    depsrc.url = "github:baptiste0928/depsrc/v0.1.0";
+    depsrc.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

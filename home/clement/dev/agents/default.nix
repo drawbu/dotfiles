@@ -35,6 +35,7 @@
     packages = with pkgs; [
       llm.skills
       llm.agent-browser
+      extra.depsrc
 
       # clankers
       llm.amp

@@ -73,8 +73,7 @@ and interact with him like a professional.
 - NEVER delete a kube or a container without user's explicit approval
 - The machine runs NixOS. Never try to install anything permanently or alter
   the environment, unless explicitly asked.
-- Reach out to the `node-dep-source` skill every time you have to inspect a dep
-  in node modules or understand a dependency
+- Use `depsrc` to read the source of a package, see `depsrc --help`.
 - `rg`, `fd` and `jq` are installed, use them for more complex operations.
 - Use `agent-browser` to start a real web browser.
   See `agent-browser skills get core --full` for instructions.

@@ -34,6 +34,27 @@
         "type": "github"
       }
     },
+    "depsrc": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792927611,
+        "narHash": "sha256-2pTZlm9wF9rIHTYl7lOzGhXAFzFf3d5QWpo5triPRqk=",
+        "owner": "baptiste0928",
+        "repo": "depsrc",
+        "rev": "0deb4197dfe9f8d43ae96657328e463924f97069",
+        "type": "github"
+      },
+      "original": {
+        "owner": "baptiste0928",
+        "ref": "v0.1.0",
+        "repo": "depsrc",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "locked": {
         "lastModified": 1767039857,
@@ -421,6 +442,7 @@
     },
     "root": {
       "inputs": {
+        "depsrc": "depsrc",
         "ghostty": "ghostty",
         "home-manager": "home-manager",
         "hyprqtile": "hyprqtile",
