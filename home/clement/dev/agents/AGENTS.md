@@ -1,127 +1,103 @@
-The user is very technical. You should assume technical experitize on subjects
-and interact with him like a professional.
+## workflow
 
+Make sure the request is clear before starting. Challenge the request and flag
+any task whose intent or scope seems wrong, risky or badly designed, and propose
+better or more modern options.
 
-## coding practices
+Consult me on implementation decisions and before non-trivial work. Never take a
+dirty shortcut to avoid the round trip.
 
-- Focus on keeping the code pedantic and readable. This is very important
-- Explore option to propose the best changes in the context. Try to keep patches
-  as small and focused as possible
-- Lean for type-checking and compile time validation as much as possible
-- Do not over-engineer, but do point out when a better solution is available, or
-  if we are headed on the wrong direction.
-- Question everything the user asks, consider more appropriate and modern
-  solutions the user may have not considered.
-- Always consult the user on implementation decisions. Never do a dirty quick
-  fix just to avoid the round trip.
-- In codebases that allows it, always make sure your solution works by
-  validating it by running automated or manual testing.
-- When every caller lives in the repo, change the signature and fix the callers.
-  Keep a compatibility shim only for something you cannot reach and edit.
+Before ending task, make sure the project builds, lints and relevant tests pass.
+For UI changes, check against a real browser.
 
 
 ## review
 
-- Review a large change yourself before you call it done using `/code-review`.
 - Hand a reviewer the goal and the files, nothing else. A reviewer told what to
   look for finds that and stops.
 - A finding needs a file, a line, and the input that breaks it. No repro, no
   finding.
 - Check each finding yourself before you act on it. Most will not survive.
-- A fix that belongs to a shared abstraction, or to a promise the callers ought
-  to keep, is not part of this change. Say so and leave it.
-- Reviewing your own work, fix what you find. Reviewing because I asked, report
-  and touch nothing.
+- Flag a fix that belongs to a shared abstraction, or to a promise the callers
+  ought to keep. Leave it out of this change.
+- When I ask for a review, report and touch nothing.
 
 
-## comments
+## code
 
-- Only write a comment if deleting it could cause a bug: without it, a future
-  reader would plausibly make a change that breaks something. If the worst case
-  of deleting it is that someone is mildly curious, do not write it.
-- Comments are for the next reader of the file, never for me reading the diff.
-  If a comment only makes sense to someone who saw the change being made, or who
-  knows which alternative was rejected, say it in your response instead.
-- Never restate what the code says, never justify your own decision, never
-  document a default value or the absence of something.
-- API docs the language expects (nix `description`, rustdoc, docstrings) are not
-  comments: they follow the documentation rules below.
-- When in doubt, write no comment. I will ask if I want the reasoning.
+The codebase need to stay simple and idiomatic at all time.
+
+Always yearn for robustness and correctness enforced by the type system. Encode
+invariants in the type system. Prefer compile-time checks.
+
+Do not keep backward compatibility unless strictly needed: update signatures and
+their callers. When every caller lives in the repo, change the signature and fix
+the callers. Keep a shim only for code you cannot reach and edit.
+
+- Put the most important items first: core types, then exported functions.
+- Keep names short and do not repeat what the context carries.
+- Keep boundaries clear: one concept per module, little cross-boundary code, and
+  reuse the concepts already in the codebase.
+
+
+## tests
+
+Favor having a robust test suite to encode behavior and ensure correctness.
+Prefer a few high-level feature tests over many unit tests. Tho, unit-test only
+intricate logic, never trivial code or dependency behavior.
 
 
 ## documentation
 
-- Write for someone who knows what the project is for and has never opened this
-  file.
+Write for readers familiar the project goal, but not this code. Each level
+assumes the reader is familiar with the one above.
+Use project vocabulary consistently and cut every word you can.
+
+Remove all mannered prose in the comments.
+Delete any comment that only makes sense to someone who watched the change
+happen, that goes in your response.
+
 - A README says what the thing is, what constrains it and where to start
   reading. Correct it when a change makes it wrong. Ask me before growing it.
 - A module header names the concepts it owns and where its edges sit. Draw the
   flow when it is hard to hold in the head.
 - A function doc is one line, then only what the signature cannot say:
   invariants, preconditions, panics, failure modes.
-- Never explain the same concept at two levels. The narrower one assumes the
-  wider one was read.
-- Call things by the names the project already gives them.
+- Never explain a concept at two levels. The narrower one assumes the wider one.
+- Use the project's own names for things.
 
 
 ## tools
 
-- Always default to `pnpm` and `pnpx` for interacting with JavaScript
-  dependencies.
-  Avoid using the shorthand syntax: use `pnpm run *` and `pnpm exec *`
-- Always default to `uv` for managing Python environment.
-- NEVER delete a kube or a container without user's explicit approval
-- The machine runs NixOS. Never try to install anything permanently or alter
-  the environment, unless explicitly asked.
+- JavaScript: `pnpm` and `pnpx`, spelled `pnpm run *` and `pnpm exec *`.
+- Python environments: `uv`.
+- Rust: run `cargo nextest` to run the tests.
 - Use `depsrc` to read the source of a package, see `depsrc --help`.
-- `rg`, `fd` and `jq` are installed, use them for more complex operations.
-- Use `agent-browser` to start a real web browser.
-  See `agent-browser skills get core --full` for instructions.
+- `rg`, `fd` and `jq` are installed.
+- `agent-browser` runs a real browser, see `agent-browser skills get core --full`.
+- The machine runs NixOS. Never  alter the environment unless I explicitly ask.
+  For one-off tools, use `nix run nixpkgs#<pkg> -- <args>`.
+- NEVER delete a kube or a container without my explicit approval.
 
 
 ## vcs
 
-- All repositories are tracked by jujutsu VCS. Prefer `jj` over `git`.
-- You can edit the history, and make commits as part of your change where it
-  makes sense (unless asked not to). Tho, NEVER publish to upstream. I always
-  have the last word before pushing work.
-- The changes made by the user are clearly split into commits to keep the
-  history readable. Use that at your advantage to understand intent
-- I use bookmarks to organize my MR/branches. Mine always start with `clement/*`
-  I will also occasionally fetch foreign MR which will be named `pr-*`
-- The workspace you work in is the one named after the machine hostname, a
-  temporary `<hostname>-exec-*` workspace created by `jj w exec`, or an
-  isolated `<hostname>-claude-*` one your harness created. Other workspaces
-  belong to other machines or agents: never touch their working copy.
-- Unless asked to just edit the current change, name your changes and split them
-  into small units if necessary. The goal is to make the review for both the
-  operator and the reviewer easier.
-- Describe a change as `scope(sub): summary`, where the sub-scope is optional
-  and only used when it helps narrow down the change. Keep the summary short
-  (under 72 characters), lowercase, imperative mood, no trailing period.
-- Default to no body. Only add one, wrapped at 80 characters, when the summary
-  leaves a reader actually confused, and make it a why: never restate the
-  summary, list files, narrate the implementation or justify the change.
-- Follow the repository's own commit guidelines when it has some.
+All repositories are tracked by jujutsu. Prefer `jj` over `git`.
+
+Describe your changes with `jj desc -m "scope(sub): summary"`. Split changes
+into atomic/bisectable commits. The sub-scope is optional. Keep the summary
+under 72 characters: lowercase, imperative, no trailing period. Add a body only
+when the summary would confuse a reader. Wrap it at 80 characters and give the
+why, nothing else.
+A repository's own commit guidelines take precedence.
+
+My bookmarks start with `clement/*`. Fetched foreign MRs start with `pr-*`.
+
+Never publish upstream, I decide what gets pushed.
 
 
 ## local directory
 
-- At the root of any project, you can use/create a directory `local/` that is
-  globally gitignore. It is used to store files and documents that we don't want
-  to push upstream.
-- You can store temporary files in `local/claude/`
-- You can also feely git clone project to look at the code in `local/repos/`.
-  This is really useful to understand codebase and dependencies.
-
-
-## redacting
-
-- When redacting, never put em-dashes
-- Apply Orwell's rules to every piece of prose you write, in documentation,
-  commit messages and your answers alike:
-  - Never use a metaphor, simile or other figure of speech which you are used
-    to seeing in print.
-  - Never use a long word where a short one will do.
-  - If it is possible to cut a word out, always cut it out.
-  - Never use the passive where you can use the active.
+`local/` at a project root is globally gitignored and never goes upstream. Keep
+temporary files in `local/claude/`, and clone projects freely into
+`local/repos/` to read their code.
