@@ -26,11 +26,6 @@
     hyprqtile.url = "github:drawbu/hyprqtile";
     hyprqtile.inputs.nixpkgs.follows = "nixpkgs";
 
-    ghostty.url = "github:ghostty-org/ghostty";
-    ghostty.inputs.home-manager.follows = "home-manager";
-    ghostty.inputs.flake-compat.follows = "nix-alien/flake-compat";
-    ghostty.inputs.systems.follows = "systems";
-
     jj.url = "github:jj-vcs/jj/v0.46.0";
     jj.inputs.nixpkgs.follows = "nixpkgs";
     jj.inputs.flake-utils.inputs.systems.follows = "systems";

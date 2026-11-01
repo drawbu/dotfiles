@@ -111,36 +111,6 @@
         "type": "github"
       }
     },
-    "ghostty": {
-      "inputs": {
-        "flake-compat": [
-          "nix-alien",
-          "flake-compat"
-        ],
-        "home-manager": [
-          "home-manager"
-        ],
-        "nixpkgs": "nixpkgs",
-        "systems": [
-          "systems"
-        ],
-        "zig": "zig",
-        "zon2nix": "zon2nix"
-      },
-      "locked": {
-        "lastModified": 1793554828,
-        "narHash": "sha256-RxxDWGKMIkSjsoTk1ZNtZcyZOGaZgiw/hBBAuWxFBk4=",
-        "owner": "ghostty-org",
-        "repo": "ghostty",
-        "rev": "a7e8e4d15bd0f12ad2a1123bf157b338e526c23e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ghostty-org",
-        "repo": "ghostty",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -371,19 +341,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1790981744,
-        "narHash": "sha256-NkNW1Y9AiuKO0HfeTnY555OJTYq9MQE3+Wz4kfBp/fI=",
-        "rev": "55ba7f49ef2962b42cbd126522b7df5f95037679",
-        "type": "tarball",
-        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1084552.55ba7f49ef29/nixexprs.tar.zst"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1793410479,
         "narHash": "sha256-/qr8f3vHjWsV4coaRfOe8HDdtslsv9MMMGlOSngZ2bQ=",
         "rev": "fa1373130d5a21c040a47c5dbe1913d59ed91808",
@@ -468,7 +425,6 @@
     "root": {
       "inputs": {
         "depsrc": "depsrc",
-        "ghostty": "ghostty",
         "home-manager": "home-manager",
         "hyprqtile": "hyprqtile",
         "jj": "jj",
@@ -478,7 +434,7 @@
         "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "nixpkgs_legacy": "nixpkgs_legacy",
         "nixpkgs_master": "nixpkgs_master",
         "nixpkgs_unstable": "nixpkgs_unstable",
@@ -564,56 +520,6 @@
         "ref": "refs/tags/v0.1.1",
         "type": "git",
         "url": "https://tangled.org/drawbu.dev/yank"
-      }
-    },
-    "zig": {
-      "inputs": {
-        "flake-compat": [
-          "ghostty",
-          "flake-compat"
-        ],
-        "nixpkgs": [
-          "ghostty",
-          "nixpkgs"
-        ],
-        "systems": [
-          "ghostty",
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1790988737,
-        "narHash": "sha256-b55etI4Uxu+WHhYZXym3HPIz63ipO9lqwJLAphjqtTc=",
-        "owner": "mitchellh",
-        "repo": "zig-overlay",
-        "rev": "dcffc7a25ed2cbbc7c1c3c448c312abf46ae6cb8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mitchellh",
-        "repo": "zig-overlay",
-        "type": "github"
-      }
-    },
-    "zon2nix": {
-      "inputs": {
-        "nixpkgs": [
-          "ghostty",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1791779206,
-        "narHash": "sha256-2eQfccAcXv3LX5wN6ducp5CCcWRnrxgu9PI4y09IkDA=",
-        "owner": "jcollie",
-        "repo": "zon2nix",
-        "rev": "50f67839e45548957a1e924db1fdea7ef4dc5a55",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jcollie",
-        "repo": "zon2nix",
-        "type": "github"
       }
     }
   },
