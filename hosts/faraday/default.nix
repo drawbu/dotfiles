@@ -34,6 +34,7 @@ in
   ];
 
   services.tailscale.enable = true;
+  services.openssh.enable = true;
 
   environment.sessionVariables = {
     GALLIUM_DRIVER = "d3d12";
@@ -85,7 +86,10 @@ in
       programs.nh.flake = "${config.home.homeDirectory}/perso/dotfiles";
       programs.zed-editor.enable = true;
       programs.zathura.enable = true;
-      programs.obsidian.enable = true;
+      programs.obsidian = {
+        enable = true;
+        package = pkgs.obsidian.override { commandLineArgs = "--disable-gpu-rasterization"; };
+      };
 
       xdg.enable = true;
       xdg.desktopEntries.wsl-open = {
