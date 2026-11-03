@@ -24,7 +24,6 @@
       args = [
         "stdio"
         "--read-only"
-        "--lockdown-mode"
       ];
       env.GITHUB_PERSONAL_ACCESS_TOKEN.file =
         config.programs.onepassword-secrets.secretPaths.githubMcpToken;
