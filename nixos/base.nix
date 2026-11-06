@@ -4,6 +4,13 @@
 
   system.copySystemConfiguration = false;
 
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    consoleLogLevel = 0;
+    initrd.verbose = false;
+    kernelParams = [ "quiet" ];
+  };
+
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_US.UTF-8";
 
