@@ -2,16 +2,7 @@
 {
   programs.waybar = {
     enable = true;
-    package = pkgs.unstable.waybar.overrideAttrs (old: {
-      patches = [
-        # niri/workspaces: feature - add "hide-empty" config option
-        # integrated in release 0.16.0
-        (pkgs.fetchpatch {
-          url = "https://patch-diff.githubusercontent.com/raw/Alexays/Waybar/pull/4966.diff";
-          hash = "sha256-MXZzC2sBs8gVO/s8fytW94KrwY67INgJiUEiOkru7x0=";
-        })
-      ];
-    });
+    package = pkgs.unstable.waybar;
     settings = {
       mainBar = {
         layer = "top";

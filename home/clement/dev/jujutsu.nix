@@ -16,10 +16,7 @@
     settings = {
       user = { inherit (config.programs.git.settings.user) name email; };
 
-      git = {
-        sign-on-push = true;
-        private-commits = "private()";
-      };
+      git.private-commits = "private()";
 
       ui = {
         default-command = [
@@ -46,6 +43,7 @@
 
       revsets = {
         "bookmark-advance-to" = "heads(::@ & ~private() & ~description(''))";
+        "git-sign-on-push" = "~signed() & mine()";
       };
 
       aliases = {

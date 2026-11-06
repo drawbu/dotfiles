@@ -24,7 +24,7 @@
     hyprqtile.url = "github:drawbu/hyprqtile";
     hyprqtile.inputs.nixpkgs.follows = "nixpkgs";
 
-    jj.url = "github:jj-vcs/jj/v0.46.0";
+    jj.url = "github:jj-vcs/jj/v0.47.1";
     jj.inputs.nixpkgs.follows = "nixpkgs";
     jj.inputs.flake-utils.inputs.systems.follows = "systems";
     jj.inputs.rust-overlay.follows = "jj-mesh/rust-overlay";

@@ -169,21 +169,7 @@
         gopls
         cmake-language-server
         templ
-        (htmx-lsp.overrideAttrs (
-          finalAttrs: _: {
-            version = "0.2.0-unstable-2025-10-18";
-            src = fetchFromGitHub {
-              owner = "ThePrimeagen";
-              repo = "htmx-lsp";
-              rev = "a05bf01d33710f1e86e3e4165badda9826a7a9bb";
-              hash = "sha256-IX24OeYc/R9DJzWICmk5NL6HXzeAXZWjlyNa1Ehtc/w=";
-            };
-            cargoDeps = rustPlatform.fetchCargoVendor {
-              inherit (finalAttrs) pname version src;
-              hash = "sha256-Z3t9MJ56k5MYNLLyrKpT8WeWc1+N4IhdhIgxsqjefCc=";
-            };
-          }
-        ))
+        htmx-lsp
         terraform-ls
         yaml-language-server
         typos-lsp
