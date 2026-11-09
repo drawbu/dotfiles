@@ -61,17 +61,13 @@ in
         mode = "tap";
       };
 
-      enabledPlugins =
-        lib.genAttrs (map (name: "${name}@claude-plugins-official") [
-          "clangd-lsp"
-          "gopls-lsp"
-          "pyright-lsp"
-          "rust-analyzer-lsp"
-          "typescript-lsp"
-        ]) (_: true)
-        // {
-          "cc-plugin-diff@builtin" = false;
-        };
+      enabledPlugins = lib.genAttrs (map (name: "${name}@claude-plugins-official") [
+        "clangd-lsp"
+        "gopls-lsp"
+        "pyright-lsp"
+        "rust-analyzer-lsp"
+        "typescript-lsp"
+      ]) (_: true);
 
       pluginConfigs."agents-md@builtin".options.instructionFiles = "claude-md-and-agents-md";
 

@@ -26,10 +26,7 @@
 
   home-manager.users.clement = {
     imports = [ ../../home/clement/linux.nix ];
-    home = {
-      stateVersion = config.system.stateVersion;
-      # pointerCursor.size = lib.mkForce 16;
-    };
+    home.stateVersion = config.system.stateVersion;
   };
 
   environment.sessionVariables = {

@@ -15,7 +15,6 @@
     ./jellyfin.nix
   ];
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -58,7 +57,6 @@
   ];
   environment.shellAliases.lz = "lazygit";
 
-  hardware.enableRedistributableFirmware = true;
   boot = {
     blacklistedKernelModules = [ "i915" ];
     kernelParams = [ "nomodeset" ];

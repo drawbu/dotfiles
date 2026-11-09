@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  modulesPath,
-  ...
-}:
+{ modulesPath, ... }:
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
@@ -15,9 +10,7 @@
     "usb_storage"
     "sd_mod"
   ];
-  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
 
   fileSystems =
     let
@@ -50,6 +43,5 @@
     }
   ];
 
-  # powerManagement.cpuFreqGovernor = "powersave";
-  hardware.cpu.intel.updateMicrocode = config.hardware.enableRedistributableFirmware;
+  nixpkgs.hostPlatform = "x86_64-linux";
 }

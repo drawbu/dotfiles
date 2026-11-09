@@ -2,12 +2,10 @@
   inputs = {
     systems.url = "github:nix-systems/default";
 
-    nixpkgs.url = "nixpkgs/nixos-26.05";
-    nixpkgs_legacy.url = "nixpkgs/nixos-25.11";
-    nixpkgs_unstable.url = "nixpkgs/nixos-unstable";
-    nixpkgs_master.url = "nixpkgs/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs_unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixos-hardware.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager/release-26.05";
@@ -16,7 +14,7 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
     nixos-wsl.inputs.flake-compat.follows = "nix-alien/flake-compat";
 
@@ -114,7 +112,7 @@
 
       homeConfigurations = {
         clement = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+          pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
           extraSpecialArgs = specialArgs';
           modules = [
             ./nixos/nixpkgs.nix
