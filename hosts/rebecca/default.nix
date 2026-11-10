@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 {
   imports = [
     ../../nixos
@@ -23,10 +18,12 @@
   hardware.bluetooth.enable = true;
 
   system.stateVersion = "24.05";
-  home-manager.users.clement.home.stateVersion = config.system.stateVersion;
+  home-manager.users.clement = {
+    home.stateVersion = config.system.stateVersion;
+    # Containers here are long-lived, so keep more than the shared week of roots.
+    programs.nh.clean.extraArgs = "--keep-since 30d";
+  };
 
-  # Containers here are long-lived, so keep more than the shared week of roots.
-  programs.nh.clean.extraArgs = lib.mkForce "--keep-since 30d";
   nix.optimise.dates = [ "03:45" ];
 
   i18n.extraLocaleSettings = {

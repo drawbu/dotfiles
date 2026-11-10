@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 {
   imports = [
     ../../nixos
@@ -27,6 +22,7 @@
   home-manager.users.clement = {
     imports = [ ../../home/clement/linux.nix ];
     home.stateVersion = config.system.stateVersion;
+    programs.nh.clean.enable = false;
   };
 
   environment.sessionVariables = {
@@ -58,7 +54,6 @@
   boot.loader.grub.useOSProber = true;
 
   zramSwap.enable = true;
-  programs.nh.clean.enable = lib.mkForce false;
 
   services.mullvad-vpn.enable = true;
   services.mullvad-vpn.package = pkgs.mullvad-vpn;

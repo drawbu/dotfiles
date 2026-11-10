@@ -28,9 +28,9 @@
   programs.nh = {
     enable = true;
     clean = {
-      enable = true;
+      enable = lib.mkDefault true;
       dates = "weekly";
-      extraArgs = "--keep-since 7d";
+      extraArgs = lib.mkDefault "--keep-since 7d";
     };
     flake = lib.mkDefault "${config.home.homeDirectory}/Developer/dotfiles";
   };
