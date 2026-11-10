@@ -46,6 +46,10 @@
 
     depsrc.url = "github:baptiste0928/depsrc/v0.1.0";
     depsrc.inputs.nixpkgs.follows = "nixpkgs";
+
+    bootvine.url = "git+https://codeberg.org/wvhulle/bootvine?ref=refs/tags/v0.1.3";
+    bootvine.inputs.nixpkgs.follows = "nixpkgs";
+    bootvine.inputs.rust-overlay.follows = "jj/rust-overlay";
   };
 
   outputs =
@@ -88,6 +92,7 @@
               mod.profiles.gaming.enable = gaming;
             }
             inputs.opnix.nixosModules.default
+            inputs.bootvine.nixosModules.default
             (
               { pkgs, ... }:
               {

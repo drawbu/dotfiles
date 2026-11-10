@@ -9,10 +9,6 @@
   networking.hostName = "lucy";
   system.stateVersion = "26.05";
 
-  # Graphical boot splash + clean LUKS passphrase prompt. Plymouth's
-  # systemd-ask-password integration relies on the systemd-based initrd.
-  boot.plymouth.enable = true;
-
   # TODO: mt7925 MLO roaming fails the 4-way handshake and resets leave TX
   #       blocked; drop the mainline fixes once on 7.4, the ROC one once
   #       openwrt/mt76#1143 lands.
