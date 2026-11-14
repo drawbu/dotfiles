@@ -5,6 +5,47 @@
   pkgs,
   ...
 }:
+let
+  palette = [
+    "#6d8223"
+    "#598623"
+    "#2f8b22"
+    "#248b4f"
+    "#248964"
+    "#258872"
+    "#26877c"
+    "#268685"
+    "#27858e"
+    "#288498"
+    "#2982a5"
+    "#2a7fb8"
+    "#2e78df"
+    "#7265f0"
+    "#a14ef0"
+    "#c130e8"
+    "#cc2dcf"
+    "#d42bb9"
+    "#da2aa4"
+    "#e0288d"
+    "#e6266e"
+    "#ec242e"
+    "#c65923"
+    "#b06823"
+    "#a07023"
+    "#937623"
+    "#877a23"
+    "#7a7e23"
+  ];
+  # One label per byte of the email hash, see format_short_signature.
+  authorColors = lib.listToAttrs (
+    lib.genList (
+      i:
+      lib.nameValuePair "author h${lib.toLower (lib.fixedWidthString 2 "0" (lib.toHexString i))}" (
+        builtins.elemAt palette (lib.mod i (lib.length palette))
+      )
+    ) 256
+  );
+in
 {
   imports = [ finputs.jj-mesh.homeModules.default ];
 
@@ -17,6 +58,10 @@
       user = { inherit (config.programs.git.settings.user) name email; };
 
       git.private-commits = "private()";
+
+      colors = authorColors // {
+        "author ${config.programs.git.settings.user.email}" = "yellow";
+      };
 
       ui = {
         default-command = [
@@ -151,9 +196,9 @@
           )
         '';
         "format_short_signature(signature)" = ''
-          if(signature.email().domain().ends_with("users.noreply.github.com"),
-            signature.name() ++ ' (GitHub)',
-            signature.email(),
+          label(
+            "author h" ++ hash(signature.email()).substr(0, 2) ++ " " ++ signature.email(),
+            coalesce(signature.name().split(" ").first(), signature.email().local()),
           )
         '';
         # Mutable commits only: the diff is recomputed on each log.

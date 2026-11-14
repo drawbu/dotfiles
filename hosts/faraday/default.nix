@@ -75,6 +75,7 @@ in
         }
       ];
 
+      programs.jujutsu.settings.colors."author ${work.email}" = "yellow";
       programs.jujutsu.settings."--scope" = [
         {
           "--when".repositories = [ "~/work" ];
