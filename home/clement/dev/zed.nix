@@ -17,6 +17,7 @@
       "dockerfile"
       "git-firefly"
       "html"
+      "java"
       "kdl"
       "latex"
       "lua"
@@ -112,6 +113,7 @@
           };
         };
         rust-analyzer.initialization_options.cargo.targetDir = true;
+        jdtls.settings.java_home = "${pkgs.jdk25.home}";
       };
     };
 

@@ -181,8 +181,8 @@
         act
         dive
         yubikey-manager
-        temurin-bin
-        (maven.override { jdk_headless = temurin-bin; })
+        temurin-bin-21
+        (maven.override { jdk_headless = temurin-bin-21; })
         difftastic
         mergiraf
         uv
