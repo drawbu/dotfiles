@@ -84,6 +84,7 @@ in
           "--when".repositories = [ "~/work" ];
           user = { inherit (work) email; };
           signing.key = work.signingKey;
+          revset-aliases."mine()" = "author_email(exact:'${work.email}')";
         }
       ];
 
