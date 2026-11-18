@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, pkgs, ... }:
 let
   work = {
     email = "cboillot@advanced-schema.com";
@@ -21,6 +21,9 @@ in
     ssh-agent.enable = true;
     startMenuLaunchers = true;
     useWindowsDriver = true;
+    extraBin = [
+      { src = lib.getExe' pkgs.coreutils "cp"; }
+    ];
   };
 
   virtualisation = {
