@@ -24,17 +24,11 @@
     hyprqtile.url = "github:drawbu/hyprqtile";
     hyprqtile.inputs.nixpkgs.follows = "nixpkgs";
 
-    jj.url = "github:jj-vcs/jj/v0.47.1";
-    jj.inputs.nixpkgs.follows = "nixpkgs";
-    jj.inputs.flake-utils.inputs.systems.follows = "systems";
-    jj.inputs.rust-overlay.follows = "jj-mesh/rust-overlay";
-
     jj-mesh.url = "github:baptiste0928/jj-mesh/v0.3.0";
     jj-mesh.inputs.nixpkgs.follows = "nixpkgs";
 
     opnix.url = "github:brizzbuzz/opnix/v0.11.0";
     opnix.inputs.nixpkgs.follows = "nixpkgs";
-    opnix.inputs.flake-utils.follows = "jj/flake-utils";
 
     yank.url = "git+https://tangled.org/drawbu.dev/yank?ref=refs/tags/v0.1.1";
     yank.inputs.nixpkgs.follows = "nixpkgs";
@@ -49,7 +43,7 @@
 
     bootvine.url = "git+https://codeberg.org/wvhulle/bootvine?ref=refs/tags/v0.1.3";
     bootvine.inputs.nixpkgs.follows = "nixpkgs";
-    bootvine.inputs.rust-overlay.follows = "jj/rust-overlay";
+    bootvine.inputs.rust-overlay.follows = "jj-mesh/rust-overlay";
   };
 
   outputs =

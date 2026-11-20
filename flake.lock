@@ -7,7 +7,7 @@
           "nixpkgs"
         ],
         "rust-overlay": [
-          "jj",
+          "jj-mesh",
           "rust-overlay"
         ]
       },
@@ -134,16 +134,14 @@
     },
     "flake-utils": {
       "inputs": {
-        "systems": [
-          "systems"
-        ]
+        "systems": "systems"
       },
       "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "lastModified": 1794427683,
+        "narHash": "sha256-o7ey9gEilsxaifqJWnBDlYSKbNWYQYtKwDyXeZU2kaU=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "rev": "cd489559845d81f673a12885576016c65cbe9363",
         "type": "github"
       },
       "original": {
@@ -190,32 +188,6 @@
       "original": {
         "owner": "drawbu",
         "repo": "hyprqtile",
-        "type": "github"
-      }
-    },
-    "jj": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": [
-          "jj-mesh",
-          "rust-overlay"
-        ]
-      },
-      "locked": {
-        "lastModified": 1793833922,
-        "narHash": "sha256-vyV2QpOlCnr8WUijJYYx7oVhMhEy+jRJxXe9rRBlowA=",
-        "owner": "jj-vcs",
-        "repo": "jj",
-        "rev": "d16ee1fc88a72c54142241b079a34bbf3b033bc0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jj-vcs",
-        "ref": "v0.47.1",
-        "repo": "jj",
         "type": "github"
       }
     },
@@ -412,10 +384,7 @@
     },
     "opnix": {
       "inputs": {
-        "flake-utils": [
-          "jj",
-          "flake-utils"
-        ],
+        "flake-utils": "flake-utils",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -441,7 +410,6 @@
         "depsrc": "depsrc",
         "home-manager": "home-manager",
         "hyprqtile": "hyprqtile",
-        "jj": "jj",
         "jj-mesh": "jj-mesh",
         "llm-agents": "llm-agents",
         "nix-alien": "nix-alien",
@@ -451,7 +419,7 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs_unstable": "nixpkgs_unstable",
         "opnix": "opnix",
-        "systems": "systems",
+        "systems": "systems_2",
         "yank": "yank"
       }
     },
@@ -477,6 +445,21 @@
       }
     },
     "systems": {
+      "locked": {
+        "lastModified": 1791244623,
+        "narHash": "sha256-uuanbkFk8a313Zfrxdcz8Us/yQtaxNnKJtX8v0ZPpd8=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "d36eeed142f88b5a636f2e3856a53c61654cf29b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_2": {
       "locked": {
         "lastModified": 1791244623,
         "narHash": "sha256-uuanbkFk8a313Zfrxdcz8Us/yQtaxNnKJtX8v0ZPpd8=",

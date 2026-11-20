@@ -53,7 +53,7 @@ in
 
   programs.jujutsu = {
     enable = true;
-    package = pkgs.extra.jj;
+    package = pkgs.unstable.jujutsu;
     settings = {
       user = { inherit (config.programs.git.settings.user) name email; };
 
