@@ -52,6 +52,7 @@ in
       env = {
         AGENT = "1";
         CLAUDE_CODE_SHELL = lib.getExe pkgs.bashInteractive;
+        CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY = "1";
         _ZO_DOCTOR = "0";
         GIT_SSH_COMMAND = "${lib.getExe pkgs.openssh} -o IdentityAgent=none";
       };

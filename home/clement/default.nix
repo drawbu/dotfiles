@@ -45,6 +45,11 @@
       else
         throw "mmmh no home directory";
 
+    sessionVariables = {
+      DISABLE_TELEMETRY = "1";
+      DO_NOT_TRACK = "1";
+    };
+
     packages = with pkgs; [
       cowsay
       fastfetch
