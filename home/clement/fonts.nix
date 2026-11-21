@@ -44,9 +44,20 @@ in
       file = "5TRO2J3HJNIQODLQ4CTSMGSLAWSE5YUY/GHXENXHZCDIOE5E73364PNNASRNO3JVW/GLZTRU2GIKPV5HYT3E6HDLWOXAWPNZDV";
       hash = "sha256-WIeh383/KlTNtH7wFlZW5zXmDVDmGCplXxKXjS8N0S0=";
     })
+    (fetchFontShare {
+      name = "supreme";
+      file = "DLQ4UJISF7NR5UWCRH7SSBZSGVFYEQVB/ECAFP4IWEYQWGLRGLDAA4D47EQQC2YFW/WC57ME7FJIJNRKIFOCKR52F2X2KO67EO";
+      hash = "sha256-idJvzeum3+hzFl+3HIDPO3/K64p4hyuwEfBQ4muwvqk=";
+    })
+    (fetchFontShare {
+      name = "supreme-italic";
+      file = "QN3TIUT2GLJT6WB3XTDDWOYM5RZ3KEGB/CBLU5DRGUM4ST5QM56HEQKDBMG2XTIL7/GPZNNDUEMEWV7QFJ7WNIEFP2732UWFKR";
+      hash = "sha256-PHFqsf+15V5nPKCDSm8puCccsSddI4TH0CC340Y+oUc=";
+    })
   ]
   ++ (with pkgs; [
     jetbrains-mono
+    commit-mono
     nerd-fonts.symbols-only
     ioskeley-mono.normal
     liberation_ttf
