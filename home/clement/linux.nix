@@ -8,6 +8,7 @@
 {
   imports = [
     ./gaming.nix
+    ./paper.nix
     ./soloist.nix
     ./wayland
   ];
