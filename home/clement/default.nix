@@ -16,6 +16,7 @@
     ./profiles.nix
     ./wallpapers
     ./yank.nix
+    ./paper.nix
   ];
 
   programs.home-manager.enable = true;
