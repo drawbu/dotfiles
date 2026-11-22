@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [ ./nix.nix ];
 
   system.copySystemConfiguration = false;
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     consoleLogLevel = 0;
     initrd.verbose = false;
     kernelParams = [ "quiet" ];

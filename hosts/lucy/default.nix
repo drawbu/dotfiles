@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ../../nixos
@@ -9,41 +14,14 @@
   networking.hostName = "lucy";
   system.stateVersion = "26.05";
 
-  # TODO: mt7925 MLO roaming fails the 4-way handshake and resets leave TX
-  #       blocked; drop the mainline fixes once on 7.4, the ROC one once
-  #       openwrt/mt76#1143 lands.
-  boot.kernelPatches =
-    let
-      mainline = name: id: hash: {
-        inherit name;
-        patch = pkgs.fetchpatch {
-          name = "${name}.patch";
-          url = "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/patch/?id=${id}";
-          inherit hash;
-        };
-      };
-    in
-    [
-      (mainline "mt7925-mld-link-add" "dd3f17ef69ed6d0085cd94a15b9dec227b4ebfb1"
-        "sha256-rZnY+P8DMikjLLe++frlzzdsu1A7G6gDMWxeGckmt+g="
-      )
-      (mainline "mt7925-reset-drv-pmctrl" "d12a54be2604ecd23a1e9ac863583e34034aadde"
-        "sha256-0nhLmepbZpeJesCgo2dnGV/C9rCvH5YV9cQZvY3OXWc="
-      )
-      (mainline "mt7925-reset-fw-pmctrl" "8d2f5990cd429a2fe5fff05f7acf84d6799d4324"
-        "sha256-BCHCRBU48VOfE2vkYJTPc5Q+GhNyvHxNDsCTo02wACM="
-      )
-      {
-        name = "mt7925-join-roc-release";
-        patch = pkgs.fetchpatch {
-          name = "mt7925-join-roc-release.patch";
-          url = "https://github.com/openwrt/mt76/commit/0f6b49e56e2d85297bcdc94dfa8fbb266505883d.patch";
-          stripLen = 1;
-          extraPrefix = "drivers/net/wireless/mediatek/mt76/";
-          hash = "sha256-eixoDhJTI5VXEPII+hwL77kYsnt6seMQvK3iByXcAAA=";
-        };
-      }
-    ];
+  # 7.4 carries the mt7925 MLO roaming and reset fixes.
+  boot.kernelPackages = pkgs.linuxPackages_testing;
+  assertions = [
+    {
+      assertion = lib.versionOlder pkgs.linuxPackages_latest.kernel.version "7.4";
+      message = "linuxPackages_latest reached 7.4: move lucy back to it.";
+    }
+  ];
 
   home-manager.users.clement = {
     imports = [ ../../home/clement/linux.nix ];
